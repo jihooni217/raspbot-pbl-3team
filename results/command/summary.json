@@ -1,0 +1,51 @@
+{
+  "ai": {
+    "groups": {
+      "example": {
+        "correct": 10,
+        "tested": 10
+      },
+      "refusal": {
+        "correct": 3,
+        "tested": 3
+      },
+      "paraphrase": {
+        "correct": 5,
+        "tested": 5
+      }
+    },
+    "total_tested": 18,
+    "actual_ai": 18,
+    "fallbacks": 0,
+    "max_wall_seconds": 7.1025,
+    "over_20_seconds": 0
+  },
+  "keyword": {
+    "groups": {
+      "example": {
+        "correct": 10,
+        "tested": 10
+      },
+      "refusal": {
+        "correct": 3,
+        "tested": 3
+      },
+      "paraphrase": {
+        "correct": 5,
+        "tested": 5
+      }
+    },
+    "total_tested": 18,
+    "actual_ai": 0,
+    "fallbacks": 0,
+    "max_wall_seconds": 0.0742,
+    "over_20_seconds": 0
+  },
+  "unit_tests": 23,
+  "cases_sha256": "39182162fa66c1909508a9a6b28a8c1e3d23d162ca867145ca6446b62b31b2fc",
+  "protected_files_unchanged": true,
+  "head": "827eafc",
+  "real_devices_used": false,
+  "final_validator_replay": 18,
+  "source_sha256": "fe47eeadf9049c106c8543765a8b02600a5591b9786de061847bfc39453f3aec"
+}
