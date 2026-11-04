@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # 지시서: specs/13-full-course.md
-"""전체 코스 ①②③: 07 차선 추적 + 속도 구간 + 표식 순서에 따른 선 선택.
+"""전체 코스 ①②③④: 07 차선 추적 + 경로/속도 + 사람·STOP·초음파 정지.
 
 사진 시험 import는 장치를 쓰지 않는다. 직접 실행은 START 준비 확인 후 카메라
 서보 각도만 복원한다. 카메라 영상과 바퀴를 여는 주행 진입점은 없다.
@@ -8,7 +8,13 @@ find_lines(frame, previous, width) -> LaneController.update(lines, now).
 ③은 표식 순서1~12와 갈림길 선택을 계산한다. 실제 주행 진입점은 없다.
 """
 import importlib.util
+from collections import deque
+import csv
+import json
+import math
 from pathlib import Path
+import threading
+import time
 
 import cv2
 import numpy as np
@@ -22,6 +28,10 @@ _spec.loader.exec_module(lane)
 COLOR_RATIO = 0.15
 COLOR_HOLD_SECONDS = 0.5
 COLOR_SPEEDS = {'blue': 45, 'red': 25}
+
+# 장치를 열지 않는 모듈/판단기만 재사용한다. 06/04/07의 파일과 전역 설정은 바꾸지 않는다.
+reactions = lane.load('full_course_reactions', '06_drive_signs.py')
+obstacles = lane.load('full_course_obstacles', '04_obstacle.py')
 
 # 트랙에 인쇄된 '천'의 위/아래 획 윤곽. 배경과 사진 좌표는 저장하지 않는다.
 # 기울어진 글자를 정면으로 보는 경우도 포함하도록 세로 전단을 비교한다.
@@ -487,6 +497,368 @@ class LaneController(lane.LaneController):
                     route_leg=self.route_leg,
                     choice_end=self.choice_end, guide_center=self.guide_center,
                     crossings=self.crossings, start_passes=self.start_passes)
+
+
+def lane_context(frame):
+    """안전 판정용 원본 화면의 노란 픽셀. ①②③ find_lines와 별도로 잰다."""
+    occupied = np.flatnonzero(np.any(frame != 0, axis=(1, 2)))
+    height = int(occupied[-1]) + 1 if occupied.size else frame.shape[0]
+    hsv = cv2.cvtColor(frame[:height],cv2.COLOR_BGR2HSV)
+    mask = cv2.inRange(hsv,(15,80,100),(40,255,255))
+    # 640폭에서 실제 노란 띠보다 가는 1~4px 안내선/글자 획을 제외한다.
+    mask = cv2.morphologyEx(mask,cv2.MORPH_OPEN,np.ones((1,6),np.uint8))
+    segments = cv2.HoughLinesP(mask,1,np.pi/180,20,minLineLength=30,maxLineGap=25)
+    segments = [] if segments is None else segments[:,0].tolist()
+    slopes = [[],[]]
+    for x1,y1,x2,y2 in segments:
+        if abs(y2-y1)<12:continue
+        a = (x2-x1)/(y2-y1)
+        if abs(a)<.2:continue
+        slopes[0 if a<0 else 1].append((a,x1-a*y1))
+    horizon = None
+    if all(slopes):
+        al,bl = np.median(slopes[0],axis=0)
+        ar,br = np.median(slopes[1],axis=0)
+        vy = (br-bl)/(al-ar)
+        vx = al*vy+bl
+        if 0<=vy<height*.5 and 0<=vx<=frame.shape[1]:horizon = float(vy)
+    ys = np.nonzero(mask[lane.ROI_TOP:min(height,lane.ROI_BOTTOM)])[0]
+    width_y = float(np.mean(ys)+lane.ROI_TOP) if len(ys) else (lane.ROI_TOP+lane.ROI_BOTTOM)/2
+    # 트랙 뒤 검은 턱 아래에서 바닥으로 밝아지는 넓은 경계만 근거로 쓴다.
+    # 작은 사람/책상/영상 안내선은 화면 중앙80%의 행 중앙값에 영향을 덜 준다.
+    road_top = None
+    tops = [min(y1,y2) for x1,y1,x2,y2 in segments if abs(y2-y1)>=12]
+    values = np.median(hsv[:,frame.shape[1]//10:frame.shape[1]*9//10,2],axis=1)
+    edges = []
+    if tops:
+        for row in range(10,int(height*.65)-10):
+            if abs(row-min(tops))>height*.25:continue
+            above = float(np.median(values[row-8:row-2]))
+            below = float(np.median(values[row+2:row+10]))
+            if above<=60 and below>=90 and below-above>=50:
+                edges.append((below-above,-row))
+        if edges:road_top = -max(edges)[1]
+    dark_floor = ((hsv[:,:,1]<=100)&(hsv[:,:,2]<=180)).astype(np.uint8)
+    dark_floor.setflags(write=False)
+    mask.setflags(write=False)
+    return dict(height=height,width=frame.shape[1],yellow=mask,segments=segments,
+                horizon=horizon,width_y=width_y,road_top=road_top,dark_floor=dark_floor)
+
+
+def foot_on_lane(box, context, lane_width=None, center=320, horizon=None):
+    """발 높이의 두 노란 경계를 사용한다. 한쪽만 있으면07 폭, 없으면 가운데 절반."""
+    x,y,w,h = map(float,box)
+    fx,fy = x+w/2,y+h
+    result = dict(foot=[fx,fy],near=fy>context['height']*.25,inside=False,
+                  bounds=None,basis='far',offroad_reason=None,
+                  road_top=context.get('road_top'),horizon=context.get('horizon'),
+                  ground_dark_ratio=None)
+    if not result['near']:
+        return result
+    # 현재 화면에 근거가 있을 때만 제외한다. 오래된 소실점으로 사람을 무시하지 않는다.
+    if context.get('road_top') is not None and fy<context['road_top']:
+        result.update(basis='offroad',offroad_reason='above_road_end')
+        return result
+    if context.get('horizon') is not None and fy<context['horizon']:
+        result.update(basis='offroad',offroad_reason='above_vanishing_point')
+        return result
+    floor = context.get('dark_floor')
+    if floor is not None:
+        below = floor[max(0,round(fy)+2):min(context['height'],round(fy)+14),
+                      max(0,round(fx)-8):min(context['width'],round(fx)+9)]
+        if below.size:
+            result['ground_dark_ratio'] = float(np.mean(below))
+            if result['ground_dark_ratio']<.2:
+                result.update(basis='offroad',offroad_reason='not_black_floor')
+                return result
+    row = max(0,min(context['height']-1,round(fy)))
+    mask = context['yellow']
+    xs = np.flatnonzero(np.any(mask[max(0,row-2):min(len(mask),row+3)]>0,axis=0))
+    parts = np.split(xs,np.flatnonzero(np.diff(xs)>3)+1) if xs.size else []
+    points = [float(np.mean(part)) for part in parts if len(part)>=6]
+    # 흰 횡단보도/물체에 가린 발 높이도 주변 실제 노란 띠의 기울기로 잰다.
+    # 발 높이와 세로120px(480높이 기준) 이내인 실제 띠만 연장한다.
+    projected = []
+    for x1,y1,x2,y2 in context.get('segments',[]):
+        if abs(y2-y1)<12:continue
+        if not min(y1,y2)-context['height']*.25<=row<=max(y1,y2)+context['height']*.25:continue
+        projected.append(x1+(row-y1)*(x2-x1)/(y2-y1))
+    if projected:
+        estimates = np.array(sorted(projected+points))
+        clusters = np.split(estimates,np.flatnonzero(np.diff(estimates)>context['width']*.03)+1)
+        points = [float(np.median(cluster)) for cluster in clusters]
+    if len(points)>=2:
+        # 갈림길의 다른 노란 선을 포함하지 않게 주행 가이드에 가장 가까운 인접 경계 쌍.
+        left,right = min(zip(points,points[1:]),key=lambda pair:abs((pair[0]+pair[1])/2-center))
+        basis = 'two_lines'
+    elif len(points)==1 and lane_width is not None and math.isfinite(lane_width) and lane_width>0:
+        # 07 폭은120~300행의 평균이다. 발 높이로 원근 보정한 뒤 사용한다.
+        vy = context.get('horizon') if context.get('horizon') is not None else horizon
+        if vy is not None and context['width_y']>vy and fy>vy:
+            lane_width *= (fy-vy)/(context['width_y']-vy)
+        if points[0]<center:left,right = points[0],points[0]+lane_width
+        else:left,right = points[0]-lane_width,points[0]
+        basis = 'one_line_07_width'
+    else:
+        left,right = context['width']*.25,context['width']*.75
+        basis = '선 없음-가운데 기준'
+    # '노란 선 사이'는 띠의 안쪽 가장자리다. 띠 자체는 차선 내부가 아니다.
+    if basis=='two_lines' or basis=='one_line_07_width':
+        widths = [len(part) for part in parts if len(part)>=6]
+        margin = float(np.median(widths)/2) if widths else 4.
+        left,right = left+margin,right-margin
+    result.update(bounds=[left,right],basis=basis,inside=left<=fx<=right)
+    return result
+
+
+class FullCourseVisionWorker(reactions.VisionWorker):
+    """06의 최신결과 공유/시작/종료를 재사용. 320모델과0.3 사람 문턱만 어댑터로 확장."""
+    def __init__(self,camera,detector=None,clock=time.monotonic):
+        super().__init__(camera,detector)
+        self.clock = clock
+        self.thread.name = 'full-course-yolo320'
+
+    def run(self):
+        previous = None
+        try:
+            detector = self.detector if self.detector is not None else reactions.signs.Detector(size=320,conf=.3)
+            while not self.stop.is_set():
+                frame,sequence = self.camera.snapshot()
+                if sequence==previous:
+                    self.stop.wait(.005)
+                    continue
+                captured_at = self.clock()
+                raw = detector(frame)
+                found = [(name,float(score),tuple(box)) for name,score,box in raw
+                         if name in ('person','stop sign') and math.isfinite(score)
+                         and score>=(.3 if name=='person' else .4)
+                         and len(box)==4 and all(math.isfinite(v) for v in box) and box[2]>0 and box[3]>0]
+                context = lane_context(frame)
+                with self.lock:
+                    self.latest = dict(sequence=sequence,captured_at=captured_at,
+                                       completed_at=self.clock(),found=found,context=context)
+                previous = sequence
+        except Exception as exc:
+            self.error = exc
+
+
+class SafetyController:
+    """06의 확인/부재1초/STOP3초/재출발후5초,04의중앙값·오류처리를 조합한다."""
+    def __init__(self,require_distance=True):
+        self.signs = reactions.SignController()
+        self.obstacle = obstacles.ObstacleController()
+        self.require_distance = require_distance
+        self.sequence = None
+        self.hits = {name:deque() for name in ('person','stop sign')}
+        self.people = []
+        self.stop_boxes = []
+        self.person_since = None
+        self.person_locked = False
+        self.state = 'WAITVISION'
+        self.blocked = True
+        self.fresh = False
+        self.age = None
+        self.distance_error = None
+        self.horizon = None
+
+    def observe_distance(self,distance_cm,now=None,error=None):
+        self.distance_error = error
+        # 04의50은 쓰지 않는다. moving/중앙값/오류 상태만 안전 스위치로 사용.
+        self.obstacle.update(distance_cm)
+
+    def step(self,result,now,lane_width=None,center=320):
+        self.age = None if result is None else now-result['captured_at']
+        self.fresh = result is not None and 0<=self.age<=.5
+        if self.fresh and result['sequence']!=self.sequence:
+            self.sequence = result['sequence']
+            self.people,self.stop_boxes = [],[]
+            eligible = {}
+            if result['context'].get('horizon') is not None:self.horizon = result['context']['horizon']
+            for name,score,box in result['found']:
+                if name not in self.hits or not math.isfinite(score):continue
+                if len(box)!=4 or not all(math.isfinite(v) for v in box) or box[2]<=0 or box[3]<=0:continue
+                if name=='person' and score>=.3:
+                    person = dict(score=float(score),box=list(box),**foot_on_lane(box,result['context'],lane_width,center,self.horizon))
+                    self.people.append(person)
+                    if person['near'] and person['inside']:eligible.setdefault(name,(score,box))
+                elif name=='stop sign' and score>=.4:
+                    near = box[3]>=result['context']['height']*.08
+                    self.stop_boxes.append(dict(score=float(score),box=list(box),near=near))
+                    if near:eligible.setdefault(name,(score,box))
+            passed = []
+            for name,history in self.hits.items():
+                while history and result['captured_at']-history[0]>.5+1e-9:history.popleft()
+                if name in eligible:
+                    score,box = eligible[name]
+                    history.append(result['captured_at'])
+                    self.signs.counts[name] = 1 if len(history)>=2 else 0
+                    # 06에는 "13의 사전 조건을 통과한 목표가 있음"을 전달한다.
+                    # 이 내부1.0은 원래 확률이 아니다. 실제 YOLO 점수는 people/stop_boxes에 그대로 기록한다.
+                    passed.append((name,1.,box))
+                else:self.signs.counts[name] = 0
+            self.signs.observe(dict(sequence=self.sequence,found=passed),now)
+        elif not self.fresh:
+            self.signs.invalidate()
+            for history in self.hits.values():history.clear()
+
+        if self.signs.person:
+            if self.person_since is None:self.person_since = now
+            if now-self.person_since>15:self.person_locked = True
+        elif not self.person_locked:self.person_since = None
+
+        if self.person_locked:self.state = 'PERSON_CHECK15'
+        elif not self.fresh:self.state = 'WAITVISION' if result is None else 'STALEVISION'
+        elif self.signs.person:self.state = 'PERSONWAIT'
+        elif self.signs.stop_pending or (self.signs.stop_until is not None and now<self.signs.stop_until):
+            self.state = 'STOPWAIT'
+        elif self.require_distance and not self.obstacle.moving:
+            self.state = 'ULTRA_ERROR' if self.obstacle.invalid_count>=3 else 'OBSTACLEWAIT'
+        else:self.state = 'CLEAR'
+        self.blocked = self.state!='CLEAR'
+        return self.blocked
+
+    def motor_sent(self,speeds,now):
+        self.signs.motor_sent(speeds,now)
+
+    def report(self):
+        messages = dict(PERSONWAIT='사람 대기',PERSON_CHECK15='사람 대기 15초 — 확인 필요',
+                        STOPWAIT='STOP 3초 정지',OBSTACLEWAIT='초음파 정지/대기',
+                        ULTRA_ERROR='초음파 오류 3번 — 정지',WAITVISION='인식 결과 대기',
+                        STALEVISION='오래된 인식 결과 — 정지',CLEAR='주행')
+        message = messages[self.state]
+        if any(person['basis']=='선 없음-가운데 기준' for person in self.people):
+            message += ' / 선 없음-가운데 기준'
+        outside = dict(above_road_end='도로 끝 위',above_vanishing_point='소실점 위',
+                       not_black_floor='발밑 검은 바닥 없음')
+        reasons = sorted({outside[p['offroad_reason']] for p in self.people if p.get('offroad_reason')})
+        if reasons:message += ' / 트랙 밖: '+', '.join(reasons)
+        return dict(safety_state=self.state,safety_message=message,blocked=self.blocked,
+                    vision_fresh=self.fresh,vision_age=self.age,person=self.people,stop_boxes=self.stop_boxes,
+                    person_locked=self.person_locked,person_since=self.person_since,
+                    stop_until=self.signs.stop_until,ignore_until=self.signs.ignore_until,
+                    distance_cm=self.obstacle.filtered_cm,ultra_state=self.obstacle.status,
+                    ultra_invalid_count=self.obstacle.invalid_count,distance_error=self.distance_error)
+
+
+class FullCourseController:
+    """기존LaneController를 그대로 감싼④. 모든 대기의 합집합만큼 경로 시계를 멈춘다."""
+    def __init__(self,vision_worker=None,require_distance=True):
+        self.route = LaneController()
+        self.safety = SafetyController(require_distance)
+        self.vision_worker = vision_worker
+        self.last_wall = None
+        self.paused_seconds = 0.
+        self.was_blocked = False
+        self.route_now = None
+        self.speeds = lane.STOP
+
+    @property
+    def previous(self):return self.route.previous
+    @property
+    def width(self):return self.route.width
+    @property
+    def stopped(self):return self.route.stopped
+
+    def observe_distance(self,distance_cm,now=None,error=None):
+        self.safety.observe_distance(distance_cm,now,error)
+
+    def update(self,lines,now,vision=None,*,new_frame=True):
+        if self.vision_worker is not None:vision = self.vision_worker.snapshot()
+        center = self.route.guide_center if self.route.guide_center is not None else self.route.center
+        blocked = self.safety.step(vision,now,self.route.width,320 if center is None else center)
+        if self.last_wall is not None:
+            if now<self.last_wall:raise ValueError('시각은 뒤로 갈 수 없습니다')
+            if self.was_blocked:self.paused_seconds += now-self.last_wall
+        self.last_wall,self.was_blocked = now,blocked
+        self.route_now = now-self.paused_seconds
+        if blocked:self.speeds = lane.STOP
+        elif new_frame:self.speeds = self.route.update(lines,self.route_now)
+        else:self.speeds = self.route.tick(self.route_now)
+        return self.speeds
+
+    def motor_sent(self,speeds,now):
+        self.safety.motor_sent(speeds,now)
+
+    def report(self):
+        result = self.route.report()
+        result.update(route_state=result['state'],speeds=self.speeds,route_clock=self.route_now,
+                      paused_seconds=self.paused_seconds,**self.safety.report())
+        if self.safety.blocked:result['state'] = self.safety.state
+        return result
+
+
+def safety_annotated(frame,report):
+    out = lane.annotated(frame,report)
+    for person in report['person']:
+        x,y,w,h = map(round,person['box'])
+        color = (0,0,255) if person['inside'] and person['near'] else (0,255,0)
+        cv2.rectangle(out,(x,y),(x+w,y+h),color,2)
+        fx,fy = map(round,person['foot'])
+        cv2.circle(out,(fx,fy),4,color,-1)
+        if person['bounds'] is not None:
+            left,right = map(round,person['bounds'])
+            cv2.line(out,(left,fy),(right,fy),(255,0,255),2)
+        cv2.putText(out,f"PERSON {person['score']:.2f} FOOT {fx},{fy} IN {person['inside']}",(max(0,x),max(12,y-4)),
+                    cv2.FONT_HERSHEY_SIMPLEX,.42,color,1)
+        if person.get('offroad_reason'):
+            cv2.putText(out,person['offroad_reason'].upper(),(max(0,x),min(len(out)-4,y+h+12)),
+                        cv2.FONT_HERSHEY_SIMPLEX,.36,color,1)
+    fallback = any(p['basis']=='선 없음-가운데 기준' for p in report['person'])
+    info = f"{report['safety_state']} DIST {report['distance_cm']} STEP {report['route_step']}"
+    cv2.putText(out,info,(8,390),cv2.FONT_HERSHEY_SIMPLEX,.5,(255,255,255),1)
+    for stop in report['stop_boxes']:
+        x,y,w,h = map(round,stop['box'])
+        cv2.rectangle(out,(x,y),(x+w,y+h),(0,0,255),2)
+        cv2.putText(out,f"STOP {stop['score']:.2f}",(x,max(12,y-4)),cv2.FONT_HERSHEY_SIMPLEX,.42,(0,0,255),1)
+    if fallback:cv2.putText(out,'NO LINES: CENTER HALF',(8,420),cv2.FONT_HERSHEY_SIMPLEX,.5,(0,255,255),1)
+    return out
+
+
+def run_safety_loop(camera,vision_worker,distance_read,key_pressed,stream,on_speeds,display=None):
+    """④의조합반복. 장치 생성/서보/바퀴/부저 호출 없음. on_speeds에계산값을전달한다.
+
+    실물연결시는호출자가준비확인/초음파활성화/실제전송/최종네바퀴0을책임진다.
+    주행루프에는추론호출이없고06에서재사용한worker.snapshot만읽는다.
+    """
+    controller = FullCourseController(vision_worker)
+    writer = csv.writer(stream,lineterminator='\n')
+    writer.writerow(('wall_seconds','route_step','start_passes','state','speeds','safety_message',
+                     'person_score_feet_inside','stop_boxes','ultra_cm','ultra_errors','paused_seconds'))
+    sequence = None
+    lines = None
+    frame = None
+    next_distance = time.monotonic()
+    last_message = None
+    try:
+        while not key_pressed():
+            now = time.monotonic()
+            if now>=next_distance:
+                try:controller.observe_distance(distance_read(),now)
+                except Exception as exc:controller.observe_distance(None,now,str(exc))
+                next_distance = now+obstacles.INTERVAL
+            candidate,new_sequence = camera.snapshot()
+            fresh_frame = sequence!=new_sequence
+            if fresh_frame:
+                frame,sequence = candidate,new_sequence
+                lines = find_lines(frame,controller.previous,controller.width)
+            speeds = controller.update(lines,time.monotonic(),new_frame=fresh_frame)
+            if key_pressed():break
+            on_speeds(speeds)
+            controller.motor_sent(speeds,time.monotonic())
+            report = controller.report()
+            if report['safety_message']!=last_message:
+                print(report['safety_message'],flush=True)
+                last_message = report['safety_message']
+            writer.writerow((now,report['route_step'],report['start_passes'],report['state'],speeds,
+                             report['safety_message'],json.dumps(report['person'],ensure_ascii=False),
+                             json.dumps(report['stop_boxes']),report['distance_cm'],report['ultra_invalid_count'],
+                             report['paused_seconds']))
+            stream.flush()
+            if display is not None:display(safety_annotated(frame,report),report)
+            if controller.stopped:break
+            time.sleep(.005)
+    finally:on_speeds(lane.STOP)
+    return controller.report()
 
 
 def prepare_camera(bot):
