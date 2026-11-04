@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 # 지시서: specs/13-full-course.md
-"""전체 코스 ①②: 07 차선 추적 + 색 바닥/천천히 구간 속도 계산.
+"""전체 코스 ①②③: 07 차선 추적 + 속도 구간 + 표식 순서에 따른 선 선택.
 
 장치 없는 사진 시험 단계다. 이 파일은 카메라와 바퀴를 열지 않는다.
 find_lines(frame, previous, width) -> LaneController.update(lines, now).
-갈림길 경로와 START 정지는 후속 단계에서 구현한다.
+③은 표식 순서1~12와 갈림길 선택을 계산한다. 실제 주행 진입점은 없다.
 """
 import importlib.util
 from pathlib import Path
@@ -81,6 +81,21 @@ def find_lines(frame, previous=None, width=None):
     lines = lane.find_lines(frame, previous, width)
     lines['floor'] = find_floor_color(frame)
     lines['slow'] = find_slow_markers(frame)
+    lines['start'] = find_start_markers(frame)
+    lines['dividers'] = find_lane_dividers(frame)
+    # 07의 검출 범위와 노란색 기준을 그대로 써 선택할 덩어리의 모양만 보관.
+    hsv = cv2.cvtColor(frame[lane.ROI_TOP:lane.ROI_BOTTOM], cv2.COLOR_BGR2HSV)
+    mask = cv2.inRange(hsv, (15, 80, 100), (40, 255, 255))
+    count, labels, stats, centers = cv2.connectedComponentsWithStats(mask, connectivity=8)
+    parts = sorted((i for i in range(1, count) if stats[i, cv2.CC_STAT_AREA] >= 50),
+                   key=lambda i: (-stats[i, cv2.CC_STAT_AREA], centers[i, 0]))[:2]
+    traces = []
+    for i in parts:
+        xs = np.nonzero(labels == i)[1]
+        traces.append(dict(x=float(centers[i, 0]), area=int(stats[i, cv2.CC_STAT_AREA]),
+                           left_guide=float(np.percentile(xs, 15)),
+                           right_guide=float(np.percentile(xs, 85))))
+    lines['traces'] = sorted(traces, key=lambda trace: trace['x'])
     return lines
 
 
@@ -160,8 +175,111 @@ def find_slow_markers(frame):
                 boxes=dict(glyphs=glyphs, bars=bars, roundabouts=roundabouts))
 
 
+def find_lane_dividers(frame):
+    """2차선의 흰 중앙선 조각. 화살표/넓은 흰 바닥은 제외한다."""
+    hsv = cv2.cvtColor(frame[lane.ROI_TOP:lane.ROI_BOTTOM], cv2.COLOR_BGR2HSV)
+    mask = cv2.inRange(hsv, (0, 0, 215), (179, 65, 255))
+    yellow = cv2.inRange(hsv, (15, 80, 100), (40, 255, 255))
+    contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    result = []
+    for contour in contours:
+        area = cv2.contourArea(contour)
+        if not 80 <= area <= 5000:
+            continue
+        hull = cv2.contourArea(cv2.convexHull(contour))
+        if not hull or area / hull < .9:
+            continue
+        (x, y), (a, b), angle = cv2.minAreaRect(contour)
+        if min(a, b) > 0 and max(a, b) / min(a, b) >= 4 and max(a, b) >= 40:
+            xx, yy = round(x), round(y)
+            column = yellow[:, max(0,xx-12):min(yellow.shape[1],xx+13)]
+            if not np.any(column[:yy]) and np.any(column[yy:yy+40]):
+                continue
+            result.append(dict(x=float(x), y=float(y + lane.ROI_TOP), area=area))
+    return result
+
+
+def find_start_markers(frame):
+    """흰 테두리 사이 START 다섯 글자의 배치와 A/R 구멍을 확인한다."""
+    occupied = np.flatnonzero(np.any(frame != 0, axis=(1, 2)))
+    bottom = int(occupied[-1]) + 1 if occupied.size else frame.shape[0]
+    width = frame.shape[1]
+    hsv = cv2.cvtColor(frame[:bottom], cv2.COLOR_BGR2HSV)
+    mask = cv2.inRange(hsv, (0, 0, 215), (179, 65, 255))
+    mask[:int(bottom * .4)] = 0
+    contours, tree = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    letters = []
+    for i, contour in enumerate(contours):
+        if tree[0, i, 3] != -1:
+            continue
+        x, y, w, h = cv2.boundingRect(contour)
+        hull = cv2.contourArea(cv2.convexHull(contour))
+        solidity = cv2.contourArea(contour) / hull if hull else 1
+        if (width * .015 < w < width * .18 and bottom * .018 < h < bottom * .16 and
+                .8 < w / h < 9 and .4 < solidity < .86):
+            letters.append((x, y, w, h, tree[0, i, 2] != -1))
+    letters.sort()
+    boxes = []
+    groups = set()
+    for sx, sy, sw, sh, hole in letters:
+        row = [letter for letter in letters
+               if abs(letter[1] + letter[3] / 2 - sy - sh / 2) < sh * 1.5 and
+               .6 * sh < letter[3] < 1.6 * sh]
+        groups.update(tuple(row[i:i+5]) for i in range(len(row) - 4))
+    for group in sorted(groups):
+        if not group[2][4] or not group[3][4]:
+            continue
+        xs = np.array([x + w / 2 for x, y, w, h, hole in group])
+        ys = np.array([y + h / 2 for x, y, w, h, hole in group])
+        height = float(np.median([h for x, y, w, h, hole in group]))
+        if max(h for x, y, w, h, hole in group) > 1.6 * height:
+            continue
+        fitted = np.polyval(np.polyfit(xs, ys, 1), xs)
+        if np.max(np.abs(fitted - ys)) > height * .3:
+            continue
+        if any(group[j+1][0] - (group[j][0] + group[j][2]) > height * 2 for j in range(4)):
+            continue
+        x1, x2 = group[0][0], group[-1][0] + group[-1][2]
+        y1 = min(y for x, y, w, h, hole in group)
+        y2 = max(y + h for x, y, w, h, hole in group)
+        if x2 - x1 < width * .25:
+            continue
+        above = mask[max(0, int(y1 - 3 * height)):y1, x1:x2]
+        below = mask[y2:min(bottom, int(y2 + 3 * height)), x1:x2]
+        if (above.size and below.size and
+                np.max(np.mean(above > 0, axis=1)) > .6 and
+                np.max(np.mean(below > 0, axis=1)) > .6):
+            boxes.append((x1, y1, x2 - x1, y2 - y1))
+    return dict(visible=bool(boxes), near=any(y + h / 2 > bottom * .8 for x,y,w,h in boxes),
+                boxes=boxes)
+
+
+class MarkEvent:
+    """하나의 바닥 표시를 여러 화면에서 중복 세지 않는다."""
+    def __init__(self):
+        self.since = None
+        self.missing = None
+        self.latched = False
+
+    def update(self, present, now):
+        if present:
+            self.missing = None
+            if self.since is None:
+                self.since = now
+            if not self.latched and now - self.since >= .2 - 1e-9:
+                self.latched = True
+                return True
+        else:
+            self.since = None
+            if self.missing is None:
+                self.missing = now
+            if now - self.missing >= .5 - 1e-9:
+                self.latched = False
+        return False
+
+
 class LaneController(lane.LaneController):
-    """07의 선 추적과 정지를 쓰고 TRACK 중 기본 속도만 바꾼다."""
+    """07의 추적·정지를 바탕으로 표식 순서와 선택한 선의 조향을 계산한다."""
 
     def __init__(self):
         super().__init__()
@@ -171,9 +289,156 @@ class LaneController(lane.LaneController):
         self.slow_active = False
         self.slow_seen_since = None
         self.slow_end_since = None
+        self.route_step = 1
+        self.crossings = 0
+        self.crossing_event = MarkEvent()
+        self.rotary_event = MarkEvent()
+        self.front_corner_event = MarkEvent()
+        self.start_event = MarkEvent()
+        self.slow_event = MarkEvent()
+        self.start_passes = 0
+        self.second_crossings = None
+        self.route_leg = 'FRONT'
+        self.choice = None
+        self.choice_since = None
+        self.choice_stable_since = None
+        self.choice_end = None
+        self.observed = None
+        self.observed_at = None
+        self.guide_center = None
+
+    def _choose(self, direction, now):
+        self.choice = direction
+        self.choice_since = now
+        self.choice_stable_since = None
+        self.choice_end = None
+
+    def _route(self, lines, now):
+        mark = lines.get('slow', {})
+        traces = lines.get('traces', [])
+        crossing = self.crossing_event.update(mark.get('crossing_near', False), now)
+        rotary = self.rotary_event.update(mark.get('roundabout_near', False), now)
+        self.slow_event.update(mark.get('text', False), now)
+        start = lines.get('start', {})
+        self.start_event.update(start.get('visible', False), now)
+        if self.start_event.latched and start.get('near'):
+            if self.route_step in (5, 6) and self.start_passes == 0:
+                self.start_passes = 1
+            elif self.route_step == 12 and self.start_passes == 1:
+                self.start_passes = 2
+                self.stopped = True
+                self.state = 'FINISH'
+                self.speeds = lane.STOP
+                return
+        if crossing:
+            self.crossings += 1
+        if self.route_step == 1 and self.crossings >= 2:
+            if self.front_corner_event.update(len(traces) == 2 and traces[0]['x'] > 140, now):
+                self.route_step = 2
+        elif self.route_step == 2 and crossing:
+            self.route_step = 3
+        elif self.route_step == 3 and crossing and self.choice is None:
+            self._choose('RIGHT', now)
+        elif self.route_step == 4 and self.choice is None:
+            if self.route_leg == 'WAIT_ROTARY' and rotary:
+                self.route_leg = 'CIRCLE'
+                self._choose('LEFT', now)
+            elif (self.route_leg == 'EXIT_WAIT' and not self.rotary_event.latched and
+                  self.center is not None and self.center > 360):
+                self.route_leg = 'EXIT'
+                self._choose('RIGHT', now)
+        elif self.route_step == 5 and self.start_event.latched:
+            self.route_step = 6
+            self.route_leg = 'SECOND_FRONT'
+            self.second_crossings = self.crossings
+        elif (self.route_step == 6 and crossing and self.choice is None and
+              self.crossings - self.second_crossings >= 2):
+            self.route_leg = 'SIDE_ROAD'
+            self._choose('RIGHT', now)
+        elif self.route_step == 7 and self.choice is None:
+            if self.route_leg == 'WAIT_ROTARY' and self.rotary_event.latched:
+                self.route_leg = 'CIRCLE'
+                self._choose('LEFT', now)
+            elif self.route_leg == 'EXIT_WAIT' and self.slow_event.latched:
+                self.route_step = 8
+                self.route_leg = 'SLOW_RETURN'
+        elif self.route_step == 8 and not self.slow_active and not mark.get('text'):
+            self.route_step = 9
+            self.route_leg = 'UPPER_CORNERS'
+        elif self.route_step == 9 and lines.get('floor', {}).get('color') == 'blue':
+            self.route_step = 10
+            self.route_leg = 'BLUE'
+        elif self.route_step == 10 and lines.get('floor', {}).get('color') == 'red':
+            self.route_step = 11
+            self.route_leg = 'RED'
+        elif (self.route_step == 11 and self.floor_color is None and
+              lines.get('floor', {}).get('color') is None):
+            self.route_step = 12
+            self.route_leg = 'FINAL_CORNERS'
+
+        if self.choice is not None:
+            traces = lines.get('traces', [])
+            stable = (len(traces) == 2 and traces[1]['x'] - traces[0]['x'] >= 300)
+            if stable and self.observed is not None:
+                dt = now - self.observed_at
+                stable = all(abs(traces[i]['x'] - self.observed[i]) <= 250 * dt
+                             for i in range(2))
+            else:
+                stable = False
+            if stable:
+                if self.choice_stable_since is None:
+                    self.choice_stable_since = now
+            else:
+                self.choice_stable_since = None
+            finished = (self.choice_stable_since is not None and
+                        now - self.choice_stable_since > .5 + 1e-9)
+            if finished or now - self.choice_since >= 4 - 1e-9:
+                self.choice_end = 'BOTH_STABLE' if finished else 'LIMIT4S'
+                self.choice = None
+                if self.route_step == 3:
+                    self.route_step = 4
+                    self.route_leg = 'WAIT_ROTARY'
+                elif self.route_step == 4 and self.route_leg == 'CIRCLE':
+                    self.route_leg = 'EXIT_WAIT'
+                elif self.route_step == 4 and self.route_leg == 'EXIT':
+                    self.route_step = 5
+                    self.route_leg = 'TWO_LANE'
+                elif self.route_step == 6:
+                    self.route_step = 7
+                    self.route_leg = 'WAIT_ROTARY'
+                elif self.route_step == 7 and self.route_leg == 'CIRCLE':
+                    self.route_leg = 'EXIT_WAIT'
+        traces = lines.get('traces', [])
+        self.observed = [trace['x'] for trace in traces] if len(traces) == 2 else None
+        self.observed_at = now
+
+    def _route_center(self, lines):
+        traces = lines.get('traces', [])
+        if not traces:
+            return None
+        if self.choice == 'RIGHT':
+            return traces[-1]['right_guide']
+        if self.choice == 'LEFT':
+            return traces[0]['left_guide']
+        if self.route_step in (1, 3, 6):
+            return traces[0]['x'] + 250 if len(traces) == 2 else None
+        if self.route_step == 5:
+            dividers = [d for d in lines.get('dividers', []) if d['x'] < traces[-1]['x'] - 40]
+            if dividers:
+                divider = max(dividers, key=lambda d: d['area'])
+                return (divider['x'] + traces[-1]['x']) / 2
+        return None
 
     def update(self, lines, now):
         speeds = super().update(lines, now)
+        if not self.stopped:
+            self._route(lines, now)
+        self.guide_center = self._route_center(lines)
+        if self.guide_center is not None and self.state.startswith('TRACK') and not self.stopped:
+            speeds = lane.wheel_speeds(self.guide_center)
+            self.speeds = speeds
+            if speeds[0] != speeds[2]:
+                self.last_turn = 'RIGHT' if speeds[0] > speeds[2] else 'LEFT'
         seen = lines.get('floor', {}).get('color')
         if seen in COLOR_SPEEDS:
             self.floor_color = seen
@@ -201,19 +466,29 @@ class LaneController(lane.LaneController):
                     self.slow_active = False
             else:
                 self.slow_end_since = None
-        if self.slow_active:
+        if self.slow_active or self.route_step == 8 or (self.route_step == 3 and self.choice == 'RIGHT'):
             self.base_speed = 25
         if self.state in ('TRACKBOTH', 'TRACKLEFT', 'TRACKRIGHT') and not self.stopped:
             offset = self.base_speed - lane.BASE_SPEED
             self.speeds = tuple(max(0, min(lane.MAX_SPEED, v + offset)) for v in speeds)
+            if self.guide_center is not None:
+                # 경로 선택의 큰 조향에서도 한쪽0 제한 때문에 평균 속도가 올라가지 않게 한다.
+                limit = min(self.base_speed, lane.MAX_SPEED - self.base_speed)
+                turn = max(-limit, min(limit, round((speeds[0] - speeds[2]) / 2)))
+                left, right = self.base_speed + turn, self.base_speed - turn
+                self.speeds = (left, left, right, right)
         return self.speeds
 
     def report(self):
         return dict(super().report(), floor_color=self.floor_color,
-                    base_speed=self.base_speed, slow_active=self.slow_active)
+                    base_speed=self.base_speed, slow_active=self.slow_active,
+                    route_step=self.route_step, choice=self.choice,
+                    route_leg=self.route_leg,
+                    choice_end=self.choice_end, guide_center=self.guide_center,
+                    crossings=self.crossings, start_passes=self.start_passes)
 
 
 if __name__ == '__main__':
-    print('①② 사진 시험용입니다. 바퀴는 움직이지 않습니다.')
+    print('①②③ 사진 시험용입니다. 바퀴는 움직이지 않습니다.')
     print('python3 ~/corner_test/score_route.py missions/13_full_course.py')
     print('python3 ~/corner_test/score.py missions/13_full_course.py')
