@@ -1,0 +1,23 @@
+test_confirmation_uses_capture_interval_with_processing_delay (__main__.SafetyTests.test_confirmation_uses_capture_interval_with_processing_delay) ... ok
+test_current_vanishing_point_excludes_background_not_old_one (__main__.SafetyTests.test_current_vanishing_point_excludes_background_not_old_one) ... ok
+test_feet_not_head_or_anywhere_in_image (__main__.SafetyTests.test_feet_not_head_or_anywhere_in_image) ... ok
+test_fifteen_seconds_latches_even_after_person_leaves (__main__.SafetyTests.test_fifteen_seconds_latches_even_after_person_leaves) ... ok
+test_loop_logs_fallback_and_sends_zero_even_on_error (__main__.SafetyTests.test_loop_logs_fallback_and_sends_zero_even_on_error) ... 초음파 정지/대기 / 선 없음-가운데 기준
+ok
+test_no_lines_uses_center_half_and_logs_basis (__main__.SafetyTests.test_no_lines_uses_center_half_and_logs_basis) ... ok
+test_obstacle_median_error_and_recovery_use_04 (__main__.SafetyTests.test_obstacle_median_error_and_recovery_use_04) ... ok
+test_one_boundary_uses_existing_07_width (__main__.SafetyTests.test_one_boundary_uses_existing_07_width) ... ok
+test_original_algorithms_and_order_unchanged (__main__.SafetyTests.test_original_algorithms_and_order_unchanged) ... ok
+test_pause_freezes_route_start_color_and_all_hold_timers (__main__.SafetyTests.test_pause_freezes_route_start_color_and_all_hold_timers) ... ok
+test_person_above_visible_road_end_is_outside (__main__.SafetyTests.test_person_above_visible_road_end_is_outside) ... ok
+test_stale_results_are_discarded_not_person_absence (__main__.SafetyTests.test_stale_results_are_discarded_not_person_absence) ... ok
+test_stop_size_confirmation_three_seconds_and_cooldown (__main__.SafetyTests.test_stop_size_confirmation_three_seconds_and_cooldown) ... ok
+test_threshold_point3_and_one_second_clear (__main__.SafetyTests.test_threshold_point3_and_one_second_clear) ... ok
+test_two_hits_in_half_second_not_same_packet_twice (__main__.SafetyTests.test_two_hits_in_half_second_not_same_packet_twice) ... ok
+test_vision_inference_runs_only_in_background (__main__.SafetyTests.test_vision_inference_runs_only_in_background) ... ok
+test_white_ground_excluded_black_track_and_partial_paint_kept (__main__.SafetyTests.test_white_ground_excluded_black_track_and_partial_paint_kept) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 8.581s
+
+OK

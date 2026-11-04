@@ -1,0 +1,1066 @@
+[
+  {
+    "seconds": 0,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 0.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 0.1,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 0.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 0.2,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 0.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 0.3,
+    "state": "STOPWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 0.0,
+    "message": "STOP 3초 정지",
+    "people": [],
+    "stop_until": 3.3,
+    "ignore_until": null
+  },
+  {
+    "seconds": 3.29,
+    "state": "STOPWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 2.99,
+    "message": "STOP 3초 정지",
+    "people": [],
+    "stop_until": 3.3,
+    "ignore_until": null
+  },
+  {
+    "seconds": 3.3,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 3.4,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 3.5,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 3.6,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 3.7,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 3.8,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 3.9,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 4.0,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 4.1,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 4.2,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 4.3,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 4.4,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 4.5,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 4.6,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 4.7,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 4.8,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 4.9,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 5.0,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 5.1,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 5.2,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 5.3,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 5.4,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 5.5,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 5.6,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 5.7,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 5.8,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 5.9,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 6.0,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 6.1,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 6.2,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 6.3,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 6.4,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 6.5,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 6.6,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 6.7,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 6.8,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 6.9,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 7.0,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 7.1,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 7.2,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 7.3,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 7.4,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 7.5,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 7.6,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 7.7,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 7.8,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 7.9,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 8.0,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 8.1,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 8.2,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "주행",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": 8.3
+  },
+  {
+    "seconds": 8.31,
+    "state": "STOPWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "STOP 3초 정지",
+    "people": [],
+    "stop_until": 11.31,
+    "ignore_until": 8.3
+  }
+]
