@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "source_video": "results/videos/blackbox_20261104_204945_297796_6c23c5b9.mp4",
+  "source_sha256": "ef8b0013c5d95c4bbb67c0aa3ed36b95b8991ef4d3101861bb41bea9d7477527",
+  "frame_index_zero_based": 0,
+  "frame_number_one_based": 1,
+  "fps": 15.0,
+  "seconds": 0.0,
+  "frame_size": [
+    640,
+    480
+  ],
+  "nominal_pose": {
+    "pan": 80,
+    "tilt": 5
+  },
+  "selection_reason": "START 글자와 두 직선 경계가 보이고 바퀴값0인 첫 화면. 노란 조향 덧그림이 없고 모서리/옆길 진입 전이다.",
+  "vx_ref": 319.05586405653423,
+  "lane_top_ref": 93.0,
+  "floor_top_ref": null,
+  "height_metric": "lane_top",
+  "width_ref": 1565.8956827561465,
+  "height_note": "양쪽 fitted line 주변15px에서 노란 픽셀3개 이상이5행 연속 나타나는 최초 높이의 평균. 실제 바닥/벽 경계 분류값은 아니다.",
+  "width_y": 479,
+  "width_method": "straight_boundary_extrapolation",
+  "width_note": "실제 맨 아래 두 선은 화면 밖이다. fitted line을 y479까지 연장한 폭이며 직접 관측한 두 픽셀 사이 폭이 아니다.",
+  "pixels_per_degree_initial": 10,
+  "servo_response_px_per_degree": null,
+  "measurement": {
+    "reliable": true,
+    "reason": "OK",
+    "vx": 319.05586405653423,
+    "vy": 44.759957421929215,
+    "lane_top": 93.0,
+    "floor_top": null,
+    "width": 1565.8956827561465,
+    "width_y": 479,
+    "width_extrapolated": true,
+    "left": {
+      "slope": -2.025674166556197,
+      "intercept": 409.72495350229156,
+      "top": 84,
+      "fit_min_y": 78,
+      "fit_max_y": 208,
+      "median_error_px": 2.213688101808742,
+      "inlier_rows": 108
+    },
+    "right": {
+      "slope": 1.5803859136231166,
+      "intercept": 248.31785785254684,
+      "top": 102,
+      "fit_min_y": 82,
+      "fit_max_y": 255,
+      "median_error_px": 2.3376170098592297,
+      "inlier_rows": 140
+    },
+    "bottom_left": -560.5729722781267,
+    "bottom_right": 1005.3227104780196
+  }
+}

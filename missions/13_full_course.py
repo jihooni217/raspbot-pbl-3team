@@ -2,7 +2,8 @@
 # 지시서: specs/13-full-course.md
 """전체 코스 ①②③: 07 차선 추적 + 속도 구간 + 표식 순서에 따른 선 선택.
 
-장치 없는 사진 시험 단계다. 이 파일은 카메라와 바퀴를 열지 않는다.
+사진 시험 import는 장치를 쓰지 않는다. 직접 실행은 START 준비 확인 후 카메라
+서보 각도만 복원한다. 카메라 영상과 바퀴를 여는 주행 진입점은 없다.
 find_lines(frame, previous, width) -> LaneController.update(lines, now).
 ③은 표식 순서1~12와 갈림길 선택을 계산한다. 실제 주행 진입점은 없다.
 """
@@ -488,7 +489,26 @@ class LaneController(lane.LaneController):
                     crossings=self.crossings, start_passes=self.start_passes)
 
 
+def prepare_camera(bot):
+    """출발 준비에서 last.json 또는80/5 적용만 한다. 영상 보정은14번 몫."""
+    spec = importlib.util.spec_from_file_location(
+        'full_course_camera_pose',Path(__file__).with_name('14_camera_align.py'))
+    camera_align = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(camera_align)
+    return camera_align.restore_saved_pose(bot)
+
+
 if __name__ == '__main__':
+    try:
+        ready = input('카메라 앞을 손으로 가리지 말고, 로봇을 START 차선 가운데에 놓았나요? (y/n) ')
+    except (EOFError,KeyboardInterrupt):
+        ready = 'n'
+    if ready.strip().lower() != 'y':
+        print('중단했습니다. 서보·바퀴를 움직이지 않았습니다.')
+        raise SystemExit(0)
+    from Raspbot_Lib import Raspbot
+    pose = prepare_camera(Raspbot())
+    print(f"카메라 준비: 팬 {pose['pan']} · 틸트 {pose['tilt']} ({pose['source']})")
     print('①②③ 사진 시험용입니다. 바퀴는 움직이지 않습니다.')
     print('python3 ~/corner_test/score_route.py missions/13_full_course.py')
     print('python3 ~/corner_test/score.py missions/13_full_course.py')
