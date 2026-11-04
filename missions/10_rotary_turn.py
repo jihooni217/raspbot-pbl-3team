@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-# 지시서: specs/10-rotary-turn.md
+# 지시서: specs/10_rotary_turn.md
 """
-로고 앞 정지 상태에서 시작 -> 로터리 우측 진입 -> 안쪽 노란선 추종 반바퀴 선회 -> 출구 차선 감지 시 직진 탈출
+로고 앞 정지 상태에서 시작 -> 로터리 우측 깊숙이 진입 -> 안쪽 노란선 완만 추종 반바퀴 선회 -> 출구 차선 감지 시 직진 탈출
 --check 플래그는 드라이버를 불러오거나 모터 명령을 보내지 않는다.
 """
 import argparse
@@ -33,21 +33,21 @@ video = load('rotary_blackbox', '03_video.py')
 STOP = (0, 0, 0, 0)
 KST = ZoneInfo('Asia/Seoul')
 
-# ----------------- 주요 하이퍼파라미터 -----------------
+# ----------------- 주요 하이퍼파라미터 튜닝 -----------------
 ROI_TOP, ROI_BOTTOM = 180, 380  # 차선 추종 관심영역 (180~379행)
-BASE_SPEED = 28                  # 로터리 내 기본 선회 속도
-STEERING_K = 0.35                # 조향 비례 제어(P) 게인
-TARGET_X = 220                   # 안쪽 노란선 추종 목표 x좌표 (좌측 편향)
+BASE_SPEED = 30                  # 로터리 내 선회 속도 (속도를 소폭 올려 원심력 확보)
+STEERING_K = 0.25                # 조향 P 게인 (0.35 -> 0.25 완화로 급격한 안쪽 쏠림 방지)
+TARGET_X = 270                   # 안쪽 노란선 추종 목표 x좌표 (220 -> 270으로 변경하여 회전 반경 확대)
 
 START_DELAY_SECONDS = 1.0        # 시작 직후 안정화 대기 시간 (초)
-ENTRY_SECONDS = 1.2              # 우측 진입로 진입 기동 시간 (초)
-ENTRY_SPEEDS = (30, 30, 18, 18)  # 우측 진입 시 바퀴 속도 (좌측 빠름)
+ENTRY_SECONDS = 1.8              # 우측 진입로 진입 기동 시간 (1.2 -> 1.8초로 연장하여 바깥 궤적 진입)
+ENTRY_SPEEDS = (38, 38, 15, 15)  # 우측 진입 시 바퀴 속도 (좌측 구동력을 대폭 강화하여 우측으로 깊게 진입)
 
-MIN_ROTARY_SECONDS = 3.5         # 진입 잔여선 오인식 방지용 최소 선회 시간 (초)
+MIN_ROTARY_SECONDS = 5.0         # 진입 잔여선 및 내부 선 오인식 방지용 최소 선회 시간 (3.5 -> 5.0초 증가)
 EXIT_SPEED = 32                  # 탈출 구간 기본 직진 속도
 EXIT_DRIVE_SECONDS = 1.5         # 출구 정렬 확인 후 탈출 주행 시간 (초)
 SEARCH_SECONDS = 1.0             # 선 유실 한계 시간 (초)
-# ------------------------------------------------------
+# -----------------------------------------------------------
 
 
 def find_lines(frame):
@@ -84,8 +84,8 @@ class PostStopRotaryController:
     """
     정지선 정차 상태에서 기동하는 로터리 제어기:
     1. READY        : 실행 직후 1초간 정지 상태로 카메라 및 환경 안정화
-    2. ENTERING     : 우측 진입로를 향해 우회전 기동 (1.2초)
-    3. CIRCLING     : 안쪽(좌측) 노란선 추종 반바퀴 선회 (최소 3.5초 보장)
+    2. ENTERING     : 우측 바깥 궤적으로 깊숙이 우회전 진입 (1.8초)
+    3. CIRCLING     : 안쪽(좌측) 노란선 완만 추종 반바퀴 선회 (최소 5.0초 보장)
     4. EXIT_DRIVE   : 출구 양쪽 차선(left, right) 정렬 감지 시 중앙 추종 탈출 (1.5초)
     5. COMPLETED    : 미션 완료 정지
     """
@@ -128,20 +128,20 @@ class PostStopRotaryController:
             if elapsed >= START_DELAY_SECONDS:
                 self.state = 'ENTERING'
                 self.state_time = now
-                print("[EVENT] 정지 상태에서 로터리 우측 진입 기동 시작")
+                print("[EVENT] 정지 상태에서 로터리 우측 바깥 궤적으로 진입 시작")
 
-        # 2. 로터리 우측 진입 기동
+        # 2. 로터리 우측 깊숙이 진입 기동
         elif self.state == 'ENTERING':
             self.speeds = ENTRY_SPEEDS
             if elapsed >= ENTRY_SECONDS:
                 self.state = 'CIRCLING'
                 self.state_time = now
                 self.exit_count = 0
-                print("[EVENT] 로터리 안쪽 선 추종 반바퀴 선회 시작")
+                print("[EVENT] 바깥 궤적 진입 완료 -> 안쪽 선 완만 추종 선회 시작")
 
-        # 3. 안쪽 선 추종 선회 및 출구 탐색
+        # 3. 안쪽 선 추종 선회 및 엄격한 출구 탐색
         elif self.state == 'CIRCLING':
-            # 안쪽 선(좌측 노란선)을 최우선 추종
+            # 안쪽 선(좌측 노란선) 추종
             if left is not None:
                 track_point = left
                 self.lost_since = None
@@ -155,13 +155,15 @@ class PostStopRotaryController:
 
             self.speeds = wheel_speeds_rotary(track_point)
 
-            # 진입 직후 오판 방지를 위해 최소 선회 시간 이후 출구 감지
+            # 5초 이상 선회 후 엄격한 출구 정렬 검사 (원 내부 조기 정지 방지)
             if elapsed >= MIN_ROTARY_SECONDS:
                 if left is not None and right is not None:
                     width = right - left
-                    if 180 <= width <= 380:
+                    center_candidate = (left + right) / 2
+                    # 실제 출구 직선로 폭(220~340px) 및 중심이 화면 중앙(280~360px)에 정렬되었을 때만 인정
+                    if (220 <= width <= 340) and (280 <= center_candidate <= 360):
                         self.exit_count += 1
-                        if self.exit_count >= 2:
+                        if self.exit_count >= 3:
                             self.state = 'EXIT_DRIVE'
                             self.state_time = now
                             self.lost_since = None
