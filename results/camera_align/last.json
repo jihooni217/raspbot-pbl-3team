@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
   "pan": 85,
-  "tilt": 2,
+  "tilt": 1,
   "response_px_per_degree": {
     "pan": 13.274980106126065,
     "tilt": 3.5
   },
-  "saved_at": "2026-11-05T11:30:13.924636+09:00",
+  "saved_at": "2026-11-05T11:51:51.060642+09:00",
   "reference_source_sha256": "ef8b0013c5d95c4bbb67c0aa3ed36b95b8991ef4d3101861bb41bea9d7477527",
-  "vx_error_px": 4.970432250271529,
-  "height_error_px": 4.0
+  "vx_error_px": 1.3602459029872875,
+  "height_error_px": 2.5
 }

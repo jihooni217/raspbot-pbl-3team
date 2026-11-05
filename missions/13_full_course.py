@@ -35,8 +35,10 @@ COLOR_SPEEDS = {'blue': 45, 'red': 25}
 MARKER_VISIBLE_HEIGHT = 280
 MIN_NORMAL_WIDTH_RATIO = .65
 CORNER_ASPECT_RATIO = 3.
-CORNER_STABLE_SECONDS = .3
-CORNER_LIMIT_SECONDS = 3.
+CORNER_STABLE_SECONDS = .15
+CORNER_LIMIT_SECONDS = 1.4
+CORNER_COOLDOWN_SECONDS = 4.
+CORNER_WHITE_RATIO = .6
 NORMAL_WIDTH_SAMPLES = 15
 CORNER_DIRECTIONS = {step:'RIGHT' for step in (1,2,5,8,9,10,11,12)}
 
@@ -46,6 +48,15 @@ def marker_frame(frame):
     result = frame.copy()
     result[MARKER_VISIBLE_HEIGHT:] = 0
     return result
+
+
+def corner_white_floor(frame):
+    """⑤만 쓰는 실제 앞바닥. 흰 인쇄 일부와 화면 대부분의 흰 섬을 구분."""
+    occupied = np.flatnonzero(np.any(frame!=0,axis=(1,2)))
+    bottom = int(occupied[-1])+1 if occupied.size else len(frame)
+    width = frame.shape[1]
+    hsv = cv2.cvtColor(frame[bottom*3//4:bottom,width//5:width*4//5],cv2.COLOR_BGR2HSV)
+    return float(np.mean((hsv[:,:,1]<=65)&(hsv[:,:,2]>=180)))
 
 # 장치를 열지 않는 모듈/판단기만 재사용한다. 06/04/07의 파일과 전역 설정은 바꾸지 않는다.
 reactions = lane.load('full_course_reactions', '06_drive_signs.py')
@@ -123,13 +134,17 @@ def find_lines(frame, previous=None, width=None):
     for i in parts:
         xs = np.nonzero(labels == i)[1]
         traces.append(dict(x=float(centers[i, 0]), area=int(stats[i, cv2.CC_STAT_AREA]),
+                           bbox=tuple(int(v) for v in stats[i,:4]),
                            span=int(stats[i,cv2.CC_STAT_WIDTH]),
                            rise=int(stats[i,cv2.CC_STAT_HEIGHT]),
                            left_guide=float(np.percentile(xs, 15)),
                            right_guide=float(np.percentile(xs, 85))))
     lines['traces'] = sorted(traces, key=lambda trace: trace['x'])
+    lines['corner_traces'] = lines['traces']
     lines['front_corner'] = any(t['span']>frame.shape[1]/2 and
                                t['span']>=CORNER_ASPECT_RATIO*t['rise'] for t in traces)
+    lines['corner_white_ratio'] = corner_white_floor(frame)
+    lines['corner_white_floor'] = lines['corner_white_ratio']>CORNER_WHITE_RATIO
     return lines
 
 
@@ -345,6 +360,9 @@ class LaneController(lane.LaneController):
         self.corner_stable_since = None
         self.corner_armed = True
         self.corner_end = None
+        self.corner_ended_at = None
+        self.corner_cooldown_until = None
+        self.corner_trace = None
         self.normal_widths = deque(maxlen=NORMAL_WIDTH_SAMPLES)
 
     def _trusted_lines(self,lines):
@@ -367,30 +385,57 @@ class LaneController(lane.LaneController):
             self.normal_widths.append(abs(right-left))
         return result
 
+    def _end_corner(self,now,reason):
+        self.corner_end = reason
+        self.corner_ended_at = now
+        self.corner_cooldown_until = now+CORNER_COOLDOWN_SECONDS
+        self.corner_direction,self.corner_since,self.corner_stable_since = None,None,None
+        self.corner_trace = None
+        self.corner_armed = False
+
     def _corner(self,lines,now):
         horizontal = lines.get('front_corner',False)
         if not horizontal:self.corner_armed = True
         direction = CORNER_DIRECTIONS.get(self.route_step)
         if self.choice is not None or direction is None or self.stopped:
-            self.corner_direction,self.corner_since,self.corner_stable_since = None,None,None
+            if self.corner_since is not None:self._end_corner(now,'EXCLUDED_OR_STOPPED')
             return
-        if self.corner_since is None and horizontal and self.corner_armed:
+        if lines.get('corner_white_floor'):
+            if self.corner_since is not None:self._end_corner(now,'WHITE_FLOOR')
+            return
+        cooldown = self.corner_cooldown_until is not None and now<self.corner_cooldown_until
+        if self.corner_since is None and horizontal and self.corner_armed and not cooldown:
             self.corner_since = now
             self.corner_direction = direction
             self.corner_stable_since = None
             self.corner_end = None
             self.corner_armed = False
+            candidates = [t for t in lines.get('corner_traces',lines.get('traces',[])) if t.get('span',0)>320 and
+                          t.get('span',0)>=CORNER_ASPECT_RATIO*t.get('rise',1)]
+            self.corner_trace = max(candidates,key=lambda t:t['span']) if candidates else None
         if self.corner_since is None:return
+        tracked_horizontal = horizontal
+        candidates = lines.get('corner_traces',lines.get('traces',[]))
+        if self.corner_trace is not None:
+            old = self.corner_trace
+            def similarity(t):
+                a,b=old['bbox'],t.get('bbox',old['bbox'])
+                intersection=max(0,min(a[0]+a[2],b[0]+b[2])-max(a[0],b[0]))*max(0,min(a[1]+a[3],b[1]+b[3])-max(a[1],b[1]))
+                union=a[2]*a[3]+b[2]*b[3]-intersection
+                return (intersection/max(1,union),-abs(t['x']-old['x']))
+            current = max(candidates,key=similarity) if candidates else None
+            tracked_horizontal = current is not None and current.get('span',0)>320 and current.get('span',0)>=CORNER_ASPECT_RATIO*current.get('rise',1)
+            if current is not None:self.corner_trace = current
         normal = (lines.get('left') is not None and lines.get('right') is not None and
                   not lines.get('width_rejected',False))
-        if normal:
+        if normal or not tracked_horizontal:
             if self.corner_stable_since is None:self.corner_stable_since = now
         else:self.corner_stable_since = None
         stable = self.corner_stable_since is not None and now-self.corner_stable_since>=CORNER_STABLE_SECONDS-1e-9
         limit = now-self.corner_since>=CORNER_LIMIT_SECONDS-1e-9
         if stable or limit:
-            self.corner_end = 'BOTH_NORMAL_0.3S' if stable else 'LIMIT3S'
-            self.corner_direction,self.corner_since,self.corner_stable_since = None,None,None
+            reason = ('BOTH_NORMAL_0.15S' if normal else 'NOT_HORIZONTAL_0.15S') if stable else 'LIMIT1.4S'
+            self._end_corner(now,reason)
             return
         self.last_turn = self.corner_direction
         self.state = 'CORNER_'+self.corner_direction
@@ -586,7 +631,9 @@ class LaneController(lane.LaneController):
                     choice_end=self.choice_end, guide_center=self.guide_center,
                     crossings=self.crossings, start_passes=self.start_passes,
                     corner_direction=self.corner_direction,corner_since=self.corner_since,
-                    corner_end=self.corner_end)
+                    corner_end=self.corner_end,corner_ended_at=self.corner_ended_at,
+                    corner_cooldown_until=self.corner_cooldown_until,
+                    corner_white_ratio=self.lines.get('corner_white_ratio',0.))
 
 
 def lane_context(frame):
@@ -904,6 +951,9 @@ def safety_annotated(frame,report):
         cv2.rectangle(out,(x,y),(x+w,y+h),(0,0,255),2)
         cv2.putText(out,f"STOP {stop['score']:.2f}",(x,max(12,y-4)),cv2.FONT_HERSHEY_SIMPLEX,.42,(0,0,255),1)
     if fallback:cv2.putText(out,'NO LINES: CENTER HALF',(8,420),cv2.FONT_HERSHEY_SIMPLEX,.5,(0,255,255),1)
+    if report.get('corner_end'):
+        cv2.putText(out,f"CORNER END {report['corner_end']} WHITE {report.get('corner_white_ratio',0):.2f}",
+                    (8,450),cv2.FONT_HERSHEY_SIMPLEX,.45,(0,255,255),1)
     return out
 
 
@@ -991,7 +1041,8 @@ def run_safety_loop(camera,vision_worker,distance_read,key_pressed,stream,on_spe
     writer = csv.writer(stream,lineterminator='\n')
     writer.writerow(('wall_seconds','route_step','start_passes','state','speeds','safety_message',
                      'person_score_feet_inside','stop_boxes','ultra_cm','ultra_errors','paused_seconds',
-                     'raw_ultra_cm','ultra_read_error','lane_frames'))
+                     'raw_ultra_cm','ultra_read_error','lane_frames',
+                     'corner_direction','corner_since','corner_end','corner_ended_at','corner_cooldown_until','corner_white_ratio'))
     sequence = None
     lines = None
     frame = None
@@ -1036,7 +1087,9 @@ def run_safety_loop(camera,vision_worker,distance_read,key_pressed,stream,on_spe
             writer.writerow((now,report['route_step'],report['start_passes'],report['state'],speeds,
                              report['safety_message'],json.dumps(report['person'],ensure_ascii=False),
                              json.dumps(report['stop_boxes']),report['distance_cm'],report['ultra_invalid_count'],
-                             report['paused_seconds'],raw_distance,distance_read_error,lane_frames))
+                             report['paused_seconds'],raw_distance,distance_read_error,lane_frames,
+                             report['corner_direction'],report['corner_since'],report['corner_end'],
+                             report['corner_ended_at'],report['corner_cooldown_until'],report['corner_white_ratio']))
             stream.flush()
             if display is not None:display(safety_annotated(frame,report),report)
             if controller.stopped:break
