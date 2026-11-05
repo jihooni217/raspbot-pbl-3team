@@ -35,10 +35,12 @@ COLOR_SPEEDS = {'blue': 45, 'red': 25}
 MARKER_VISIBLE_HEIGHT = 280
 MIN_NORMAL_WIDTH_RATIO = .65
 CORNER_ASPECT_RATIO = 3.
-CORNER_STABLE_SECONDS = .15
-CORNER_LIMIT_SECONDS = 1.4
+CORNER_HOLD_SECONDS = 1.3
+CORNER_LIMIT_SECONDS = CORNER_HOLD_SECONDS  # 기존 영상 분석 도구의 상한 표시 호환
 CORNER_COOLDOWN_SECONDS = 4.
 CORNER_WHITE_RATIO = .6
+CORNER_REACQUIRE_SECONDS = .5
+WHITE_DEPARTURE_SECONDS = .5
 NORMAL_WIDTH_SAMPLES = 15
 CORNER_DIRECTIONS = {step:'RIGHT' for step in (1,2,5,8,9,10,11,12)}
 
@@ -364,6 +366,44 @@ class LaneController(lane.LaneController):
         self.corner_cooldown_until = None
         self.corner_trace = None
         self.normal_widths = deque(maxlen=NORMAL_WIDTH_SAMPLES)
+        self.reacquiring = False
+        self.reacquire_stable_since = None
+        self.departure_since = None
+        self.departure_external = False
+        self.departure_white_ratio = 0.
+
+    def check_departure(self,lines,now):
+        if lines is None:return
+        self.departure_white_ratio = lines.get('corner_white_ratio',0)
+        if self.stopped:return
+        if self.departure_white_ratio>CORNER_WHITE_RATIO:
+            if self.departure_since is None:self.departure_since = now
+            if now-self.departure_since>=WHITE_DEPARTURE_SECONDS-1e-9:
+                if self.corner_since is not None:self._end_corner(now,'LANE_DEPARTURE')
+                self.stopped,self.state,self.speeds = True,'LANE_DEPARTURE',lane.STOP
+        else:self.departure_since = None
+
+    def _screen_lines(self,lines):
+        result = dict(lines)
+        traces = sorted(lines.get('traces',[]),key=lambda t:t['x'])
+        result.update(left=None,right=None,left_count=0,right_count=0,unassigned=False)
+        if len(traces)>=2:
+            result.update(left=traces[0]['x'],right=traces[-1]['x'],
+                          left_count=traces[0]['area'],right_count=traces[-1]['area'])
+        elif traces:
+            name = 'left' if traces[0]['x']<320 else 'right'
+            result[name],result[name+'_count'] = traces[0]['x'],traces[0]['area']
+        return result
+
+    def _screen_single(self,lines):
+        present = [(name,lines[name]) for name in ('left','right') if lines.get(name) is not None]
+        if len(present)==1:
+            old,x = present[0]
+            name = 'left' if x<320 else 'right'
+            count = lines.get(old+'_count',0)
+            lines.update(left=None,right=None,left_count=0,right_count=0,unassigned=False)
+            lines[name],lines[name+'_count'] = x,count
+        return lines
 
     def _trusted_lines(self,lines):
         result = dict(lines)
@@ -392,6 +432,10 @@ class LaneController(lane.LaneController):
         self.corner_direction,self.corner_since,self.corner_stable_since = None,None,None
         self.corner_trace = None
         self.corner_armed = False
+        self.previous = None
+        self.observed,self.observed_at = None,None
+        self.reacquiring = True
+        self.reacquire_stable_since = None
 
     def _corner(self,lines,now):
         horizontal = lines.get('front_corner',False)
@@ -410,33 +454,7 @@ class LaneController(lane.LaneController):
             self.corner_stable_since = None
             self.corner_end = None
             self.corner_armed = False
-            candidates = [t for t in lines.get('corner_traces',lines.get('traces',[])) if t.get('span',0)>320 and
-                          t.get('span',0)>=CORNER_ASPECT_RATIO*t.get('rise',1)]
-            self.corner_trace = max(candidates,key=lambda t:t['span']) if candidates else None
         if self.corner_since is None:return
-        tracked_horizontal = horizontal
-        candidates = lines.get('corner_traces',lines.get('traces',[]))
-        if self.corner_trace is not None:
-            old = self.corner_trace
-            def similarity(t):
-                a,b=old['bbox'],t.get('bbox',old['bbox'])
-                intersection=max(0,min(a[0]+a[2],b[0]+b[2])-max(a[0],b[0]))*max(0,min(a[1]+a[3],b[1]+b[3])-max(a[1],b[1]))
-                union=a[2]*a[3]+b[2]*b[3]-intersection
-                return (intersection/max(1,union),-abs(t['x']-old['x']))
-            current = max(candidates,key=similarity) if candidates else None
-            tracked_horizontal = current is not None and current.get('span',0)>320 and current.get('span',0)>=CORNER_ASPECT_RATIO*current.get('rise',1)
-            if current is not None:self.corner_trace = current
-        normal = (lines.get('left') is not None and lines.get('right') is not None and
-                  not lines.get('width_rejected',False))
-        if normal or not tracked_horizontal:
-            if self.corner_stable_since is None:self.corner_stable_since = now
-        else:self.corner_stable_since = None
-        stable = self.corner_stable_since is not None and now-self.corner_stable_since>=CORNER_STABLE_SECONDS-1e-9
-        limit = now-self.corner_since>=CORNER_LIMIT_SECONDS-1e-9
-        if stable or limit:
-            reason = ('BOTH_NORMAL_0.15S' if normal else 'NOT_HORIZONTAL_0.15S') if stable else 'LIMIT1.4S'
-            self._end_corner(now,reason)
-            return
         self.last_turn = self.corner_direction
         self.state = 'CORNER_'+self.corner_direction
         self.speeds = (55,55,5,5) if self.corner_direction=='RIGHT' else (5,5,55,55)
@@ -554,6 +572,7 @@ class LaneController(lane.LaneController):
             return traces[-1]['right_guide']
         if self.choice == 'LEFT':
             return traces[0]['left_guide']
+        if self.reacquiring:return None
         if self.route_step in (1, 3, 6):
             return traces[0]['x'] + 250 if len(traces) == 2 else None
         if self.route_step == 5:
@@ -564,7 +583,20 @@ class LaneController(lane.LaneController):
         return None
 
     def update(self, lines, now):
+        if not self.departure_external:self.check_departure(lines,now)
+        if self.stopped:return lane.STOP
+        if self.corner_since is not None:
+            if lines.get('corner_white_floor'):self._end_corner(now,'WHITE_FLOOR')
+            elif now-self.corner_since>=CORNER_HOLD_SECONDS-1e-9:self._end_corner(now,'FIXED1.3S')
+        if self.reacquiring:lines = self._screen_lines(lines)
         lines = self._trusted_lines(lines)
+        if self.reacquiring:
+            lines = self._screen_single(lines)
+            normal = lines.get('left') is not None and lines.get('right') is not None and not lines.get('width_rejected')
+            if normal:
+                if self.reacquire_stable_since is None:self.reacquire_stable_since = now
+                if now-self.reacquire_stable_since>CORNER_REACQUIRE_SECONDS+1e-9:self.reacquiring = False
+            else:self.reacquire_stable_since = None
         speeds = super().update(lines, now)
         if self.normal_widths:self.width = float(np.median(self.normal_widths))
         # 관측하지 않은 반대쪽의 오래된 x가 한 선의 좌우 이름을 빼앗지 않게 한다.
@@ -621,6 +653,7 @@ class LaneController(lane.LaneController):
                 left, right = self.base_speed + turn, self.base_speed - turn
                 self.speeds = (left, left, right, right)
         self._corner(lines,now)
+        if self.reacquiring:self.previous = None
         return self.speeds
 
     def report(self):
@@ -633,7 +666,9 @@ class LaneController(lane.LaneController):
                     corner_direction=self.corner_direction,corner_since=self.corner_since,
                     corner_end=self.corner_end,corner_ended_at=self.corner_ended_at,
                     corner_cooldown_until=self.corner_cooldown_until,
-                    corner_white_ratio=self.lines.get('corner_white_ratio',0.))
+                    corner_white_ratio=self.departure_white_ratio,
+                    reacquiring=self.reacquiring,reacquire_stable_since=self.reacquire_stable_since,
+                    departure_since=self.departure_since)
 
 
 def lane_context(frame):
@@ -884,6 +919,7 @@ class FullCourseController:
     """기존LaneController를 그대로 감싼④. 모든 대기의 합집합만큼 경로 시계를 멈춘다."""
     def __init__(self,vision_worker=None,require_distance=True):
         self.route = LaneController()
+        self.route.departure_external = True
         self.safety = SafetyController(require_distance)
         self.vision_worker = vision_worker
         self.last_wall = None
@@ -903,6 +939,7 @@ class FullCourseController:
         self.safety.observe_distance(distance_cm,now,error)
 
     def update(self,lines,now,vision=None,*,new_frame=True):
+        if new_frame:self.route.check_departure(lines,now)
         if self.vision_worker is not None:vision = self.vision_worker.snapshot()
         center = self.route.guide_center if self.route.guide_center is not None else self.route.center
         blocked = self.safety.step(vision,now,self.route.width,320 if center is None else center)
@@ -924,6 +961,8 @@ class FullCourseController:
         result.update(route_state=result['state'],speeds=self.speeds,route_clock=self.route_now,
                       paused_seconds=self.paused_seconds,**self.safety.report())
         if self.safety.blocked:result['state'] = self.safety.state
+        if self.route.state=='LANE_DEPARTURE':
+            result.update(state='LANE_DEPARTURE',safety_message='차선 벗어남')
         return result
 
 
@@ -1042,7 +1081,8 @@ def run_safety_loop(camera,vision_worker,distance_read,key_pressed,stream,on_spe
     writer.writerow(('wall_seconds','route_step','start_passes','state','speeds','safety_message',
                      'person_score_feet_inside','stop_boxes','ultra_cm','ultra_errors','paused_seconds',
                      'raw_ultra_cm','ultra_read_error','lane_frames',
-                     'corner_direction','corner_since','corner_end','corner_ended_at','corner_cooldown_until','corner_white_ratio'))
+                     'corner_direction','corner_since','corner_end','corner_ended_at','corner_cooldown_until','corner_white_ratio',
+                     'left_line_x','right_line_x','lane_width','guide_center','reacquiring','departure_since'))
     sequence = None
     lines = None
     frame = None
@@ -1089,7 +1129,8 @@ def run_safety_loop(camera,vision_worker,distance_read,key_pressed,stream,on_spe
                              json.dumps(report['stop_boxes']),report['distance_cm'],report['ultra_invalid_count'],
                              report['paused_seconds'],raw_distance,distance_read_error,lane_frames,
                              report['corner_direction'],report['corner_since'],report['corner_end'],
-                             report['corner_ended_at'],report['corner_cooldown_until'],report['corner_white_ratio']))
+                             report['corner_ended_at'],report['corner_cooldown_until'],report['corner_white_ratio'],
+                             report['left'],report['right'],report['width'],report['guide_center'],report['reacquiring'],report['departure_since']))
             stream.flush()
             if display is not None:display(safety_annotated(frame,report),report)
             if controller.stopped:break
