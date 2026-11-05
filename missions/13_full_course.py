@@ -33,6 +33,12 @@ COLOR_RATIO = 0.15
 COLOR_HOLD_SECONDS = 0.5
 COLOR_SPEEDS = {'blue': 45, 'red': 25}
 MARKER_VISIBLE_HEIGHT = 280
+MIN_NORMAL_WIDTH_RATIO = .65
+CORNER_ASPECT_RATIO = 3.
+CORNER_STABLE_SECONDS = .3
+CORNER_LIMIT_SECONDS = 3.
+NORMAL_WIDTH_SAMPLES = 15
+CORNER_DIRECTIONS = {step:'RIGHT' for step in (1,2,5,8,9,10,11,12)}
 
 
 def marker_frame(frame):
@@ -117,9 +123,13 @@ def find_lines(frame, previous=None, width=None):
     for i in parts:
         xs = np.nonzero(labels == i)[1]
         traces.append(dict(x=float(centers[i, 0]), area=int(stats[i, cv2.CC_STAT_AREA]),
+                           span=int(stats[i,cv2.CC_STAT_WIDTH]),
+                           rise=int(stats[i,cv2.CC_STAT_HEIGHT]),
                            left_guide=float(np.percentile(xs, 15)),
                            right_guide=float(np.percentile(xs, 85))))
     lines['traces'] = sorted(traces, key=lambda trace: trace['x'])
+    lines['front_corner'] = any(t['span']>frame.shape[1]/2 and
+                               t['span']>=CORNER_ASPECT_RATIO*t['rise'] for t in traces)
     return lines
 
 
@@ -330,6 +340,61 @@ class LaneController(lane.LaneController):
         self.observed = None
         self.observed_at = None
         self.guide_center = None
+        self.corner_direction = None
+        self.corner_since = None
+        self.corner_stable_since = None
+        self.corner_armed = True
+        self.corner_end = None
+        self.normal_widths = deque(maxlen=NORMAL_WIDTH_SAMPLES)
+
+    def _trusted_lines(self,lines):
+        result = dict(lines)
+        left,right = lines.get('left'),lines.get('right')
+        result['width_rejected'] = False
+        reference = float(np.median(self.normal_widths)) if self.normal_widths else self.width
+        if left is not None and right is not None and reference is not None:
+            observed = abs(right-left)
+            if observed<reference*MIN_NORMAL_WIDTH_RATIO:
+                keep = max(('left','right'),key=lambda name:lines.get(name+'_count',0))
+                other = 'right' if keep=='left' else 'left'
+                result[other],result[other+'_count'] = None,0
+                traces = lines.get('traces',[])
+                result['traces'] = [max(traces,key=lambda t:t['area'])] if traces else []
+                result['width_rejected'] = True
+                result['rejected_width'] = observed
+        if (left is not None and right is not None and not result['width_rejected'] and
+                not lines.get('front_corner') and self.corner_since is None):
+            self.normal_widths.append(abs(right-left))
+        return result
+
+    def _corner(self,lines,now):
+        horizontal = lines.get('front_corner',False)
+        if not horizontal:self.corner_armed = True
+        direction = CORNER_DIRECTIONS.get(self.route_step)
+        if self.choice is not None or direction is None or self.stopped:
+            self.corner_direction,self.corner_since,self.corner_stable_since = None,None,None
+            return
+        if self.corner_since is None and horizontal and self.corner_armed:
+            self.corner_since = now
+            self.corner_direction = direction
+            self.corner_stable_since = None
+            self.corner_end = None
+            self.corner_armed = False
+        if self.corner_since is None:return
+        normal = (lines.get('left') is not None and lines.get('right') is not None and
+                  not lines.get('width_rejected',False))
+        if normal:
+            if self.corner_stable_since is None:self.corner_stable_since = now
+        else:self.corner_stable_since = None
+        stable = self.corner_stable_since is not None and now-self.corner_stable_since>=CORNER_STABLE_SECONDS-1e-9
+        limit = now-self.corner_since>=CORNER_LIMIT_SECONDS-1e-9
+        if stable or limit:
+            self.corner_end = 'BOTH_NORMAL_0.3S' if stable else 'LIMIT3S'
+            self.corner_direction,self.corner_since,self.corner_stable_since = None,None,None
+            return
+        self.last_turn = self.corner_direction
+        self.state = 'CORNER_'+self.corner_direction
+        self.speeds = (55,55,5,5) if self.corner_direction=='RIGHT' else (5,5,55,55)
 
     def _choose(self, direction, now):
         self.choice = direction
@@ -454,7 +519,16 @@ class LaneController(lane.LaneController):
         return None
 
     def update(self, lines, now):
+        lines = self._trusted_lines(lines)
         speeds = super().update(lines, now)
+        if self.normal_widths:self.width = float(np.median(self.normal_widths))
+        # 관측하지 않은 반대쪽의 오래된 x가 한 선의 좌우 이름을 빼앗지 않게 한다.
+        # 실제 lines의 None은 유지하므로 두 선 확인/종료 조건에 가상 선은 쓰이지 않는다.
+        if self.previous is not None and self.width is not None:
+            if lines.get('left') is not None and lines.get('right') is None:
+                self.previous = dict(left=lines['left'],right=lines['left']+self.width)
+            elif lines.get('right') is not None and lines.get('left') is None:
+                self.previous = dict(left=lines['right']-self.width,right=lines['right'])
         if not self.stopped:
             self._route(lines, now)
         self.guide_center = self._route_center(lines)
@@ -501,6 +575,7 @@ class LaneController(lane.LaneController):
                 turn = max(-limit, min(limit, round((speeds[0] - speeds[2]) / 2)))
                 left, right = self.base_speed + turn, self.base_speed - turn
                 self.speeds = (left, left, right, right)
+        self._corner(lines,now)
         return self.speeds
 
     def report(self):
@@ -509,7 +584,9 @@ class LaneController(lane.LaneController):
                     route_step=self.route_step, choice=self.choice,
                     route_leg=self.route_leg,
                     choice_end=self.choice_end, guide_center=self.guide_center,
-                    crossings=self.crossings, start_passes=self.start_passes)
+                    crossings=self.crossings, start_passes=self.start_passes,
+                    corner_direction=self.corner_direction,corner_since=self.corner_since,
+                    corner_end=self.corner_end)
 
 
 def lane_context(frame):
