@@ -10,6 +10,7 @@ find_lines(frame, previous, width) -> LaneController.update(lines, now).
 import importlib.util
 from collections import deque
 import csv
+from datetime import datetime
 import json
 import math
 from pathlib import Path
@@ -28,6 +29,14 @@ _spec.loader.exec_module(lane)
 COLOR_RATIO = 0.15
 COLOR_HOLD_SECONDS = 0.5
 COLOR_SPEEDS = {'blue': 45, 'red': 25}
+MARKER_VISIBLE_HEIGHT = 280
+
+
+def marker_frame(frame):
+    """표시/안전 인식용 복사본. 좌표를 옮기지 않고 사진 시험의 여백만 맞춘다."""
+    result = frame.copy()
+    result[MARKER_VISIBLE_HEIGHT:] = 0
+    return result
 
 # 장치를 열지 않는 모듈/판단기만 재사용한다. 06/04/07의 파일과 전역 설정은 바꾸지 않는다.
 reactions = lane.load('full_course_reactions', '06_drive_signs.py')
@@ -90,10 +99,11 @@ def find_floor_color(frame):
 
 def find_lines(frame, previous=None, width=None):
     lines = lane.find_lines(frame, previous, width)
-    lines['floor'] = find_floor_color(frame)
-    lines['slow'] = find_slow_markers(frame)
-    lines['start'] = find_start_markers(frame)
-    lines['dividers'] = find_lane_dividers(frame)
+    markers = marker_frame(frame)
+    lines['floor'] = find_floor_color(markers)
+    lines['slow'] = find_slow_markers(markers)
+    lines['start'] = find_start_markers(markers)
+    lines['dividers'] = find_lane_dividers(markers)
     # 07의 검출 범위와 노란색 기준을 그대로 써 선택할 덩어리의 모양만 보관.
     hsv = cv2.cvtColor(frame[lane.ROI_TOP:lane.ROI_BOTTOM], cv2.COLOR_BGR2HSV)
     mask = cv2.inRange(hsv, (15, 80, 100), (40, 255, 255))
@@ -500,7 +510,8 @@ class LaneController(lane.LaneController):
 
 
 def lane_context(frame):
-    """안전 판정용 원본 화면의 노란 픽셀. ①②③ find_lines와 별도로 잰다."""
+    """④ 안전 판정 문맥. 원본의 위280행을 복사해 ①②③ 표시 영역과 맞춘다."""
+    frame = marker_frame(frame)
     occupied = np.flatnonzero(np.any(frame != 0, axis=(1, 2)))
     height = int(occupied[-1]) + 1 if occupied.size else frame.shape[0]
     hsv = cv2.cvtColor(frame[:height],cv2.COLOR_BGR2HSV)
@@ -814,13 +825,80 @@ def safety_annotated(frame,report):
     return out
 
 
-def run_safety_loop(camera,vision_worker,distance_read,key_pressed,stream,on_speeds,display=None):
+class FullCourseRecorder:
+    """같은 장면을 원본/표시 영상 두 파일에 바로 쓰는 별도 스레드."""
+    def __init__(self,camera,output_dir=None,writer_factory=None):
+        self.camera = camera
+        root = Path(__file__).resolve().parents[1]/'results/videos'
+        self.output_dir = root if output_dir is None else Path(output_dir).resolve()
+        if not self.output_dir.is_relative_to(root):
+            raise ValueError('녹화는 results/videos/ 안에 저장합니다')
+        stamp = datetime.now(lane.KST).strftime('%Y%m%d_%H%M%S_%f')
+        self.paths = {kind:self.output_dir/f'{kind}_{stamp}.mp4' for kind in ('raw','blackbox')}
+        self.writer_factory = cv2.VideoWriter if writer_factory is None else writer_factory
+        self.stop = threading.Event()
+        self.lock = threading.Lock()
+        self.latest_report = None
+        self.error = None
+        self.saved_frames = 0
+        self.repeated_frames = 0
+        self.thread = threading.Thread(target=self.run,name='full-course-video',daemon=True)
+
+    def update(self,report):
+        with self.lock:self.latest_report = dict(report)
+
+    def start(self):
+        self.thread.start()
+        return self
+
+    def check(self):
+        if self.error is not None:raise RuntimeError('원본/블랙박스 녹화 오류') from self.error
+
+    def close(self):
+        self.stop.set()
+        if self.thread.ident is not None:self.thread.join(timeout=2)
+        if self.thread.is_alive():raise RuntimeError('영상 녹화 종료 응답 없음')
+        self.check()
+
+    def run(self):
+        writers = {}
+        previous = None
+        try:
+            self.output_dir.mkdir(parents=True,exist_ok=True)
+            began = time.monotonic()
+            while not self.stop.is_set():
+                if self.stop.wait(max(0,began+self.saved_frames/lane.video.FPS-time.monotonic())):break
+                frame,sequence = self.camera.snapshot()
+                raw = frame.copy()
+                if not writers:
+                    for kind,path in self.paths.items():
+                        writer = self.writer_factory(str(path),cv2.VideoWriter_fourcc(*'avc1'),
+                                                     lane.video.FPS,(raw.shape[1],raw.shape[0]))
+                        writers[kind] = writer
+                        if not writer.isOpened():raise RuntimeError(f'H.264 영상 저장 실패: {path}')
+                # 영역 마스크/선/글자/시각을 전혀 넣지 않은 원본을 먼저 쓴다.
+                writers['raw'].write(raw)
+                with self.lock:report = self.latest_report
+                marked = raw.copy() if report is None else safety_annotated(raw,report)
+                stamp = datetime.now(lane.KST).strftime('%Y-%m-%d %H:%M:%S')
+                cv2.putText(marked,stamp,(12,28),cv2.FONT_HERSHEY_SIMPLEX,.6,(255,255,255),1)
+                writers['blackbox'].write(marked)
+                self.saved_frames += 1
+                self.repeated_frames += int(sequence==previous)
+                previous = sequence
+        except Exception as exc:self.error = exc
+        finally:
+            for writer in writers.values():writer.release()
+
+
+def run_safety_loop(camera,vision_worker,distance_read,key_pressed,stream,on_speeds,display=None,*,recorder=None):
     """④의조합반복. 장치 생성/서보/바퀴/부저 호출 없음. on_speeds에계산값을전달한다.
 
     실물연결시는호출자가준비확인/초음파활성화/실제전송/최종네바퀴0을책임진다.
     주행루프에는추론호출이없고06에서재사용한worker.snapshot만읽는다.
     """
     controller = FullCourseController(vision_worker)
+    recorder = FullCourseRecorder(camera) if recorder is None else recorder
     writer = csv.writer(stream,lineterminator='\n')
     writer.writerow(('wall_seconds','route_step','start_passes','state','speeds','safety_message',
                      'person_score_feet_inside','stop_boxes','ultra_cm','ultra_errors','paused_seconds'))
@@ -830,7 +908,9 @@ def run_safety_loop(camera,vision_worker,distance_read,key_pressed,stream,on_spe
     next_distance = time.monotonic()
     last_message = None
     try:
+        recorder.start()
         while not key_pressed():
+            recorder.check()
             now = time.monotonic()
             if now>=next_distance:
                 try:controller.observe_distance(distance_read(),now)
@@ -846,6 +926,7 @@ def run_safety_loop(camera,vision_worker,distance_read,key_pressed,stream,on_spe
             on_speeds(speeds)
             controller.motor_sent(speeds,time.monotonic())
             report = controller.report()
+            recorder.update(report)
             if report['safety_message']!=last_message:
                 print(report['safety_message'],flush=True)
                 last_message = report['safety_message']
@@ -857,7 +938,9 @@ def run_safety_loop(camera,vision_worker,distance_read,key_pressed,stream,on_spe
             if display is not None:display(safety_annotated(frame,report),report)
             if controller.stopped:break
             time.sleep(.005)
-    finally:on_speeds(lane.STOP)
+    finally:
+        try:on_speeds(lane.STOP)
+        finally:recorder.close()
     return controller.report()
 
 
