@@ -34,6 +34,7 @@ COLOR_HOLD_SECONDS = 0.5
 COLOR_SPEEDS = {'blue': 45, 'red': 25}
 MARKER_VISIBLE_HEIGHT = 280
 MIN_NORMAL_WIDTH_RATIO = .65
+MIN_GUIDE_TRACE_GAP = 300
 CORNER_ASPECT_RATIO = 3.
 CORNER_HOLD_SECONDS = 1.3
 CORNER_LIMIT_SECONDS = CORNER_HOLD_SECONDS  # 기존 영상 분석 도구의 상한 표시 호환
@@ -41,6 +42,7 @@ CORNER_COOLDOWN_SECONDS = 4.
 CORNER_WHITE_RATIO = .6
 CORNER_REACQUIRE_SECONDS = .5
 WHITE_DEPARTURE_SECONDS = .5
+FRONT_GUIDE_AFTER_SECONDS = 1.
 NORMAL_WIDTH_SAMPLES = 15
 CORNER_DIRECTIONS = {step:'RIGHT' for step in (1,2,5,8,9,10,11,12)}
 
@@ -371,6 +373,8 @@ class LaneController(lane.LaneController):
         self.departure_since = None
         self.departure_external = False
         self.departure_white_ratio = 0.
+        self.front_guide_until = None
+        self.front_guide_active = False
 
     def check_departure(self,lines,now):
         if lines is None:return
@@ -426,6 +430,8 @@ class LaneController(lane.LaneController):
         return result
 
     def _end_corner(self,now,reason):
+        if self.route_step==1:self.route_step = 2
+        self.front_guide_active = False
         self.corner_end = reason
         self.corner_ended_at = now
         self.corner_cooldown_until = now+CORNER_COOLDOWN_SECONDS
@@ -467,6 +473,10 @@ class LaneController(lane.LaneController):
 
     def _route(self, lines, now):
         mark = lines.get('slow', {})
+        if self.route_step==1 and mark.get('crossing_near',False):
+            self.front_guide_until = now+FRONT_GUIDE_AFTER_SECONDS
+        self.front_guide_active = (self.route_step==1 and self.front_guide_until is not None and
+                                   now<=self.front_guide_until)
         traces = lines.get('traces', [])
         crossing = self.crossing_event.update(mark.get('crossing_near', False), now)
         rotary = self.rotary_event.update(mark.get('roundabout_near', False), now)
@@ -563,6 +573,7 @@ class LaneController(lane.LaneController):
         traces = lines.get('traces', [])
         self.observed = [trace['x'] for trace in traces] if len(traces) == 2 else None
         self.observed_at = now
+        if self.route_step!=1:self.front_guide_active = False
 
     def _route_center(self, lines):
         traces = lines.get('traces', [])
@@ -574,7 +585,11 @@ class LaneController(lane.LaneController):
             return traces[0]['left_guide']
         if self.reacquiring:return None
         if self.route_step in (1, 3, 6):
-            return traces[0]['x'] + 250 if len(traces) == 2 else None
+            if (len(traces)==2 and traces[0]['x']<320<traces[1]['x'] and
+                    traces[1]['x']-traces[0]['x']>=MIN_GUIDE_TRACE_GAP):
+                center = traces[0]['x'] + 250
+                return center if 0<=center<=640 else None
+            return None
         if self.route_step == 5:
             dividers = [d for d in lines.get('dividers', []) if d['x'] < traces[-1]['x'] - 40]
             if dividers:
@@ -668,7 +683,8 @@ class LaneController(lane.LaneController):
                     corner_cooldown_until=self.corner_cooldown_until,
                     corner_white_ratio=self.departure_white_ratio,
                     reacquiring=self.reacquiring,reacquire_stable_since=self.reacquire_stable_since,
-                    departure_since=self.departure_since)
+                    departure_since=self.departure_since,front_guide_active=self.front_guide_active,
+                    front_guide_until=self.front_guide_until)
 
 
 def lane_context(frame):
@@ -1082,7 +1098,8 @@ def run_safety_loop(camera,vision_worker,distance_read,key_pressed,stream,on_spe
                      'person_score_feet_inside','stop_boxes','ultra_cm','ultra_errors','paused_seconds',
                      'raw_ultra_cm','ultra_read_error','lane_frames',
                      'corner_direction','corner_since','corner_end','corner_ended_at','corner_cooldown_until','corner_white_ratio',
-                     'left_line_x','right_line_x','lane_width','guide_center','reacquiring','departure_since'))
+                     'left_line_x','right_line_x','lane_width','guide_center','reacquiring','departure_since',
+                     'front_guide_active','front_guide_until'))
     sequence = None
     lines = None
     frame = None
@@ -1130,7 +1147,8 @@ def run_safety_loop(camera,vision_worker,distance_read,key_pressed,stream,on_spe
                              report['paused_seconds'],raw_distance,distance_read_error,lane_frames,
                              report['corner_direction'],report['corner_since'],report['corner_end'],
                              report['corner_ended_at'],report['corner_cooldown_until'],report['corner_white_ratio'],
-                             report['left'],report['right'],report['width'],report['guide_center'],report['reacquiring'],report['departure_since']))
+                             report['left'],report['right'],report['width'],report['guide_center'],report['reacquiring'],report['departure_since'],
+                             report['front_guide_active'],report['front_guide_until']))
             stream.flush()
             if display is not None:display(safety_annotated(frame,report),report)
             if controller.stopped:break
