@@ -143,9 +143,9 @@ CAMERA_SLIDERS = [
 AUTO_EXPOSURE_ON, AUTO_EXPOSURE_MANUAL = 3, 1
 
 
-def measure(frame, yellow):
-    """07번과 같은 범위·방식으로 노란 점과 덩어리를 센다."""
-    hsv = cv2.cvtColor(frame[ROI_TOP:ROI_BOTTOM], cv2.COLOR_BGR2HSV)
+def measure(frame, yellow, top=ROI_TOP, bottom=ROI_BOTTOM):
+    """07번과 같은 방식으로 지정한 줄 범위의 노란 점과 덩어리를 센다."""
+    hsv = cv2.cvtColor(frame[top:bottom], cv2.COLOR_BGR2HSV)
     mask = cv2.inRange(hsv, (yellow["h_min"], yellow["s_min"], yellow["v_min"]),
                        (yellow["h_max"], 255, 255))
     count, _, stats, centers = cv2.connectedComponentsWithStats(mask, connectivity=8)
@@ -158,15 +158,15 @@ def measure(frame, yellow):
                 brightness=float(frame.mean()), washed=washed)
 
 
-def annotate(frame, result, show_mask):
+def annotate(frame, result, show_mask, top=ROI_TOP, bottom=ROI_BOTTOM):
     shown = frame.copy()
     if show_mask:
-        roi = shown[ROI_TOP:ROI_BOTTOM]
+        roi = shown[top:bottom]
         roi[result["mask"] > 0] = (0, 0, 255)
-    cv2.line(shown, (0, ROI_TOP), (639, ROI_TOP), (0, 255, 0), 1)
-    cv2.line(shown, (0, ROI_BOTTOM), (639, ROI_BOTTOM), (0, 255, 0), 1)
+    cv2.line(shown, (0, top), (639, top), (0, 255, 0), 1)
+    cv2.line(shown, (0, bottom - 1), (639, bottom - 1), (0, 255, 0), 1)
     for x, _ in result["blobs"]:
-        cv2.line(shown, (int(x), ROI_TOP), (int(x), ROI_BOTTOM), (0, 255, 255), 2)
+        cv2.line(shown, (int(x), top), (int(x), bottom - 1), (0, 255, 255), 2)
     return shown
 
 
@@ -291,7 +291,7 @@ class App:
         self.photo = ImageTk.PhotoImage(blank)
         self.image.configure(image=self.photo)
 
-        yellow_box = ttk.LabelFrame(left, text="노란 선 기준 (화면 미리보기만, 코드는 안 바뀜. 처음 값이 07번 기준)", padding=4)
+        yellow_box = ttk.LabelFrame(left, text="노란 선 기준·찾는 범위 (화면 미리보기만, 주행 코드는 안 바뀜. 처음 값이 07번 기준)", padding=4)
         yellow_box.pack(fill="x", pady=(6, 0))
         self.show_mask = tk.BooleanVar(value=True)
         ttk.Checkbutton(yellow_box, text="인식된 곳을 빨갛게", variable=self.show_mask).grid(row=0, column=0, columnspan=2, sticky="w")
@@ -305,6 +305,12 @@ class App:
             tk.Scale(yellow_box, from_=0, to=top, orient="horizontal", length=220, variable=var,
                      command=lambda value, key=key: self.yellow.__setitem__(key, int(float(value)))).grid(row=row, column=col + 1)
             self.yellow_vars[key] = var
+        self.roi_top = tk.IntVar(value=ROI_TOP)
+        self.roi_bottom = tk.IntVar(value=ROI_BOTTOM)
+        for col, (label, var) in enumerate((("찾는 범위 위 줄", self.roi_top), ("찾는 범위 아래 줄", self.roi_bottom))):
+            ttk.Label(yellow_box, text=label).grid(row=3, column=col * 2, sticky="e")
+            tk.Scale(yellow_box, from_=0, to=480, orient="horizontal", length=220,
+                     variable=var).grid(row=3, column=col * 2 + 1)
 
         camera_box = ttk.LabelFrame(right, text="카메라 값 (움직이면 바로 적용)", padding=4)
         camera_box.pack(fill="x")
@@ -393,6 +399,8 @@ class App:
         for key, value in YELLOW_DEFAULT.items():
             self.yellow_vars[key].set(value)
             self.yellow[key] = value
+        self.roi_top.set(ROI_TOP)
+        self.roi_bottom.set(ROI_BOTTOM)
 
     def current_values(self):
         values = {name: int(slider.get()) for name, slider in self.sliders.items() if name in self.controls}
@@ -424,8 +432,10 @@ class App:
         if jpeg is not None:
             frame = cv2.imdecode(np.frombuffer(jpeg, np.uint8), cv2.IMREAD_COLOR)
             if frame is not None and frame.shape[:2] == (480, 640):
-                result = measure(frame, self.yellow)
-                shown = annotate(frame, result, self.show_mask.get())
+                top = max(0, min(470, self.roi_top.get()))
+                bottom = max(top + 10, min(480, self.roi_bottom.get()))
+                result = measure(frame, self.yellow, top, bottom)
+                shown = annotate(frame, result, self.show_mask.get(), top, bottom)
                 self.photo = ImageTk.PhotoImage(Image.fromarray(cv2.cvtColor(shown, cv2.COLOR_BGR2RGB)))
                 self.image.configure(image=self.photo)
                 self.last_result = result

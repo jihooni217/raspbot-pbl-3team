@@ -31,7 +31,7 @@ _spec.loader.exec_module(lane)
 
 COLOR_RATIO = 0.15
 COLOR_HOLD_SECONDS = 0.5
-COLOR_SPEEDS = {'blue': 60, 'red': 25}
+COLOR_SPEEDS = {'blue': 80, 'red': 25}
 CAMERA_READY_HOLD_SECONDS = 0.3
 CAMERA_READY_TIMEOUT_SECONDS = 5
 MARKER_VISIBLE_HEIGHT = 280
@@ -47,12 +47,26 @@ CORNER_WHITE_RATIO = .6
 CORNER_REACQUIRE_SECONDS = .5
 REACQUIRE_WHITE_RATIO = 0.4
 REACQUIRE_MAX_TURN = 40
-OUTER_RED_TO_START_SECONDS = 7.4
+OUTER_FINISH_TIMEOUT_SECONDS = 14
+OUTER_START_CONFIRM_SECONDS = 0.2
+OUTER_LINE_INTERVAL_SECONDS = 0.03
 REACQUIRE_DEPARTURE_SECONDS = 1.0
 WHITE_DEPARTURE_SECONDS = .5
 FRONT_GUIDE_AFTER_SECONDS = 1.
 NORMAL_WIDTH_SAMPLES = 15
 CORNER_DIRECTIONS = {step:'RIGHT' for step in (1,2,5,8,9,10,11,12)}
+
+
+def outer_start_white(frame):
+    """종료용 흰 가로 표시. 실제 원본의 112~419행만 검사한다."""
+    hsv = cv2.cvtColor(frame[112:420],cv2.COLOR_BGR2HSV)
+    mask = cv2.inRange(hsv,(0,0,190),(179,70,255))
+    count,_,stats,_ = cv2.connectedComponentsWithStats(mask,connectivity=8)
+    for i in range(1,count):
+        _,_,width,height,area = stats[i]
+        if width>=400 and width/height>=4 and area/(width*height)>=0.25:
+            return True
+    return False
 
 
 def marker_frame(frame):
@@ -347,6 +361,12 @@ class LaneController(lane.LaneController):
         self.outer_lap = outer_lap
         self.outer_laps = laps
         self.outer_red_ended_at = None
+        self.outer_finish_now = None
+        self.start_stage = 0
+        self.outer_white_since = None
+        self.outer_line_hits = 0
+        self.line_bits = None
+        self.outer_distance_cm = None
         self.floor_color = None
         self.color_missing_since = None
         self.base_speed = lane.BASE_SPEED
@@ -647,27 +667,55 @@ class LaneController(lane.LaneController):
         if self.stopped:return lane.STOP
         previous_color = self.floor_color
         seen = lines.get('floor',{}).get('color')
+        if (seen=='blue' and self.floor_color!='blue' and self.outer_distance_cm is not None and
+                self.outer_distance_cm<=50):
+            seen = None
         if seen in COLOR_SPEEDS:
             self.floor_color,self.color_missing_since = seen,None
         elif self.floor_color is not None:
             if self.color_missing_since is None:self.color_missing_since = now
             if now-self.color_missing_since>=COLOR_HOLD_SECONDS:
                 self.floor_color,self.color_missing_since = None,None
-        if previous_color=='red' and self.floor_color is None:
-            self.outer_red_ended_at = now
+        if self.start_stage==0 and self.floor_color=='red':self.start_stage = 1
+        if self.start_stage==1 and previous_color=='red' and self.floor_color is None:
+            self.start_stage = 2
+            self.outer_red_ended_at = self.outer_finish_now
+            self.outer_white_since = None
+            self.outer_line_hits = 0
         self.base_speed = COLOR_SPEEDS.get(self.floor_color,lane.BASE_SPEED)
         if self.state in ('TRACKBOTH','TRACKLEFT','TRACKRIGHT'):
             offset = self.base_speed-lane.BASE_SPEED
             # 공통 이동량만 제한하여 07의 좌우 차이와 0~80 범위를 함께 유지한다.
             offset = max(-min(speeds),min(lane.MAX_SPEED-max(speeds),offset))
             self.speeds = tuple(value+offset for value in speeds)
-        if (self.outer_red_ended_at is not None and
-                now-self.outer_red_ended_at>=OUTER_RED_TO_START_SECONDS):
-            self.start_passes += 1
-            self.outer_red_ended_at = None
-            if self.start_passes>=self.outer_laps:
-                self.stopped,self.state,self.speeds = True,'FINISH',lane.STOP
         return self.speeds
+
+    def outer_finish_step(self,white,now,line_sampled=False,check=False):
+        """영상 연속 확인과 새 라인센서 표본만으로 완주를 세며 초음파 시계를 쓴다."""
+        if self.stopped:return
+        if (self.outer_red_ended_at is not None and
+                now-self.outer_red_ended_at>=OUTER_FINISH_TIMEOUT_SECONDS):
+            self.stopped,self.state,self.speeds = True,'FINISH_TIMEOUT',lane.STOP
+            return
+        if self.start_stage==2 and white is not None:
+            if white:
+                if self.outer_white_since is None:self.outer_white_since = now
+                if now-self.outer_white_since>=OUTER_START_CONFIRM_SECONDS:
+                    self.start_stage = 3
+                    self.outer_line_hits = 0
+                    # 이 전환 전에 읽은 표본은 3단계 확인에 쓰지 않는다.
+                    line_sampled = False
+            else:self.outer_white_since = None
+        if self.start_stage==3 and line_sampled:
+            self.outer_line_hits = self.outer_line_hits+1 if self.line_bits=='1111' else 0
+            if self.outer_line_hits>=2:
+                self.start_passes += 1
+                self.outer_red_ended_at = None
+                self.outer_white_since = None
+                self.outer_line_hits = 0
+                if self.start_passes>=self.outer_laps and not check:
+                    self.stopped,self.state,self.speeds = True,'FINISH',lane.STOP
+                else:self.start_stage = 0
 
     def update(self, lines, now):
         if self.outer_lap:return self._outer_update(lines,now)
@@ -766,7 +814,8 @@ class LaneController(lane.LaneController):
                     corner_white_ratio=self.departure_white_ratio,
                     reacquiring=self.reacquiring,reacquire_stable_since=self.reacquire_stable_since,
                     departure_since=self.departure_since,front_guide_active=self.front_guide_active,
-                    front_guide_until=self.front_guide_until)
+                    front_guide_until=self.front_guide_until,
+                    start_stage=self.start_stage,line_bits=self.line_bits)
 
 
 def lane_context(frame):
@@ -1024,6 +1073,8 @@ class FullCourseController:
         self.paused_seconds = 0.
         self.was_blocked = False
         self.route_now = None
+        self.outer_ultra_paused = 0.
+        self.outer_was_ultra_blocked = False
         self.speeds = lane.STOP
 
     @property
@@ -1044,6 +1095,12 @@ class FullCourseController:
         if self.last_wall is not None:
             if now<self.last_wall:raise ValueError('시각은 뒤로 갈 수 없습니다')
             if self.was_blocked:self.paused_seconds += now-self.last_wall
+            if self.route.outer_lap and self.outer_was_ultra_blocked:
+                self.outer_ultra_paused += now-self.last_wall
+        if self.route.outer_lap:
+            self.outer_was_ultra_blocked = self.safety.require_distance and not self.safety.obstacle.moving
+            self.route.outer_finish_now = now-self.outer_ultra_paused
+            self.route.outer_distance_cm = self.safety.obstacle.filtered_cm
         self.last_wall,self.was_blocked = now,blocked
         self.route_now = now-self.paused_seconds
         if blocked:self.speeds = lane.STOP
@@ -1061,6 +1118,8 @@ class FullCourseController:
         if self.safety.blocked:result['state'] = self.safety.state
         if self.route.state=='LANE_DEPARTURE':
             result.update(state='LANE_DEPARTURE',safety_message='차선 벗어남')
+        if self.route.outer_lap and self.route.state in ('FINISH','FINISH_TIMEOUT'):
+            result.update(state=self.route.state,safety_message=self.route.state)
         return result
 
 
@@ -1167,7 +1226,7 @@ def distance_for_obstacle(raw_cm):
     return raw_cm
 
 
-def run_safety_loop(camera,vision_worker,distance_read,key_pressed,stream,on_speeds,display=None,*,recorder=None,on_report=None,on_stop=None,outer_lap=False,laps=1):
+def run_safety_loop(camera,vision_worker,distance_read,key_pressed,stream,on_speeds,display=None,*,recorder=None,on_report=None,on_stop=None,outer_lap=False,laps=1,line_read=None,check=False):
     """④의조합반복. 장치 생성/서보/바퀴/부저 호출 없음. on_speeds에계산값을전달한다.
 
     실물연결시는호출자가준비확인/초음파활성화/실제전송/최종네바퀴0을책임진다.
@@ -1181,7 +1240,7 @@ def run_safety_loop(camera,vision_worker,distance_read,key_pressed,stream,on_spe
                      'raw_ultra_cm','ultra_read_error','lane_frames',
                      'corner_direction','corner_since','corner_end','corner_ended_at','corner_cooldown_until','corner_white_ratio',
                      'left_line_x','right_line_x','lane_width','guide_center','reacquiring','departure_since',
-                     'front_guide_active','front_guide_until','crossing_near','crossings'))
+                     'front_guide_active','front_guide_until','crossing_near','crossings','start_stage','line_bits'))
     sequence = None
     lines = None
     frame = None
@@ -1193,12 +1252,26 @@ def run_safety_loop(camera,vision_worker,distance_read,key_pressed,stream,on_spe
     camera_ready = False
     camera_ready_since = None
     camera_lines_since = None
+    next_line = time.monotonic()
     try:
         recorder.start()
         camera_ready_since = time.monotonic()
         while not key_pressed():
             recorder.check()
             now = time.monotonic()
+            line_sampled = False
+            if outer_lap and now>=next_line:
+                try:
+                    if line_read is None:raise RuntimeError('라인센서 읽기 함수 없음')
+                    value = line_read()
+                    if not isinstance(value,int) or not 0<=value<=255:
+                        raise ValueError('라인센서 값 범위 오류')
+                    controller.route.line_bits = f'{value & 15:04b}'
+                except Exception as exc:
+                    controller.route.line_bits = None
+                    print(f'라인센서 읽기 오류: {exc}',flush=True)
+                line_sampled = True
+                next_line = now+OUTER_LINE_INTERVAL_SECONDS
             if not camera_ready:
                 if key_pressed():break
                 on_speeds(lane.STOP)
@@ -1225,7 +1298,7 @@ def run_safety_loop(camera,vision_worker,distance_read,key_pressed,stream,on_spe
                     recorder.update(report)
                     if on_report is not None:on_report(report)
                     writer.writerow((now,report['route_step'],report['start_passes'],report['state'],
-                                     lane.STOP,message)+('',)*24)
+                                     lane.STOP,message)+('',)*24+(report['start_stage'],report['line_bits']))
                     stream.flush()
                     if candidate is not None and display is not None:
                         display(safety_annotated(candidate,report),report)
@@ -1252,11 +1325,17 @@ def run_safety_loop(camera,vision_worker,distance_read,key_pressed,stream,on_spe
                     original_lines = lane.find_lines(frame,controller.previous,controller.width)
                     markers = marker_frame(frame)
                     lines = dict(original_lines,outer_lane_lines=original_lines,
-                                 floor=find_floor_color(markers),start=find_start_markers(markers))
+                                 floor=find_floor_color(markers))
                 else:
                     lines = find_lines(frame,controller.previous,controller.width)
                 lane_frames += 1
             speeds = controller.update(lines,time.monotonic(),new_frame=fresh_frame)
+            if outer_lap:
+                white = (outer_start_white(frame) if fresh_frame and controller.route.start_stage==2 else None)
+                controller.route.outer_finish_step(white,controller.route.outer_finish_now,
+                                                   line_sampled=line_sampled,check=check)
+                if controller.route.stopped:
+                    speeds = controller.speeds = lane.STOP
             if key_pressed():break
             on_speeds(speeds)
             controller.motor_sent(speeds,time.monotonic())
@@ -1277,7 +1356,8 @@ def run_safety_loop(camera,vision_worker,distance_read,key_pressed,stream,on_spe
                              report['corner_ended_at'],report['corner_cooldown_until'],report['corner_white_ratio'],
                              report['left'],report['right'],report['width'],report['guide_center'],report['reacquiring'],report['departure_since'],
                              report['front_guide_active'],report['front_guide_until'],
-                             (lines or {}).get('slow',{}).get('crossing_near',False),report['crossings']))
+                             (lines or {}).get('slow',{}).get('crossing_near',False),report['crossings'],
+                             report['start_stage'],report['line_bits']))
             stream.flush()
             if display is not None:display(safety_annotated(frame,report),report)
             if controller.stopped:break
@@ -1458,7 +1538,8 @@ def main(argv=None):
             with csv_path.open('x',newline='',encoding='utf-8') as stream:
                 report = run_safety_loop(camera,vision,lambda:obstacles.read_distance_cm(bot),
                     stop_requested,stream,motor,recorder=recorder,on_report=monitor.update,on_stop=finish_outputs,
-                    outer_lap=args.outer_lap,laps=args.laps)
+                    outer_lap=args.outer_lap,laps=args.laps,check=args.check,
+                    line_read=lambda:checked_driver_call(bot.read_data_array,0x0a,1)[0])
             if reason=='준비 중':reason = report['state']
     except KeyboardInterrupt:reason = 'Ctrl+C'
     except Exception as exc:
