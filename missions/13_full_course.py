@@ -31,7 +31,9 @@ _spec.loader.exec_module(lane)
 
 COLOR_RATIO = 0.15
 COLOR_HOLD_SECONDS = 0.5
-COLOR_SPEEDS = {'blue': 45, 'red': 25}
+COLOR_SPEEDS = {'blue': 60, 'red': 25}
+CAMERA_READY_HOLD_SECONDS = 0.3
+CAMERA_READY_TIMEOUT_SECONDS = 5
 MARKER_VISIBLE_HEIGHT = 280
 MIN_NORMAL_WIDTH_RATIO = .65
 MIN_GUIDE_TRACE_GAP = 300
@@ -639,7 +641,7 @@ class LaneController(lane.LaneController):
         return None
 
     def _outer_update(self,lines,now):
-        # 07 자체가 만든 사전만 전달하여 폭/선 이름/조향을 그대로 사용한다.
+        # 07의 선 결과와 폭 갱신·조향을 그대로 사용한다.
         lane_lines = lines['outer_lane_lines']
         speeds = lane.LaneController.update(self,lane_lines,now)
         if self.stopped:return lane.STOP
@@ -1188,11 +1190,51 @@ def run_safety_loop(camera,vision_worker,distance_read,key_pressed,stream,on_spe
     lane_frames = 0
     raw_distance = None
     distance_read_error = None
+    camera_ready = False
+    camera_ready_since = None
+    camera_lines_since = None
     try:
         recorder.start()
+        camera_ready_since = time.monotonic()
         while not key_pressed():
             recorder.check()
             now = time.monotonic()
+            if not camera_ready:
+                if key_pressed():break
+                on_speeds(lane.STOP)
+                candidate,_ = camera.snapshot()
+                ready_lines = None if candidate is None else lane.find_lines(candidate,None,None)
+                both_lines = (ready_lines is not None and ready_lines.get('left') is not None and
+                              ready_lines.get('right') is not None)
+                if both_lines:
+                    if camera_lines_since is None:camera_lines_since = now
+                    if now-camera_lines_since>=CAMERA_READY_HOLD_SECONDS:
+                        camera_ready = True
+                else:
+                    camera_lines_since = None
+                if not camera_ready:
+                    timed_out = now-camera_ready_since>=CAMERA_READY_TIMEOUT_SECONDS
+                    message = '차선이 보이지 않습니다. 출발 위치를 확인하세요' if timed_out else '카메라·차선 확인 대기'
+                    if timed_out:
+                        controller.route.stopped = True
+                        controller.route.state = message
+                    report = controller.report()
+                    report.update(state='CAMERA_LINESTOP' if timed_out else 'CAMERA_WAIT',
+                                  safety_message=message,runtime_lane_frames=0,raw_distance_cm=None,
+                                  distance_read_error=None)
+                    recorder.update(report)
+                    if on_report is not None:on_report(report)
+                    writer.writerow((now,report['route_step'],report['start_passes'],report['state'],
+                                     lane.STOP,message)+('',)*24)
+                    stream.flush()
+                    if candidate is not None and display is not None:
+                        display(safety_annotated(candidate,report),report)
+                    if message!=last_message:
+                        print(message,flush=True)
+                        last_message = message
+                    if timed_out:break
+                    time.sleep(.005)
+                    continue
             if now>=next_distance:
                 try:
                     raw_distance = distance_read()
