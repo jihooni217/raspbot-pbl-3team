@@ -2,16 +2,19 @@
 # 지시서: specs/13-full-course.md
 """전체 코스 ①②③④: 07 차선 추적 + 경로/속도 + 사람·STOP·초음파 정지.
 
-사진 시험 import는 장치를 쓰지 않는다. 직접 실행은 START 준비 확인 후 카메라
-서보 각도만 복원한다. 카메라 영상과 바퀴를 여는 주행 진입점은 없다.
+사진 시험 import는 장치를 쓰지 않는다. 직접 실행은 START/바닥 확인 후 실제 주행,
+--check는 같은 센서/영상/판단 흐름을 사용하며 바퀴 명령을 전혀 보내지 않는다.
 find_lines(frame, previous, width) -> LaneController.update(lines, now).
-③은 표식 순서1~12와 갈림길 선택을 계산한다. 실제 주행 진입점은 없다.
+③은 표식 순서1~12와 갈림길 선택을 계산한다. --seconds로 시험 시간을 제한한다.
 """
 import importlib.util
+import argparse
 from collections import deque
+from contextlib import redirect_stdout
 import csv
 from datetime import datetime
 import json
+import io
 import math
 from pathlib import Path
 import threading
@@ -628,6 +631,7 @@ class FullCourseVisionWorker(reactions.VisionWorker):
         super().__init__(camera,detector)
         self.clock = clock
         self.thread.name = 'full-course-yolo320'
+        self.inference_count = 0
 
     def run(self):
         previous = None
@@ -646,6 +650,7 @@ class FullCourseVisionWorker(reactions.VisionWorker):
                          and len(box)==4 and all(math.isfinite(v) for v in box) and box[2]>0 and box[3]>0]
                 context = lane_context(frame)
                 with self.lock:
+                    self.inference_count += 1
                     self.latest = dict(sequence=sequence,captured_at=captured_at,
                                        completed_at=self.clock(),found=found,context=context)
                 previous = sequence
@@ -891,7 +896,14 @@ class FullCourseRecorder:
             for writer in writers.values():writer.release()
 
 
-def run_safety_loop(camera,vision_worker,distance_read,key_pressed,stream,on_speeds,display=None,*,recorder=None):
+def distance_for_obstacle(raw_cm):
+    """13의 먼 거리만04의 유효 상한으로 제한한다. 원시값/읽기 오류는 따로 보존."""
+    if isinstance(raw_cm,(int,float)) and math.isfinite(raw_cm) and raw_cm>400:
+        return 400.
+    return raw_cm
+
+
+def run_safety_loop(camera,vision_worker,distance_read,key_pressed,stream,on_speeds,display=None,*,recorder=None,on_report=None,on_stop=None):
     """④의조합반복. 장치 생성/서보/바퀴/부저 호출 없음. on_speeds에계산값을전달한다.
 
     실물연결시는호출자가준비확인/초음파활성화/실제전송/최종네바퀴0을책임진다.
@@ -901,31 +913,45 @@ def run_safety_loop(camera,vision_worker,distance_read,key_pressed,stream,on_spe
     recorder = FullCourseRecorder(camera) if recorder is None else recorder
     writer = csv.writer(stream,lineterminator='\n')
     writer.writerow(('wall_seconds','route_step','start_passes','state','speeds','safety_message',
-                     'person_score_feet_inside','stop_boxes','ultra_cm','ultra_errors','paused_seconds'))
+                     'person_score_feet_inside','stop_boxes','ultra_cm','ultra_errors','paused_seconds',
+                     'raw_ultra_cm','ultra_read_error','lane_frames'))
     sequence = None
     lines = None
     frame = None
     next_distance = time.monotonic()
     last_message = None
+    lane_frames = 0
+    raw_distance = None
+    distance_read_error = None
     try:
         recorder.start()
         while not key_pressed():
             recorder.check()
             now = time.monotonic()
             if now>=next_distance:
-                try:controller.observe_distance(distance_read(),now)
-                except Exception as exc:controller.observe_distance(None,now,str(exc))
+                try:
+                    raw_distance = distance_read()
+                    distance_read_error = None
+                    controller.observe_distance(distance_for_obstacle(raw_distance),now)
+                except Exception as exc:
+                    raw_distance,distance_read_error = None,str(exc)
+                    controller.observe_distance(None,now,str(exc))
                 next_distance = now+obstacles.INTERVAL
             candidate,new_sequence = camera.snapshot()
             fresh_frame = sequence!=new_sequence
             if fresh_frame:
                 frame,sequence = candidate,new_sequence
                 lines = find_lines(frame,controller.previous,controller.width)
+                lane_frames += 1
             speeds = controller.update(lines,time.monotonic(),new_frame=fresh_frame)
             if key_pressed():break
             on_speeds(speeds)
             controller.motor_sent(speeds,time.monotonic())
             report = controller.report()
+            report['runtime_lane_frames'] = lane_frames
+            report['raw_distance_cm'] = raw_distance
+            report['distance_read_error'] = distance_read_error
+            if on_report is not None:on_report(report)
             recorder.update(report)
             if report['safety_message']!=last_message:
                 print(report['safety_message'],flush=True)
@@ -933,13 +959,15 @@ def run_safety_loop(camera,vision_worker,distance_read,key_pressed,stream,on_spe
             writer.writerow((now,report['route_step'],report['start_passes'],report['state'],speeds,
                              report['safety_message'],json.dumps(report['person'],ensure_ascii=False),
                              json.dumps(report['stop_boxes']),report['distance_cm'],report['ultra_invalid_count'],
-                             report['paused_seconds']))
+                             report['paused_seconds'],raw_distance,distance_read_error,lane_frames))
             stream.flush()
             if display is not None:display(safety_annotated(frame,report),report)
             if controller.stopped:break
             time.sleep(.005)
     finally:
-        try:on_speeds(lane.STOP)
+        try:
+            if on_stop is None:on_speeds(lane.STOP)
+            else:on_stop()
         finally:recorder.close()
     return controller.report()
 
@@ -953,17 +981,190 @@ def prepare_camera(bot):
     return camera_align.restore_saved_pose(bot)
 
 
-if __name__ == '__main__':
+def checked_driver_call(function,*args):
+    captured = io.StringIO()
+    with redirect_stdout(captured):result = function(*args)
+    output = captured.getvalue()
+    if output:print(output,end='',flush=True)
+    if 'i2c error' in output.casefold():raise RuntimeError('I2C error — 선/확장보드 전원을 확인하세요')
+    return result
+
+
+class MotorOutput:
+    """04의 재전송/바퀴간 간격. check는0 명령도 보내지 않는다."""
+    def __init__(self,bot,check=False,*,clock=time.monotonic,sleep_fn=time.sleep):
+        self.bot,self.check = bot,check
+        self.clock,self.sleep = clock,sleep_fn
+        self.previous = None
+        self.sent_at = None
+        self.commands = 0
+        self.batches = 0
+        self.closed = False
+
+    def __call__(self,speeds):
+        if self.check or self.closed:return
+        speeds = tuple(max(-lane.MAX_SPEED,min(lane.MAX_SPEED,int(v))) for v in speeds)
+        if len(speeds)!=4:raise ValueError('바퀴 값은4개여야 합니다')
+        now = self.clock()
+        if speeds==self.previous and self.sent_at is not None and now-self.sent_at<obstacles.MOTOR_REFRESH:return
+        self.sent_at = now
+        for number,value in enumerate(speeds):
+            checked_driver_call(self.bot.Ctrl_Muto,number,value)
+            self.commands += 1
+            if number<3:self.sleep(obstacles.MOTOR_GAP)
+        self.batches += 1
+        self.previous = speeds
+
+    def close(self):
+        if self.closed:return
+        self.closed = True
+        if self.check:return
+        errors = []
+        for repeat in range(obstacles.STOP_REPEATS):
+            began = self.clock()
+            for number in range(4):
+                try:
+                    checked_driver_call(self.bot.Ctrl_Muto,number,0)
+                    self.commands += 1
+                except (Exception,KeyboardInterrupt) as exc:errors.append(str(exc))
+                if number<3:
+                    try:self.sleep(obstacles.MOTOR_GAP)
+                    except KeyboardInterrupt:pass
+            self.batches += 1
+            if repeat<obstacles.STOP_REPEATS-1:
+                try:self.sleep(max(0,began+obstacles.MOTOR_REFRESH-self.clock()))
+                except KeyboardInterrupt:pass
+        if errors:raise RuntimeError('정지 실패: '+'; '.join(errors))
+
+
+def cpu_temperature():
+    try:return float(Path('/sys/class/thermal/thermal_zone0/temp').read_text())/1000
+    except (OSError,ValueError):return None
+
+
+class RuntimeMonitor:
+    def __init__(self,vision,check):
+        self.vision,self.check = vision,check
+        self.started = self.last_time = time.monotonic()
+        self.first_vision = self.last_vision = vision.inference_count
+        self.last_lane = 0
+        self.report = None
+        self.samples = []
+        self.initial_temperature = cpu_temperature()
+        self.finished = None
+        self.final_vision = None
+        self.final_temperature = None
+
+    def finish(self):
+        if self.finished is None:
+            self.finished = time.monotonic()
+            self.final_vision = self.vision.inference_count
+            self.final_temperature = cpu_temperature()
+
+    def update(self,report):
+        self.report = dict(report)
+        now = time.monotonic()
+        elapsed = now-self.last_time
+        if elapsed<1:return
+        count = self.vision.inference_count
+        sample = dict(seconds=now-self.started,
+                      lane_hz=(report['runtime_lane_frames']-self.last_lane)/elapsed,
+                      yolo_hz=(count-self.last_vision)/elapsed,cpu_c=cpu_temperature(),
+                      speeds=list(report['speeds']),route_step=report['route_step'],reason=report['safety_message'],
+                      raw_distance_cm=report.get('raw_distance_cm'))
+        self.samples.append(sample)
+        mode = 'CHECK' if self.check else 'DRIVE'
+        print(f"{mode} {sample['seconds']:.1f}s wheels={sample['speeds']} step={sample['route_step']} "
+              f"reason={sample['reason']} ultra={sample['raw_distance_cm']}cm lane={sample['lane_hz']:.1f}/s YOLO={sample['yolo_hz']:.1f}/s CPU={sample['cpu_c']}C",flush=True)
+        self.last_time,self.last_lane,self.last_vision = now,report['runtime_lane_frames'],count
+
+    def summary(self):
+        if self.finished is None:self.finish()
+        elapsed = self.finished-self.started
+        lane_frames = 0 if self.report is None else self.report['runtime_lane_frames']
+        yolo_frames = self.final_vision-self.first_vision
+        return dict(seconds=elapsed,lane_frames=lane_frames,yolo_frames=yolo_frames,
+                    lane_hz=lane_frames/elapsed,yolo_hz=yolo_frames/elapsed,
+                    temperature_start_c=self.initial_temperature,temperature_end_c=self.final_temperature,
+                    samples=self.samples,last_report=self.report)
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description='전체 코스 주행 / --check는 바퀴 명령 없이 같은 판단과 녹화')
+    parser.add_argument('--check',action='store_true')
+    parser.add_argument('--seconds',type=float,help='지정 초 뒤 종료(생략하면 키/완주/오류까지)')
+    args = parser.parse_args(argv)
+    if args.seconds is not None and (not math.isfinite(args.seconds) or args.seconds<=0):parser.error('--seconds는 양수여야 합니다')
     try:
-        ready = input('카메라 앞을 손으로 가리지 말고, 로봇을 START 차선 가운데에 놓았나요? (y/n) ')
+        ready = input('카메라 앞을 가리지 않고 START 차선 가운데 바닥에 놓았으며 사방1m 바닥을 비웠나요? (y/n) ')
     except (EOFError,KeyboardInterrupt):
         ready = 'n'
     if ready.strip().lower() != 'y':
         print('중단했습니다. 서보·바퀴를 움직이지 않았습니다.')
-        raise SystemExit(0)
-    from Raspbot_Lib import Raspbot
-    pose = prepare_camera(Raspbot())
-    print(f"카메라 준비: 팬 {pose['pan']} · 틸트 {pose['tilt']} ({pose['source']})")
-    print('①②③ 사진 시험용입니다. 바퀴는 움직이지 않습니다.')
-    print('python3 ~/corner_test/score_route.py missions/13_full_course.py')
-    print('python3 ~/corner_test/score.py missions/13_full_course.py')
+        return 0
+    stamp = datetime.now(lane.KST).strftime('%Y%m%d_%H%M%S_%f')
+    root = Path(__file__).resolve().parents[1]/'results'
+    root.mkdir(exist_ok=True)
+    csv_path = root/f'full_course_{stamp}.csv'
+    json_path = root/f'full_course_{stamp}.json'
+    bot = motor = camera = vision = recorder = monitor = None
+    reason = '준비 중'
+    errors = []
+    started = time.monotonic()
+    try:
+        from Raspbot_Lib import Raspbot
+        bot = Raspbot()
+        motor = MotorOutput(bot,args.check)
+        if not args.check:motor(lane.STOP)
+        pose = prepare_camera(bot)
+        print(f"카메라 준비: 팬 {pose['pan']} · 틸트 {pose['tilt']} ({pose['source']})",flush=True)
+        checked_driver_call(bot.Ctrl_Ulatist_Switch,1)
+        time.sleep(1)
+        camera = lane.video.LatestCamera().start()
+        vision = FullCourseVisionWorker(camera).start()
+        recorder = FullCourseRecorder(camera)
+        monitor = RuntimeMonitor(vision,args.check)
+        with obstacles.keyboard_stop() as keyboard:
+            def finish_outputs():
+                monitor.finish()
+                motor.close()
+            def stop_requested():
+                nonlocal reason
+                if keyboard():reason = '키 입력(q 포함)';return True
+                if args.seconds is not None and time.monotonic()-monitor.started>=args.seconds:
+                    reason = f'{args.seconds:g}초 경과';return True
+                return False
+            with csv_path.open('x',newline='',encoding='utf-8') as stream:
+                report = run_safety_loop(camera,vision,lambda:obstacles.read_distance_cm(bot),
+                    stop_requested,stream,motor,recorder=recorder,on_report=monitor.update,on_stop=finish_outputs)
+            if reason=='준비 중':reason = report['state']
+    except KeyboardInterrupt:reason = 'Ctrl+C'
+    except Exception as exc:
+        reason = f'오류: {exc}'
+        errors.append(str(exc))
+    finally:
+        if monitor is not None:monitor.finish()
+        if motor is not None:
+            try:motor.close()
+            except Exception as exc:errors.append(str(exc))
+        for resource in (recorder,vision,camera):
+            if resource is not None:
+                try:resource.close()
+                except Exception as exc:errors.append(str(exc))
+        if bot is not None:
+            try:checked_driver_call(bot.Ctrl_Ulatist_Switch,0)
+            except Exception as exc:errors.append(str(exc))
+        if errors and not reason.startswith('오류:'):reason += ' / 정리 오류'
+        result = dict(check=args.check,reason=reason,errors=errors,total_seconds=time.monotonic()-started,
+                      motor_commands=0 if motor is None else motor.commands,
+                      motor_batches=0 if motor is None else motor.batches,
+                      csv=str(csv_path),videos={} if recorder is None else {k:str(v) for k,v in recorder.paths.items()},
+                      metrics=None if monitor is None else monitor.summary())
+        json_path.write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
+        print(f'종료: {reason}',flush=True)
+        for name,path in dict(CSV=csv_path,JSON=json_path,**result['videos']).items():print(f'{name}: {path}',flush=True)
+    return 1 if errors else 0
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())
