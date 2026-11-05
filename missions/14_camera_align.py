@@ -24,7 +24,12 @@ PIXELS_PER_DEGREE = 10.0
 TOLERANCE = 10.0
 DIRECTION_NOISE = 2.0
 MAX_MOVES = 20
+PROBE_MAX_DEGREES = 5
+PROBE_MIN_PIXELS = 5.0
 SETTLE_SECONDS = .3
+START_SETTLE_SECONDS = 1.0
+COMMAND_REPEATS = 3
+COMMAND_INTERVAL = .02
 
 
 def _fit_boundary(mask, side):
@@ -152,22 +157,24 @@ def load_last(path=LAST):
     for name in LIMITS:
         value = response.get(name)
         if value is not None and (type(value) not in (int,float) or not math.isfinite(value)
-                                  or not 2 <= abs(value) <= 50):
+                                  or not 0 < abs(value)):
             raise ValueError(f'{name} 서보 반응 기록이 올바르지 않습니다.')
         values[name] = float(value) if value is not None else None
     return dict(pose, response_px_per_degree=values, source=str(path))
 
 
-def _command(bot, servo, angle):
+def _command(bot, servo, angle, *, sleep_fn=time.sleep):
     # 드라이버가 I2C 오류를 출력하고 계속 진행하는 경우도 실패로 취급한다.
-    captured = io.StringIO()
-    with redirect_stdout(captured):
-        bot.Ctrl_Servo(servo,angle)
-    output = captured.getvalue()
-    if output:
-        print(output,end='',flush=True)
-    if 'i2c error' in output.casefold():
-        raise RuntimeError('I2C error — 확장보드 전원과 5핀 선을 확인해 주세요')
+    for repeat in range(COMMAND_REPEATS):
+        captured = io.StringIO()
+        with redirect_stdout(captured):
+            bot.Ctrl_Servo(servo,angle)
+        output = captured.getvalue()
+        if output:
+            print(output,end='',flush=True)
+        if 'i2c error' in output.casefold():
+            raise RuntimeError('I2C error — 확장보드 전원과 5핀 선을 확인해 주세요')
+        if repeat<COMMAND_REPEATS-1:sleep_fn(COMMAND_INTERVAL)
 
 
 def restore_saved_pose(bot, path=LAST, *, sleep_fn=time.sleep):
@@ -175,7 +182,7 @@ def restore_saved_pose(bot, path=LAST, *, sleep_fn=time.sleep):
     saved = load_last(path)
     pose = _validate_pose(saved)
     for name,servo in (('pan',1),('tilt',2)):
-        _command(bot,servo,pose[name])
+        _command(bot,servo,pose[name],sleep_fn=sleep_fn)
         sleep_fn(SETTLE_SECONDS)
     return dict(pose,source=saved['source'])
 
@@ -194,11 +201,12 @@ def align(bot, camera, *, initial_pose=None, reference=None, last_path=LAST,
     """한 번에 한 서보1°,0.3초 대기. 바퀴 API는 사용하지 않는다.
 
     camera는03의 LatestCamera(snapshot 권장) 또는 read() 카메라다.
-    현재 명령 각도는 initial_pose 또는 last/80·5로 시작한다.
+    시작 목표 initial_pose 또는 last/80·5를 실제 전송하고1초 뒤 측정한다.
     실제 호출은 학교에서 START 준비 확인 후 한다. 시험은 가짜 장치를 전달한다.
     """
     saved = load_last(last_path)
     pose = _validate_pose(saved if initial_pose is None else initial_pose)
+    initial = dict(pose)
     response = dict(saved['response_px_per_degree'])
     if reference is None:
         reference = json.loads(REFERENCE.read_text(encoding='utf-8'))
@@ -206,10 +214,15 @@ def align(bot, camera, *, initial_pose=None, reference=None, last_path=LAST,
     moves = 0
     previous_token = None
     pending_probe = None
+    best = None
     status,reason = 'ERROR',''
     measured = None
     errors = None
+    began = time.monotonic()
     try:
+        _command(bot,1,pose['pan'],sleep_fn=sleep_fn)
+        _command(bot,2,pose['tilt'],sleep_fn=sleep_fn)
+        sleep_fn(START_SETTLE_SECONDS)
         while True:
             frame,token = _snapshot(camera)
             if moves and token is not None and token == previous_token:
@@ -222,35 +235,44 @@ def align(bot, camera, *, initial_pose=None, reference=None, last_path=LAST,
             if not measured['reliable']:
                 status,reason = 'NO_LANES',measured['reason']
                 break
+            score = (max(abs(errors['dx_px']),abs(errors['dy_px'])),
+                     abs(errors['dx_px'])+abs(errors['dy_px']))
+            if best is None or score<best['score']:
+                best = dict(pan=pose['pan'],tilt=pose['tilt'],move=moves,
+                            correction=dict(errors),score=score)
             if pending_probe is not None:
-                axis,old_value,step = pending_probe
+                axis,old_value,origin,probe_step = pending_probe
                 feature = 'vx' if axis == 'pan' else 'lane_top'
-                slope = (measured[feature] - old_value) / step
-                if not 2 <= abs(slope) <= 50:
-                    status,reason = 'UNRELIABLE_RESPONSE',f'{axis} 1° 반응을 믿기 어렵습니다. 학교에서 방향을 확인해 주세요'
+                change = measured[feature]-old_value
+                travelled = abs(pose[axis]-origin)
+                if abs(change)>PROBE_MIN_PIXELS:
+                    response[axis] = float(change/(pose[axis]-origin))
+                    pending_probe = None
+                elif travelled>=PROBE_MAX_DEGREES and not errors['aligned']:
+                    status,reason = 'UNRELIABLE_RESPONSE',f'{axis} 1°씩5° 이동해도 화면 변화가5px를 넘지 않아 멈췄습니다'
                     break
-                response[axis] = float(slope)
-                pending_probe = None
             if errors['aligned']:
                 status,reason = 'ALIGNED','기준 허용 오차 안으로 맞췄습니다'
                 break
             if moves >= MAX_MOVES:
                 status,reason = 'MAX_MOVES','20번 움직여도 맞지 않아 멈췄습니다'
                 break
-            axis = 'pan' if abs(errors['dx_px']) >= abs(errors['dy_px']) else 'tilt'
+            axis = pending_probe[0] if pending_probe else ('pan' if abs(errors['dx_px']) >= abs(errors['dy_px']) else 'tilt')
             error = errors['dx_px'] if axis == 'pan' else errors['dy_px']
             lo,hi = LIMITS[axis]
-            if response[axis] is None:
-                step = 1 if pose[axis] < hi else -1
+            if pending_probe is not None:
+                step = pending_probe[3]
+            elif response[axis] is None:
+                step = 1 if hi-pose[axis]>=PROBE_MAX_DEGREES else -1
                 feature = 'vx' if axis == 'pan' else 'lane_top'
-                pending_probe = axis,measured[feature],step
+                pending_probe = axis,measured[feature],pose[axis],step
             else:
                 step = 1 if -error / response[axis] > 0 else -1
             target = pose[axis] + step
             if not lo <= target <= hi:
                 status,reason = 'LIMIT',f'{axis} {lo}~{hi} 밖으로 가려 해 멈췄습니다'
                 break
-            _command(bot,1 if axis == 'pan' else 2,target)
+            _command(bot,1 if axis == 'pan' else 2,target,sleep_fn=sleep_fn)
             pose[axis] = target
             moves += 1
             sleep_fn(SETTLE_SECONDS)
@@ -258,8 +280,8 @@ def align(bot, camera, *, initial_pose=None, reference=None, last_path=LAST,
         status,reason = 'INTERRUPTED','Ctrl+C로 보정을 멈췄습니다'
     except Exception as exc:
         status,reason = 'ERROR',str(exc)
-    result = dict(status=status,reason=reason,**pose,moves=moves,
-                  response_px_per_degree=response,measurement=measured,correction=errors,events=events)
+    result = dict(status=status,reason=reason,**pose,initial_pose=initial,moves=moves,elapsed_seconds=time.monotonic()-began,
+                  response_px_per_degree=response,measurement=measured,correction=errors,events=events,best=best)
     if status == 'ALIGNED':
         path = Path(last_path)
         path.parent.mkdir(parents=True,exist_ok=True)
@@ -312,6 +334,10 @@ def main():
     error = result['correction']
     details = f", 소실점 오차 {error['dx_px']:.1f}px · 높이 오차 {error['dy_px']:.1f}px" if error and error['reliable'] else ''
     print(f"{result['status']}: 팬 {result['pan']} · 틸트 {result['tilt']}{details} — {result['reason']}")
+    if result['status']!='ALIGNED' and result['best'] is not None:
+        best = result['best']
+        print(f"가장 가까웠던 값: 팬 {best['pan']} · 틸트 {best['tilt']}, "
+              f"소실점 오차 {best['correction']['dx_px']:.1f}px · 높이 오차 {best['correction']['dy_px']:.1f}px")
 
 
 if __name__ == '__main__':
