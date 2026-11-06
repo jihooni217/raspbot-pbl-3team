@@ -5,6 +5,8 @@ Yahboom RASPBOT-V2 + Raspberry Pi 5가 **바깥 큰길 한 바퀴를 스스로 �
 
 조원: 조장 · 운전석 · 트랙·표지 · 측정 · 기록·발표 (이름 대신 역할)
 
+주행 영상: [큰길 한 바퀴 (33초, 소리 없음)](https://github.com/jihooni217/raspbot-pbl-3team/releases/download/demo-20261106/raspbot_outer_lap_20261105.mp4)
+
 ## 일하는 방식
 - 조가 `specs/`에 **지시서**(무엇을 · 왜 · 규칙표 · 숫자 성공 기준 · 안전)를 쓰고, Codex가 `missions/`에 코드를 만든다. Codex 수칙은 `AGENTS.md`.
 - 실제로 어떻게 움직였는지는 `results/`와 `log.md`에, 주행 기록은 `results/runs.csv`에 남긴다.
