@@ -1,0 +1,7247 @@
+[
+  {
+    "seconds": 0,
+    "state": "TRACKBOTH",
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 0.0,
+    "message": "주행",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 0.1,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 0.0,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 0.2,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 0.1,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 0.3,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 0.19999999999999998,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 0.4,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 0.30000000000000004,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 0.5,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 0.4,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 0.6,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 0.5,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 0.7,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 0.6,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 0.8,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 0.7000000000000001,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 0.9,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 0.8,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 1.0,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 0.9,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 1.1,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 1.0,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 1.2,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 1.0999999999999999,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 1.3,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 1.2,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 1.4,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 1.2999999999999998,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 1.5,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 1.4,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 1.6,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 1.5,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 1.7,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 1.5999999999999999,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 1.8,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 1.7,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 1.9,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 1.7999999999999998,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 2.0,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 1.9,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 2.1,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 2.0,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 2.2,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 2.1,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 2.3,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 2.1999999999999997,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 2.4,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 2.3,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 2.5,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 2.4,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 2.6,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 2.5,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 2.7,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 2.6,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 2.8,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 2.6999999999999997,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 2.9,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 2.8,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 3.0,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 2.9,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 3.1,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.0,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 3.2,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.1,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 3.3,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.1999999999999997,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 3.4,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.3,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 3.5,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.4,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 3.6,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.5,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 3.7,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.6,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 3.8,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.6999999999999997,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 3.9,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.8,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 4.0,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.9,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 4.1,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 3.9999999999999996,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 4.2,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 4.1,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 4.3,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 4.199999999999999,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 4.4,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 4.3,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 4.5,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 4.3999999999999995,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 4.6,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 4.499999999999999,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 4.7,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 4.6,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 4.8,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 4.699999999999999,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 4.9,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 4.8,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 5.0,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 4.8999999999999995,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 5.1,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 4.999999999999999,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 5.2,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 5.1,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 5.3,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 5.199999999999999,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 5.4,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 5.3,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 5.5,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 5.3999999999999995,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 5.6,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 5.499999999999999,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 5.7,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 5.6,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 5.8,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 5.699999999999999,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 5.9,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 5.8,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 6.0,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 5.8999999999999995,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 6.1,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 5.999999999999999,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 6.2,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 6.1,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 6.3,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 6.199999999999999,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 6.4,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 6.3,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 6.5,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 6.3999999999999995,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 6.6,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 6.499999999999999,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 6.7,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 6.6,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 6.8,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 6.699999999999999,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 6.9,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 6.8,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 7.0,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 6.8999999999999995,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 7.1,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 6.999999999999999,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 7.2,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 7.1,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 7.3,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 7.199999999999999,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 7.4,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 7.3,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 7.5,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 7.3999999999999995,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 7.6,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 7.499999999999999,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 7.7,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 7.6,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 7.8,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 7.699999999999999,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 7.9,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 7.8,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 8.0,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 7.8999999999999995,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 8.1,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 7.999999999999999,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 8.2,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 8.099999999999998,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 8.3,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 8.2,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 8.4,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 8.299999999999999,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 8.5,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 8.399999999999999,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 8.6,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 8.499999999999998,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 8.7,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 8.599999999999998,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 8.8,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 8.7,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 8.9,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 8.799999999999999,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 9.0,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 8.899999999999999,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 9.1,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 8.999999999999998,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 9.2,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 9.099999999999998,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 9.3,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 9.2,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 9.4,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 9.299999999999999,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 9.5,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 9.399999999999999,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 9.6,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 9.499999999999998,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 9.7,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 9.599999999999998,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 9.8,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 9.7,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 9.9,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 9.799999999999999,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 10.0,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 9.899999999999999,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 10.1,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 9.999999999999998,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 10.2,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 10.099999999999998,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 10.3,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 10.2,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 10.4,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 10.299999999999999,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 10.5,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 10.399999999999999,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 10.6,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 10.499999999999998,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 10.7,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 10.599999999999998,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 10.8,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 10.7,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 10.9,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 10.799999999999999,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 11.0,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 10.899999999999999,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 11.1,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 10.999999999999998,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 11.2,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 11.099999999999998,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 11.3,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 11.2,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 11.4,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 11.299999999999999,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 11.5,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 11.399999999999999,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 11.6,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 11.499999999999998,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 11.7,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 11.599999999999998,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 11.8,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 11.7,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 11.9,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 11.799999999999999,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 12.0,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 11.899999999999999,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 12.1,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 11.999999999999998,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 12.2,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 12.099999999999998,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 12.3,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 12.2,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 12.4,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 12.299999999999999,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 12.5,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 12.399999999999999,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 12.6,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 12.499999999999998,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 12.7,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 12.599999999999998,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 12.8,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 12.7,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 12.9,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 12.799999999999999,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 13.0,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 12.899999999999999,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 13.1,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 12.999999999999998,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 13.2,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 13.099999999999998,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 13.3,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 13.2,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 13.4,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 13.299999999999999,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 13.5,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 13.399999999999999,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 13.6,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 13.499999999999998,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 13.7,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 13.599999999999998,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 13.8,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 13.7,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 13.9,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 13.799999999999999,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 14.0,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 13.899999999999999,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 14.1,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 13.999999999999998,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 14.2,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 14.099999999999998,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 14.3,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 14.2,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 14.4,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 14.299999999999999,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 14.5,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 14.399999999999999,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 14.6,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 14.499999999999998,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 14.7,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 14.599999999999998,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 14.8,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 14.7,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 14.9,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 14.799999999999999,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 15.0,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 14.899999999999999,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 15.1,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 14.999999999999998,
+    "message": "사람 대기",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 15.2,
+    "state": "PERSON_CHECK15",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 15.099999999999998,
+    "message": "사람 대기 15초 — 확인 필요",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          104.5,
+          537.5
+        ],
+        "basis": "two_lines",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 15.3,
+    "state": "PERSON_CHECK15",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 15.2,
+    "message": "사람 대기 15초 — 확인 필요",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 15.4,
+    "state": "PERSON_CHECK15",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 15.299999999999999,
+    "message": "사람 대기 15초 — 확인 필요",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 15.5,
+    "state": "PERSON_CHECK15",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 15.399999999999999,
+    "message": "사람 대기 15초 — 확인 필요",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 15.6,
+    "state": "PERSON_CHECK15",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 15.499999999999998,
+    "message": "사람 대기 15초 — 확인 필요",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 15.7,
+    "state": "PERSON_CHECK15",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 15.599999999999998,
+    "message": "사람 대기 15초 — 확인 필요",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 15.8,
+    "state": "PERSON_CHECK15",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 15.7,
+    "message": "사람 대기 15초 — 확인 필요",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 15.9,
+    "state": "PERSON_CHECK15",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 15.799999999999999,
+    "message": "사람 대기 15초 — 확인 필요",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 16.0,
+    "state": "PERSON_CHECK15",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 15.899999999999999,
+    "message": "사람 대기 15초 — 확인 필요",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 16.1,
+    "state": "PERSON_CHECK15",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 16.0,
+    "message": "사람 대기 15초 — 확인 필요",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 16.2,
+    "state": "PERSON_CHECK15",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 16.099999999999998,
+    "message": "사람 대기 15초 — 확인 필요",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 16.3,
+    "state": "PERSON_CHECK15",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 16.2,
+    "message": "사람 대기 15초 — 확인 필요",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 16.4,
+    "state": "PERSON_CHECK15",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 16.299999999999997,
+    "message": "사람 대기 15초 — 확인 필요",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 16.5,
+    "state": "PERSON_CHECK15",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 16.4,
+    "message": "사람 대기 15초 — 확인 필요",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 16.6,
+    "state": "PERSON_CHECK15",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 16.5,
+    "message": "사람 대기 15초 — 확인 필요",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 16.7,
+    "state": "PERSON_CHECK15",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 16.599999999999998,
+    "message": "사람 대기 15초 — 확인 필요",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 16.8,
+    "state": "PERSON_CHECK15",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 16.7,
+    "message": "사람 대기 15초 — 확인 필요",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 16.9,
+    "state": "PERSON_CHECK15",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 16.799999999999997,
+    "message": "사람 대기 15초 — 확인 필요",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 17.0,
+    "state": "PERSON_CHECK15",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 16.9,
+    "message": "사람 대기 15초 — 확인 필요",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 17.1,
+    "state": "PERSON_CHECK15",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 17.0,
+    "message": "사람 대기 15초 — 확인 필요",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 17.2,
+    "state": "PERSON_CHECK15",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 17.099999999999998,
+    "message": "사람 대기 15초 — 확인 필요",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 17.3,
+    "state": "PERSON_CHECK15",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 17.2,
+    "message": "사람 대기 15초 — 확인 필요",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 17.4,
+    "state": "PERSON_CHECK15",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 17.299999999999997,
+    "message": "사람 대기 15초 — 확인 필요",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 17.5,
+    "state": "PERSON_CHECK15",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 17.4,
+    "message": "사람 대기 15초 — 확인 필요",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 17.6,
+    "state": "PERSON_CHECK15",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 17.5,
+    "message": "사람 대기 15초 — 확인 필요",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 17.7,
+    "state": "PERSON_CHECK15",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 17.599999999999998,
+    "message": "사람 대기 15초 — 확인 필요",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 17.8,
+    "state": "PERSON_CHECK15",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 17.7,
+    "message": "사람 대기 15초 — 확인 필요",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 17.9,
+    "state": "PERSON_CHECK15",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 17.799999999999997,
+    "message": "사람 대기 15초 — 확인 필요",
+    "people": [],
+    "stop_until": null,
+    "ignore_until": null
+  }
+]

@@ -1,0 +1,59 @@
+{
+  "baseline_07": {
+    "route_percent": 60,
+    "speed": "0/5",
+    "corner_percent": 81
+  },
+  "baseline_6360995": {
+    "route_percent": 60,
+    "speed": "5/5",
+    "corner_percent": 81
+  },
+  "stages": [
+    {
+      "stage": "step1",
+      "change": "앞쪽 갈림길 초기 시도",
+      "route_percent": 72,
+      "speed": "4/5",
+      "corner_percent": 81
+    },
+    {
+      "stage": "step1_fixed",
+      "change": "앞쪽 갈림길 감속 복구",
+      "route_percent": 72,
+      "speed": "5/5",
+      "corner_percent": 81
+    },
+    {
+      "stage": "step2",
+      "change": "첫 로터리와 출발 직선",
+      "route_percent": 79,
+      "speed": "5/5",
+      "corner_percent": 81
+    },
+    {
+      "stage": "step3",
+      "change": "두 번째 바퀴와 START",
+      "route_percent": 87,
+      "speed": "5/5",
+      "corner_percent": 81
+    },
+    {
+      "stage": "step4",
+      "change": "2차선 오른쪽 선택 초기",
+      "route_percent": 87,
+      "speed": "5/5",
+      "corner_percent": 80
+    },
+    {
+      "stage": "final",
+      "change": "벽 물체 오인식 제외 최종",
+      "route_percent": 87,
+      "speed": "5/5",
+      "corner_percent": 81
+    }
+  ],
+  "source_sha256": "1f98a3d01a71430f4131641a9199e61ea06e8623e947c7ed885ae84c93f8e7a4",
+  "protected_unchanged": true,
+  "head": "6360995"
+}

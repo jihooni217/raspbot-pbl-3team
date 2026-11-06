@@ -1,0 +1,7 @@
+stage,change,route_percent,speed,corner_percent
+step1,앞쪽 갈림길 초기 시도,72,4/5,81
+step1_fixed,앞쪽 갈림길 감속 복구,72,5/5,81
+step2,첫 로터리와 출발 직선,79,5/5,81
+step3,두 번째 바퀴와 START,87,5/5,81
+step4,2차선 오른쪽 선택 초기,87,5/5,80
+final,벽 물체 오인식 제외 최종,87,5/5,81

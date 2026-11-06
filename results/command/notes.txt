@@ -1,0 +1,69 @@
+2026-11-05 KST — 08 글 명령
+
+실제08 CLI를 --dry-run --json으로 실행한 고정18문장 비교:
+AI 있음: 예문10/10, 거절3/3, 바꿔 말하기5/5, 최대7.1025초.
+키워드만: 예문10/10, 거절3/3, 바꿔 말하기5/5, 최대0.0742초.
+실제 AI 답18개 전부JSON/목록/범위 검사 통과, 키워드 대체0회.
+같은 문장에서는 정확도 차이가 없고 키워드가 빨랐다.
+기준 문장은 먼저 고정했고 cases.json SHA256은 summary.json에 있다.
+comparison.csv는 문장별 두 방식 비교, trial_ai.jsonl/ trial_keyword.jsonl은 원문응답/판정/시간이다.
+AI18개 원문은 마지막 선택/검사 코드에 다시 통과시켜 판정 동일/대체0도 확인했다.
+
+사용자 답변 반영:
+후진/옆 이동은 매번 뒤/옆 공간을 확인하고 속도30/0.5초만 수행한다.
+첫 움직임 준비 확인은 별도로 한 번 받는다. 앞 초음파25cm 이내 출발 거절,
+이동 중0.05초마다 앞 초음파를 확인해20cm 이내 정지한다.
+뒤/옆 센서가 생긴 것은 아니며 해당 공간 확인은 사용자가 한다.
+부저 count1~3, 한 번0.3초, 반복 사이 끄기0.3초. 기본은1번이다.
+전진40/기본1초, 회전40/기본0.6초. AI가 속도를 지정할 수 없다.
+
+구현:
+missions/08_command.py
+1. 설치된openai.chatgpt-*의버전숫자로최신linux-aarch64/codex를찾는다.
+2. 사용자가 확인한exec/skip-git/read-only/low/default옵션으로명령분류만한다.
+   shell_tool/apps/plugins/view_image/web_search를끄며쉘문자열이아닌argv로전달한다.
+3. 허용JSON한줄·필수항목·이름·시간·색·count를검사한다.
+   중복키·배열·여러동작·코드/속도항목·NaN/무한대·불리언/문자숫자는거절한다.
+   원문이위험하거나여러동작/범위밖값을요청했는데AI가생략해도원문검사로막는다.
+   원문에없는시간/횟수변경은대체해기본값만쓴다.
+4. AI실패/형식/범위오류이면키워드로대체하고같은검사를다시한다.
+   화면에'AI 대신 키워드로 골랐어요'를표시한다.
+5. dry-run은모든장치를사용하지않는다. 실제실행은q정지가능한터미널에서만한다.
+   실물stop문장은네트워크를기다리지않는다.
+6. 동작후네바퀴0을3회보내며통신오류가있어도나머지를계속시도한다.
+   CSV에시각/문장/AI답/선택/대체여부/결과를남긴다. 개행은리터럴\\n으로표시한다.
+
+시간:
+CLI자식프로세스의응답대기는19초이며20초분류상한내정리시간을남긴다.
+표의시간은python08프로그램시작부터dry-run출력까지다.
+실물의사람확인·초음파초기대기·동작시간은이번표에서실측하지않았다.
+처음바깥샌드박스에서는Codex의자체세션DB초기화가읽기전용오류로막혀,
+승인된제한밖에서고정문장dry-run만실행했다. 모델자체의read-only와도구끄기는유지했다.
+이는학생터미널의설정/와이파이/SSH등을바꾼것이아니다.
+
+장치 없는 검증23개(verification.txt):
+목록·범위·잘못된JSON·유한숫자·중복키·요청생략/다중동작·시간초과/CLI오류대체,
+CLI버전찾기·쉘인자분리·취소시자식정리·장치없는dry-run,
+후진매번확인·옆공간거절·초기준비거절·속도30/0.5초/메카넘부호,
+25cm출발거절·20cm즉시정지·0.05초측정간격·q/모터오류/I2C오류/센서불신뢰시정지,
+세바퀴가아닌네바퀴모두3회정지·부저3번·4색상·가짜거리/사진·CSV/취소기록을확인했다.
+모든장치호출은가짜객체였다. 실제Raspbot/카메라/센서/바퀴/부저/불빛은쓰지않았다.
+
+집에서 AI 있음:
+python3 missions/08_command.py --dry-run "앞으로 조금 가 줘"
+키워드만:
+python3 missions/08_command.py --dry-run --keywords-only "앞으로 조금 가 줘"
+가짜장치검증:
+python3 tools/test_command.py
+동작/AI답 기록: results/command_log.csv
+학교실물시험은아직하지않았다. 집에서는--dry-run만사용한다.
+
+보호:07두파일/13/14및기존tools·~/corner_test의전체기존파일은
+protected_before.json / protected_after.json의SHA256이동일하다.
+새진단도구command_trial.py/test_command.py만추가했고기존시험도구는수정하지않았다.
+HEAD827eafc유지, 커밋없음. 기존사용자변경results/runs.csv,models/slow_v1·slow_v2등은건드리지않았다.
+
+CLI 옵션 확인 근거(OpenAI Docs 스킬과 로컬--help):
+https://learn.chatgpt.com/docs/non-interactive-mode
+https://learn.chatgpt.com/docs/config-file/config-reference
+read-only는파일쓰기권한을제한하는설정이며명령실행도구끄기는별도로추가했다.

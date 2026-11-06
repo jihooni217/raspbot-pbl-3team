@@ -1,0 +1,10 @@
+{
+  "iterations": 13,
+  "max_update_ms": 0.06435099930968136,
+  "median_update_ms": 0.05875900023966096,
+  "detector_sleep_ms": 200,
+  "detector_threads": [
+    "full-course-yolo320",
+    "full-course-yolo320"
+  ]
+}

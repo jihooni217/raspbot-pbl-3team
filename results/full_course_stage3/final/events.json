@@ -1,0 +1,188 @@
+{
+  "events": [
+    {
+      "photo": "0000.jpg",
+      "seconds": 0.0,
+      "route_step": 1,
+      "choice": null,
+      "choice_end": null,
+      "stopped": false,
+      "start_passes": 0
+    },
+    {
+      "photo": "0498.jpg",
+      "seconds": 49.8,
+      "route_step": 2,
+      "choice": null,
+      "choice_end": null,
+      "stopped": false,
+      "start_passes": 0
+    },
+    {
+      "photo": "0608.jpg",
+      "seconds": 60.8,
+      "route_step": 3,
+      "choice": null,
+      "choice_end": null,
+      "stopped": false,
+      "start_passes": 0
+    },
+    {
+      "photo": "0652.jpg",
+      "seconds": 65.2,
+      "route_step": 3,
+      "choice": "RIGHT",
+      "choice_end": null,
+      "stopped": false,
+      "start_passes": 0
+    },
+    {
+      "photo": "0687.jpg",
+      "seconds": 68.7,
+      "route_step": 4,
+      "choice": null,
+      "choice_end": "BOTH_STABLE",
+      "stopped": false,
+      "start_passes": 0
+    },
+    {
+      "photo": "0738.jpg",
+      "seconds": 73.8,
+      "route_step": 4,
+      "choice": "LEFT",
+      "choice_end": null,
+      "stopped": false,
+      "start_passes": 0
+    },
+    {
+      "photo": "0778.jpg",
+      "seconds": 77.8,
+      "route_step": 4,
+      "choice": null,
+      "choice_end": "LIMIT4S",
+      "stopped": false,
+      "start_passes": 0
+    },
+    {
+      "photo": "0784.jpg",
+      "seconds": 78.4,
+      "route_step": 4,
+      "choice": "RIGHT",
+      "choice_end": null,
+      "stopped": false,
+      "start_passes": 0
+    },
+    {
+      "photo": "0824.jpg",
+      "seconds": 82.4,
+      "route_step": 5,
+      "choice": null,
+      "choice_end": "LIMIT4S",
+      "stopped": false,
+      "start_passes": 0
+    },
+    {
+      "photo": "1038.jpg",
+      "seconds": 103.8,
+      "route_step": 6,
+      "choice": null,
+      "choice_end": "LIMIT4S",
+      "stopped": false,
+      "start_passes": 0
+    },
+    {
+      "photo": "1175.jpg",
+      "seconds": 117.5,
+      "route_step": 6,
+      "choice": "RIGHT",
+      "choice_end": null,
+      "stopped": false,
+      "start_passes": 1
+    },
+    {
+      "photo": "1215.jpg",
+      "seconds": 121.5,
+      "route_step": 7,
+      "choice": null,
+      "choice_end": "LIMIT4S",
+      "stopped": false,
+      "start_passes": 1
+    },
+    {
+      "photo": "1216.jpg",
+      "seconds": 121.6,
+      "route_step": 7,
+      "choice": "LEFT",
+      "choice_end": null,
+      "stopped": false,
+      "start_passes": 1
+    },
+    {
+      "photo": "1256.jpg",
+      "seconds": 125.6,
+      "route_step": 7,
+      "choice": null,
+      "choice_end": "LIMIT4S",
+      "stopped": false,
+      "start_passes": 1
+    },
+    {
+      "photo": "1289.jpg",
+      "seconds": 128.9,
+      "route_step": 8,
+      "choice": null,
+      "choice_end": "LIMIT4S",
+      "stopped": false,
+      "start_passes": 1
+    },
+    {
+      "photo": "1318.jpg",
+      "seconds": 131.8,
+      "route_step": 9,
+      "choice": null,
+      "choice_end": "LIMIT4S",
+      "stopped": false,
+      "start_passes": 1
+    },
+    {
+      "photo": "1424.jpg",
+      "seconds": 142.4,
+      "route_step": 10,
+      "choice": null,
+      "choice_end": "LIMIT4S",
+      "stopped": false,
+      "start_passes": 1
+    },
+    {
+      "photo": "1569.jpg",
+      "seconds": 156.9,
+      "route_step": 11,
+      "choice": null,
+      "choice_end": "LIMIT4S",
+      "stopped": false,
+      "start_passes": 1
+    },
+    {
+      "photo": "1610.jpg",
+      "seconds": 161.0,
+      "route_step": 12,
+      "choice": null,
+      "choice_end": "LIMIT4S",
+      "stopped": false,
+      "start_passes": 1
+    },
+    {
+      "photo": "1788.jpg",
+      "seconds": 178.8,
+      "route_step": 12,
+      "choice": null,
+      "choice_end": "LIMIT4S",
+      "stopped": true,
+      "start_passes": 2
+    }
+  ],
+  "unexpected_stops": 0,
+  "frame_count": 1798,
+  "finished": true,
+  "start_passes": 2
+}

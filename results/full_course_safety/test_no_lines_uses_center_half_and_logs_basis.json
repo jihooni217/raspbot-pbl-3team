@@ -1,0 +1,90 @@
+[
+  {
+    "seconds": 0,
+    "state": "LOSTSTOP",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 0.0,
+    "message": "주행 / 선 없음-가운데 기준",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          160.0,
+          480.0
+        ],
+        "basis": "선 없음-가운데 기준",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  },
+  {
+    "seconds": 0.1,
+    "state": "PERSONWAIT",
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "route_step": 1,
+    "start_passes": 0,
+    "floor_color": null,
+    "slow_active": false,
+    "paused_seconds": 0.0,
+    "message": "사람 대기 / 선 없음-가운데 기준",
+    "people": [
+      {
+        "score": 0.3,
+        "box": [
+          300,
+          120,
+          40,
+          100
+        ],
+        "foot": [
+          320.0,
+          220.0
+        ],
+        "near": true,
+        "inside": true,
+        "bounds": [
+          160.0,
+          480.0
+        ],
+        "basis": "선 없음-가운데 기준",
+        "offroad_reason": null,
+        "road_top": null,
+        "horizon": null,
+        "ground_dark_ratio": 1.0
+      }
+    ],
+    "stop_until": null,
+    "ignore_until": null
+  }
+]
