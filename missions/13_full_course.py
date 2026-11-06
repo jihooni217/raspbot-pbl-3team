@@ -143,11 +143,11 @@ def find_floor_color(frame):
                 roi=(width // 5, top, width * 4 // 5, bottom))
 
 
-def find_lines(frame, previous=None, width=None):
+def find_lines(frame, previous=None, width=None, *, slow_override=None):
     lines = lane.find_lines(frame, previous, width)
     markers = marker_frame(frame)
     lines['floor'] = find_floor_color(markers)
-    lines['slow'] = find_slow_markers(markers)
+    lines['slow'] = find_slow_markers(markers) if slow_override is None else slow_override
     lines['start'] = find_start_markers(markers)
     lines['dividers'] = find_lane_dividers(markers)
     # 07의 검출 범위와 노란색 기준을 그대로 써 선택할 덩어리의 모양만 보관.
@@ -356,8 +356,14 @@ class MarkEvent:
 class LaneController(lane.LaneController):
     """07의 추적·정지를 바탕으로 표식 순서와 선택한 선의 조향을 계산한다."""
 
-    def __init__(self,outer_lap=False,laps=1):
+    def __init__(self,outer_lap=False,laps=1,rotary_test=False):
         super().__init__()
+        self.rotary_test = rotary_test
+        self.orbit_since = None
+        self.orbit_missing_since = None
+        self.orbit_left_x = None
+        self.orbit_turn = None
+        self.rotary_logo_box = None
         self.outer_lap = outer_lap
         self.outer_laps = laps
         self.outer_red_ended_at = None
@@ -382,7 +388,8 @@ class LaneController(lane.LaneController):
         self.slow_event = MarkEvent()
         self.start_passes = 0
         self.second_crossings = None
-        self.route_leg = 'FRONT'
+        self.route_leg = 'WAIT_ROTARY' if rotary_test else 'FRONT'
+        if rotary_test:self.route_step = 4
         self.choice = None
         self.choice_since = None
         self.choice_stable_since = None
@@ -717,10 +724,47 @@ class LaneController(lane.LaneController):
                     self.stopped,self.state,self.speeds = True,'FINISH',lane.STOP
                 else:self.start_stage = 0
 
+    def _logo_orbit(self,now):
+        if self.stopped:return lane.STOP
+        if self.orbit_since is None:
+            self.orbit_since = now
+            self.lost_since = None
+            self.choice = None
+        if now-self.orbit_since>=15:
+            self.stopped,self.state,self.speeds = True,'ROTARY_TEST_DONE',lane.STOP
+            return self.speeds
+        box = self.rotary_logo_box
+        self.orbit_left_x = None if box is None else box[0]
+        if box is None:
+            if self.orbit_missing_since is None:self.orbit_missing_since = now
+            if now-self.orbit_missing_since>6:
+                self.stopped,self.state,self.speeds = True,'ROTARY_LOST',lane.STOP
+                return self.speeds
+            self.orbit_turn = 12.
+            self.speeds = (42,42,18,18)
+        else:
+            self.orbit_missing_since = None
+            self.orbit_turn = max(-20.,min(20.,.1*(self.orbit_left_x-420)))
+            left,right = 30+self.orbit_turn,30-self.orbit_turn
+            self.speeds = (left,left,right,right)
+        self.state = 'LOGO_ORBIT'
+        return self.speeds
+
+    def tick(self,now):
+        if self.rotary_test and self.route_leg=='LOGO_ORBIT':
+            return self._logo_orbit(now)
+        return super().tick(now)
+
     def update(self, lines, now):
         if self.outer_lap:return self._outer_update(lines,now)
         if not self.departure_external:self.check_departure(lines,now)
         if self.stopped:return lane.STOP
+        if self.rotary_test:
+            if self.route_leg=='WAIT_ROTARY' and lines.get('slow',{}).get('roundabout_near'):
+                self.route_leg = 'LOGO_ORBIT'
+            if self.route_leg=='LOGO_ORBIT':
+                self.lines = dict(lines)
+                return self._logo_orbit(now)
         if self.corner_since is not None:
             if lines.get('corner_white_floor') and not self.route_three_corner:self._end_corner(now,'WHITE_FLOOR')
             elif now-self.corner_since>=CORNER_HOLD_SECONDS-1e-9:self._end_corner(now,'FIXED1.3S')
@@ -763,6 +807,7 @@ class LaneController(lane.LaneController):
                 self.floor_color = None
                 self.color_missing_since = None
         self.base_speed = COLOR_SPEEDS.get(self.floor_color, lane.BASE_SPEED)
+        if self.rotary_test:self.base_speed = min(30,self.base_speed)
         slow = lines.get('slow', {})
         if slow.get('text'):
             if self.slow_seen_since is None:
@@ -815,7 +860,8 @@ class LaneController(lane.LaneController):
                     reacquiring=self.reacquiring,reacquire_stable_since=self.reacquire_stable_since,
                     departure_since=self.departure_since,front_guide_active=self.front_guide_active,
                     front_guide_until=self.front_guide_until,
-                    start_stage=self.start_stage,line_bits=self.line_bits)
+                    start_stage=self.start_stage,line_bits=self.line_bits,
+                    orbit_left_x=self.orbit_left_x,orbit_turn=self.orbit_turn)
 
 
 def lane_context(frame):
@@ -964,6 +1010,62 @@ class FullCourseVisionWorker(reactions.VisionWorker):
             self.error = exc
 
 
+class RotaryMarkerWorker(reactions.VisionWorker):
+    """640 학습 모델만 소유하며 주행 반복은 최신 결과만 읽는다."""
+    def __init__(self,camera):
+        super().__init__(camera)
+        self.thread.name = 'full-course-rotary640'
+        self.inference_count = 0
+
+    def run(self):
+        previous = None
+        streak = 0
+        last_captured = None
+        try:
+            root = Path(__file__).resolve().parents[1]/'models'/'slow_v3'
+            # 기존 Detector의 전처리/후처리만 재사용하고 COCO 모델은 생성하지 않는다.
+            detector = reactions.signs.Detector.__new__(reactions.signs.Detector)
+            detector.net = cv2.dnn.readNetFromONNX(str(root/'slow_640.onnx'))
+            detector.names = (root/'slow.txt').read_text(encoding='utf-8').splitlines()
+            detector.size,detector.conf,detector.iou = 640,0.4,0.45
+            if not {'rotary','slow','crosswalk'}<=set(detector.names):
+                raise ValueError('slow.txt에 rotary/slow/crosswalk 이름이 필요합니다')
+            while not self.stop.is_set():
+                frame,sequence = self.camera.snapshot()
+                if sequence==previous:
+                    self.stop.wait(.005)
+                    continue
+                captured = time.monotonic()
+                masked = frame.copy()
+                masked[:96] = 0
+                found = detector(masked)
+                near = any(name=='rotary' and score>=.85 and box[2]>=350 and box[1]+box[3]>=200
+                           for name,score,box in found)
+                if last_captured is not None and captured-last_captured>.8:streak = 0
+                streak = streak+1 if near else 0
+                with self.lock:
+                    self.inference_count += 1
+                    self.latest = dict(sequence=sequence,captured_at=captured,found=found,
+                                       roundabout_near=streak>=2)
+                previous,last_captured = sequence,captured
+        except Exception as exc:self.error = exc
+
+    def markers(self,now):
+        if self.error is not None:
+            raise RuntimeError(f'로터리 모델 스레드 오류: {self.error}') from self.error
+        result = self.snapshot()  # 오류는 호출자에게 전달되어 기존 finally 정지로 이어진다.
+        age = None if result is None else max(0.,now-result['captured_at'])
+        found = result['found'] if result is not None and age<=.8 else []
+        rotary = max((item for item in found if item[0]=='rotary' and item[1]>=.4),key=lambda item:item[1],default=None)
+        slow = dict(roundabout_near=bool(found and result['roundabout_near']),
+                    text=any(n=='slow' and score>=.7 for n,score,b in found),
+                    crossing_near=any(n=='crosswalk' and score>=.7 and b[1]+b[3]>=300 for n,score,b in found))
+        report = dict(rotary_test=True,rotary_score=None if rotary is None else rotary[1],
+                      rotary_box=None if rotary is None else rotary[2],marker_age_ms=None if age is None else age*1000,
+                      roundabout_near=slow['roundabout_near'],marker_boxes=found)
+        return slow,report
+
+
 class SafetyController:
     """06의 확인/부재1초/STOP3초/재출발후5초,04의중앙값·오류처리를 조합한다."""
     def __init__(self,require_distance=True):
@@ -1064,8 +1166,8 @@ class SafetyController:
 
 class FullCourseController:
     """기존LaneController를 그대로 감싼④. 모든 대기의 합집합만큼 경로 시계를 멈춘다."""
-    def __init__(self,vision_worker=None,require_distance=True,*,outer_lap=False,laps=1):
-        self.route = LaneController(outer_lap=outer_lap,laps=laps)
+    def __init__(self,vision_worker=None,require_distance=True,*,outer_lap=False,laps=1,rotary_test=False):
+        self.route = LaneController(outer_lap=outer_lap,laps=laps,rotary_test=rotary_test)
         self.route.departure_external = True
         self.safety = SafetyController(require_distance)
         self.vision_worker = vision_worker
@@ -1120,6 +1222,8 @@ class FullCourseController:
             result.update(state='LANE_DEPARTURE',safety_message='차선 벗어남')
         if self.route.outer_lap and self.route.state in ('FINISH','FINISH_TIMEOUT'):
             result.update(state=self.route.state,safety_message=self.route.state)
+        if self.route.rotary_test and (self.route.state.startswith('ROTARY_TEST_') or self.route.state=='ROTARY_LOST'):
+            result.update(state=self.route.state,safety_message=self.route.state)
         return result
 
 
@@ -1150,6 +1254,13 @@ def safety_annotated(frame,report):
     if report.get('corner_end'):
         cv2.putText(out,f"CORNER END {report['corner_end']} WHITE {report.get('corner_white_ratio',0):.2f}",
                     (8,450),cv2.FONT_HERSHEY_SIMPLEX,.45,(0,255,255),1)
+    if report.get('rotary_test'):
+        for name,score,(x,y,w,h) in report.get('marker_boxes',[]):
+            x,y,w,h = map(round,(x,y,w,h))
+            cv2.rectangle(out,(x,y),(x+w,y+h),(255,128,0),2)
+            cv2.putText(out,f'{name} {score:.2f}',(x,max(15,y-4)),cv2.FONT_HERSHEY_SIMPLEX,.5,(255,128,0),1)
+        cv2.putText(out,f"LEG {report['route_leg']} X {report.get('orbit_left_x')} TURN {report.get('orbit_turn')}",
+                    (8,475),cv2.FONT_HERSHEY_SIMPLEX,.5,(255,128,0),1)
     return out
 
 
@@ -1226,13 +1337,13 @@ def distance_for_obstacle(raw_cm):
     return raw_cm
 
 
-def run_safety_loop(camera,vision_worker,distance_read,key_pressed,stream,on_speeds,display=None,*,recorder=None,on_report=None,on_stop=None,outer_lap=False,laps=1,line_read=None,check=False):
+def run_safety_loop(camera,vision_worker,distance_read,key_pressed,stream,on_speeds,display=None,*,recorder=None,on_report=None,on_stop=None,outer_lap=False,laps=1,line_read=None,check=False,rotary_test=False,marker_worker=None):
     """④의조합반복. 장치 생성/서보/바퀴/부저 호출 없음. on_speeds에계산값을전달한다.
 
     실물연결시는호출자가준비확인/초음파활성화/실제전송/최종네바퀴0을책임진다.
     주행루프에는추론호출이없고06에서재사용한worker.snapshot만읽는다.
     """
-    controller = FullCourseController(vision_worker,outer_lap=outer_lap,laps=laps)
+    controller = FullCourseController(vision_worker,outer_lap=outer_lap,laps=laps,rotary_test=rotary_test)
     recorder = FullCourseRecorder(camera) if recorder is None else recorder
     writer = csv.writer(stream,lineterminator='\n')
     writer.writerow(('wall_seconds','route_step','start_passes','state','speeds','safety_message',
@@ -1240,7 +1351,8 @@ def run_safety_loop(camera,vision_worker,distance_read,key_pressed,stream,on_spe
                      'raw_ultra_cm','ultra_read_error','lane_frames',
                      'corner_direction','corner_since','corner_end','corner_ended_at','corner_cooldown_until','corner_white_ratio',
                      'left_line_x','right_line_x','lane_width','guide_center','reacquiring','departure_since',
-                     'front_guide_active','front_guide_until','crossing_near','crossings','start_stage','line_bits'))
+                     'front_guide_active','front_guide_until','crossing_near','crossings','start_stage','line_bits')+
+                    (('rotary_score','rotary_box','marker_age_ms','roundabout_near','route_leg','orbit_left_x','orbit_turn') if rotary_test else ()))
     sequence = None
     lines = None
     frame = None
@@ -1253,12 +1365,36 @@ def run_safety_loop(camera,vision_worker,distance_read,key_pressed,stream,on_spe
     camera_ready_since = None
     camera_lines_since = None
     next_line = time.monotonic()
+    rotary_started = time.monotonic()
+    marker_report = {}
     try:
         recorder.start()
         camera_ready_since = time.monotonic()
         while not key_pressed():
             recorder.check()
             now = time.monotonic()
+            marker_slow = None
+            if rotary_test:
+                if marker_worker is None:raise RuntimeError('로터리 모델 스레드 없음')
+                marker_slow,marker_report = marker_worker.markers(now)
+                controller.route.rotary_logo_box = marker_report['rotary_box']
+                if now-rotary_started>=30:
+                    controller.route.stopped,controller.route.state = True,'ROTARY_TEST_TIMEOUT'
+                    controller.speeds = controller.route.speeds = lane.STOP
+                    report = controller.report()
+                    report.update(marker_report)
+                    report.update(runtime_lane_frames=lane_frames,raw_distance_cm=raw_distance,distance_read_error=distance_read_error)
+                    on_speeds(lane.STOP)
+                    recorder.update(report)
+                    if on_report is not None:on_report(report)
+                    writer.writerow((now,report['route_step'],report['start_passes'],report['state'],lane.STOP,
+                                     'ROTARY_TEST_TIMEOUT')+('',)*24+(report['start_stage'],report['line_bits'])+
+                                    (marker_report['rotary_score'],json.dumps(marker_report['rotary_box']),
+                                     marker_report['marker_age_ms'],marker_report['roundabout_near'],
+                                     report['route_leg'],report['orbit_left_x'],report['orbit_turn']))
+                    stream.flush()
+                    print('ROTARY_TEST_TIMEOUT',flush=True)
+                    break
             line_sampled = False
             if outer_lap and now>=next_line:
                 try:
@@ -1292,13 +1428,17 @@ def run_safety_loop(camera,vision_worker,distance_read,key_pressed,stream,on_spe
                         controller.route.stopped = True
                         controller.route.state = message
                     report = controller.report()
+                    report.update(marker_report)
                     report.update(state='CAMERA_LINESTOP' if timed_out else 'CAMERA_WAIT',
                                   safety_message=message,runtime_lane_frames=0,raw_distance_cm=None,
                                   distance_read_error=None)
                     recorder.update(report)
                     if on_report is not None:on_report(report)
                     writer.writerow((now,report['route_step'],report['start_passes'],report['state'],
-                                     lane.STOP,message)+('',)*24+(report['start_stage'],report['line_bits']))
+                                     lane.STOP,message)+('',)*24+(report['start_stage'],report['line_bits'])+
+                                     ((marker_report['rotary_score'],json.dumps(marker_report['rotary_box']),
+                                       marker_report['marker_age_ms'],marker_report['roundabout_near'],
+                                       report['route_leg'],report['orbit_left_x'],report['orbit_turn']) if rotary_test else ()))
                     stream.flush()
                     if candidate is not None and display is not None:
                         display(safety_annotated(candidate,report),report)
@@ -1327,7 +1467,7 @@ def run_safety_loop(camera,vision_worker,distance_read,key_pressed,stream,on_spe
                     lines = dict(original_lines,outer_lane_lines=original_lines,
                                  floor=find_floor_color(markers))
                 else:
-                    lines = find_lines(frame,controller.previous,controller.width)
+                    lines = find_lines(frame,controller.previous,controller.width,slow_override=marker_slow)
                 lane_frames += 1
             speeds = controller.update(lines,time.monotonic(),new_frame=fresh_frame)
             if outer_lap:
@@ -1340,6 +1480,7 @@ def run_safety_loop(camera,vision_worker,distance_read,key_pressed,stream,on_spe
             on_speeds(speeds)
             controller.motor_sent(speeds,time.monotonic())
             report = controller.report()
+            report.update(marker_report)
             report['runtime_lane_frames'] = lane_frames
             report['raw_distance_cm'] = raw_distance
             report['distance_read_error'] = distance_read_error
@@ -1357,11 +1498,34 @@ def run_safety_loop(camera,vision_worker,distance_read,key_pressed,stream,on_spe
                              report['left'],report['right'],report['width'],report['guide_center'],report['reacquiring'],report['departure_since'],
                              report['front_guide_active'],report['front_guide_until'],
                              (lines or {}).get('slow',{}).get('crossing_near',False),report['crossings'],
-                             report['start_stage'],report['line_bits']))
+                             report['start_stage'],report['line_bits'])+
+                            ((marker_report['rotary_score'],json.dumps(marker_report['rotary_box']),
+                              marker_report['marker_age_ms'],marker_report['roundabout_near'],
+                                       report['route_leg'],report['orbit_left_x'],report['orbit_turn']) if rotary_test else ()))
             stream.flush()
             if display is not None:display(safety_annotated(frame,report),report)
             if controller.stopped:break
             time.sleep(.005)
+    except Exception as exc:
+        if rotary_test and marker_worker is not None and marker_worker.error is not None:
+            controller.route.stopped,controller.route.state = True,'ROTARY_MODEL_ERROR'
+            controller.speeds = controller.route.speeds = lane.STOP
+            on_speeds(lane.STOP)
+            message = f'로터리 모델 스레드 오류: {marker_worker.error}'
+            report = controller.report()
+            report.update(marker_report,state='ROTARY_MODEL_ERROR',safety_message=message,
+                          runtime_lane_frames=lane_frames,raw_distance_cm=raw_distance,
+                          distance_read_error=distance_read_error)
+            recorder.update(report)
+            if on_report is not None:on_report(report)
+            writer.writerow((time.monotonic(),report['route_step'],report['start_passes'],
+                             'ROTARY_MODEL_ERROR',lane.STOP,message)+('',)*24+
+                            (report['start_stage'],report['line_bits'])+('',)*4+
+                            (report['route_leg'],report['orbit_left_x'],report['orbit_turn']))
+            stream.flush()
+            print(message,flush=True)
+            raise RuntimeError(message) from exc
+        raise
     finally:
         try:
             if on_stop is None:on_speeds(lane.STOP)
@@ -1441,7 +1605,10 @@ def cpu_temperature():
 
 
 class RuntimeMonitor:
-    def __init__(self,vision,check):
+    def __init__(self,vision,check,marker_worker=None):
+        self.marker_worker = marker_worker
+        self.first_marker = self.last_marker = 0 if marker_worker is None else marker_worker.inference_count
+        self.final_marker = None
         self.vision,self.check = vision,check
         self.started = self.last_time = time.monotonic()
         self.first_vision = self.last_vision = vision.inference_count
@@ -1457,6 +1624,7 @@ class RuntimeMonitor:
         if self.finished is None:
             self.finished = time.monotonic()
             self.final_vision = self.vision.inference_count
+            if self.marker_worker is not None:self.final_marker = self.marker_worker.inference_count
             self.final_temperature = cpu_temperature()
 
     def update(self,report):
@@ -1470,10 +1638,16 @@ class RuntimeMonitor:
                       yolo_hz=(count-self.last_vision)/elapsed,cpu_c=cpu_temperature(),
                       speeds=list(report['speeds']),route_step=report['route_step'],reason=report['safety_message'],
                       raw_distance_cm=report.get('raw_distance_cm'))
+        marker_text = ''
+        if self.marker_worker is not None:
+            marker_count = self.marker_worker.inference_count
+            sample['marker_hz'] = (marker_count-self.last_marker)/elapsed
+            self.last_marker = marker_count
+            marker_text = f" MARKER={sample['marker_hz']:.1f}/s"
         self.samples.append(sample)
         mode = 'CHECK' if self.check else 'DRIVE'
         print(f"{mode} {sample['seconds']:.1f}s wheels={sample['speeds']} step={sample['route_step']} "
-              f"reason={sample['reason']} ultra={sample['raw_distance_cm']}cm lane={sample['lane_hz']:.1f}/s YOLO={sample['yolo_hz']:.1f}/s CPU={sample['cpu_c']}C",flush=True)
+              f"reason={sample['reason']} ultra={sample['raw_distance_cm']}cm lane={sample['lane_hz']:.1f}/s YOLO={sample['yolo_hz']:.1f}/s CPU={sample['cpu_c']}C{marker_text}",flush=True)
         self.last_time,self.last_lane,self.last_vision = now,report['runtime_lane_frames'],count
 
     def summary(self):
@@ -1481,23 +1655,31 @@ class RuntimeMonitor:
         elapsed = self.finished-self.started
         lane_frames = 0 if self.report is None else self.report['runtime_lane_frames']
         yolo_frames = self.final_vision-self.first_vision
-        return dict(seconds=elapsed,lane_frames=lane_frames,yolo_frames=yolo_frames,
+        result = dict(seconds=elapsed,lane_frames=lane_frames,yolo_frames=yolo_frames,
                     lane_hz=lane_frames/elapsed,yolo_hz=yolo_frames/elapsed,
                     temperature_start_c=self.initial_temperature,temperature_end_c=self.final_temperature,
                     samples=self.samples,last_report=self.report)
+        if self.marker_worker is not None:
+            result.update(marker_frames=self.final_marker-self.first_marker,
+                          marker_hz=(self.final_marker-self.first_marker)/elapsed)
+        return result
 
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description='전체 코스 주행 / --check는 바퀴 명령 없이 같은 판단과 녹화')
     parser.add_argument('--check',action='store_true')
+    parser.add_argument('--rotary-test',action='store_true',help='학습 모델로 로터리 구간만 시험')
     parser.add_argument('--outer-lap',action='store_true',help='로터리·구불길을 생략하고 바깥 큰길 한 바퀴')
     parser.add_argument('--laps',type=int,default=1,help='--outer-lap에서 완료할 바퀴 수(기본1)')
     parser.add_argument('--seconds',type=float,help='지정 초 뒤 종료(생략하면 키/완주/오류까지)')
     args = parser.parse_args(argv)
+    if args.rotary_test and args.outer_lap:parser.error('--rotary-test와 --outer-lap은 함께 쓸 수 없습니다')
     if args.laps<1:parser.error('--laps는 양의 정수여야 합니다')
     if args.seconds is not None and (not math.isfinite(args.seconds) or args.seconds<=0):parser.error('--seconds는 양수여야 합니다')
     try:
-        ready = input('카메라 앞을 가리지 않고 START 차선 가운데 바닥에 놓았으며 사방1m 바닥을 비웠나요? (y/n) ')
+        prompt = ('로터리 표식이 앞에 보이는 차선 가운데 바닥에 놓았고 사방 1m를 비웠나요? (y/n)'
+                  if args.rotary_test else '카메라 앞을 가리지 않고 START 차선 가운데 바닥에 놓았으며 사방1m 바닥을 비웠나요? (y/n) ')
+        ready = input(prompt)
     except (EOFError,KeyboardInterrupt):
         ready = 'n'
     if ready.strip().lower() != 'y':
@@ -1508,7 +1690,7 @@ def main(argv=None):
     root.mkdir(exist_ok=True)
     csv_path = root/f'full_course_{stamp}.csv'
     json_path = root/f'full_course_{stamp}.json'
-    bot = motor = camera = vision = recorder = monitor = None
+    bot = motor = camera = vision = recorder = monitor = marker_worker = None
     reason = '준비 중'
     errors = []
     started = time.monotonic()
@@ -1523,8 +1705,9 @@ def main(argv=None):
         time.sleep(1)
         camera = lane.video.LatestCamera().start()
         vision = FullCourseVisionWorker(camera).start()
+        if args.rotary_test:marker_worker = RotaryMarkerWorker(camera).start()
         recorder = FullCourseRecorder(camera)
-        monitor = RuntimeMonitor(vision,args.check)
+        monitor = RuntimeMonitor(vision,args.check,marker_worker=marker_worker)
         with obstacles.keyboard_stop() as keyboard:
             def finish_outputs():
                 monitor.finish()
@@ -1539,6 +1722,7 @@ def main(argv=None):
                 report = run_safety_loop(camera,vision,lambda:obstacles.read_distance_cm(bot),
                     stop_requested,stream,motor,recorder=recorder,on_report=monitor.update,on_stop=finish_outputs,
                     outer_lap=args.outer_lap,laps=args.laps,check=args.check,
+                    rotary_test=args.rotary_test,marker_worker=marker_worker,
                     line_read=lambda:checked_driver_call(bot.read_data_array,0x0a,1)[0])
             if reason=='준비 중':reason = report['state']
     except KeyboardInterrupt:reason = 'Ctrl+C'
@@ -1550,7 +1734,7 @@ def main(argv=None):
         if motor is not None:
             try:motor.close()
             except Exception as exc:errors.append(str(exc))
-        for resource in (recorder,vision,camera):
+        for resource in (recorder,marker_worker,vision,camera):
             if resource is not None:
                 try:resource.close()
                 except Exception as exc:errors.append(str(exc))
