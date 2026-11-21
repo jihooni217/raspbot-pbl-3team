@@ -17,6 +17,10 @@ https://github.com/user-attachments/assets/10f29714-b9fe-476f-a1fe-a59d78784a65
 
 https://github.com/user-attachments/assets/eed7b209-75b9-433f-b449-a0a8d11d4d99
 
+마지막 주행 · 상태 불빛 (11/6, 로봇 카메라. 오른쪽 위 불빛 색은 주행 기록으로 다시 그린 것)
+
+https://github.com/user-attachments/assets/97b09148-425d-42a5-866d-6aba71688487
+
 ## 일하는 방식
 - 조가 `specs/`에 **지시서**(무엇을 · 왜 · 규칙표 · 숫자 성공 기준 · 안전)를 쓰고, Codex가 `missions/`에 코드를 만든다. Codex 수칙은 `AGENTS.md`.
 - 실제로 어떻게 움직였는지는 `results/`와 `log.md`에, 주행 기록은 `results/runs.csv`에 남긴다.
