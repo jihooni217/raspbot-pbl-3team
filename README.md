@@ -76,13 +76,33 @@ python3 tools/line_floor_trial.py --trial 1               # 같은 주행 + resu
 ```
 선 가운데에 올려 두면 센서는 `0 1 0 1`(가운데 두 칸 x1·x3이 검은색)이 나옵니다.
 
-### 큰길 한 바퀴 (카메라, 13)
+### 학교 트랙에서 달릴 때 (카메라, 13 — 발표 시연 코드)
+1. 로봇을 START 흰 선 뒤, 바깥 큰길 차선 가운데에 놓는다. 트랙 위 사람·물건을 치운다.
+2. 카메라 값을 맞춘다(전원을 켤 때마다 다시). 바퀴는 안 돈다.
+3. 바퀴 없이 판단만 먼저 볼 수 있다(`--check`).
+4. 출발. 한 바퀴 돌고 START 흰 선에서 스스로 멈춘다. 도중에 멈추려면 아무 키.
 ```bash
-sh tools/camera_track_values.sh                           # 카메라 값 맞추기(먼저 실행)
-python3 missions/13_full_course.py --outer-lap
-python3 missions/13_full_course.py --outer-lap --lights   # 상태 불빛까지
+sh tools/camera_track_values.sh                                   # 1) 카메라 값 맞추기 (학교 트랙 조명 기준)
+python3 missions/13_full_course.py --outer-lap --check            # 2) 바퀴 없이 판단만 보기
+python3 missions/13_full_course.py --outer-lap                    # 3) 큰길 한 바퀴 출발
+python3 missions/13_full_course.py --outer-lap --lights           #    상태 불빛까지 (발표 마지막 시연)
+python3 missions/13_full_course.py --outer-lap --laps 2           #    두 바퀴
+python3 missions/13_full_course.py --outer-lap --seconds 20       #    20초 뒤 자동 종료
 ```
-불빛: 멈춤 빨강 · 평소 초록 · 파란 바닥 가속 파랑 · 빨간 바닥 감속 노랑 깜빡임
+- 속도: 파란 바닥 80 · 빨간 바닥 25 · 그 외 35. 사람·STOP 표지·앞 장애물(초음파 25cm)에서 멈춘다.
+- 불빛: 멈춤 빨강 · 평소 초록 · 파란 바닥 가속 파랑 · 빨간 바닥 감속 노랑 깜빡임.
+- 기록은 `results/full_course_날짜_시각.csv/.json`에 남는다.
+- 조명이 달라 차선을 못 잡으면, 노트북에서 카메라 화면을 보며 값을 조절한다: `python tools/camera_tuner.py --host raspbot-03.local` (이름이 안 되면 IP)
+- 로터리 시험(완성 안 됨, 흰 바닥으로 벗어날 수 있음): `python3 missions/13_full_course.py --rotary-test`
+
+### 트랙용 다른 프로그램
+```bash
+python3 missions/07_lap_1757.py --check     # 노란 차선 따라가기 기준 판, 바퀴 없이 계산만
+python3 missions/07_lap_1757.py             # 노란 차선 따라가기 (13번의 바탕)
+python3 missions/14_camera_align.py         # 출발 전 카메라 각도 자동 맞추기 (바퀴 안 씀)
+python3 missions/04_obstacle.py             # 장애물 25cm 앞 정지, 35cm 넘으면 재출발
+python3 missions/06_drive_signs.py --trial 1   # 달리며 사람·STOP 보고 정지 (회차 이름)
+```
 
 ### 그 밖
 ```bash
