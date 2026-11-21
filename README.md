@@ -60,6 +60,17 @@ Yahboom RASPBOT-V2 + Raspberry Pi 5가 **바깥 큰길 한 바퀴를 스스로 �
 
 `raspbot-03.local`로 안 될 때 IP 찾기: 공유기 관리 화면(iptime은 `http://192.168.0.1`)의 연결된 기기 목록에서 `raspbot-03`을 찾거나, Raspberry Pi Connect(`connect.raspberrypi.com`)로 들어가 `hostname -I`를 실행한다. IP는 켤 때마다 바뀔 수 있다.
 
+### 아이폰 핫스팟으로 연결할 때
+1. 아이폰 설정 → 개인용 핫스팟 → **다른 사람의 연결 허용** 켜기, **호환성 최대화** 켜기(꺼져 있으면 로봇이 핫스팟을 못 찾는다).
+2. 핫스팟 설정 화면을 켜 둔 채로 둔다(화면을 벗어나면 잠시 뒤 신호를 숨긴다).
+3. 로봇이 집 와이파이로 연결된 상태에서, 로봇 터미널에 새 핫스팟을 한 번 등록한다(이름·비밀번호는 직접 넣는다).
+```bash
+sudo nmcli dev wifi rescan
+nmcli dev wifi list                                          # 핫스팟 이름이 보이는지 확인
+sudo nmcli dev wifi connect "핫스팟이름" password "비밀번호"   # 이름에 띄어쓰기가 있으면 따옴표 필수
+```
+4. 로봇이 핫스팟으로 옮겨 가며 연결이 끊긴다. 노트북도 같은 핫스팟에 연결하고 다시 접속한다. 한 번 등록하면 다음부터는 자동으로 붙는다.
+
 ### 접속과 끄기
 ```bash
 ssh pi@raspbot-03.local          # 이름이 안 잡히면 공유기에서 찾은 IP로 접속
