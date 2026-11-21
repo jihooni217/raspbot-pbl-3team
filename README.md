@@ -125,6 +125,24 @@ python3 missions/04_obstacle.py             # 장애물 25cm 앞 정지, 35cm �
 python3 missions/06_drive_signs.py --trial 1   # 달리며 사람·STOP 보고 정지 (회차 이름)
 ```
 
+### 처음 켰을 때 점검 (트랙 달리기 전)
+```bash
+python3 tools/servo_center.py               # 카메라를 정면(좌우 80°·위아래 25°)으로 맞춤
+python3 tools/sensor_test.py                # 부저·불빛·초음파·라인센서·카메라 사진 차례로 점검 (바퀴 안 씀)
+python3 tools/sensor_test.py --only line    #   하나만: buzzer / ultrasonic / line / camera
+python3 tools/motor_test.py                 # 바퀴 4개를 하나씩 1초 (상자 위에 올리고!)
+python3 tools/drive_test.py                 # 앞·뒤·옆·제자리 회전 (바닥, 사방 1m 비우고)
+```
+
+### 카메라·인식 (바퀴 안 씀)
+```bash
+python3 missions/03_video.py --seconds 30           # 블랙박스 녹화 30초 (생략하면 Ctrl+C까지) → results/videos/
+python3 tools/yolo.py                               # 카메라 앞 물체 알아보기 → results/yolo_test.jpg
+python3 missions/05_signs.py                        # 사람·STOP·차 표지 30장 촬영·채점
+python3 missions/14_camera_align.py --photo 사진.jpg  # 장치 없이 사진 한 장으로 카메라 각도 측정
+```
+노트북에서 카메라 화면 보며 값 조절: `python tools/camera_tuner.py --host raspbot-03.local`
+
 ### 그 밖
 ```bash
 python3 missions/08_command.py            # 글 명령 (바퀴 없이 시험: --dry-run)
