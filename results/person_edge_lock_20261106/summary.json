@@ -1,0 +1,23 @@
+{
+  "photo_route_identical": true,
+  "photo_corner_identical": true,
+  "safety_before": [
+    "test_current_vanishing_point_excludes_background_not_old_one",
+    "test_feet_not_head_or_anywhere_in_image",
+    "test_loop_logs_fallback_and_sends_zero_even_on_error",
+    "test_original_algorithms_and_order_unchanged",
+    "test_stop_size_confirmation_three_seconds_and_cooldown"
+  ],
+  "safety_after": [
+    "test_current_vanishing_point_excludes_background_not_old_one",
+    "test_feet_not_head_or_anywhere_in_image",
+    "test_loop_logs_fallback_and_sends_zero_even_on_error",
+    "test_original_algorithms_and_order_unchanged",
+    "test_stop_size_confirmation_three_seconds_and_cooldown"
+  ],
+  "new_tests": 9,
+  "new_tests_pass": 9,
+  "route_percent": 84,
+  "speed": "5/5",
+  "corner_percent": 83
+}

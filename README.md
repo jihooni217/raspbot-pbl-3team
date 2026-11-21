@@ -48,6 +48,7 @@ Yahboom RASPBOT-V2 + Raspberry Pi 5가 **바깥 큰길 한 바퀴를 스스로 �
 
 ## 실행
 - 큰길 한 바퀴: `sh tools/camera_track_values.sh` 뒤 `python3 missions/13_full_course.py --outer-lap`
+- 상태 불빛까지: `python3 missions/13_full_course.py --outer-lap --lights` (멈춤 빨강 · 평소 초록 · 파란 바닥 가속 파랑 · 빨간 바닥 감속 노랑 깜빡임)
 - 글 명령: `python3 missions/08_command.py` (바퀴 없이 시험: `--dry-run`)
 - 키보드 조종: `python3 tools/teleop.py`
 - 조종판: `python3 missions/09_dashboard.py` → 같은 와이파이에서 `http://raspbot-03.local:8080`

@@ -1,0 +1,72 @@
+test_confirmation_uses_capture_interval_with_processing_delay (__main__.SafetyTests.test_confirmation_uses_capture_interval_with_processing_delay) ... ok
+test_current_vanishing_point_excludes_background_not_old_one (__main__.SafetyTests.test_current_vanishing_point_excludes_background_not_old_one) ... ERROR
+test_feet_not_head_or_anywhere_in_image (__main__.SafetyTests.test_feet_not_head_or_anywhere_in_image) ... FAIL
+test_fifteen_seconds_latches_even_after_person_leaves (__main__.SafetyTests.test_fifteen_seconds_latches_even_after_person_leaves) ... ok
+test_loop_logs_fallback_and_sends_zero_even_on_error (__main__.SafetyTests.test_loop_logs_fallback_and_sends_zero_even_on_error) ... 카메라·차선 확인 대기
+FAIL
+test_no_lines_uses_center_half_and_logs_basis (__main__.SafetyTests.test_no_lines_uses_center_half_and_logs_basis) ... ok
+test_obstacle_median_error_and_recovery_use_04 (__main__.SafetyTests.test_obstacle_median_error_and_recovery_use_04) ... ok
+test_one_boundary_uses_existing_07_width (__main__.SafetyTests.test_one_boundary_uses_existing_07_width) ... ok
+test_original_algorithms_and_order_unchanged (__main__.SafetyTests.test_original_algorithms_and_order_unchanged) ... FAIL
+test_pause_freezes_route_start_color_and_all_hold_timers (__main__.SafetyTests.test_pause_freezes_route_start_color_and_all_hold_timers) ... ok
+test_person_above_visible_road_end_is_outside (__main__.SafetyTests.test_person_above_visible_road_end_is_outside) ... ok
+test_stale_results_are_discarded_not_person_absence (__main__.SafetyTests.test_stale_results_are_discarded_not_person_absence) ... ok
+test_stop_size_confirmation_three_seconds_and_cooldown (__main__.SafetyTests.test_stop_size_confirmation_three_seconds_and_cooldown) ... FAIL
+test_threshold_point3_and_one_second_clear (__main__.SafetyTests.test_threshold_point3_and_one_second_clear) ... ok
+test_two_hits_in_half_second_not_same_packet_twice (__main__.SafetyTests.test_two_hits_in_half_second_not_same_packet_twice) ... ok
+test_vision_inference_runs_only_in_background (__main__.SafetyTests.test_vision_inference_runs_only_in_background) ... ok
+test_white_ground_excluded_black_track_and_partial_paint_kept (__main__.SafetyTests.test_white_ground_excluded_black_track_and_partial_paint_kept) ... ok
+
+======================================================================
+ERROR: test_current_vanishing_point_excludes_background_not_old_one (__main__.SafetyTests.test_current_vanishing_point_excludes_background_not_old_one)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/pi/raspbot/tools/test_full_course_safety.py", line 100, in test_current_vanishing_point_excludes_background_not_old_one
+    self.assertGreater(context['horizon'],140)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/unittest/case.py", line 1289, in assertGreater
+    if not a > b:
+           ^^^^^
+TypeError: '>' not supported between instances of 'NoneType' and 'int'
+
+======================================================================
+FAIL: test_feet_not_head_or_anywhere_in_image (__main__.SafetyTests.test_feet_not_head_or_anywhere_in_image)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/pi/raspbot/tools/test_full_course_safety.py", line 75, in test_feet_not_head_or_anywhere_in_image
+    self.assertFalse(m.foot_on_lane(person(320,100)[2],context,440)['near'])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_loop_logs_fallback_and_sends_zero_even_on_error (__main__.SafetyTests.test_loop_logs_fallback_and_sends_zero_even_on_error)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/pi/raspbot/tools/test_full_course_safety.py", line 252, in test_loop_logs_fallback_and_sends_zero_even_on_error
+    self.assertIn('선 없음-가운데 기준',stream.getvalue())
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: '선 없음-가운데 기준' not found in 'wall_seconds,route_step,start_passes,state,speeds,safety_message,person_score_feet_inside,stop_boxes,ultra_cm,ultra_errors,paused_seconds,raw_ultra_cm,ultra_read_error,lane_frames,corner_direction,corner_since,corner_end,corner_ended_at,corner_cooldown_until,corner_white_ratio,left_line_x,right_line_x,lane_width,guide_center,reacquiring,departure_since,front_guide_active,front_guide_until,crossing_near,crossings,start_stage,line_bits\n3394.006735781,1,0,CAMERA_WAIT,"(0, 0, 0, 0)",카메라·차선 확인 대기,,,,,,,,,,,,,,,,,,,,,,,,,0,\n'
+
+======================================================================
+FAIL: test_original_algorithms_and_order_unchanged (__main__.SafetyTests.test_original_algorithms_and_order_unchanged)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/pi/raspbot/tools/test_full_course_safety.py", line 69, in test_original_algorithms_and_order_unchanged
+    for name,value in old.items():self.assertEqual(value,new[name],name)
+                                  ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "Func[101 chars]')], defaults=[Constant(value=None), Constant([5343 chars]))])" != "Func[101 chars]')], kwonlyargs=[arg(arg='slow_override')], kw[8315 chars]))])"
+Diff is 27934 characters long. Set self.maxDiff to None to see it. : find_lines
+
+======================================================================
+FAIL: test_stop_size_confirmation_three_seconds_and_cooldown (__main__.SafetyTests.test_stop_size_confirmation_three_seconds_and_cooldown)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/pi/raspbot/tools/test_full_course_safety.py", line 188, in test_stop_size_confirmation_three_seconds_and_cooldown
+    self.assertAlmostEqual(until,3.3)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+AssertionError: 3.1 != 3.3 within 7 places (0.19999999999999973 difference)
+
+----------------------------------------------------------------------
+Ran 17 tests in 5.106s
+
+FAILED (failures=4, errors=1)

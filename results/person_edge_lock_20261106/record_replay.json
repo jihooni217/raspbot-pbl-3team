@@ -1,0 +1,874 @@
+[
+  {
+    "t": 5.626315254000019,
+    "state": "CLEAR",
+    "boxes": [
+      [
+        439,
+        0,
+        82,
+        224
+      ]
+    ]
+  },
+  {
+    "t": 5.657871719000013,
+    "state": "CLEAR",
+    "boxes": [
+      [
+        434,
+        0,
+        104,
+        240
+      ]
+    ]
+  },
+  {
+    "t": 5.769488412000101,
+    "state": "CLEAR",
+    "boxes": [
+      [
+        458,
+        0,
+        116,
+        269
+      ]
+    ]
+  },
+  {
+    "t": 5.917283876000056,
+    "state": "CLEAR",
+    "boxes": [
+      [
+        474,
+        0,
+        126,
+        307
+      ]
+    ]
+  },
+  {
+    "t": 6.0336806509999406,
+    "state": "PERSONWAIT",
+    "boxes": [
+      [
+        504,
+        0,
+        134,
+        368
+      ]
+    ]
+  },
+  {
+    "t": 6.1153590050003,
+    "state": "PERSONWAIT",
+    "boxes": [
+      [
+        517,
+        1,
+        121,
+        425
+      ]
+    ]
+  },
+  {
+    "t": 6.2828776179999295,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.293838594000135,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.301350748000004,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.307067297000231,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.3128532529999575,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.318810466000286,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.32627441700015,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.333688516000166,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.341595682999923,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.347293011000147,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.353114410000217,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.36334123000006,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.3709511420001945,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.37656398900026,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.386275353000201,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.393492288000289,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.401347271000304,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.410288275000312,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.41605808300028,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.421932370999912,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.42946271000028,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.44230771499997,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.449209062000136,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.493800065999949,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.508016923000014,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.513711732000047,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.519527982999989,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.525358346000303,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.5462909600000785,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.553432359999988,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.5672816470000726,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.579918581000129,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.586252177000006,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.59829634200014,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.612772454000151,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.618831720999879,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.624696787000175,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.632678340999973,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.642294299000241,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.64812490300028,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.653817064000123,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.694323496999914,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.7147061740001845,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.721646373000112,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.728244206999989,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.738322380000227,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.744569773999956,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.75036098999999,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.758289860000332,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.772124000000076,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.778983052000058,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.784770045000187,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.794272485999954,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.803999775000193,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.809675047999917,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.815261655000086,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.8210933139998815,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.830302574000143,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.83925741100029,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.845285605000299,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.851208818000032,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.858276644999933,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.901057990000027,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.910291287000291,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.916009261999989,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.921638832000099,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.936959190999914,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.950436613999955,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.956658897000125,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.965829102000043,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.971538539999983,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.977995079000266,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.986253648999991,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 6.996734372999981,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.002465995999955,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.008819759000289,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.01640978200021,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.0221907939999255,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.027939065000282,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.036095302999911,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.042390381000132,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.048173374000271,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.057391504999941,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.063976635000017,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.108000259000164,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.116478973000085,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.123100658000112,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.131396190000032,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.137784249000106,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.146344148000026,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.152495339000325,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.15824218500029,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.170592623000175,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.177286992000063,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.183930714000326,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.190462604000004,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.197607781999977,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.21126640500006,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.21772509199991,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.226359694000166,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.23325239299993,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.241150098000162,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.247009626999898,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.253335612000228,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.262279283000225,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.275431414000195,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.316074381999897,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.365242952000244,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.374157087000185,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.381145581000055,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.387001240000245,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.39838982099991,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.405086265000136,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.410813943999983,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.416535548999946,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.428804414000297,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.436081497000032,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.483796662000259,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.504927070000122,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.551579121000032,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.561197967000226,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.570285488000081,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.5761974609999925,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.582247987000301,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.588635768000131,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.634187575999931,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.684909107000294,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.7317797300001985,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.787816372000179,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.836001105999912,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.882294755000203,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.927454198000305,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.936080650999884,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.946303711999917,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.952187721999962,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.957844049999949,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 7.999387432000276,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 8.04450722799993,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 8.088088840000182,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 8.142304712000168,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 8.189756881999983,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 8.202336780000223,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 8.209414829000252,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 8.215102416000263,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 8.221137017000274,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 8.227605185999892,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 8.276781905999997,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 8.290809653999986,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 8.331595714000287,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 8.37637542099992,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 8.387676003000252,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 8.397597217000111,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 8.403296970000156,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 8.409612975000073,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 8.418295020000187,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 8.424215344000004,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 8.433022832000006,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 8.439399151000089,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 8.44643642300025,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  },
+  {
+    "t": 8.45430029399995,
+    "state": "PERSON_CHECK15",
+    "boxes": []
+  }
+]

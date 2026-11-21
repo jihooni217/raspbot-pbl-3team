@@ -1,0 +1,15 @@
+test_change_only_and_rate_and_off (__main__.Tests.test_change_only_and_rate_and_off) ... ok
+test_check_never_sends_motor (__main__.Tests.test_check_never_sends_motor) ... ok
+test_latest_color_coalesces (__main__.Tests.test_latest_color_coalesces) ... ok
+test_light_print_cannot_trigger_motor_i2c_error (__main__.Tests.test_light_print_cannot_trigger_motor_i2c_error) ... Ctrl_WQ2812 I2C error
+motor I2C error
+ok
+test_main_all_exit_paths_off_and_motor_first (__main__.Tests.test_main_all_exit_paths_off_and_motor_first) ... ok
+test_optout_zero_light_calls_and_same_motor_values (__main__.Tests.test_optout_zero_light_calls_and_same_motor_values) ... ok
+test_priority_and_colors (__main__.Tests.test_priority_and_colors) ... ok
+test_slow_error_does_not_block_motor_stop (__main__.Tests.test_slow_error_does_not_block_motor_stop) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 4.771s
+
+OK

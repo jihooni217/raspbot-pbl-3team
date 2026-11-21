@@ -1,0 +1,17 @@
+test_actual_record_boxes (__main__.Cases.test_actual_record_boxes) ... /home/pi/raspbot/results/person_edge_lock_20261106/test_cases.py:21: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/pi/raspbot/results/full_course_20261106_152449_132755.csv' mode='r' encoding='UTF-8'>
+  rows=list(csv.DictReader((ROOT/'results/full_course_20261106_152449_132755.csv').open()))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_far_person_resumes_after_one_second (__main__.Cases.test_far_person_resumes_after_one_second) ... ok
+test_height_uses_full_480_not_effective_280 (__main__.Cases.test_height_uses_full_480_not_effective_280) ... ok
+test_last_box_replaces_old_close_box (__main__.Cases.test_last_box_replaces_old_close_box) ... ok
+test_left_and_right_edge_thresholds (__main__.Cases.test_left_and_right_edge_thresholds) ... ok
+test_outside_person_never_stopped (__main__.Cases.test_outside_person_never_stopped) ... ok
+test_stale_packet_is_not_disappearance (__main__.Cases.test_stale_packet_is_not_disappearance) ... ok
+test_start_finish_rule_unchanged (__main__.Cases.test_start_finish_rule_unchanged) ... ok
+test_stop_remains_three_seconds (__main__.Cases.test_stop_remains_three_seconds) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.042s
+
+OK

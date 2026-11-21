@@ -1,0 +1,13 @@
+{
+  "check": true,
+  "reason": "오류: 카메라 읽기 스레드 오류",
+  "errors": [
+    "카메라 읽기 스레드 오류"
+  ],
+  "total_seconds": 1.715566066000065,
+  "motor_commands": 0,
+  "motor_batches": 0,
+  "csv": "/home/pi/raspbot/results/full_course_20261106_150734_445756.csv",
+  "videos": {},
+  "metrics": null
+}

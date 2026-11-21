@@ -1,0 +1,19 @@
+test_change_only_and_rate_and_off (base_lights_tests.Tests.test_change_only_and_rate_and_off) ... ok
+test_check_never_sends_motor (base_lights_tests.Tests.test_check_never_sends_motor) ... ok
+test_latest_color_coalesces (base_lights_tests.Tests.test_latest_color_coalesces) ... ok
+test_light_print_cannot_trigger_motor_i2c_error (base_lights_tests.Tests.test_light_print_cannot_trigger_motor_i2c_error) ... Ctrl_WQ2812 I2C error
+motor I2C error
+ok
+test_main_all_exit_paths_off_and_motor_first (base_lights_tests.Tests.test_main_all_exit_paths_off_and_motor_first) ... ok
+test_optout_zero_light_calls_and_same_motor_values (base_lights_tests.Tests.test_optout_zero_light_calls_and_same_motor_values) ... ok
+test_priority_and_colors (base_lights_tests.Tests.test_priority_and_colors) ... ok
+test_slow_error_does_not_block_motor_stop (base_lights_tests.Tests.test_slow_error_does_not_block_motor_stop) ... ok
+test_boundaries_no_wait_and_restart (__main__.BlinkTests.test_boundaries_no_wait_and_restart) ... ok
+test_no_blink_wait_calls_in_update (__main__.BlinkTests.test_no_blink_wait_calls_in_update) ... ok
+test_real_output_cycle_and_stop_rate (__main__.BlinkTests.test_real_output_cycle_and_stop_rate) ... ok
+test_stop_overrides_off_phase_and_steady_colors (__main__.BlinkTests.test_stop_overrides_off_phase_and_steady_colors) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 6.025s
+
+OK

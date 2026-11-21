@@ -17,6 +17,7 @@ import json
 import io
 import math
 from pathlib import Path
+import sys
 import threading
 import time
 
@@ -715,7 +716,7 @@ class LaneController(lane.LaneController):
             else:self.outer_white_since = None
         if self.start_stage==3 and line_sampled:
             self.outer_line_hits = self.outer_line_hits+1 if self.line_bits=='1111' else 0
-            if self.outer_line_hits>=2:
+            if self.outer_line_hits>=1:
                 self.start_passes += 1
                 self.outer_red_ended_at = None
                 self.outer_white_since = None
@@ -1544,12 +1545,104 @@ def prepare_camera(bot):
 
 
 def checked_driver_call(function,*args):
-    captured = io.StringIO()
+    owner,output_stream = threading.get_ident(),sys.stdout
+    class DriverCapture(io.StringIO):
+        def write(self,text):
+            # 불빛 스레드의 I2C 오류 출력으로 바퀴 호출을 실패 처리하지 않는다.
+            if threading.get_ident()!=owner:return output_stream.write(text)
+            return super().write(text)
+    captured = (DriverCapture() if any(t.name=='full-course-lights' for t in threading.enumerate())
+                else io.StringIO())
     with redirect_stdout(captured):result = function(*args)
     output = captured.getvalue()
     if output:print(output,end='',flush=True)
     if 'i2c error' in output.casefold():raise RuntimeError('I2C error — 선/확장보드 전원을 확인하세요')
     return result
+
+
+class StatusLights:
+    """주행 쪽은 최신 색만 맡기고 느리거나 실패한 불빛 전송을 기다리지 않는다."""
+    INTERVAL = .2
+    RESEND_SECONDS = .5
+    YELLOW_HALF_SECONDS = .4
+
+    def __init__(self,bot,*,clock=time.monotonic):
+        self.bot = bot
+        self.clock = clock
+        self.yellow_since = None
+        self.condition = threading.Condition()
+        self.desired = None
+        self.pending = False
+        self.closing = False
+        self.errors = []
+        self.thread = threading.Thread(target=self.run,name='full-course-lights',daemon=True)
+        self.thread.start()
+
+    @staticmethod
+    def color(report):
+        if not any(report['speeds']):return 0
+        if report.get('floor_color')=='blue' and report.get('base_speed',35)>35:return 2
+        if report.get('floor_color')=='red' and report.get('base_speed',35)<35:return 3
+        return 1
+
+    def update(self,report):
+        color = self.color(report)
+        with self.condition:
+            if self.closing:return
+            if color==3:
+                now = self.clock()
+                if self.yellow_since is None:self.yellow_since = now
+                phase = int((now-self.yellow_since+1e-9)/self.YELLOW_HALF_SECONDS)
+                if phase%2:color = None
+            else:
+                self.yellow_since = None
+            self.desired,self.pending = color,True
+            self.condition.notify()
+
+    def run(self):
+        last_color = object()
+        last_sent = None
+        while True:
+            with self.condition:
+                while not self.pending:
+                    if last_sent is None:
+                        self.condition.wait()
+                    else:
+                        remaining = self.RESEND_SECONDS-(time.monotonic()-last_sent)
+                        if remaining<=0:
+                            self.pending = True
+                            break
+                        self.condition.wait(remaining)
+                if self.desired==last_color:
+                    if self.closing:return
+                    if last_sent is not None and time.monotonic()-last_sent<self.RESEND_SECONDS:
+                        self.pending = False
+                        continue
+                delay = 0 if last_sent is None else self.INTERVAL-(time.monotonic()-last_sent)
+                if delay>0:
+                    self.condition.wait(delay)
+                    continue
+                color = self.desired
+                self.pending = False
+            last_sent = time.monotonic()
+            try:
+                # 느린 호출과 예외는 이 스레드 안에서만 처리한다.
+                self.bot.Ctrl_WQ2812_ALL(0 if color is None else 1,0 if color is None else color)
+            except Exception as exc:
+                if len(self.errors)<20:self.errors.append(str(exc))
+            last_color = color
+            with self.condition:
+                if self.closing and color is None:return
+
+    def close(self):
+        with self.condition:
+            if self.closing:return
+            self.closing,self.desired,self.pending = True,None,True
+            self.condition.notify()
+        # 바퀴 정지는 호출자가 이미 마쳤다. 고장 난 불빛을 무한정 기다리지 않는다.
+        self.thread.join(timeout=.5)
+        if self.thread.is_alive() and len(self.errors)<20:
+            self.errors.append('불빛 종료 전송 응답 지연')
 
 
 class MotorOutput:
@@ -1668,6 +1761,7 @@ class RuntimeMonitor:
 def main(argv=None):
     parser = argparse.ArgumentParser(description='전체 코스 주행 / --check는 바퀴 명령 없이 같은 판단과 녹화')
     parser.add_argument('--check',action='store_true')
+    parser.add_argument('--lights',action='store_true',help='상태 불빛 표시')
     parser.add_argument('--rotary-test',action='store_true',help='학습 모델로 로터리 구간만 시험')
     parser.add_argument('--outer-lap',action='store_true',help='로터리·구불길을 생략하고 바깥 큰길 한 바퀴')
     parser.add_argument('--laps',type=int,default=1,help='--outer-lap에서 완료할 바퀴 수(기본1)')
@@ -1690,7 +1784,7 @@ def main(argv=None):
     root.mkdir(exist_ok=True)
     csv_path = root/f'full_course_{stamp}.csv'
     json_path = root/f'full_course_{stamp}.json'
-    bot = motor = camera = vision = recorder = monitor = marker_worker = None
+    bot = motor = camera = vision = recorder = monitor = marker_worker = lights = None
     reason = '준비 중'
     errors = []
     started = time.monotonic()
@@ -1699,6 +1793,11 @@ def main(argv=None):
         bot = Raspbot()
         motor = MotorOutput(bot,args.check)
         if not args.check:motor(lane.STOP)
+        if args.lights:
+            try:
+                lights = StatusLights(bot)
+                lights.update(dict(speeds=lane.STOP))
+            except Exception as exc:print(f'불빛 준비 오류: {exc}',flush=True)
         pose = prepare_camera(bot)
         print(f"카메라 준비: 팬 {pose['pan']} · 틸트 {pose['tilt']} ({pose['source']})",flush=True)
         checked_driver_call(bot.Ctrl_Ulatist_Switch,1)
@@ -1708,6 +1807,9 @@ def main(argv=None):
         if args.rotary_test:marker_worker = RotaryMarkerWorker(camera).start()
         recorder = FullCourseRecorder(camera)
         monitor = RuntimeMonitor(vision,args.check,marker_worker=marker_worker)
+        def show_report(report):
+            monitor.update(report)
+            if lights is not None:lights.update(report)
         with obstacles.keyboard_stop() as keyboard:
             def finish_outputs():
                 monitor.finish()
@@ -1720,7 +1822,8 @@ def main(argv=None):
                 return False
             with csv_path.open('x',newline='',encoding='utf-8') as stream:
                 report = run_safety_loop(camera,vision,lambda:obstacles.read_distance_cm(bot),
-                    stop_requested,stream,motor,recorder=recorder,on_report=monitor.update,on_stop=finish_outputs,
+                    stop_requested,stream,motor,recorder=recorder,
+                    on_report=show_report if args.lights else monitor.update,on_stop=finish_outputs,
                     outer_lap=args.outer_lap,laps=args.laps,check=args.check,
                     rotary_test=args.rotary_test,marker_worker=marker_worker,
                     line_read=lambda:checked_driver_call(bot.read_data_array,0x0a,1)[0])
@@ -1734,6 +1837,9 @@ def main(argv=None):
         if motor is not None:
             try:motor.close()
             except Exception as exc:errors.append(str(exc))
+        if lights is not None:
+            try:lights.close()
+            except Exception as exc:print(f'불빛 끄기 오류: {exc}',flush=True)
         for resource in (recorder,marker_worker,vision,camera):
             if resource is not None:
                 try:resource.close()
@@ -1747,6 +1853,7 @@ def main(argv=None):
                       motor_batches=0 if motor is None else motor.batches,
                       csv=str(csv_path),videos={} if recorder is None else {k:str(v) for k,v in recorder.paths.items()},
                       metrics=None if monitor is None else monitor.summary())
+        if args.lights:result['lights_errors'] = [] if lights is None else list(lights.errors)
         json_path.write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
         print(f'종료: {reason}',flush=True)
         for name,path in dict(CSV=csv_path,JSON=json_path,**result['videos']).items():print(f'{name}: {path}',flush=True)

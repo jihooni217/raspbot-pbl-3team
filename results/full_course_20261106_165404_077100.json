@@ -1,0 +1,583 @@
+{
+  "check": false,
+  "reason": "FINISH",
+  "errors": [],
+  "total_seconds": 39.145395237999765,
+  "motor_commands": 2100,
+  "motor_batches": 525,
+  "csv": "/home/pi/raspbot/results/full_course_20261106_165404_077100.csv",
+  "videos": {
+    "raw": "/home/pi/raspbot/results/videos/raw_20261106_165406_350892.mp4",
+    "blackbox": "/home/pi/raspbot/results/videos/blackbox_20261106_165406_350892.mp4"
+  },
+  "metrics": {
+    "seconds": 34.483140733000255,
+    "lane_frames": 819,
+    "yolo_frames": 302,
+    "lane_hz": 23.750736811981273,
+    "yolo_hz": 8.75790295142655,
+    "temperature_start_c": 41.35,
+    "temperature_end_c": 62.8,
+    "samples": [
+      {
+        "seconds": 1.0292522299996563,
+        "lane_hz": 20.40316201210175,
+        "yolo_hz": 9.715791434334166,
+        "cpu_c": 43.55,
+        "speeds": [
+          32,
+          32,
+          38,
+          38
+        ],
+        "route_step": 1,
+        "reason": "주행",
+        "raw_distance_cm": 207.4
+      },
+      {
+        "seconds": 2.031143852999776,
+        "lane_hz": 30.941470402928303,
+        "yolo_hz": 11.977343381778697,
+        "cpu_c": 45.75,
+        "speeds": [
+          35,
+          35,
+          35,
+          35
+        ],
+        "route_step": 1,
+        "reason": "주행",
+        "raw_distance_cm": 69.7
+      },
+      {
+        "seconds": 3.0606017310001334,
+        "lane_hz": 24.284626437130743,
+        "yolo_hz": 11.656620689822757,
+        "cpu_c": 46.85,
+        "speeds": [
+          50,
+          50,
+          20,
+          20
+        ],
+        "route_step": 1,
+        "reason": "주행",
+        "raw_distance_cm": 108.8
+      },
+      {
+        "seconds": 4.067484195000361,
+        "lane_hz": 25.82227909373355,
+        "yolo_hz": 8.93848122475392,
+        "cpu_c": 49.05,
+        "speeds": [
+          35,
+          35,
+          35,
+          35
+        ],
+        "route_step": 1,
+        "reason": "주행 / 트랙 밖: 발밑 검은 바닥 없음",
+        "raw_distance_cm": 59.5
+      },
+      {
+        "seconds": 5.071342313999594,
+        "lane_hz": 25.90007443075715,
+        "yolo_hz": 7.969253671002201,
+        "cpu_c": 49.6,
+        "speeds": [
+          27,
+          27,
+          43,
+          43
+        ],
+        "route_step": 1,
+        "reason": "주행",
+        "raw_distance_cm": 119.0
+      },
+      {
+        "seconds": 6.0800824219995775,
+        "lane_hz": 25.77472611012749,
+        "yolo_hz": 8.922020576582593,
+        "cpu_c": 51.8,
+        "speeds": [
+          36,
+          36,
+          34,
+          34
+        ],
+        "route_step": 1,
+        "reason": "주행",
+        "raw_distance_cm": 68.0
+      },
+      {
+        "seconds": 7.108601801000077,
+        "lane_hz": 24.30678557004404,
+        "yolo_hz": 7.778171382414093,
+        "cpu_c": 52.35,
+        "speeds": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "route_step": 1,
+        "reason": "STOP 3초 정지",
+        "raw_distance_cm": 71.4
+      },
+      {
+        "seconds": 8.124427468000249,
+        "lane_hz": 28.54820560464839,
+        "yolo_hz": 8.85978794627019,
+        "cpu_c": 53.45,
+        "speeds": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "route_step": 1,
+        "reason": "STOP 3초 정지",
+        "raw_distance_cm": 68.0
+      },
+      {
+        "seconds": 9.167536205000033,
+        "lane_hz": 24.925493457932166,
+        "yolo_hz": 7.669382602440666,
+        "cpu_c": 53.45,
+        "speeds": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "route_step": 1,
+        "reason": "STOP 3초 정지",
+        "raw_distance_cm": 69.7
+      },
+      {
+        "seconds": 10.18819739799983,
+        "lane_hz": 24.493926262174437,
+        "yolo_hz": 8.817813454382797,
+        "cpu_c": 54.55,
+        "speeds": [
+          35,
+          35,
+          35,
+          35
+        ],
+        "route_step": 1,
+        "reason": "주행",
+        "raw_distance_cm": 181.9
+      },
+      {
+        "seconds": 11.18950531900009,
+        "lane_hz": 29.96081362267798,
+        "yolo_hz": 8.988244086803393,
+        "cpu_c": 53.45,
+        "speeds": [
+          35,
+          35,
+          35,
+          35
+        ],
+        "route_step": 1,
+        "reason": "주행",
+        "raw_distance_cm": 137.7
+      },
+      {
+        "seconds": 12.237353026000164,
+        "lane_hz": 23.858428885217997,
+        "yolo_hz": 9.5433715540872,
+        "cpu_c": 55.1,
+        "speeds": [
+          56,
+          56,
+          14,
+          14
+        ],
+        "route_step": 1,
+        "reason": "주행",
+        "raw_distance_cm": 85.0
+      },
+      {
+        "seconds": 13.247585649999564,
+        "lane_hz": 21.777162484522048,
+        "yolo_hz": 9.898710220237295,
+        "cpu_c": 56.2,
+        "speeds": [
+          0,
+          0,
+          73,
+          73
+        ],
+        "route_step": 1,
+        "reason": "주행",
+        "raw_distance_cm": 253.3
+      },
+      {
+        "seconds": 14.272335777999615,
+        "lane_hz": 21.468648208843078,
+        "yolo_hz": 9.758476458565035,
+        "cpu_c": 56.2,
+        "speeds": [
+          27,
+          27,
+          43,
+          43
+        ],
+        "route_step": 1,
+        "reason": "주행",
+        "raw_distance_cm": 212.5
+      },
+      {
+        "seconds": 15.305617350999455,
+        "lane_hz": 24.19476031825438,
+        "yolo_hz": 8.710113714571577,
+        "cpu_c": 56.75,
+        "speeds": [
+          46,
+          46,
+          24,
+          24
+        ],
+        "route_step": 1,
+        "reason": "주행",
+        "raw_distance_cm": 73.1
+      },
+      {
+        "seconds": 16.320303094999872,
+        "lane_hz": 25.62369694630234,
+        "yolo_hz": 8.869741250643118,
+        "cpu_c": 57.85,
+        "speeds": [
+          40,
+          40,
+          30,
+          30
+        ],
+        "route_step": 1,
+        "reason": "주행",
+        "raw_distance_cm": 113.9
+      },
+      {
+        "seconds": 17.32431174999965,
+        "lane_hz": 20.91615435327558,
+        "yolo_hz": 8.96406615140382,
+        "cpu_c": 57.85,
+        "speeds": [
+          34,
+          34,
+          36,
+          36
+        ],
+        "route_step": 1,
+        "reason": "주행",
+        "raw_distance_cm": 69.7
+      },
+      {
+        "seconds": 18.340838137999526,
+        "lane_hz": 24.59355732927917,
+        "yolo_hz": 8.853680638540501,
+        "cpu_c": 58.95,
+        "speeds": [
+          37,
+          37,
+          33,
+          33
+        ],
+        "route_step": 1,
+        "reason": "주행",
+        "raw_distance_cm": 431.8
+      },
+      {
+        "seconds": 19.34431347899954,
+        "lane_hz": 21.923807293636063,
+        "yolo_hz": 9.965366951652756,
+        "cpu_c": 58.95,
+        "speeds": [
+          80,
+          80,
+          62,
+          62
+        ],
+        "route_step": 1,
+        "reason": "주행",
+        "raw_distance_cm": 119.0
+      },
+      {
+        "seconds": 20.345481862999804,
+        "lane_hz": 23.971991508666758,
+        "yolo_hz": 8.989496815750035,
+        "cpu_c": 58.4,
+        "speeds": [
+          80,
+          80,
+          62,
+          62
+        ],
+        "route_step": 1,
+        "reason": "주행",
+        "raw_distance_cm": 69.7
+      },
+      {
+        "seconds": 21.36762497899963,
+        "lane_hz": 21.523404751868206,
+        "yolo_hz": 8.805029216673356,
+        "cpu_c": 59.5,
+        "speeds": [
+          80,
+          80,
+          72,
+          72
+        ],
+        "route_step": 1,
+        "reason": "주행",
+        "raw_distance_cm": 110.5
+      },
+      {
+        "seconds": 22.412214045999463,
+        "lane_hz": 23.932856268353024,
+        "yolo_hz": 7.658514005872967,
+        "cpu_c": 59.5,
+        "speeds": [
+          80,
+          80,
+          80,
+          80
+        ],
+        "route_step": 1,
+        "reason": "주행",
+        "raw_distance_cm": 57.8
+      },
+      {
+        "seconds": 23.417830253999455,
+        "lane_hz": 22.87154862563649,
+        "yolo_hz": 7.955321261090953,
+        "cpu_c": 60.05,
+        "speeds": [
+          27,
+          27,
+          23,
+          23
+        ],
+        "route_step": 1,
+        "reason": "주행",
+        "raw_distance_cm": 100.3
+      },
+      {
+        "seconds": 24.422419055999853,
+        "lane_hz": 25.881236131865307,
+        "yolo_hz": 6.968025112425275,
+        "cpu_c": 60.6,
+        "speeds": [
+          25,
+          25,
+          25,
+          25
+        ],
+        "route_step": 1,
+        "reason": "주행",
+        "raw_distance_cm": 173.4
+      },
+      {
+        "seconds": 25.43914475800011,
+        "lane_hz": 24.5887361269772,
+        "yolo_hz": 5.901296670474528,
+        "cpu_c": 61.7,
+        "speeds": [
+          26,
+          26,
+          24,
+          24
+        ],
+        "route_step": 1,
+        "reason": "주행",
+        "raw_distance_cm": 130.9
+      },
+      {
+        "seconds": 26.48039849900033,
+        "lane_hz": 21.128375470581265,
+        "yolo_hz": 7.6830456256659145,
+        "cpu_c": 62.25,
+        "speeds": [
+          0,
+          0,
+          70,
+          70
+        ],
+        "route_step": 1,
+        "reason": "주행",
+        "raw_distance_cm": 83.3
+      },
+      {
+        "seconds": 27.512589889000083,
+        "lane_hz": 22.28268925979465,
+        "yolo_hz": 6.781688035589677,
+        "cpu_c": 61.7,
+        "speeds": [
+          36,
+          36,
+          34,
+          34
+        ],
+        "route_step": 1,
+        "reason": "주행",
+        "raw_distance_cm": 273.7
+      },
+      {
+        "seconds": 28.520630275999793,
+        "lane_hz": 21.824522393869454,
+        "yolo_hz": 6.94416621623119,
+        "cpu_c": 62.8,
+        "speeds": [
+          39,
+          39,
+          31,
+          31
+        ],
+        "route_step": 1,
+        "reason": "주행",
+        "raw_distance_cm": 214.2
+      },
+      {
+        "seconds": 29.537153514999773,
+        "lane_hz": 20.658652153057577,
+        "yolo_hz": 9.837453406217893,
+        "cpu_c": 61.7,
+        "speeds": [
+          0,
+          0,
+          70,
+          70
+        ],
+        "route_step": 1,
+        "reason": "주행",
+        "raw_distance_cm": 164.9
+      },
+      {
+        "seconds": 30.563609863000238,
+        "lane_hz": 20.45873654628173,
+        "yolo_hz": 8.768029948406456,
+        "cpu_c": 62.25,
+        "speeds": [
+          13,
+          13,
+          57,
+          57
+        ],
+        "route_step": 1,
+        "reason": "주행",
+        "raw_distance_cm": 124.1
+      },
+      {
+        "seconds": 31.584798629000034,
+        "lane_hz": 19.585017644038597,
+        "yolo_hz": 9.792508822019299,
+        "cpu_c": 62.8,
+        "speeds": [
+          57,
+          57,
+          13,
+          13
+        ],
+        "route_step": 1,
+        "reason": "주행",
+        "raw_distance_cm": 76.5
+      },
+      {
+        "seconds": 32.628198624000106,
+        "lane_hz": 22.043320021290974,
+        "yolo_hz": 7.667241746535991,
+        "cpu_c": 62.8,
+        "speeds": [
+          2,
+          2,
+          68,
+          68
+        ],
+        "route_step": 1,
+        "reason": "주행",
+        "raw_distance_cm": 277.1
+      },
+      {
+        "seconds": 33.635583938999844,
+        "lane_hz": 21.838714216323204,
+        "yolo_hz": 8.93401945213222,
+        "cpu_c": 63.35,
+        "speeds": [
+          36,
+          36,
+          34,
+          34
+        ],
+        "route_step": 1,
+        "reason": "주행",
+        "raw_distance_cm": 136.0
+      }
+    ],
+    "last_report": {
+      "left": 99.62290598290598,
+      "right": 587.1821917808219,
+      "left_count": 2925,
+      "right_count": 730,
+      "width": 487.5592857979159,
+      "center": 343.40254888186394,
+      "speeds": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "state": "FINISH",
+      "stopped": true,
+      "last_turn": "RIGHT",
+      "floor_color": null,
+      "base_speed": 35,
+      "slow_active": false,
+      "route_step": 1,
+      "choice": null,
+      "route_leg": "FRONT",
+      "choice_end": null,
+      "guide_center": null,
+      "crossings": 0,
+      "start_passes": 1,
+      "corner_direction": null,
+      "corner_since": null,
+      "corner_end": null,
+      "corner_ended_at": null,
+      "corner_cooldown_until": null,
+      "corner_white_ratio": 0.0,
+      "reacquiring": false,
+      "reacquire_stable_since": null,
+      "departure_since": null,
+      "front_guide_active": false,
+      "front_guide_until": null,
+      "start_stage": 3,
+      "line_bits": "1111",
+      "orbit_left_x": null,
+      "orbit_turn": null,
+      "route_state": "FINISH",
+      "route_clock": 8071.395566014,
+      "paused_seconds": 3.1847347180000725,
+      "safety_state": "CLEAR",
+      "safety_message": "FINISH",
+      "blocked": false,
+      "vision_fresh": true,
+      "vision_age": 0.203425425000205,
+      "person": [],
+      "stop_boxes": [],
+      "person_locked": false,
+      "person_since": null,
+      "stop_until": null,
+      "ignore_until": 8055.085131743,
+      "distance_cm": 98.6,
+      "ultra_state": "전진",
+      "ultra_invalid_count": 0,
+      "distance_error": null,
+      "runtime_lane_frames": 819,
+      "raw_distance_cm": 98.6,
+      "distance_read_error": null
+    }
+  },
+  "lights_errors": []
+}
