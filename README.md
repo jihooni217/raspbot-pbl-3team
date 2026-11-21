@@ -51,6 +51,15 @@ Yahboom RASPBOT-V2 + Raspberry Pi 5가 **바깥 큰길 한 바퀴를 스스로 �
 ## 실행
 명령은 모두 로봇 안 `~/raspbot` 폴더에서 실행합니다(VS Code 터미널 또는 SSH). 바퀴가 도는 명령은 실행 전에 로봇 주변을 비웁니다. 주행 중에는 아무 키나 `Ctrl+C`로 멈춥니다.
 
+### 혼자 할 때 순서
+1. 확장보드 스위치를 켜고 1~2분 기다린다(로봇은 등록된 와이파이에 자동 연결).
+2. 노트북을 로봇과 같은 와이파이에 연결한다.
+3. VS Code 왼쪽 아래 `><` → `Connect to Host` → `pi@raspbot-03.local` (또는 IP) → 폴더 `/home/pi/raspbot` 열기.
+4. VS Code 위 메뉴 `Terminal` → `New Terminal`에서 아래 명령을 실행한다.
+5. 끝나면 `sudo poweroff` → 초록 불이 멈추면 스위치를 내린다.
+
+`raspbot-03.local`로 안 될 때 IP 찾기: 공유기 관리 화면(iptime은 `http://192.168.0.1`)의 연결된 기기 목록에서 `raspbot-03`을 찾거나, Raspberry Pi Connect(`connect.raspberrypi.com`)로 들어가 `hostname -I`를 실행한다. IP는 켤 때마다 바뀔 수 있다.
+
 ### 접속과 끄기
 ```bash
 ssh pi@raspbot-03.local          # 이름이 안 잡히면 공유기에서 찾은 IP로 접속
