@@ -30,7 +30,7 @@ https://github.com/user-attachments/assets/eed7b209-75b9-433f-b449-a0a8d11d4d99
 | 04 | `missions/04_obstacle.py` | 장애물 25cm 앞 정지, 35cm 넘으면 재출발 |
 | 05·06 | `missions/05_signs.py` · `06_drive_signs.py` | YOLO로 사람·STOP 찾기, 달리며 정지 |
 | 07 | `missions/07_lap_1757.py` | 카메라로 노란 차선 따라가기 (기준 판) |
-| **13** | `missions/13_full_course.py` | **`--outer-lap` 큰길 한 바퀴(발표 시연)**: 파란 바닥 기본 속도 80 · 빨간 바닥 25 · 그 외 35, 사람·STOP 정지, START 흰 선 정지. `--rotary-test`는 로터리 시험용(모델 미포함) |
+| **13** | `missions/13_full_course.py` | **`--outer-lap` 큰길 한 바퀴(발표 시연)**: 파란 바닥 기본 속도 80 · 빨간 바닥 25 · 그 외 35, 사람·STOP 정지, START 흰 선 정지. `--rotary-test`는 로터리 시험용(모델 `models/slow_v3`) |
 | 14 | `missions/14_camera_align.py` | 출발 전 카메라 각도 자동 맞추기 (박스에서 꺼낸 뒤 틀어진 각도 보정) |
 | 08 | `missions/08_command.py` | 한국어 글 명령 → AI가 정해진 동작 목록에서 하나만 고름, 목록 밖은 거절 |
 | 09 | `missions/09_dashboard.py` | 브라우저 조종판 (자동주행 ON · 긴급 정지 · 실시간 로그) |
