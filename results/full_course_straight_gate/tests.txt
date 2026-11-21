@@ -1,0 +1,12 @@
+test_crossing_near_through_one_second_after_last_seen (__main__.Tests.test_crossing_near_through_one_second_after_last_seen) ... ok
+test_end_step_one_sets_two_but_never_increments_other_steps (__main__.Tests.test_end_step_one_sets_two_but_never_increments_other_steps) ... ok
+test_new_visible_frame_extends_window (__main__.Tests.test_new_visible_frame_extends_window) ... ok
+test_no_crossing_uses_normal_center_even_two_lines (__main__.Tests.test_no_crossing_uses_normal_center_even_two_lines) ... ok
+test_other_judgments_unchanged (__main__.Tests.test_other_judgments_unchanged) ... ok
+test_other_route_straight_guides_and_choices_unchanged (__main__.Tests.test_other_route_straight_guides_and_choices_unchanged) ... ok
+test_single_line_cannot_use_two_raw_fragments (__main__.Tests.test_single_line_cannot_use_two_raw_fragments) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.109s
+
+OK

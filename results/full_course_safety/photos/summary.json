@@ -1,0 +1,2437 @@
+{
+  "frames": 1798,
+  "person_observations": 274,
+  "safety_stop_frames": 118,
+  "stops": [
+    {
+      "frame": 677,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.5376882553100586,
+          "box": [
+            425,
+            0,
+            68,
+            84
+          ],
+          "foot": [
+            459.0,
+            84.0
+          ],
+          "near": true,
+          "inside": true,
+          "bounds": [
+            236.76584818541835,
+            700.891495601173
+          ],
+          "basis": "one_line_07_width"
+        },
+        {
+          "score": 0.3234248459339142,
+          "box": [
+            544,
+            0,
+            68,
+            79
+          ],
+          "foot": [
+            578.0,
+            79.0
+          ],
+          "near": true,
+          "inside": true,
+          "bounds": [
+            242.47699188043293,
+            706.6026392961876
+          ],
+          "basis": "one_line_07_width"
+        }
+      ]
+    },
+    {
+      "frame": 678,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.3061056435108185,
+          "box": [
+            519,
+            0,
+            69,
+            79
+          ],
+          "foot": [
+            553.5,
+            79.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            669.1074394774799,
+            674.6216216216217
+          ],
+          "basis": "one_line_07_width"
+        }
+      ]
+    },
+    {
+      "frame": 679,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.4374714195728302,
+          "box": [
+            331,
+            0,
+            60,
+            83
+          ],
+          "foot": [
+            361.0,
+            83.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            626.8522727272727,
+            1090.9779201430274
+          ],
+          "basis": "one_line_07_width"
+        },
+        {
+          "score": 0.3729568421840668,
+          "box": [
+            445,
+            0,
+            88,
+            84
+          ],
+          "foot": [
+            489.0,
+            84.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            625.8636363636364,
+            1089.989283779391
+          ],
+          "basis": "one_line_07_width"
+        }
+      ]
+    },
+    {
+      "frame": 680,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 681,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.47959020733833313,
+          "box": [
+            279,
+            1,
+            65,
+            88
+          ],
+          "foot": [
+            311.5,
+            89.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            598.0,
+            1062.1256474157547
+          ],
+          "basis": "one_line_07_width"
+        }
+      ]
+    },
+    {
+      "frame": 682,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.35020944476127625,
+          "box": [
+            245,
+            1,
+            68,
+            85
+          ],
+          "foot": [
+            279.0,
+            86.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            564.1304347826087,
+            1028.2560821983634
+          ],
+          "basis": "one_line_07_width"
+        }
+      ]
+    },
+    {
+      "frame": 683,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.44248178601264954,
+          "box": [
+            228,
+            0,
+            71,
+            86
+          ],
+          "foot": [
+            263.5,
+            86.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            517.5,
+            551.0
+          ],
+          "basis": "two_lines"
+        }
+      ]
+    },
+    {
+      "frame": 684,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.47703132033348083,
+          "box": [
+            238,
+            0,
+            70,
+            86
+          ],
+          "foot": [
+            273.0,
+            86.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            543.0892857142857,
+            1007.2149331300403
+          ],
+          "basis": "one_line_07_width"
+        },
+        {
+          "score": 0.3383367657661438,
+          "box": [
+            366,
+            0,
+            78,
+            85
+          ],
+          "foot": [
+            405.0,
+            85.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            543.6428571428571,
+            1007.7685045586118
+          ],
+          "basis": "one_line_07_width"
+        }
+      ]
+    },
+    {
+      "frame": 685,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.5191730260848999,
+          "box": [
+            244,
+            1,
+            67,
+            86
+          ],
+          "foot": [
+            277.5,
+            87.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            556.5680076628353,
+            1020.6936550785899
+          ],
+          "basis": "one_line_07_width"
+        },
+        {
+          "score": 0.37009745836257935,
+          "box": [
+            379,
+            1,
+            75,
+            84
+          ],
+          "foot": [
+            416.5,
+            85.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            557.9444444444445,
+            1022.0700918601992
+          ],
+          "basis": "one_line_07_width"
+        }
+      ]
+    },
+    {
+      "frame": 686,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.3075239062309265,
+          "box": [
+            259,
+            0,
+            64,
+            87
+          ],
+          "foot": [
+            291.0,
+            87.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            566.9876063633001,
+            1031.1132537790547
+          ],
+          "basis": "one_line_07_width"
+        }
+      ]
+    },
+    {
+      "frame": 687,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.48258844017982483,
+          "box": [
+            237,
+            0,
+            72,
+            87
+          ],
+          "foot": [
+            273.0,
+            87.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            551.7988077496275,
+            1015.9244551653821
+          ],
+          "basis": "one_line_07_width"
+        }
+      ]
+    },
+    {
+      "frame": 691,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.4138384461402893,
+          "box": [
+            171,
+            1,
+            68,
+            88
+          ],
+          "foot": [
+            205.0,
+            89.0
+          ],
+          "near": true,
+          "inside": true,
+          "bounds": [
+            160.0,
+            480.0
+          ],
+          "basis": "선 없음-가운데 기준"
+        }
+      ]
+    },
+    {
+      "frame": 692,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 693,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.4224517047405243,
+          "box": [
+            148,
+            0,
+            65,
+            86
+          ],
+          "foot": [
+            180.5,
+            86.0
+          ],
+          "near": true,
+          "inside": true,
+          "bounds": [
+            49.09090909090909,
+            472.7464649814109
+          ],
+          "basis": "one_line_07_width"
+        }
+      ]
+    },
+    {
+      "frame": 694,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.3845556974411011,
+          "box": [
+            157,
+            0,
+            75,
+            90
+          ],
+          "foot": [
+            194.5,
+            90.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            46.663742690058484,
+            76.38461538461539
+          ],
+          "basis": "two_lines"
+        },
+        {
+          "score": 0.3558730185031891,
+          "box": [
+            299,
+            1,
+            74,
+            90
+          ],
+          "foot": [
+            336.0,
+            91.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            48.340643274853804,
+            77.53846153846155
+          ],
+          "basis": "two_lines"
+        }
+      ]
+    },
+    {
+      "frame": 695,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.48202255368232727,
+          "box": [
+            180,
+            0,
+            64,
+            86
+          ],
+          "foot": [
+            212.0,
+            86.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            41.0,
+            68.28571428571428
+          ],
+          "basis": "two_lines"
+        }
+      ]
+    },
+    {
+      "frame": 696,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.5907207727432251,
+          "box": [
+            176,
+            0,
+            70,
+            87
+          ],
+          "foot": [
+            211.0,
+            87.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            75.0,
+            90.65384615384616
+          ],
+          "basis": "two_lines"
+        },
+        {
+          "score": 0.3912355601787567,
+          "box": [
+            314,
+            0,
+            73,
+            89
+          ],
+          "foot": [
+            350.5,
+            89.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            78.0,
+            93.03846153846153
+          ],
+          "basis": "two_lines"
+        }
+      ]
+    },
+    {
+      "frame": 697,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.4800106883049011,
+          "box": [
+            293,
+            0,
+            72,
+            86
+          ],
+          "foot": [
+            329.0,
+            86.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            9.125,
+            55.48076923076923
+          ],
+          "basis": "two_lines"
+        },
+        {
+          "score": 0.44113415479660034,
+          "box": [
+            151,
+            0,
+            74,
+            85
+          ],
+          "foot": [
+            188.0,
+            85.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            7.0,
+            54.10096153846154
+          ],
+          "basis": "two_lines"
+        }
+      ]
+    },
+    {
+      "frame": 698,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.5501652359962463,
+          "box": [
+            259,
+            0,
+            70,
+            87
+          ],
+          "foot": [
+            294.0,
+            87.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            18.913043478260875,
+            44.0
+          ],
+          "basis": "two_lines"
+        },
+        {
+          "score": 0.5218021869659424,
+          "box": [
+            122,
+            0,
+            67,
+            84
+          ],
+          "foot": [
+            155.5,
+            84.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            14.608695652173907,
+            41.0
+          ],
+          "basis": "two_lines"
+        },
+        {
+          "score": 0.49298763275146484,
+          "box": [
+            497,
+            1,
+            57,
+            127
+          ],
+          "foot": [
+            525.5,
+            128.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            330.11071428571427,
+            445.75582558255826
+          ],
+          "basis": "two_lines"
+        }
+      ]
+    },
+    {
+      "frame": 699,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.34767410159111023,
+          "box": [
+            279,
+            -1,
+            48,
+            83
+          ],
+          "foot": [
+            303.0,
+            82.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            6.5,
+            36.33870967741936
+          ],
+          "basis": "two_lines"
+        }
+      ]
+    },
+    {
+      "frame": 700,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.3823547065258026,
+          "box": [
+            107,
+            0,
+            69,
+            77
+          ],
+          "foot": [
+            141.5,
+            77.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            -28.0,
+            17.03333333333333
+          ],
+          "basis": "two_lines"
+        }
+      ]
+    },
+    {
+      "frame": 701,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 702,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.3148900866508484,
+          "box": [
+            246,
+            0,
+            75,
+            76
+          ],
+          "foot": [
+            283.5,
+            76.0
+          ],
+          "near": true,
+          "inside": true,
+          "bounds": [
+            14.310344827586206,
+            437.96590071808805
+          ],
+          "basis": "one_line_07_width"
+        }
+      ]
+    },
+    {
+      "frame": 703,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.3777208924293518,
+          "box": [
+            263,
+            0,
+            68,
+            74
+          ],
+          "foot": [
+            297.0,
+            74.0
+          ],
+          "near": true,
+          "inside": true,
+          "bounds": [
+            31.71949221949222,
+            455.37504810999405
+          ],
+          "basis": "one_line_07_width"
+        },
+        {
+          "score": 0.34299713373184204,
+          "box": [
+            228,
+            2,
+            33,
+            70
+          ],
+          "foot": [
+            244.5,
+            72.0
+          ],
+          "near": true,
+          "inside": true,
+          "bounds": [
+            29.753071253071255,
+            453.4086271435731
+          ],
+          "basis": "one_line_07_width"
+        }
+      ]
+    },
+    {
+      "frame": 704,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.4468250274658203,
+          "box": [
+            533,
+            0,
+            49,
+            117
+          ],
+          "foot": [
+            557.5,
+            117.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            93.0,
+            478.9971051928387
+          ],
+          "basis": "two_lines"
+        }
+      ]
+    },
+    {
+      "frame": 705,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.42726099491119385,
+          "box": [
+            496,
+            0,
+            58,
+            115
+          ],
+          "foot": [
+            525.0,
+            115.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            388.82500000000005,
+            436.0740740740741
+          ],
+          "basis": "two_lines"
+        },
+        {
+          "score": 0.3099444806575775,
+          "box": [
+            207,
+            1,
+            34,
+            67
+          ],
+          "foot": [
+            224.0,
+            68.0
+          ],
+          "near": false,
+          "inside": false,
+          "bounds": null,
+          "basis": "far"
+        }
+      ]
+    },
+    {
+      "frame": 706,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.5033687949180603,
+          "box": [
+            477,
+            0,
+            52,
+            118
+          ],
+          "foot": [
+            503.0,
+            118.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            264.77777777777777,
+            401.0
+          ],
+          "basis": "two_lines"
+        },
+        {
+          "score": 0.4569230079650879,
+          "box": [
+            180,
+            0,
+            33,
+            68
+          ],
+          "foot": [
+            196.5,
+            68.0
+          ],
+          "near": false,
+          "inside": false,
+          "bounds": null,
+          "basis": "far"
+        }
+      ]
+    },
+    {
+      "frame": 707,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 708,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 709,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 710,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.33676183223724365,
+          "box": [
+            266,
+            0,
+            76,
+            74
+          ],
+          "foot": [
+            304.0,
+            74.0
+          ],
+          "near": true,
+          "inside": true,
+          "bounds": [
+            45.92307692307692,
+            469.57863281357874
+          ],
+          "basis": "one_line_07_width"
+        }
+      ]
+    },
+    {
+      "frame": 711,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.333578497171402,
+          "box": [
+            276,
+            0,
+            78,
+            77
+          ],
+          "foot": [
+            315.0,
+            77.0
+          ],
+          "near": true,
+          "inside": true,
+          "bounds": [
+            55.14497288277013,
+            478.80052877327194
+          ],
+          "basis": "one_line_07_width"
+        }
+      ]
+    },
+    {
+      "frame": 712,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.31917402148246765,
+          "box": [
+            122,
+            0,
+            75,
+            73
+          ],
+          "foot": [
+            159.5,
+            73.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            160.0,
+            480.0
+          ],
+          "basis": "선 없음-가운데 기준"
+        }
+      ]
+    },
+    {
+      "frame": 713,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.4268838167190552,
+          "box": [
+            228,
+            0,
+            77,
+            76
+          ],
+          "foot": [
+            266.5,
+            76.0
+          ],
+          "near": true,
+          "inside": true,
+          "bounds": [
+            17.87953091684435,
+            441.5350868073462
+          ],
+          "basis": "one_line_07_width"
+        }
+      ]
+    },
+    {
+      "frame": 714,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.5370935797691345,
+          "box": [
+            191,
+            0,
+            77,
+            75
+          ],
+          "foot": [
+            229.5,
+            75.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            -11.01313285116102,
+            32.907367349026025
+          ],
+          "basis": "one_line_07_width"
+        }
+      ]
+    },
+    {
+      "frame": 715,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 716,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.46301349997520447,
+          "box": [
+            168,
+            0,
+            84,
+            78
+          ],
+          "foot": [
+            210.0,
+            78.0
+          ],
+          "near": true,
+          "inside": true,
+          "bounds": [
+            160.0,
+            480.0
+          ],
+          "basis": "선 없음-가운데 기준"
+        }
+      ]
+    },
+    {
+      "frame": 717,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 718,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.3470381796360016,
+          "box": [
+            124,
+            -1,
+            62,
+            84
+          ],
+          "foot": [
+            155.0,
+            83.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            160.0,
+            480.0
+          ],
+          "basis": "선 없음-가운데 기준"
+        }
+      ]
+    },
+    {
+      "frame": 719,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.31964772939682007,
+          "box": [
+            82,
+            0,
+            80,
+            74
+          ],
+          "foot": [
+            122.0,
+            74.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            160.0,
+            480.0
+          ],
+          "basis": "선 없음-가운데 기준"
+        }
+      ]
+    },
+    {
+      "frame": 720,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.5345223546028137,
+          "box": [
+            39,
+            0,
+            78,
+            77
+          ],
+          "foot": [
+            78.0,
+            77.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            160.0,
+            480.0
+          ],
+          "basis": "선 없음-가운데 기준"
+        },
+        {
+          "score": 0.3969476819038391,
+          "box": [
+            349,
+            0,
+            66,
+            137
+          ],
+          "foot": [
+            382.0,
+            137.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            -71.21875,
+            23.84615384615384
+          ],
+          "basis": "two_lines"
+        }
+      ]
+    },
+    {
+      "frame": 721,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.3313106894493103,
+          "box": [
+            0,
+            0,
+            32,
+            73
+          ],
+          "foot": [
+            16.0,
+            73.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            160.0,
+            480.0
+          ],
+          "basis": "선 없음-가운데 기준"
+        }
+      ]
+    },
+    {
+      "frame": 722,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.44078001379966736,
+          "box": [
+            0,
+            0,
+            29,
+            73
+          ],
+          "foot": [
+            14.5,
+            73.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            160.0,
+            480.0
+          ],
+          "basis": "선 없음-가운데 기준"
+        }
+      ]
+    },
+    {
+      "frame": 723,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.6556442975997925,
+          "box": [
+            364,
+            6,
+            44,
+            128
+          ],
+          "foot": [
+            386.0,
+            134.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            61.0,
+            260.5
+          ],
+          "basis": "two_lines"
+        }
+      ]
+    },
+    {
+      "frame": 724,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 725,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.4751366376876831,
+          "box": [
+            53,
+            0,
+            80,
+            73
+          ],
+          "foot": [
+            93.0,
+            73.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            160.0,
+            480.0
+          ],
+          "basis": "선 없음-가운데 기준"
+        },
+        {
+          "score": 0.3948899805545807,
+          "box": [
+            1,
+            0,
+            62,
+            71
+          ],
+          "foot": [
+            32.0,
+            71.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            160.0,
+            480.0
+          ],
+          "basis": "선 없음-가운데 기준"
+        },
+        {
+          "score": 0.3004709780216217,
+          "box": [
+            423,
+            4,
+            54,
+            132
+          ],
+          "foot": [
+            450.0,
+            136.0
+          ],
+          "near": true,
+          "inside": true,
+          "bounds": [
+            336.5,
+            621.5
+          ],
+          "basis": "two_lines"
+        }
+      ]
+    },
+    {
+      "frame": 726,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.3420010805130005,
+          "box": [
+            72,
+            0,
+            78,
+            77
+          ],
+          "foot": [
+            111.0,
+            77.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            160.0,
+            480.0
+          ],
+          "basis": "선 없음-가운데 기준"
+        },
+        {
+          "score": 0.323943555355072,
+          "box": [
+            13,
+            0,
+            64,
+            74
+          ],
+          "foot": [
+            45.0,
+            74.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            160.0,
+            480.0
+          ],
+          "basis": "선 없음-가운데 기준"
+        }
+      ]
+    },
+    {
+      "frame": 727,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.4700446128845215,
+          "box": [
+            434,
+            0,
+            51,
+            137
+          ],
+          "foot": [
+            459.5,
+            137.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            116.27777777777777,
+            331.5
+          ],
+          "basis": "two_lines"
+        },
+        {
+          "score": 0.340055912733078,
+          "box": [
+            33,
+            0,
+            33,
+            71
+          ],
+          "foot": [
+            49.5,
+            71.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            160.0,
+            480.0
+          ],
+          "basis": "선 없음-가운데 기준"
+        }
+      ]
+    },
+    {
+      "frame": 728,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.5970481634140015,
+          "box": [
+            400,
+            0,
+            50,
+            138
+          ],
+          "foot": [
+            425.0,
+            138.0
+          ],
+          "near": true,
+          "inside": true,
+          "bounds": [
+            303.75,
+            577.75
+          ],
+          "basis": "two_lines"
+        },
+        {
+          "score": 0.5055093765258789,
+          "box": [
+            0,
+            0,
+            30,
+            69
+          ],
+          "foot": [
+            15.0,
+            69.0
+          ],
+          "near": false,
+          "inside": false,
+          "bounds": null,
+          "basis": "far"
+        },
+        {
+          "score": 0.3756408393383026,
+          "box": [
+            24,
+            0,
+            78,
+            73
+          ],
+          "foot": [
+            63.0,
+            73.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            160.0,
+            480.0
+          ],
+          "basis": "선 없음-가운데 기준"
+        }
+      ]
+    },
+    {
+      "frame": 729,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.517868161201477,
+          "box": [
+            421,
+            1,
+            50,
+            137
+          ],
+          "foot": [
+            446.0,
+            138.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            37.96153846153846,
+            313.5
+          ],
+          "basis": "two_lines"
+        }
+      ]
+    },
+    {
+      "frame": 730,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.3209874629974365,
+          "box": [
+            430,
+            0,
+            63,
+            135
+          ],
+          "foot": [
+            461.5,
+            135.0
+          ],
+          "near": true,
+          "inside": true,
+          "bounds": [
+            341.5,
+            492.69625834695626
+          ],
+          "basis": "one_line_07_width"
+        }
+      ]
+    },
+    {
+      "frame": 731,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.37310171127319336,
+          "box": [
+            0,
+            0,
+            65,
+            64
+          ],
+          "foot": [
+            32.5,
+            64.0
+          ],
+          "near": false,
+          "inside": false,
+          "bounds": null,
+          "basis": "far"
+        },
+        {
+          "score": 0.35957691073417664,
+          "box": [
+            461,
+            0,
+            50,
+            136
+          ],
+          "foot": [
+            486.0,
+            136.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            378.6875,
+            400.5
+          ],
+          "basis": "two_lines"
+        },
+        {
+          "score": 0.3494319021701813,
+          "box": [
+            55,
+            0,
+            80,
+            68
+          ],
+          "foot": [
+            95.0,
+            68.0
+          ],
+          "near": false,
+          "inside": false,
+          "bounds": null,
+          "basis": "far"
+        }
+      ]
+    },
+    {
+      "frame": 732,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.4019812047481537,
+          "box": [
+            4,
+            0,
+            70,
+            66
+          ],
+          "foot": [
+            39.0,
+            66.0
+          ],
+          "near": false,
+          "inside": false,
+          "bounds": null,
+          "basis": "far"
+        }
+      ]
+    },
+    {
+      "frame": 733,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.3763618767261505,
+          "box": [
+            2,
+            0,
+            68,
+            68
+          ],
+          "foot": [
+            36.0,
+            68.0
+          ],
+          "near": false,
+          "inside": false,
+          "bounds": null,
+          "basis": "far"
+        },
+        {
+          "score": 0.34018662571907043,
+          "box": [
+            482,
+            1,
+            47,
+            140
+          ],
+          "foot": [
+            505.5,
+            141.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            374.5,
+            422.75
+          ],
+          "basis": "two_lines"
+        }
+      ]
+    },
+    {
+      "frame": 734,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 735,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.30824077129364014,
+          "box": [
+            81,
+            0,
+            36,
+            70
+          ],
+          "foot": [
+            99.0,
+            70.0
+          ],
+          "near": false,
+          "inside": false,
+          "bounds": null,
+          "basis": "far"
+        }
+      ]
+    },
+    {
+      "frame": 736,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.3638530373573303,
+          "box": [
+            126,
+            0,
+            81,
+            73
+          ],
+          "foot": [
+            166.5,
+            73.0
+          ],
+          "near": true,
+          "inside": true,
+          "bounds": [
+            160.0,
+            480.0
+          ],
+          "basis": "선 없음-가운데 기준"
+        }
+      ]
+    },
+    {
+      "frame": 737,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 738,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.3027351200580597,
+          "box": [
+            150,
+            0,
+            83,
+            75
+          ],
+          "foot": [
+            191.5,
+            75.0
+          ],
+          "near": true,
+          "inside": true,
+          "bounds": [
+            160.0,
+            480.0
+          ],
+          "basis": "선 없음-가운데 기준"
+        }
+      ]
+    },
+    {
+      "frame": 739,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.6381048560142517,
+          "box": [
+            196,
+            0,
+            82,
+            74
+          ],
+          "foot": [
+            237.0,
+            74.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            508.6666666666667,
+            503.62887852833643
+          ],
+          "basis": "one_line_07_width"
+        },
+        {
+          "score": 0.32642272114753723,
+          "box": [
+            40,
+            0,
+            80,
+            69
+          ],
+          "foot": [
+            80.0,
+            69.0
+          ],
+          "near": false,
+          "inside": false,
+          "bounds": null,
+          "basis": "far"
+        }
+      ]
+    },
+    {
+      "frame": 740,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 741,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 742,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.39545515179634094,
+          "box": [
+            201,
+            0,
+            84,
+            75
+          ],
+          "foot": [
+            243.0,
+            75.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            450.25,
+            496.0
+          ],
+          "basis": "two_lines"
+        }
+      ]
+    },
+    {
+      "frame": 743,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.4450957477092743,
+          "box": [
+            220,
+            0,
+            88,
+            78
+          ],
+          "foot": [
+            264.0,
+            78.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            508.2173913043478,
+            532.9705882352941
+          ],
+          "basis": "two_lines"
+        }
+      ]
+    },
+    {
+      "frame": 744,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 745,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 746,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.3535280227661133,
+          "box": [
+            228,
+            0,
+            86,
+            77
+          ],
+          "foot": [
+            271.0,
+            77.0
+          ],
+          "near": true,
+          "inside": false,
+          "bounds": [
+            -152.0,
+            -147.70183414460635
+          ],
+          "basis": "one_line_07_width"
+        }
+      ]
+    },
+    {
+      "frame": 747,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.3208642303943634,
+          "box": [
+            201,
+            0,
+            87,
+            76
+          ],
+          "foot": [
+            244.5,
+            76.0
+          ],
+          "near": true,
+          "inside": true,
+          "bounds": [
+            160.0,
+            480.0
+          ],
+          "basis": "선 없음-가운데 기준"
+        }
+      ]
+    },
+    {
+      "frame": 748,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 749,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.42682358622550964,
+          "box": [
+            208,
+            0,
+            86,
+            73
+          ],
+          "foot": [
+            251.0,
+            73.0
+          ],
+          "near": true,
+          "inside": true,
+          "bounds": [
+            160.0,
+            480.0
+          ],
+          "basis": "선 없음-가운데 기준"
+        }
+      ]
+    },
+    {
+      "frame": 750,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.48396483063697815,
+          "box": [
+            233,
+            0,
+            87,
+            76
+          ],
+          "foot": [
+            276.5,
+            76.0
+          ],
+          "near": true,
+          "inside": true,
+          "bounds": [
+            160.0,
+            480.0
+          ],
+          "basis": "선 없음-가운데 기준"
+        }
+      ]
+    },
+    {
+      "frame": 751,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.38560453057289124,
+          "box": [
+            231,
+            0,
+            86,
+            75
+          ],
+          "foot": [
+            274.0,
+            75.0
+          ],
+          "near": true,
+          "inside": true,
+          "bounds": [
+            160.0,
+            480.0
+          ],
+          "basis": "선 없음-가운데 기준"
+        }
+      ]
+    },
+    {
+      "frame": 752,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 753,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.3301251232624054,
+          "box": [
+            239,
+            0,
+            87,
+            75
+          ],
+          "foot": [
+            282.5,
+            75.0
+          ],
+          "near": true,
+          "inside": true,
+          "bounds": [
+            160.0,
+            480.0
+          ],
+          "basis": "선 없음-가운데 기준"
+        }
+      ]
+    },
+    {
+      "frame": 754,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 755,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 756,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 757,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 758,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.34441110491752625,
+          "box": [
+            282,
+            0,
+            92,
+            73
+          ],
+          "foot": [
+            328.0,
+            73.0
+          ],
+          "near": true,
+          "inside": true,
+          "bounds": [
+            160.0,
+            480.0
+          ],
+          "basis": "선 없음-가운데 기준"
+        }
+      ]
+    },
+    {
+      "frame": 759,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 760,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 761,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 762,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 763,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 764,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 765,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 766,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 767,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 768,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 1432,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.3385733664035797,
+          "box": [
+            319,
+            0,
+            72,
+            80
+          ],
+          "foot": [
+            355.0,
+            80.0
+          ],
+          "near": true,
+          "inside": true,
+          "bounds": [
+            309.9642857142857,
+            457.5
+          ],
+          "basis": "two_lines"
+        }
+      ]
+    },
+    {
+      "frame": 1433,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.41922298073768616,
+          "box": [
+            291,
+            0,
+            73,
+            83
+          ],
+          "foot": [
+            327.5,
+            83.0
+          ],
+          "near": true,
+          "inside": true,
+          "bounds": [
+            282.27027027027026,
+            759.1012492223723
+          ],
+          "basis": "one_line_07_width"
+        }
+      ]
+    },
+    {
+      "frame": 1434,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.4070863723754883,
+          "box": [
+            453,
+            0,
+            40,
+            81
+          ],
+          "foot": [
+            473.0,
+            81.0
+          ],
+          "near": true,
+          "inside": true,
+          "bounds": [
+            311.52,
+            788.350978952102
+          ],
+          "basis": "one_line_07_width"
+        }
+      ]
+    },
+    {
+      "frame": 1435,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.3397749066352844,
+          "box": [
+            284,
+            0,
+            79,
+            80
+          ],
+          "foot": [
+            323.5,
+            80.0
+          ],
+          "near": true,
+          "inside": true,
+          "bounds": [
+            292.24242424242425,
+            769.0734031945262
+          ],
+          "basis": "one_line_07_width"
+        }
+      ]
+    },
+    {
+      "frame": 1436,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 1437,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 1438,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 1439,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 1440,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.3195330500602722,
+          "box": [
+            360,
+            0,
+            43,
+            48
+          ],
+          "foot": [
+            381.5,
+            48.0
+          ],
+          "near": false,
+          "inside": false,
+          "bounds": null,
+          "basis": "far"
+        }
+      ]
+    },
+    {
+      "frame": 1441,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 1442,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 1443,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 1444,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 1445,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 1452,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.34243032336235046,
+          "box": [
+            241,
+            0,
+            85,
+            80
+          ],
+          "foot": [
+            283.5,
+            80.0
+          ],
+          "near": true,
+          "inside": true,
+          "bounds": [
+            220.78564307078764,
+            689.1850315108385
+          ],
+          "basis": "one_line_07_width"
+        }
+      ]
+    },
+    {
+      "frame": 1453,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.45940449833869934,
+          "box": [
+            243,
+            0,
+            87,
+            84
+          ],
+          "foot": [
+            286.5,
+            84.0
+          ],
+          "near": true,
+          "inside": true,
+          "bounds": [
+            224.96610169491527,
+            693.3654901349662
+          ],
+          "basis": "one_line_07_width"
+        }
+      ]
+    },
+    {
+      "frame": 1454,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.3893398344516754,
+          "box": [
+            240,
+            0,
+            85,
+            80
+          ],
+          "foot": [
+            282.5,
+            80.0
+          ],
+          "near": true,
+          "inside": true,
+          "bounds": [
+            226.8448275862069,
+            695.2442160262577
+          ],
+          "basis": "one_line_07_width"
+        }
+      ]
+    },
+    {
+      "frame": 1455,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 1456,
+      "reason": "PERSONWAIT",
+      "person": [
+        {
+          "score": 0.3791152536869049,
+          "box": [
+            398,
+            0,
+            46,
+            87
+          ],
+          "foot": [
+            421.0,
+            87.0
+          ],
+          "near": true,
+          "inside": true,
+          "bounds": [
+            215.70909090909092,
+            684.1084793491418
+          ],
+          "basis": "one_line_07_width"
+        }
+      ]
+    },
+    {
+      "frame": 1457,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 1458,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 1459,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 1460,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 1461,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 1462,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 1463,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 1464,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 1465,
+      "reason": "PERSONWAIT",
+      "person": []
+    },
+    {
+      "frame": 1466,
+      "reason": "PERSONWAIT",
+      "person": []
+    }
+  ],
+  "identical_to_legacy": false,
+  "update_median_ms": 0.06212000153027475,
+  "update_p95_ms": 0.12981599938939303
+}

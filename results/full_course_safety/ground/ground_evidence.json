@@ -1,0 +1,118 @@
+{
+  "reason_counts": {
+    "not_black_floor": 14,
+    "above_road_end": 82
+  },
+  "examples": [
+    {
+      "frame": 677,
+      "score": 0.5376882553100586,
+      "box": [
+        425,
+        0,
+        68,
+        84
+      ],
+      "foot": [
+        459.0,
+        84.0
+      ],
+      "near": true,
+      "inside": false,
+      "bounds": null,
+      "basis": "offroad",
+      "offroad_reason": "above_road_end",
+      "road_top": 112,
+      "horizon": 114.99796501322012,
+      "ground_dark_ratio": null
+    },
+    {
+      "frame": 677,
+      "score": 0.3234248459339142,
+      "box": [
+        544,
+        0,
+        68,
+        79
+      ],
+      "foot": [
+        578.0,
+        79.0
+      ],
+      "near": true,
+      "inside": false,
+      "bounds": null,
+      "basis": "offroad",
+      "offroad_reason": "above_road_end",
+      "road_top": 112,
+      "horizon": 114.99796501322012,
+      "ground_dark_ratio": null
+    },
+    {
+      "frame": 691,
+      "score": 0.4138384461402893,
+      "box": [
+        171,
+        1,
+        68,
+        88
+      ],
+      "foot": [
+        205.0,
+        89.0
+      ],
+      "near": true,
+      "inside": false,
+      "bounds": null,
+      "basis": "offroad",
+      "offroad_reason": "above_road_end",
+      "road_top": 113,
+      "horizon": null,
+      "ground_dark_ratio": null
+    },
+    {
+      "frame": 1432,
+      "score": 0.3385733664035797,
+      "box": [
+        319,
+        0,
+        72,
+        80
+      ],
+      "foot": [
+        355.0,
+        80.0
+      ],
+      "near": true,
+      "inside": false,
+      "bounds": null,
+      "basis": "offroad",
+      "offroad_reason": "above_road_end",
+      "road_top": 105,
+      "horizon": 91.64294443222018,
+      "ground_dark_ratio": null
+    },
+    {
+      "frame": 1452,
+      "score": 0.34243032336235046,
+      "box": [
+        241,
+        0,
+        85,
+        80
+      ],
+      "foot": [
+        283.5,
+        80.0
+      ],
+      "near": true,
+      "inside": false,
+      "bounds": null,
+      "basis": "offroad",
+      "offroad_reason": "above_road_end",
+      "road_top": 105,
+      "horizon": 94.21636881642246,
+      "ground_dark_ratio": null
+    }
+  ]
+}

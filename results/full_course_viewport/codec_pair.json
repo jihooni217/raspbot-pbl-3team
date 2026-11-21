@@ -1,0 +1,10 @@
+{
+  "codec": "avc1",
+  "fps": 15,
+  "frames_per_file": [
+    4,
+    4
+  ],
+  "fake_camera": true,
+  "temporary_videos_removed": true
+}

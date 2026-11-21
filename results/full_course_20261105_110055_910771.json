@@ -1,0 +1,336 @@
+{
+  "check": true,
+  "reason": "20초 경과",
+  "errors": [],
+  "total_seconds": 23.204510241999742,
+  "motor_commands": 0,
+  "motor_batches": 0,
+  "csv": "/home/pi/raspbot/results/full_course_20261105_110055_910771.csv",
+  "videos": {
+    "raw": "/home/pi/raspbot/results/videos/raw_20261105_110058_153627.mp4",
+    "blackbox": "/home/pi/raspbot/results/videos/blackbox_20261105_110058_153627.mp4"
+  },
+  "metrics": {
+    "seconds": 20.961890304000008,
+    "lane_frames": 600,
+    "yolo_frames": 192,
+    "lane_hz": 28.62337276354825,
+    "yolo_hz": 9.15947928433544,
+    "temperature_start_c": 36.4,
+    "temperature_end_c": 53.45,
+    "samples": [
+      {
+        "seconds": 1.0074339809998492,
+        "lane_hz": 30.771247133468137,
+        "yolo_hz": 7.940967002185325,
+        "cpu_c": 39.7,
+        "speeds": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "route_step": 1,
+        "reason": "초음파 오류 3번 — 정지"
+      },
+      {
+        "seconds": 2.01312378800003,
+        "lane_hz": 29.83027151233184,
+        "yolo_hz": 10.937766221188342,
+        "cpu_c": 40.8,
+        "speeds": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "route_step": 1,
+        "reason": "초음파 오류 3번 — 정지"
+      },
+      {
+        "seconds": 3.0181872699999985,
+        "lane_hz": 29.84886083046537,
+        "yolo_hz": 9.94962027682179,
+        "cpu_c": 42.45,
+        "speeds": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "route_step": 1,
+        "reason": "초음파 오류 3번 — 정지"
+      },
+      {
+        "seconds": 4.0188878959997965,
+        "lane_hz": 29.978995935999404,
+        "yolo_hz": 8.993698780799821,
+        "cpu_c": 43.55,
+        "speeds": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "route_step": 1,
+        "reason": "초음파 오류 3번 — 정지"
+      },
+      {
+        "seconds": 5.018993753999894,
+        "lane_hz": 29.996824596138985,
+        "yolo_hz": 8.999047378841695,
+        "cpu_c": 45.2,
+        "speeds": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "route_step": 1,
+        "reason": "초음파 오류 3번 — 정지"
+      },
+      {
+        "seconds": 6.023872613999629,
+        "lane_hz": 29.854344831184832,
+        "yolo_hz": 8.956303449355449,
+        "cpu_c": 45.2,
+        "speeds": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "route_step": 1,
+        "reason": "초음파 오류 3번 — 정지"
+      },
+      {
+        "seconds": 7.0251932449996275,
+        "lane_hz": 29.96043332298028,
+        "yolo_hz": 8.988129996894084,
+        "cpu_c": 46.3,
+        "speeds": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "route_step": 1,
+        "reason": "초음파 오류 3번 — 정지"
+      },
+      {
+        "seconds": 8.02624532999971,
+        "lane_hz": 29.968470621583602,
+        "yolo_hz": 8.990541186475081,
+        "cpu_c": 47.95,
+        "speeds": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "route_step": 1,
+        "reason": "초음파 오류 3번 — 정지"
+      },
+      {
+        "seconds": 9.041279296999619,
+        "lane_hz": 30.540849870891854,
+        "yolo_hz": 8.866698349613763,
+        "cpu_c": 47.4,
+        "speeds": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "route_step": 1,
+        "reason": "초음파 오류 3번 — 정지"
+      },
+      {
+        "seconds": 10.04129841799977,
+        "lane_hz": 29.99942638096366,
+        "yolo_hz": 8.999827914289098,
+        "cpu_c": 48.5,
+        "speeds": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "route_step": 1,
+        "reason": "초음파 오류 3번 — 정지 / 트랙 밖: 도로 끝 위"
+      },
+      {
+        "seconds": 11.051676869999937,
+        "lane_hz": 29.691844615857867,
+        "yolo_hz": 8.90755338475736,
+        "cpu_c": 50.15,
+        "speeds": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "route_step": 1,
+        "reason": "초음파 오류 3번 — 정지"
+      },
+      {
+        "seconds": 12.069678414000009,
+        "lane_hz": 30.451820218455207,
+        "yolo_hz": 8.840851031164416,
+        "cpu_c": 50.15,
+        "speeds": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "route_step": 1,
+        "reason": "초음파 오류 3번 — 정지"
+      },
+      {
+        "seconds": 13.093498367999928,
+        "lane_hz": 29.302027063249035,
+        "yolo_hz": 9.767342354416346,
+        "cpu_c": 50.15,
+        "speeds": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "route_step": 1,
+        "reason": "초음파 오류 3번 — 정지 / 트랙 밖: 도로 끝 위"
+      },
+      {
+        "seconds": 14.117392551999728,
+        "lane_hz": 30.276566157354047,
+        "yolo_hz": 8.78997081987698,
+        "cpu_c": 51.25,
+        "speeds": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "route_step": 1,
+        "reason": "초음파 오류 3번 — 정지"
+      },
+      {
+        "seconds": 15.120828118999725,
+        "lane_hz": 29.89728587127119,
+        "yolo_hz": 8.969185761381357,
+        "cpu_c": 51.25,
+        "speeds": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "route_step": 1,
+        "reason": "초음파 오류 3번 — 정지"
+      },
+      {
+        "seconds": 16.12685511799964,
+        "lane_hz": 29.820273242987348,
+        "yolo_hz": 8.946081972896204,
+        "cpu_c": 51.25,
+        "speeds": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "route_step": 1,
+        "reason": "초음파 오류 3번 — 정지"
+      },
+      {
+        "seconds": 17.1383651189999,
+        "lane_hz": 30.647250120458285,
+        "yolo_hz": 9.886209716276866,
+        "cpu_c": 51.25,
+        "speeds": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "route_step": 1,
+        "reason": "초음파 오류 3번 — 정지"
+      },
+      {
+        "seconds": 18.141979470000024,
+        "lane_hz": 29.89195996460626,
+        "yolo_hz": 8.96758798938188,
+        "cpu_c": 51.8,
+        "speeds": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "route_step": 1,
+        "reason": "초음파 오류 3번 — 정지 / 트랙 밖: 도로 끝 위"
+      },
+      {
+        "seconds": 19.14384708999978,
+        "lane_hz": 29.94407584507749,
+        "yolo_hz": 8.983222753523247,
+        "cpu_c": 52.35,
+        "speeds": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "route_step": 1,
+        "reason": "초음파 오류 3번 — 정지"
+      }
+    ],
+    "last_report": {
+      "left": null,
+      "right": null,
+      "left_count": 0,
+      "right_count": 0,
+      "width": null,
+      "center": null,
+      "speeds": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "state": "ULTRA_ERROR",
+      "stopped": false,
+      "last_turn": null,
+      "floor_color": null,
+      "base_speed": 35,
+      "slow_active": false,
+      "route_step": 1,
+      "choice": null,
+      "route_leg": "FRONT",
+      "choice_end": null,
+      "guide_center": null,
+      "crossings": 0,
+      "start_passes": 0,
+      "route_state": "WAITFRAME",
+      "route_clock": 3244.562696418,
+      "paused_seconds": 19.95631397399984,
+      "safety_state": "ULTRA_ERROR",
+      "safety_message": "초음파 오류 3번 — 정지",
+      "blocked": true,
+      "vision_fresh": true,
+      "vision_age": 0.12786729399977048,
+      "person": [],
+      "stop_boxes": [],
+      "person_locked": false,
+      "person_since": null,
+      "stop_until": null,
+      "ignore_until": null,
+      "distance_cm": null,
+      "ultra_state": "연속 오류 정지",
+      "ultra_invalid_count": 335,
+      "distance_error": null,
+      "runtime_lane_frames": 600
+    }
+  }
+}

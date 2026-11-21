@@ -1,0 +1,8 @@
+20:21:55.634 [dash] ──────── 새 주행 ────────
+20:21:55.634 [dash] 시작: python3 missions/11_right_lane_turn.py  (PID 4880, 회차 dash_202155)
+20:21:57.527 [child] 파일: /home/pi/raspbot/results/videos/blackbox_20261104_202157_522399_1115cbde.mp4
+20:21:57.543 [child] 차선 계산: {"left": null, "right": null, "left_count": 0, "right_count": 0, "divider": null, "white": 1.0, "right_width": null, "full_width": null, "width": null, "center": null, "speeds": [0, 0, 0, 0], "state": "LOSTSTOP", "stopped": true, "reason": "LOSTSTOP", "notes": []}
+20:21:57.645 [dash] 원시 기록 따라 읽기: results/right_lane_turn_20261104_202156_541984.csv
+20:21:57.975 [child] 종료: LOSTSTOP, 기록: /home/pi/raspbot/results/right_lane_turn_20261104_202156_541984.csv. 실제 정지 위치는 사용자 확인이 필요합니다.
+20:21:58.074 [dash] 주행 프로그램 종료: 종료 코드 0 (정상)
+20:21:58.507 [dash] 네 바퀴 0 · 부저/초음파 끄기 3회 보냄 (조종판). 실제 정지는 눈으로 확인하세요.

@@ -1,0 +1,223 @@
+{
+  "1": {
+    "index": 1,
+    "raw": 481,
+    "state": "OBSTACLEWAIT",
+    "median": null,
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "errors": 0
+  },
+  "2": {
+    "index": 2,
+    "raw": 481,
+    "state": "OBSTACLEWAIT",
+    "median": null,
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "errors": 0
+  },
+  "3": {
+    "index": 3,
+    "raw": 481,
+    "state": "CLEAR",
+    "median": 400.0,
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "errors": 0
+  },
+  "4": {
+    "index": 4,
+    "raw": 481,
+    "state": "CLEAR",
+    "median": 400.0,
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "errors": 0
+  },
+  "5": {
+    "index": 5,
+    "raw": 481,
+    "state": "CLEAR",
+    "median": 400.0,
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "errors": 0
+  },
+  "6": {
+    "index": 6,
+    "raw": 0,
+    "state": "CLEAR",
+    "median": 400.0,
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "errors": 1
+  },
+  "7": {
+    "index": 7,
+    "raw": 0,
+    "state": "CLEAR",
+    "median": 400.0,
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "errors": 2
+  },
+  "8": {
+    "index": 8,
+    "raw": 0,
+    "state": "ULTRA_ERROR",
+    "median": null,
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "errors": 3
+  },
+  "9": {
+    "index": 9,
+    "raw": 481,
+    "state": "OBSTACLEWAIT",
+    "median": null,
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "errors": 0
+  },
+  "10": {
+    "index": 10,
+    "raw": 481,
+    "state": "OBSTACLEWAIT",
+    "median": null,
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "errors": 0
+  },
+  "11": {
+    "index": 11,
+    "raw": 481,
+    "state": "CLEAR",
+    "median": 400.0,
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "errors": 0
+  },
+  "12": {
+    "index": 12,
+    "raw": 24,
+    "state": "CLEAR",
+    "median": 400.0,
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "errors": 0
+  },
+  "13": {
+    "index": 13,
+    "raw": 24,
+    "state": "OBSTACLEWAIT",
+    "median": 24.0,
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "errors": 0
+  },
+  "14": {
+    "index": 14,
+    "raw": 24,
+    "state": "OBSTACLEWAIT",
+    "median": 24.0,
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "errors": 0
+  },
+  "15": {
+    "index": 15,
+    "raw": 36,
+    "state": "OBSTACLEWAIT",
+    "median": 24.0,
+    "speeds": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "errors": 0
+  },
+  "16": {
+    "index": 16,
+    "raw": 36,
+    "state": "CLEAR",
+    "median": 36.0,
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "errors": 0
+  },
+  "17": {
+    "index": 17,
+    "raw": 36,
+    "state": "CLEAR",
+    "median": 36.0,
+    "speeds": [
+      42,
+      42,
+      28,
+      28
+    ],
+    "errors": 0
+  }
+}

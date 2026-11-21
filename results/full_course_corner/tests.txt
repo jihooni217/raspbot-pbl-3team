@@ -1,0 +1,12 @@
+test_collapse_rejected_and_normal_width_unchanged (__main__.Tests.test_collapse_rejected_and_normal_width_unchanged) ... ok
+test_forks_roundabouts_and_active_choice_excluded (__main__.Tests.test_forks_roundabouts_and_active_choice_excluded) ... ok
+test_hold_cannot_reverse_for_three_seconds (__main__.Tests.test_hold_cannot_reverse_for_three_seconds) ... ok
+test_horizontal_geometry_and_missing_line_stop_have_priority (__main__.Tests.test_horizontal_geometry_and_missing_line_stop_have_priority) ... ok
+test_left_direction_supported (__main__.Tests.test_left_direction_supported) ... ok
+test_only_real_two_lines_can_end_after_point3 (__main__.Tests.test_only_real_two_lines_can_end_after_point3) ... ok
+test_single_side_identity_does_not_switch_to_stale_other_side (__main__.Tests.test_single_side_identity_does_not_switch_to_stale_other_side) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.018s
+
+OK

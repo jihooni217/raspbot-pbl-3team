@@ -1,0 +1,342 @@
+{
+  "reviewed_onsets": 48,
+  "note": "48개 구간 시작 장면 검토.95개 전체 검출 프레임 각각의 정답을 붙인 결과는 아님.",
+  "examples": [
+    {
+      "video": "204945",
+      "frame": 16,
+      "seconds": 1.0666666666666667,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_204945_297796_6c23c5b9/after_roundabout_0016.jpg"
+    },
+    {
+      "video": "204945",
+      "frame": 56,
+      "seconds": 3.7333333333333334,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_204945_297796_6c23c5b9/after_roundabout_0056.jpg"
+    },
+    {
+      "video": "204945",
+      "frame": 59,
+      "seconds": 3.933333333333333,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_204945_297796_6c23c5b9/after_roundabout_0059.jpg"
+    },
+    {
+      "video": "204945",
+      "frame": 63,
+      "seconds": 4.2,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_204945_297796_6c23c5b9/after_roundabout_0063.jpg"
+    },
+    {
+      "video": "204945",
+      "frame": 68,
+      "seconds": 4.533333333333333,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_204945_297796_6c23c5b9/after_roundabout_0068.jpg"
+    },
+    {
+      "video": "204945",
+      "frame": 171,
+      "seconds": 11.4,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_204945_297796_6c23c5b9/after_roundabout_0171.jpg"
+    },
+    {
+      "video": "204945",
+      "frame": 180,
+      "seconds": 12.0,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_204945_297796_6c23c5b9/after_roundabout_0180.jpg"
+    },
+    {
+      "video": "204945",
+      "frame": 197,
+      "seconds": 13.133333333333333,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_204945_297796_6c23c5b9/after_roundabout_0197.jpg"
+    },
+    {
+      "video": "204945",
+      "frame": 200,
+      "seconds": 13.333333333333334,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_204945_297796_6c23c5b9/after_roundabout_0200.jpg"
+    },
+    {
+      "video": "204945",
+      "frame": 207,
+      "seconds": 13.8,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_204945_297796_6c23c5b9/after_roundabout_0207.jpg"
+    },
+    {
+      "video": "204945",
+      "frame": 210,
+      "seconds": 14.0,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_204945_297796_6c23c5b9/after_roundabout_0210.jpg"
+    },
+    {
+      "video": "204945",
+      "frame": 219,
+      "seconds": 14.6,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_204945_297796_6c23c5b9/after_roundabout_0219.jpg"
+    },
+    {
+      "video": "204945",
+      "frame": 274,
+      "seconds": 18.266666666666666,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_204945_297796_6c23c5b9/after_roundabout_0274.jpg"
+    },
+    {
+      "video": "204945",
+      "frame": 284,
+      "seconds": 18.933333333333334,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_204945_297796_6c23c5b9/after_roundabout_0284.jpg"
+    },
+    {
+      "video": "204945",
+      "frame": 288,
+      "seconds": 19.2,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_204945_297796_6c23c5b9/after_roundabout_0288.jpg"
+    },
+    {
+      "video": "204945",
+      "frame": 292,
+      "seconds": 19.466666666666665,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_204945_297796_6c23c5b9/after_roundabout_0292.jpg"
+    },
+    {
+      "video": "204945",
+      "frame": 302,
+      "seconds": 20.133333333333333,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_204945_297796_6c23c5b9/after_roundabout_0302.jpg"
+    },
+    {
+      "video": "204945",
+      "frame": 306,
+      "seconds": 20.4,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_204945_297796_6c23c5b9/after_roundabout_0306.jpg"
+    },
+    {
+      "video": "204945",
+      "frame": 314,
+      "seconds": 20.933333333333334,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_204945_297796_6c23c5b9/after_roundabout_0314.jpg"
+    },
+    {
+      "video": "214713",
+      "frame": 12,
+      "seconds": 0.8,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0012.jpg"
+    },
+    {
+      "video": "214713",
+      "frame": 20,
+      "seconds": 1.3333333333333333,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0020.jpg"
+    },
+    {
+      "video": "214713",
+      "frame": 40,
+      "seconds": 2.6666666666666665,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0040.jpg"
+    },
+    {
+      "video": "214713",
+      "frame": 44,
+      "seconds": 2.933333333333333,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0044.jpg"
+    },
+    {
+      "video": "214713",
+      "frame": 53,
+      "seconds": 3.533333333333333,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0053.jpg"
+    },
+    {
+      "video": "214713",
+      "frame": 72,
+      "seconds": 4.8,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0072.jpg"
+    },
+    {
+      "video": "214713",
+      "frame": 94,
+      "seconds": 6.266666666666667,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0094.jpg"
+    },
+    {
+      "video": "214713",
+      "frame": 125,
+      "seconds": 8.333333333333334,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0125.jpg"
+    },
+    {
+      "video": "214713",
+      "frame": 127,
+      "seconds": 8.466666666666667,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0127.jpg"
+    },
+    {
+      "video": "214713",
+      "frame": 135,
+      "seconds": 9.0,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0135.jpg"
+    },
+    {
+      "video": "214713",
+      "frame": 138,
+      "seconds": 9.2,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0138.jpg"
+    },
+    {
+      "video": "214713",
+      "frame": 145,
+      "seconds": 9.666666666666666,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0145.jpg"
+    },
+    {
+      "video": "214713",
+      "frame": 148,
+      "seconds": 9.866666666666667,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0148.jpg"
+    },
+    {
+      "video": "214713",
+      "frame": 154,
+      "seconds": 10.266666666666667,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0154.jpg"
+    },
+    {
+      "video": "214713",
+      "frame": 161,
+      "seconds": 10.733333333333333,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0161.jpg"
+    },
+    {
+      "video": "214713",
+      "frame": 184,
+      "seconds": 12.266666666666667,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0184.jpg"
+    },
+    {
+      "video": "214713",
+      "frame": 227,
+      "seconds": 15.133333333333333,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0227.jpg"
+    },
+    {
+      "video": "214713",
+      "frame": 270,
+      "seconds": 18.0,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0270.jpg"
+    },
+    {
+      "video": "214713",
+      "frame": 289,
+      "seconds": 19.266666666666666,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0289.jpg"
+    },
+    {
+      "video": "214713",
+      "frame": 326,
+      "seconds": 21.733333333333334,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0326.jpg"
+    },
+    {
+      "video": "214713",
+      "frame": 344,
+      "seconds": 22.933333333333334,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0344.jpg"
+    },
+    {
+      "video": "214713",
+      "frame": 353,
+      "seconds": 23.533333333333335,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0353.jpg"
+    },
+    {
+      "video": "214713",
+      "frame": 360,
+      "seconds": 24.0,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0360.jpg"
+    },
+    {
+      "video": "214713",
+      "frame": 363,
+      "seconds": 24.2,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0363.jpg"
+    },
+    {
+      "video": "214713",
+      "frame": 369,
+      "seconds": 24.6,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0369.jpg"
+    },
+    {
+      "video": "214713",
+      "frame": 385,
+      "seconds": 25.666666666666668,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0385.jpg"
+    },
+    {
+      "video": "214713",
+      "frame": 468,
+      "seconds": 31.2,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0468.jpg"
+    },
+    {
+      "video": "214713",
+      "frame": 539,
+      "seconds": 35.93333333333333,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0539.jpg"
+    },
+    {
+      "video": "214713",
+      "frame": 542,
+      "seconds": 36.13333333333333,
+      "assessment": "오인식: 로터리 표식 없음(각 검출 연속구간의 시작 장면을 눈으로 확인)",
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0542.jpg"
+    }
+  ]
+}

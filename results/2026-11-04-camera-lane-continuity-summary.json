@@ -1,0 +1,105 @@
+{
+  "source": "results/camera_lane_20261104_204944_314143.csv",
+  "rows": 658,
+  "windows": [
+    {
+      "seconds": [
+        12,
+        13
+      ],
+      "before": {
+        "rows": 30,
+        "name_changes": 1,
+        "left_turn_rows": 12,
+        "right_turn_rows": 18,
+        "turn_ge70_rows": 0
+      },
+      "after": {
+        "rows": 30,
+        "name_changes": 1,
+        "left_turn_rows": 12,
+        "right_turn_rows": 18,
+        "turn_ge70_rows": 0
+      },
+      "changed_name_rows": 0,
+      "changed_wheels_rows": 0,
+      "name_transitions": [
+        {
+          "seconds": 12.7393,
+          "previous_seconds": 12.6992,
+          "previous_x": 593.5,
+          "new_x": 0.0,
+          "distance": 593.5,
+          "gap": 0.04010000000000069,
+          "before_name": "left",
+          "after_name": "left"
+        }
+      ]
+    },
+    {
+      "seconds": [
+        19,
+        20
+      ],
+      "before": {
+        "rows": 30,
+        "name_changes": 2,
+        "left_turn_rows": 15,
+        "right_turn_rows": 15,
+        "turn_ge70_rows": 0
+      },
+      "after": {
+        "rows": 30,
+        "name_changes": 1,
+        "left_turn_rows": 4,
+        "right_turn_rows": 25,
+        "turn_ge70_rows": 5
+      },
+      "changed_name_rows": 9,
+      "changed_wheels_rows": 19,
+      "name_transitions": [
+        {
+          "seconds": 19.2941,
+          "previous_seconds": 19.2665,
+          "previous_x": 399.0,
+          "new_x": 3.0,
+          "distance": 396.0,
+          "gap": 0.027599999999999625,
+          "before_name": "left",
+          "after_name": "left"
+        },
+        {
+          "seconds": 19.4068,
+          "previous_seconds": 19.3624,
+          "previous_x": 375.5,
+          "new_x": 441.5,
+          "distance": 66.0,
+          "gap": 0.04439999999999955,
+          "before_name": "right",
+          "after_name": "left"
+        },
+        {
+          "seconds": 19.7363,
+          "previous_seconds": 19.6661,
+          "previous_x": 522.0,
+          "new_x": 2.5,
+          "distance": 519.5,
+          "gap": 0.07019999999999982,
+          "before_name": "left",
+          "after_name": "left"
+        }
+      ]
+    }
+  ],
+  "before_replay_mismatch_rows": 0,
+  "before_mismatch_times": [],
+  "source_sha256": "7df347ed1f27e702bbf55828c95cdbe47ec5573bbfb708c59dbef2b61d60c50b",
+  "original_unchanged": true,
+  "before_code_sha256": "653dbdad185100beeaab54c40870053e031b80a6fa71b11fb940e8a1c7e4da95",
+  "after_code_sha256": "a4010c4e52b3c0433f34b7df81f789e6aca3ed6e6abf0263b419315ae7b278b8",
+  "limitation": "단일선 좌표는 저장된 최하단x. 기존 이름은 위치/기울기 fallback 후보로 사용. 원본 픽셀·기울기·가로세로가 없어 fallback 재검출은 하지 않음. 이름이력 변화에 따른 가로선 fallback 차이는 재현 불가. 새로운 실제 움직임에 따른 화면 변화·실제 코너 통과는 검증하지 않음.",
+  "hardware_used": false,
+  "device_free_tests": 53,
+  "continuous_right_test": "x=550→450→350→250→150→50→2, 새화면1/30초 간격. 모두TRACKRIGHT·폭450 유지·속도차변화10이하.",
+  "conclusion": "구현 규칙 검증 통과. 하지만 12.7393초593.5→0,19.2941초399→3,19.7363초522→2.5는150초과라 이름유지 불가. 코너 증상 해결 판정 불가. 19~20초 속도차70이상은0→5행으로 증가."
+}

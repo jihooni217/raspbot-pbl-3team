@@ -1,0 +1,13 @@
+test_departure_wall_clock_also_checked_while_safety_paused (__main__.Tests.test_departure_wall_clock_also_checked_while_safety_paused) ... ok
+test_existing_other_judgments_unchanged (__main__.Tests.test_existing_other_judgments_unchanged) ... ok
+test_fixed_hold_ignores_both_early_conditions (__main__.Tests.test_fixed_hold_ignores_both_early_conditions) ... ok
+test_fragment_straight_override_cannot_replace_right_single (__main__.Tests.test_fragment_straight_override_cannot_replace_right_single) ... ok
+test_ratio_boundary_and_interrupted_timer (__main__.Tests.test_ratio_boundary_and_interrupted_timer) ... ok
+test_real_two_lines_more_than_half_second_restore (__main__.Tests.test_real_two_lines_more_than_half_second_restore) ... ok
+test_screen_single_labels_discard_old_assignment (__main__.Tests.test_screen_single_labels_discard_old_assignment) ... ok
+test_white_immediate_end_then_half_second_latched_stop (__main__.Tests.test_white_immediate_end_then_half_second_latched_stop) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.212s
+
+OK

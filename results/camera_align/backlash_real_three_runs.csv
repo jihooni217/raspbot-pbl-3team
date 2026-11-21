@@ -1,0 +1,4 @@
+run,source,start_pan,start_tilt,final_pan,final_tilt,vx_error_px,height_error_px,moves,seconds,status
+1,results/camera_align/align_20261105_101811_730551.json,80,5,86,5,-8.01918093762248,9.5,6,3.274967803999971,ALIGNED
+2,results/camera_align/align_20261105_101843_221774.json,86,5,86,5,-8.076717856877849,9.5,0,1.1109903259999783,ALIGNED
+3,results/camera_align/align_20261105_101905_271731.json,86,5,86,5,-7.557023396350019,9.5,0,1.1221306140000706,ALIGNED

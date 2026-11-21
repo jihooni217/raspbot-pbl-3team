@@ -1,0 +1,14 @@
+{
+  "protected_files": 78,
+  "changed": [],
+  "no_commit": true,
+  "judgments_unchanged": [
+    "find_floor_color",
+    "find_slow_markers",
+    "find_start_markers",
+    "find_lane_dividers",
+    "SafetyController",
+    "FullCourseController",
+    "distance_for_obstacle"
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "stops": [
+    {
+      "photo": 1788,
+      "state": "FINISH"
+    }
+  ],
+  "corners": [
+    {
+      "photo": 454,
+      "start": 45.4,
+      "end": 46.7,
+      "reason": "FIXED1.3S"
+    },
+    {
+      "photo": 507,
+      "start": 50.7,
+      "end": 52.0,
+      "reason": "FIXED1.3S"
+    },
+    {
+      "photo": 560,
+      "start": 56.0,
+      "end": 57.3,
+      "reason": "FIXED1.3S"
+    },
+    {
+      "photo": 853,
+      "start": 85.3,
+      "end": 86.6,
+      "reason": "FIXED1.3S"
+    },
+    {
+      "photo": 910,
+      "start": 91.0,
+      "end": 92.3,
+      "reason": "FIXED1.3S"
+    },
+    {
+      "photo": 963,
+      "start": 96.3,
+      "end": 97.6,
+      "reason": "FIXED1.3S"
+    },
+    {
+      "photo": 1029,
+      "start": 102.9,
+      "end": 103.8,
+      "reason": "EXCLUDED_OR_STOPPED"
+    },
+    {
+      "photo": 1289,
+      "start": 128.9,
+      "end": 130.2,
+      "reason": "FIXED1.3S"
+    },
+    {
+      "photo": 1342,
+      "start": 134.2,
+      "end": 135.5,
+      "reason": "FIXED1.3S"
+    },
+    {
+      "photo": 1395,
+      "start": 139.5,
+      "end": 140.8,
+      "reason": "FIXED1.3S"
+    },
+    {
+      "photo": 1603,
+      "start": 160.3,
+      "end": 161.6,
+      "reason": "FIXED1.3S"
+    },
+    {
+      "photo": 1656,
+      "start": 165.6,
+      "end": 166.9,
+      "reason": "FIXED1.3S"
+    },
+    {
+      "photo": 1710,
+      "start": 171.0,
+      "end": 172.3,
+      "reason": "FIXED1.3S"
+    },
+    {
+      "photo": 1763,
+      "start": 176.3,
+      "end": 177.6,
+      "reason": "FIXED1.3S"
+    }
+  ]
+}

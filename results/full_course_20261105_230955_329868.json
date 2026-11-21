@@ -1,0 +1,177 @@
+{
+  "check": false,
+  "reason": "오류: 영상 녹화 종료 응답 없음",
+  "errors": [
+    "영상 녹화 종료 응답 없음"
+  ],
+  "total_seconds": 10.525176336002914,
+  "motor_commands": 116,
+  "motor_batches": 29,
+  "csv": "/home/pi/raspbot/results/full_course_20261105_230955_329868.csv",
+  "videos": {
+    "raw": "/home/pi/raspbot/results/videos/raw_20261105_230957_599006.mp4",
+    "blackbox": "/home/pi/raspbot/results/videos/blackbox_20261105_230957_599006.mp4"
+  },
+  "metrics": {
+    "seconds": 5.02892018899729,
+    "lane_frames": 0,
+    "yolo_frames": 29,
+    "lane_hz": 0.0,
+    "yolo_hz": 5.766645504426323,
+    "temperature_start_c": 41.35,
+    "temperature_end_c": 51.8,
+    "samples": [
+      {
+        "seconds": 1.0073868260005838,
+        "lane_hz": 0.0,
+        "yolo_hz": 5.956004034538092,
+        "cpu_c": 44.1,
+        "speeds": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "route_step": 4,
+        "reason": "카메라·차선 확인 대기",
+        "raw_distance_cm": null,
+        "marker_hz": 0.992667339089682
+      },
+      {
+        "seconds": 2.0128758489991014,
+        "lane_hz": 0.0,
+        "yolo_hz": 6.961786593278721,
+        "cpu_c": 46.3,
+        "speeds": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "route_step": 4,
+        "reason": "카메라·차선 확인 대기",
+        "raw_distance_cm": null,
+        "marker_hz": 2.9836228256908806
+      },
+      {
+        "seconds": 3.0178823549977096,
+        "lane_hz": 0.0,
+        "yolo_hz": 7.960147473922004,
+        "cpu_c": 49.05,
+        "speeds": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "route_step": 4,
+        "reason": "카메라·차선 확인 대기",
+        "raw_distance_cm": null,
+        "marker_hz": 1.990036868480501
+      },
+      {
+        "seconds": 4.033715694000421,
+        "lane_hz": 0.0,
+        "yolo_hz": 3.9376537926260413,
+        "cpu_c": 51.25,
+        "speeds": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "route_step": 4,
+        "reason": "카메라·차선 확인 대기",
+        "raw_distance_cm": null,
+        "marker_hz": 0.9844134481565103
+      }
+    ],
+    "last_report": {
+      "left": null,
+      "right": null,
+      "left_count": 0,
+      "right_count": 0,
+      "width": null,
+      "center": null,
+      "speeds": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "state": "CAMERA_LINESTOP",
+      "stopped": true,
+      "last_turn": null,
+      "floor_color": null,
+      "base_speed": 35,
+      "slow_active": false,
+      "route_step": 4,
+      "choice": null,
+      "route_leg": "WAIT_ROTARY",
+      "choice_end": null,
+      "guide_center": null,
+      "crossings": 0,
+      "start_passes": 0,
+      "corner_direction": null,
+      "corner_since": null,
+      "corner_end": null,
+      "corner_ended_at": null,
+      "corner_cooldown_until": null,
+      "corner_white_ratio": 0.0,
+      "reacquiring": false,
+      "reacquire_stable_since": null,
+      "departure_since": null,
+      "front_guide_active": false,
+      "front_guide_until": null,
+      "start_stage": 0,
+      "line_bits": null,
+      "orbit_left_x": null,
+      "orbit_turn": null,
+      "route_state": "차선이 보이지 않습니다. 출발 위치를 확인하세요",
+      "route_clock": null,
+      "paused_seconds": 0.0,
+      "safety_state": "WAITVISION",
+      "safety_message": "차선이 보이지 않습니다. 출발 위치를 확인하세요",
+      "blocked": true,
+      "vision_fresh": false,
+      "vision_age": null,
+      "person": [],
+      "stop_boxes": [],
+      "person_locked": false,
+      "person_since": null,
+      "stop_until": null,
+      "ignore_until": null,
+      "distance_cm": null,
+      "ultra_state": "정상값 대기",
+      "ultra_invalid_count": 0,
+      "distance_error": null,
+      "rotary_test": true,
+      "rotary_score": 0.821309506893158,
+      "rotary_box": [
+        112,
+        98,
+        356,
+        38
+      ],
+      "marker_age_ms": 796.6787299992575,
+      "roundabout_near": false,
+      "marker_boxes": [
+        [
+          "rotary",
+          0.821309506893158,
+          [
+            112,
+            98,
+            356,
+            38
+          ]
+        ]
+      ],
+      "runtime_lane_frames": 0,
+      "raw_distance_cm": null,
+      "distance_read_error": null
+    },
+    "marker_frames": 9,
+    "marker_hz": 1.7896486048219624
+  }
+}

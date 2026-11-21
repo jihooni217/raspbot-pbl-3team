@@ -1,0 +1,6 @@
+20:22:59.702 [dash] ──────── 새 주행 ────────
+20:22:59.702 [dash] 시작: python3 missions/11_right_lane_turn.py —trial floor01 (PID 4933, 회차 dash_202259)
+20:23:00.600 [child] usage: 11_right_lane_turn.py [-h] [--check] [--trial TRIAL]
+20:23:00.600 [child] 11_right_lane_turn.py: error: unrecognized arguments: —trial floor01
+20:23:00.646 [dash] 주행 프로그램 종료: 종료 코드 2 (오류)
+20:23:01.079 [dash] 네 바퀴 0 · 부저/초음파 끄기 3회 보냄 (조종판). 실제 정지는 눈으로 확인하세요.

@@ -1,0 +1,12 @@
+test_early_not_horizontal_point15 (__main__.Tests.test_early_not_horizontal_point15) ... ok
+test_early_two_normal_lines_point15 (__main__.Tests.test_early_two_normal_lines_point15) ... ok
+test_four_second_lockout_even_after_rearm (__main__.Tests.test_four_second_lockout_even_after_rearm) ... ok
+test_limit_one_point4 (__main__.Tests.test_limit_one_point4) ... ok
+test_tracks_original_shape_instead_of_other_horizontal_line (__main__.Tests.test_tracks_original_shape_instead_of_other_horizontal_line) ... ok
+test_white_floor_ends_immediately_without_stop_or_recovery (__main__.Tests.test_white_floor_ends_immediately_without_stop_or_recovery) ... ok
+test_white_ratio_uses_real_bottom_and_ignores_black_padding (__main__.Tests.test_white_ratio_uses_real_bottom_and_ignores_black_padding) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.006s
+
+OK

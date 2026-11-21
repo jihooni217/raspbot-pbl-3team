@@ -1,0 +1,685 @@
+{
+  "video": "/home/pi/raspbot/results/videos/blackbox_20261104_204945_297796_6c23c5b9.mp4",
+  "fps": 15.0,
+  "frames": 336,
+  "intervals": [
+    {
+      "version": "before",
+      "feature": "crossing",
+      "first_frame": 71,
+      "last_frame": 73,
+      "start_seconds": 4.733333333333333,
+      "end_seconds": 4.933333333333334,
+      "frames": 3
+    },
+    {
+      "version": "before",
+      "feature": "crossing",
+      "first_frame": 95,
+      "last_frame": 96,
+      "start_seconds": 6.333333333333333,
+      "end_seconds": 6.466666666666667,
+      "frames": 2
+    },
+    {
+      "version": "before",
+      "feature": "crossing",
+      "first_frame": 246,
+      "last_frame": 247,
+      "start_seconds": 16.4,
+      "end_seconds": 16.533333333333335,
+      "frames": 2
+    },
+    {
+      "version": "before",
+      "feature": "crossing",
+      "first_frame": 267,
+      "last_frame": 269,
+      "start_seconds": 17.8,
+      "end_seconds": 18.0,
+      "frames": 3
+    },
+    {
+      "version": "before",
+      "feature": "roundabout",
+      "first_frame": 204,
+      "last_frame": 204,
+      "start_seconds": 13.6,
+      "end_seconds": 13.666666666666666,
+      "frames": 1
+    },
+    {
+      "version": "before",
+      "feature": "roundabout",
+      "first_frame": 206,
+      "last_frame": 206,
+      "start_seconds": 13.733333333333333,
+      "end_seconds": 13.8,
+      "frames": 1
+    },
+    {
+      "version": "before",
+      "feature": "roundabout",
+      "first_frame": 209,
+      "last_frame": 211,
+      "start_seconds": 13.933333333333334,
+      "end_seconds": 14.133333333333333,
+      "frames": 3
+    },
+    {
+      "version": "before",
+      "feature": "roundabout",
+      "first_frame": 292,
+      "last_frame": 292,
+      "start_seconds": 19.466666666666665,
+      "end_seconds": 19.533333333333335,
+      "frames": 1
+    },
+    {
+      "version": "before",
+      "feature": "roundabout",
+      "first_frame": 309,
+      "last_frame": 309,
+      "start_seconds": 20.6,
+      "end_seconds": 20.666666666666668,
+      "frames": 1
+    },
+    {
+      "version": "before",
+      "feature": "roundabout",
+      "first_frame": 313,
+      "last_frame": 314,
+      "start_seconds": 20.866666666666667,
+      "end_seconds": 21.0,
+      "frames": 2
+    },
+    {
+      "version": "before",
+      "feature": "roundabout",
+      "first_frame": 316,
+      "last_frame": 316,
+      "start_seconds": 21.066666666666666,
+      "end_seconds": 21.133333333333333,
+      "frames": 1
+    },
+    {
+      "version": "after",
+      "feature": "crossing",
+      "first_frame": 63,
+      "last_frame": 66,
+      "start_seconds": 4.2,
+      "end_seconds": 4.466666666666667,
+      "frames": 4
+    },
+    {
+      "version": "after",
+      "feature": "crossing",
+      "first_frame": 88,
+      "last_frame": 90,
+      "start_seconds": 5.866666666666666,
+      "end_seconds": 6.066666666666666,
+      "frames": 3
+    },
+    {
+      "version": "after",
+      "feature": "crossing",
+      "first_frame": 237,
+      "last_frame": 241,
+      "start_seconds": 15.8,
+      "end_seconds": 16.133333333333333,
+      "frames": 5
+    },
+    {
+      "version": "after",
+      "feature": "crossing",
+      "first_frame": 259,
+      "last_frame": 263,
+      "start_seconds": 17.266666666666666,
+      "end_seconds": 17.6,
+      "frames": 5
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 16,
+      "last_frame": 16,
+      "start_seconds": 1.0666666666666667,
+      "end_seconds": 1.1333333333333333,
+      "frames": 1
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 56,
+      "last_frame": 56,
+      "start_seconds": 3.7333333333333334,
+      "end_seconds": 3.8,
+      "frames": 1
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 59,
+      "last_frame": 59,
+      "start_seconds": 3.933333333333333,
+      "end_seconds": 4.0,
+      "frames": 1
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 63,
+      "last_frame": 63,
+      "start_seconds": 4.2,
+      "end_seconds": 4.266666666666667,
+      "frames": 1
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 68,
+      "last_frame": 69,
+      "start_seconds": 4.533333333333333,
+      "end_seconds": 4.666666666666667,
+      "frames": 2
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 171,
+      "last_frame": 171,
+      "start_seconds": 11.4,
+      "end_seconds": 11.466666666666667,
+      "frames": 1
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 180,
+      "last_frame": 180,
+      "start_seconds": 12.0,
+      "end_seconds": 12.066666666666666,
+      "frames": 1
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 197,
+      "last_frame": 198,
+      "start_seconds": 13.133333333333333,
+      "end_seconds": 13.266666666666667,
+      "frames": 2
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 200,
+      "last_frame": 204,
+      "start_seconds": 13.333333333333334,
+      "end_seconds": 13.666666666666666,
+      "frames": 5
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 207,
+      "last_frame": 207,
+      "start_seconds": 13.8,
+      "end_seconds": 13.866666666666667,
+      "frames": 1
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 210,
+      "last_frame": 215,
+      "start_seconds": 14.0,
+      "end_seconds": 14.4,
+      "frames": 6
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 219,
+      "last_frame": 219,
+      "start_seconds": 14.6,
+      "end_seconds": 14.666666666666666,
+      "frames": 1
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 274,
+      "last_frame": 274,
+      "start_seconds": 18.266666666666666,
+      "end_seconds": 18.333333333333332,
+      "frames": 1
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 284,
+      "last_frame": 286,
+      "start_seconds": 18.933333333333334,
+      "end_seconds": 19.133333333333333,
+      "frames": 3
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 288,
+      "last_frame": 289,
+      "start_seconds": 19.2,
+      "end_seconds": 19.333333333333332,
+      "frames": 2
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 292,
+      "last_frame": 295,
+      "start_seconds": 19.466666666666665,
+      "end_seconds": 19.733333333333334,
+      "frames": 4
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 302,
+      "last_frame": 304,
+      "start_seconds": 20.133333333333333,
+      "end_seconds": 20.333333333333332,
+      "frames": 3
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 306,
+      "last_frame": 309,
+      "start_seconds": 20.4,
+      "end_seconds": 20.666666666666668,
+      "frames": 4
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 314,
+      "last_frame": 327,
+      "start_seconds": 20.933333333333334,
+      "end_seconds": 21.866666666666667,
+      "frames": 14
+    }
+  ],
+  "roundabout_samples": [
+    {
+      "version": "after",
+      "frame": 16,
+      "seconds": 1.0666666666666667,
+      "boxes": [
+        [
+          323,
+          99,
+          234,
+          77
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_204945_297796_6c23c5b9/after_roundabout_0016.jpg"
+    },
+    {
+      "version": "after",
+      "frame": 56,
+      "seconds": 3.7333333333333334,
+      "boxes": [
+        [
+          420,
+          138,
+          144,
+          45
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_204945_297796_6c23c5b9/after_roundabout_0056.jpg"
+    },
+    {
+      "version": "after",
+      "frame": 59,
+      "seconds": 3.933333333333333,
+      "boxes": [
+        [
+          423,
+          136,
+          135,
+          42
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_204945_297796_6c23c5b9/after_roundabout_0059.jpg"
+    },
+    {
+      "version": "after",
+      "frame": 63,
+      "seconds": 4.2,
+      "boxes": [
+        [
+          397,
+          137,
+          134,
+          40
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_204945_297796_6c23c5b9/after_roundabout_0063.jpg"
+    },
+    {
+      "version": "after",
+      "frame": 68,
+      "seconds": 4.533333333333333,
+      "boxes": [
+        [
+          401,
+          155,
+          116,
+          26
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_204945_297796_6c23c5b9/after_roundabout_0068.jpg"
+    },
+    {
+      "version": "after",
+      "frame": 171,
+      "seconds": 11.4,
+      "boxes": [
+        [
+          62,
+          107,
+          256,
+          39
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_204945_297796_6c23c5b9/after_roundabout_0171.jpg"
+    },
+    {
+      "version": "after",
+      "frame": 180,
+      "seconds": 12.0,
+      "boxes": [
+        [
+          10,
+          124,
+          216,
+          34
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_204945_297796_6c23c5b9/after_roundabout_0180.jpg"
+    },
+    {
+      "version": "after",
+      "frame": 197,
+      "seconds": 13.133333333333333,
+      "boxes": [
+        [
+          4,
+          187,
+          165,
+          21
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_204945_297796_6c23c5b9/after_roundabout_0197.jpg"
+    },
+    {
+      "version": "after",
+      "frame": 200,
+      "seconds": 13.333333333333334,
+      "boxes": [
+        [
+          428,
+          213,
+          204,
+          23
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_204945_297796_6c23c5b9/after_roundabout_0200.jpg"
+    },
+    {
+      "version": "before",
+      "frame": 204,
+      "seconds": 13.6,
+      "boxes": [
+        [
+          450,
+          258,
+          188,
+          38
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_204945_297796_6c23c5b9/before_roundabout_0204.jpg"
+    },
+    {
+      "version": "before",
+      "frame": 206,
+      "seconds": 13.733333333333333,
+      "boxes": [
+        [
+          412,
+          276,
+          228,
+          39
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_204945_297796_6c23c5b9/before_roundabout_0206.jpg"
+    },
+    {
+      "version": "after",
+      "frame": 207,
+      "seconds": 13.8,
+      "boxes": [
+        [
+          0,
+          120,
+          321,
+          87
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_204945_297796_6c23c5b9/after_roundabout_0207.jpg"
+    },
+    {
+      "version": "before",
+      "frame": 209,
+      "seconds": 13.933333333333334,
+      "boxes": [
+        [
+          0,
+          320,
+          640,
+          47
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_204945_297796_6c23c5b9/before_roundabout_0209.jpg"
+    },
+    {
+      "version": "after",
+      "frame": 210,
+      "seconds": 14.0,
+      "boxes": [
+        [
+          0,
+          107,
+          640,
+          173
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_204945_297796_6c23c5b9/after_roundabout_0210.jpg"
+    },
+    {
+      "version": "after",
+      "frame": 219,
+      "seconds": 14.6,
+      "boxes": [
+        [
+          91,
+          212,
+          213,
+          68
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_204945_297796_6c23c5b9/after_roundabout_0219.jpg"
+    },
+    {
+      "version": "after",
+      "frame": 274,
+      "seconds": 18.266666666666666,
+      "boxes": [
+        [
+          357,
+          120,
+          217,
+          21
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_204945_297796_6c23c5b9/after_roundabout_0274.jpg"
+    },
+    {
+      "version": "after",
+      "frame": 284,
+      "seconds": 18.933333333333334,
+      "boxes": [
+        [
+          418,
+          119,
+          123,
+          27
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_204945_297796_6c23c5b9/after_roundabout_0284.jpg"
+    },
+    {
+      "version": "after",
+      "frame": 288,
+      "seconds": 19.2,
+      "boxes": [
+        [
+          494,
+          120,
+          146,
+          34
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_204945_297796_6c23c5b9/after_roundabout_0288.jpg"
+    },
+    {
+      "version": "before",
+      "frame": 292,
+      "seconds": 19.466666666666665,
+      "boxes": [
+        [
+          471,
+          263,
+          126,
+          37
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_204945_297796_6c23c5b9/before_roundabout_0292.jpg"
+    },
+    {
+      "version": "after",
+      "frame": 292,
+      "seconds": 19.466666666666665,
+      "boxes": [
+        [
+          412,
+          120,
+          228,
+          36
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_204945_297796_6c23c5b9/after_roundabout_0292.jpg"
+    },
+    {
+      "version": "after",
+      "frame": 302,
+      "seconds": 20.133333333333333,
+      "boxes": [
+        [
+          320,
+          120,
+          320,
+          53
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_204945_297796_6c23c5b9/after_roundabout_0302.jpg"
+    },
+    {
+      "version": "after",
+      "frame": 306,
+      "seconds": 20.4,
+      "boxes": [
+        [
+          348,
+          224,
+          286,
+          22
+        ],
+        [
+          0,
+          187,
+          321,
+          38
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_204945_297796_6c23c5b9/after_roundabout_0306.jpg"
+    },
+    {
+      "version": "before",
+      "frame": 309,
+      "seconds": 20.6,
+      "boxes": [
+        [
+          430,
+          260,
+          202,
+          37
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_204945_297796_6c23c5b9/before_roundabout_0309.jpg"
+    },
+    {
+      "version": "before",
+      "frame": 313,
+      "seconds": 20.866666666666667,
+      "boxes": [
+        [
+          0,
+          301,
+          640,
+          81
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_204945_297796_6c23c5b9/before_roundabout_0313.jpg"
+    },
+    {
+      "version": "after",
+      "frame": 314,
+      "seconds": 20.933333333333334,
+      "boxes": [
+        [
+          0,
+          120,
+          640,
+          160
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_204945_297796_6c23c5b9/after_roundabout_0314.jpg"
+    },
+    {
+      "version": "before",
+      "frame": 316,
+      "seconds": 21.066666666666666,
+      "boxes": [
+        [
+          0,
+          370,
+          640,
+          96
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_204945_297796_6c23c5b9/before_roundabout_0316.jpg"
+    }
+  ]
+}

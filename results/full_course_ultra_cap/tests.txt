@@ -1,0 +1,7 @@
+test_loop_raw_csv_far_errors_close_and_recovery (__main__.Tests.test_loop_raw_csv_far_errors_close_and_recovery) ... ok
+test_nonpositive_and_read_failure_remain_errors (__main__.Tests.test_nonpositive_and_read_failure_remain_errors) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 1.323s
+
+OK

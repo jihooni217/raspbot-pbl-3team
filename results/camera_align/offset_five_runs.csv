@@ -1,0 +1,6 @@
+run,start_pan,start_tilt,final_pan,final_tilt,vx_error_px,height_error_px,moves,pan_moves,tilt_moves,seconds,passed,status,initial_height_error_px,source
+1,80,5,85,5,-8.42217949041202,10.0,5,5,0,2.9178273309998985,True,ALIGNED,9.5,results/camera_align/align_20261105_102422_133518.json
+2,90,5,86,5,7.416800563757818,10.0,4,4,0,2.5564556609999727,True,ALIGNED,11.5,results/camera_align/align_20261105_102447_959382.json
+3,86,0,86,0,6.315875078013789,-9.5,0,0,0,1.1209887780000827,True,ALIGNED,-9.5,results/camera_align/align_20261105_102516_009310.json
+4,86,12,86,3,8.105550802372363,2.5,9,0,9,4.356008018000011,True,ALIGNED,74.5,results/camera_align/align_20261105_102539_002916.json
+5,82,10,85,3,-6.6102365696319225,9.5,10,3,7,4.717852799999946,True,ALIGNED,56.0,results/camera_align/align_20261105_102602_380492.json

@@ -1,0 +1,9 @@
+{
+  "frames": 336,
+  "person_observations": 11,
+  "safety_stop_frames": 0,
+  "stops": [],
+  "identical_to_legacy": null,
+  "update_median_ms": 0.06841650065325666,
+  "update_p95_ms": 0.13708274946111487
+}

@@ -1,0 +1,30 @@
+{
+  "before": {
+    "window_seconds": [
+      12,
+      15
+    ],
+    "frames": 45,
+    "sign_flips": 12,
+    "mean_steering": 24.066666666666666,
+    "right_frames": 26,
+    "left_frames": 16,
+    "zero_frames": 3,
+    "corner_frames": 0,
+    "width_min": 90.57902735562311
+  },
+  "after": {
+    "window_seconds": [
+      12,
+      15
+    ],
+    "frames": 45,
+    "sign_flips": 1,
+    "mean_steering": 50.62222222222222,
+    "right_frames": 43,
+    "left_frames": 2,
+    "zero_frames": 0,
+    "corner_frames": 34,
+    "width_min": 441.27839026024066
+  }
+}

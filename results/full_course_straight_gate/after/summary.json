@@ -1,0 +1,40 @@
+{
+  "frames": 661,
+  "windows": [
+    {
+      "start": 8,
+      "end": 10,
+      "frames": 30,
+      "jump70_0": 0,
+      "changed_without_guide": 0,
+      "strong_right": 0,
+      "states": [
+        "TRACKBOTH",
+        "TRACKRIGHT"
+      ],
+      "steps": [
+        1
+      ]
+    },
+    {
+      "start": 39,
+      "end": 43,
+      "frames": 60,
+      "jump70_0": 10,
+      "changed_without_guide": 9,
+      "strong_right": 19,
+      "states": [
+        "CORNER_RIGHT",
+        "TRACKBOTH",
+        "TRACKLEFT",
+        "TRACKRIGHT"
+      ],
+      "steps": [
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "step2_first": 39.266666666666666
+}

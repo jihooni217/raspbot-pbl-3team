@@ -1,0 +1,12 @@
+test_actual_h264_pair_with_fake_camera (__main__.Tests.test_actual_h264_pair_with_fake_camera) ... ok
+test_loop_sends_zero_on_record_error (__main__.Tests.test_loop_sends_zero_on_record_error) ... ok
+test_mark_functions_thresholds_and_route_unchanged (__main__.Tests.test_mark_functions_thresholds_and_route_unchanged) ... ok
+test_mask_copy_lane_original_and_four_marker_inputs (__main__.Tests.test_mask_copy_lane_original_and_four_marker_inputs) ... ok
+test_raw_exact_and_both_writers_closed (__main__.Tests.test_raw_exact_and_both_writers_closed) ... ok
+test_record_error_closes_writers (__main__.Tests.test_record_error_closes_writers) ... ok
+test_yolo_receives_original_and_context_uses_mask (__main__.Tests.test_yolo_receives_original_and_context_uses_mask) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.398s
+
+OK

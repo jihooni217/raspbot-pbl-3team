@@ -1,0 +1,36 @@
+{
+  "video": "results/videos/raw_20261105_115202_475550.mp4",
+  "frames": 531,
+  "fps": 15.0,
+  "events": [
+    {
+      "start": 11.4,
+      "start_frame": 171,
+      "direction": "RIGHT",
+      "route_step": 1,
+      "gap_from_last_end": null,
+      "end": 12.8,
+      "end_frame": 192,
+      "duration": 1.4000000000000004,
+      "reason": "LIMIT1.4S",
+      "next_allowed": 16.8
+    },
+    {
+      "start": 17.0,
+      "start_frame": 255,
+      "direction": "RIGHT",
+      "route_step": 2,
+      "gap_from_last_end": 4.199999999999999,
+      "end": 18.4,
+      "end_frame": 276,
+      "duration": 1.3999999999999986,
+      "reason": "LIMIT1.4S",
+      "next_allowed": 22.4
+    }
+  ],
+  "active_at_video_end": null,
+  "max_duration": 1.4000000000000004,
+  "within_time_limit": true,
+  "cooldown_ok": true,
+  "white_frames": 73
+}

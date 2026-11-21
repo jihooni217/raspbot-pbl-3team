@@ -1,0 +1,9 @@
+18:37:12.723 [dash] ──────── 새 주행 ────────
+18:37:12.723 [dash] 시작: python3 missions/06_drive_signs.py --trial dash_183712 (PID 8597, 회차 dash_183712)
+18:37:14.620 [child] 파일: /home/pi/raspbot/results/videos/blackbox_20261104_183714_611759_1eeee13b.mp4
+18:37:14.818 [child] 상태 WAITVISION, 센서 (1, 1, 1, 1), 바퀴 (0, 0, 0, 0)
+18:37:14.983 [dash] 원시 기록 따라 읽기: results/drive_signs_20261104_183713_629404_7720ab.csv
+18:37:14.999 [child] 상태 LOSTSTOP, 센서 (1, 1, 1, 1), 바퀴 (0, 0, 0, 0)
+18:37:15.852 [child] 종료: 줄 놓침 정지, 기록: /home/pi/raspbot/results/drive_signs_20261104_183713_629404_7720ab.csv. 실제 완주·정지는 사용자 확인이 필요합니다.
+18:37:15.899 [dash] 주행 프로그램 종료: 종료 코드 0 (정상)
+18:37:16.344 [dash] 네 바퀴 0 · 부저/초음파 끄기 3회 보냄 (조종판). 실제 정지는 눈으로 확인하세요.

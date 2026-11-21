@@ -1,0 +1,14 @@
+{
+  "window_seconds": [
+    12,
+    15
+  ],
+  "frames": 45,
+  "sign_flips": 2,
+  "mean_steering": 51.71111111111111,
+  "right_frames": 43,
+  "left_frames": 1,
+  "zero_frames": 1,
+  "corner_frames": 34,
+  "width_min": 240.3564944134078
+}

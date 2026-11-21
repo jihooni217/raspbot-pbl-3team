@@ -1,0 +1,6 @@
+21:23:55.041 [dash] ──────── 새 주행 ────────
+21:23:55.041 [dash] 시작: python3 missions/12_outer_lap.py —check (PID 10532, 회차 dash_212355)
+21:23:55.939 [child] usage: 12_outer_lap.py [-h] [--check] [--trial TRIAL]
+21:23:55.939 [child] 12_outer_lap.py: error: unrecognized arguments: —check
+21:23:55.985 [dash] 주행 프로그램 종료: 종료 코드 2 (오류)
+21:23:56.419 [dash] 네 바퀴 0 · 부저/초음파 끄기 3회 보냄 (조종판). 실제 정지는 눈으로 확인하세요.

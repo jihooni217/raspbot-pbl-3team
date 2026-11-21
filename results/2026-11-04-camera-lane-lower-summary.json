@@ -1,0 +1,187 @@
+{
+  "source": "results/videos/blackbox_20261104_204945_297796_6c23c5b9.mp4",
+  "source_sha256": "ef8b0013c5d95c4bbb67c0aa3ed36b95b8991ef4d3101861bb41bea9d7477527",
+  "original_unchanged": true,
+  "before_code_sha256": "a4010c4e52b3c0433f34b7df81f789e6aca3ed6e6abf0263b419315ae7b278b8",
+  "after_code_sha256": "b3104cada9c02e7c0d1b5b89fe9113dd8cf85f6deea439a07e8a1978b119fbd0",
+  "fps": 15.0,
+  "frames": 336,
+  "windows": [
+    {
+      "seconds": [
+        12,
+        14
+      ],
+      "frames": 31,
+      "before_states": {
+        "TRACKBOTH": 16,
+        "TRACKRIGHT": 8,
+        "TRACKLEFT": 4,
+        "SEARCHRIGHT": 3
+      },
+      "after_states": {
+        "CORNERLEFT": 16,
+        "TRACKRIGHT": 14,
+        "TRACKLEFT": 1
+      },
+      "after_bands": {
+        "NONE": 16,
+        "UPPER": 7,
+        "LOWER": 8
+      },
+      "before_left_turn_rows": 6,
+      "after_left_turn_rows": 28,
+      "after_right_turn_rows": 3,
+      "before_stop_rows": 0,
+      "after_stop_rows": 0,
+      "diagnostic_after_states": {
+        "CORNERLEFT": 16,
+        "TRACKRIGHT": 14,
+        "TRACKLEFT": 1
+      }
+    },
+    {
+      "seconds": [
+        19,
+        21
+      ],
+      "frames": 31,
+      "before_states": {
+        "TRACKBOTH": 13,
+        "TRACKLEFT": 15,
+        "SEARCHRIGHT": 3
+      },
+      "after_states": {
+        "TRACKRIGHT": 16,
+        "CORNERLEFT": 13,
+        "TRACKLEFT": 2
+      },
+      "after_bands": {
+        "UPPER": 12,
+        "LOWER": 6,
+        "NONE": 13
+      },
+      "before_left_turn_rows": 20,
+      "after_left_turn_rows": 28,
+      "after_right_turn_rows": 3,
+      "before_stop_rows": 0,
+      "after_stop_rows": 0,
+      "diagnostic_after_states": {
+        "TRACKRIGHT": 16,
+        "CORNERLEFT": 13,
+        "TRACKLEFT": 2
+      }
+    }
+  ],
+  "sample_wheels": [
+    {
+      "video_seconds": 12.0,
+      "frame": 180,
+      "before_wheels": "[46, 46, 24, 24]",
+      "after_wheels": "[28, 28, 42, 42]",
+      "after_state": "CORNERLEFT",
+      "after_band": "NONE",
+      "after_last_turn": "LEFT"
+    },
+    {
+      "video_seconds": 12.4,
+      "frame": 186,
+      "before_wheels": "[49, 49, 21, 21]",
+      "after_wheels": "[28, 28, 44, 44]",
+      "after_state": "TRACKRIGHT",
+      "after_band": "UPPER",
+      "after_last_turn": "LEFT"
+    },
+    {
+      "video_seconds": 12.8,
+      "frame": 192,
+      "before_wheels": "[20, 20, 50, 50]",
+      "after_wheels": "[5, 5, 65, 65]",
+      "after_state": "TRACKRIGHT",
+      "after_band": "LOWER",
+      "after_last_turn": "LEFT"
+    },
+    {
+      "video_seconds": 13.2,
+      "frame": 198,
+      "before_wheels": "[36, 36, 34, 34]",
+      "after_wheels": "[15, 15, 55, 55]",
+      "after_state": "CORNERLEFT",
+      "after_band": "NONE",
+      "after_last_turn": "LEFT"
+    },
+    {
+      "video_seconds": 13.6,
+      "frame": 204,
+      "before_wheels": "[57, 57, 13, 13]",
+      "after_wheels": "[15, 15, 55, 55]",
+      "after_state": "CORNERLEFT",
+      "after_band": "NONE",
+      "after_last_turn": "LEFT"
+    },
+    {
+      "video_seconds": 14.0,
+      "frame": 210,
+      "before_wheels": "[52, 52, 8, 8]",
+      "after_wheels": "[15, 15, 55, 55]",
+      "after_state": "CORNERLEFT",
+      "after_band": "NONE",
+      "after_last_turn": "LEFT"
+    },
+    {
+      "video_seconds": 19.2,
+      "frame": 288,
+      "before_wheels": "[23, 23, 47, 47]",
+      "after_wheels": "[33, 33, 37, 37]",
+      "after_state": "TRACKRIGHT",
+      "after_band": "UPPER",
+      "after_last_turn": "LEFT"
+    },
+    {
+      "video_seconds": 19.6,
+      "frame": 294,
+      "before_wheels": "[23, 23, 47, 47]",
+      "after_wheels": "[8, 8, 72, 72]",
+      "after_state": "TRACKRIGHT",
+      "after_band": "UPPER",
+      "after_last_turn": "LEFT"
+    },
+    {
+      "video_seconds": 20.0,
+      "frame": 300,
+      "before_wheels": "[35, 35, 35, 35]",
+      "after_wheels": "[19, 19, 51, 51]",
+      "after_state": "CORNERLEFT",
+      "after_band": "NONE",
+      "after_last_turn": "LEFT"
+    },
+    {
+      "video_seconds": 20.4,
+      "frame": 306,
+      "before_wheels": "[38, 38, 38, 38]",
+      "after_wheels": "[14, 14, 56, 56]",
+      "after_state": "TRACKRIGHT",
+      "after_band": "UPPER",
+      "after_last_turn": "LEFT"
+    },
+    {
+      "video_seconds": 20.8,
+      "frame": 312,
+      "before_wheels": "[70, 70, 10, 10]",
+      "after_wheels": "[15, 15, 55, 55]",
+      "after_state": "CORNERLEFT",
+      "after_band": "NONE",
+      "after_last_turn": "LEFT"
+    }
+  ],
+  "strict_stop_times": {
+    "before": 21.866666666666667,
+    "after": 22.066666666666666
+  },
+  "limitations": "영상 시작0초부터15fps로 매 프레임 처리. 영상시간은CSV경과초와다름. 기존노란세로표시와주변4px·ROI테두리를제외했고숨은실제픽셀은복원불가. 아래띠에덧그려진흰글자/상태표시가실제선일부를가릴수있음. 실제카메라30fps보다새프레임이적어3장평균·매프레임속도차10효과가다름. strict는정지래치유지,diagnostic은전체구간비교용으로정지/시간조건해제. 실제새이동/코너통과검증아님.",
+  "hardware_used": false,
+  "images_saved_or_copied": false,
+  "device_free_tests": 64,
+  "user_priority": "아래 띠 먼저, 없으면55/15",
+  "conclusion": "규칙 구현 검증 통과. 동일 영상에서 기존 공유폭/중심 계산에 따라 last_turn이 LEFT로 바뀌어 CORNERLEFT 지속. 요청 두 구간 모두 왼쪽조향28/31행이므로 오른쪽코너 성공으로 판정하지 않음. 실제 주행/커밋 없음."
+}

@@ -1,0 +1,170 @@
+{
+  "status": "ALIGNED",
+  "reason": "기준 허용 오차 안으로 맞췄습니다",
+  "pan": 85,
+  "tilt": 2,
+  "initial_pose": {
+    "pan": 85,
+    "tilt": 3
+  },
+  "moves": 1,
+  "elapsed_seconds": 1.4802135579998321,
+  "response_px_per_degree": {
+    "pan": 13.274980106126065,
+    "tilt": 3.5
+  },
+  "measurement": {
+    "reliable": true,
+    "reason": "OK",
+    "vx": 323.0818622334823,
+    "vy": 48.36565198924478,
+    "lane_top": 98.5,
+    "floor_top": null,
+    "width": 1522.486894020377,
+    "width_y": 479,
+    "width_extrapolated": true,
+    "left": {
+      "slope": -1.9282818870122325,
+      "intercept": 416.3444729178801,
+      "top": 90,
+      "fit_min_y": 80,
+      "fit_max_y": 223,
+      "median_error_px": 0.6927897495633033,
+      "inlier_rows": 101
+    },
+    "right": {
+      "slope": 1.6071697114337706,
+      "intercept": 245.35005128262156,
+      "top": 107,
+      "fit_min_y": 82,
+      "fit_max_y": 254,
+      "median_error_px": 0.8592126792633508,
+      "inlier_rows": 124
+    },
+    "bottom_left": -507.30255096097926,
+    "bottom_right": 1015.1843430593976
+  },
+  "correction": {
+    "reliable": true,
+    "dx_px": 4.025998176948065,
+    "dy_px": 5.5,
+    "pan_view": "RIGHT",
+    "tilt_view": "DOWN",
+    "pan_view_degrees": 0.40259981769480646,
+    "tilt_view_degrees": 0.55,
+    "aligned": true
+  },
+  "events": [
+    {
+      "move": 0,
+      "pan": 85,
+      "tilt": 3,
+      "measurement": {
+        "reliable": true,
+        "reason": "OK",
+        "vx": 323.3256801209254,
+        "vy": 53.40449906662502,
+        "lane_top": 104.0,
+        "floor_top": null,
+        "width": 1507.7376278516304,
+        "width_y": 479,
+        "width_extrapolated": true,
+        "left": {
+          "slope": -1.9328712871287137,
+          "intercept": 426.5497029702971,
+          "top": 96,
+          "fit_min_y": 93,
+          "fit_max_y": 228,
+          "median_error_px": 0.6027722772276434,
+          "inlier_rows": 101
+        },
+        "right": {
+          "slope": 1.6097827694696423,
+          "intercept": 237.35603771131488,
+          "top": 112,
+          "fit_min_y": 86,
+          "fit_max_y": 258,
+          "median_error_px": 0.8406742483155654,
+          "inlier_rows": 122
+        },
+        "bottom_left": -499.2956435643568,
+        "bottom_right": 1008.4419842872736
+      },
+      "correction": {
+        "reliable": true,
+        "dx_px": 4.269816064391193,
+        "dy_px": 11.0,
+        "pan_view": "RIGHT",
+        "tilt_view": "DOWN",
+        "pan_view_degrees": 0.4269816064391193,
+        "tilt_view_degrees": 1.1,
+        "aligned": false
+      }
+    },
+    {
+      "move": 1,
+      "pan": 85,
+      "tilt": 2,
+      "measurement": {
+        "reliable": true,
+        "reason": "OK",
+        "vx": 323.0818622334823,
+        "vy": 48.36565198924478,
+        "lane_top": 98.5,
+        "floor_top": null,
+        "width": 1522.486894020377,
+        "width_y": 479,
+        "width_extrapolated": true,
+        "left": {
+          "slope": -1.9282818870122325,
+          "intercept": 416.3444729178801,
+          "top": 90,
+          "fit_min_y": 80,
+          "fit_max_y": 223,
+          "median_error_px": 0.6927897495633033,
+          "inlier_rows": 101
+        },
+        "right": {
+          "slope": 1.6071697114337706,
+          "intercept": 245.35005128262156,
+          "top": 107,
+          "fit_min_y": 82,
+          "fit_max_y": 254,
+          "median_error_px": 0.8592126792633508,
+          "inlier_rows": 124
+        },
+        "bottom_left": -507.30255096097926,
+        "bottom_right": 1015.1843430593976
+      },
+      "correction": {
+        "reliable": true,
+        "dx_px": 4.025998176948065,
+        "dy_px": 5.5,
+        "pan_view": "RIGHT",
+        "tilt_view": "DOWN",
+        "pan_view_degrees": 0.40259981769480646,
+        "tilt_view_degrees": 0.55,
+        "aligned": true
+      }
+    }
+  ],
+  "best": {
+    "pan": 85,
+    "tilt": 2,
+    "move": 1,
+    "correction": {
+      "reliable": true,
+      "dx_px": 4.025998176948065,
+      "dy_px": 5.5,
+      "pan_view": "RIGHT",
+      "tilt_view": "DOWN",
+      "pan_view_degrees": 0.40259981769480646,
+      "tilt_view_degrees": 0.55,
+      "aligned": true
+    },
+    "score": [
+      5.5,
+      9.525998176948065
+    ]
+  }
+}

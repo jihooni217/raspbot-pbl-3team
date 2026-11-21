@@ -1,0 +1,871 @@
+{
+  "video": "/home/pi/raspbot/results/videos/blackbox_20261104_214713_354784_1c79a793.mp4",
+  "fps": 15.0,
+  "frames": 563,
+  "intervals": [
+    {
+      "version": "before",
+      "feature": "crossing",
+      "first_frame": 10,
+      "last_frame": 10,
+      "start_seconds": 0.6666666666666666,
+      "end_seconds": 0.7333333333333333,
+      "frames": 1
+    },
+    {
+      "version": "before",
+      "feature": "crossing",
+      "first_frame": 93,
+      "last_frame": 96,
+      "start_seconds": 6.2,
+      "end_seconds": 6.466666666666667,
+      "frames": 4
+    },
+    {
+      "version": "before",
+      "feature": "crossing",
+      "first_frame": 120,
+      "last_frame": 123,
+      "start_seconds": 8.0,
+      "end_seconds": 8.266666666666667,
+      "frames": 4
+    },
+    {
+      "version": "before",
+      "feature": "crossing",
+      "first_frame": 278,
+      "last_frame": 281,
+      "start_seconds": 18.533333333333335,
+      "end_seconds": 18.8,
+      "frames": 4
+    },
+    {
+      "version": "before",
+      "feature": "crossing",
+      "first_frame": 303,
+      "last_frame": 307,
+      "start_seconds": 20.2,
+      "end_seconds": 20.533333333333335,
+      "frames": 5
+    },
+    {
+      "version": "before",
+      "feature": "crossing",
+      "first_frame": 415,
+      "last_frame": 415,
+      "start_seconds": 27.666666666666668,
+      "end_seconds": 27.733333333333334,
+      "frames": 1
+    },
+    {
+      "version": "before",
+      "feature": "roundabout",
+      "first_frame": 103,
+      "last_frame": 103,
+      "start_seconds": 6.866666666666666,
+      "end_seconds": 6.933333333333334,
+      "frames": 1
+    },
+    {
+      "version": "before",
+      "feature": "roundabout",
+      "first_frame": 345,
+      "last_frame": 345,
+      "start_seconds": 23.0,
+      "end_seconds": 23.066666666666666,
+      "frames": 1
+    },
+    {
+      "version": "before",
+      "feature": "roundabout",
+      "first_frame": 364,
+      "last_frame": 365,
+      "start_seconds": 24.266666666666666,
+      "end_seconds": 24.4,
+      "frames": 2
+    },
+    {
+      "version": "after",
+      "feature": "crossing",
+      "first_frame": 5,
+      "last_frame": 5,
+      "start_seconds": 0.3333333333333333,
+      "end_seconds": 0.4,
+      "frames": 1
+    },
+    {
+      "version": "after",
+      "feature": "crossing",
+      "first_frame": 76,
+      "last_frame": 76,
+      "start_seconds": 5.066666666666666,
+      "end_seconds": 5.133333333333334,
+      "frames": 1
+    },
+    {
+      "version": "after",
+      "feature": "crossing",
+      "first_frame": 80,
+      "last_frame": 87,
+      "start_seconds": 5.333333333333333,
+      "end_seconds": 5.866666666666666,
+      "frames": 8
+    },
+    {
+      "version": "after",
+      "feature": "crossing",
+      "first_frame": 106,
+      "last_frame": 113,
+      "start_seconds": 7.066666666666666,
+      "end_seconds": 7.6,
+      "frames": 8
+    },
+    {
+      "version": "after",
+      "feature": "crossing",
+      "first_frame": 259,
+      "last_frame": 259,
+      "start_seconds": 17.266666666666666,
+      "end_seconds": 17.333333333333332,
+      "frames": 1
+    },
+    {
+      "version": "after",
+      "feature": "crossing",
+      "first_frame": 266,
+      "last_frame": 274,
+      "start_seconds": 17.733333333333334,
+      "end_seconds": 18.333333333333332,
+      "frames": 9
+    },
+    {
+      "version": "after",
+      "feature": "crossing",
+      "first_frame": 292,
+      "last_frame": 298,
+      "start_seconds": 19.466666666666665,
+      "end_seconds": 19.933333333333334,
+      "frames": 7
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 12,
+      "last_frame": 12,
+      "start_seconds": 0.8,
+      "end_seconds": 0.8666666666666667,
+      "frames": 1
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 20,
+      "last_frame": 20,
+      "start_seconds": 1.3333333333333333,
+      "end_seconds": 1.4,
+      "frames": 1
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 40,
+      "last_frame": 40,
+      "start_seconds": 2.6666666666666665,
+      "end_seconds": 2.7333333333333334,
+      "frames": 1
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 44,
+      "last_frame": 45,
+      "start_seconds": 2.933333333333333,
+      "end_seconds": 3.066666666666667,
+      "frames": 2
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 53,
+      "last_frame": 53,
+      "start_seconds": 3.533333333333333,
+      "end_seconds": 3.6,
+      "frames": 1
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 72,
+      "last_frame": 72,
+      "start_seconds": 4.8,
+      "end_seconds": 4.866666666666666,
+      "frames": 1
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 94,
+      "last_frame": 94,
+      "start_seconds": 6.266666666666667,
+      "end_seconds": 6.333333333333333,
+      "frames": 1
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 125,
+      "last_frame": 125,
+      "start_seconds": 8.333333333333334,
+      "end_seconds": 8.4,
+      "frames": 1
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 127,
+      "last_frame": 127,
+      "start_seconds": 8.466666666666667,
+      "end_seconds": 8.533333333333333,
+      "frames": 1
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 135,
+      "last_frame": 136,
+      "start_seconds": 9.0,
+      "end_seconds": 9.133333333333333,
+      "frames": 2
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 138,
+      "last_frame": 138,
+      "start_seconds": 9.2,
+      "end_seconds": 9.266666666666667,
+      "frames": 1
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 145,
+      "last_frame": 146,
+      "start_seconds": 9.666666666666666,
+      "end_seconds": 9.8,
+      "frames": 2
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 148,
+      "last_frame": 148,
+      "start_seconds": 9.866666666666667,
+      "end_seconds": 9.933333333333334,
+      "frames": 1
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 154,
+      "last_frame": 154,
+      "start_seconds": 10.266666666666667,
+      "end_seconds": 10.333333333333334,
+      "frames": 1
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 161,
+      "last_frame": 162,
+      "start_seconds": 10.733333333333333,
+      "end_seconds": 10.866666666666667,
+      "frames": 2
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 184,
+      "last_frame": 184,
+      "start_seconds": 12.266666666666667,
+      "end_seconds": 12.333333333333334,
+      "frames": 1
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 227,
+      "last_frame": 228,
+      "start_seconds": 15.133333333333333,
+      "end_seconds": 15.266666666666667,
+      "frames": 2
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 270,
+      "last_frame": 270,
+      "start_seconds": 18.0,
+      "end_seconds": 18.066666666666666,
+      "frames": 1
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 289,
+      "last_frame": 289,
+      "start_seconds": 19.266666666666666,
+      "end_seconds": 19.333333333333332,
+      "frames": 1
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 326,
+      "last_frame": 327,
+      "start_seconds": 21.733333333333334,
+      "end_seconds": 21.866666666666667,
+      "frames": 2
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 344,
+      "last_frame": 344,
+      "start_seconds": 22.933333333333334,
+      "end_seconds": 23.0,
+      "frames": 1
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 353,
+      "last_frame": 353,
+      "start_seconds": 23.533333333333335,
+      "end_seconds": 23.6,
+      "frames": 1
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 360,
+      "last_frame": 361,
+      "start_seconds": 24.0,
+      "end_seconds": 24.133333333333333,
+      "frames": 2
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 363,
+      "last_frame": 365,
+      "start_seconds": 24.2,
+      "end_seconds": 24.4,
+      "frames": 3
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 369,
+      "last_frame": 371,
+      "start_seconds": 24.6,
+      "end_seconds": 24.8,
+      "frames": 3
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 385,
+      "last_frame": 385,
+      "start_seconds": 25.666666666666668,
+      "end_seconds": 25.733333333333334,
+      "frames": 1
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 468,
+      "last_frame": 468,
+      "start_seconds": 31.2,
+      "end_seconds": 31.266666666666666,
+      "frames": 1
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 539,
+      "last_frame": 539,
+      "start_seconds": 35.93333333333333,
+      "end_seconds": 36.0,
+      "frames": 1
+    },
+    {
+      "version": "after",
+      "feature": "roundabout",
+      "first_frame": 542,
+      "last_frame": 543,
+      "start_seconds": 36.13333333333333,
+      "end_seconds": 36.266666666666666,
+      "frames": 2
+    },
+    {
+      "version": "after",
+      "feature": "blue",
+      "first_frame": 345,
+      "last_frame": 349,
+      "start_seconds": 23.0,
+      "end_seconds": 23.333333333333332,
+      "frames": 5
+    }
+  ],
+  "roundabout_samples": [
+    {
+      "version": "after",
+      "frame": 12,
+      "seconds": 0.8,
+      "boxes": [
+        [
+          324,
+          117,
+          214,
+          24
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0012.jpg"
+    },
+    {
+      "version": "after",
+      "frame": 20,
+      "seconds": 1.3333333333333333,
+      "boxes": [
+        [
+          397,
+          120,
+          145,
+          25
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0020.jpg"
+    },
+    {
+      "version": "after",
+      "frame": 40,
+      "seconds": 2.6666666666666665,
+      "boxes": [
+        [
+          502,
+          152,
+          138,
+          31
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0040.jpg"
+    },
+    {
+      "version": "after",
+      "frame": 44,
+      "seconds": 2.933333333333333,
+      "boxes": [
+        [
+          527,
+          145,
+          113,
+          31
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0044.jpg"
+    },
+    {
+      "version": "after",
+      "frame": 53,
+      "seconds": 3.533333333333333,
+      "boxes": [
+        [
+          498,
+          155,
+          142,
+          35
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0053.jpg"
+    },
+    {
+      "version": "after",
+      "frame": 72,
+      "seconds": 4.8,
+      "boxes": [
+        [
+          441,
+          174,
+          163,
+          44
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0072.jpg"
+    },
+    {
+      "version": "after",
+      "frame": 94,
+      "seconds": 6.266666666666667,
+      "boxes": [
+        [
+          506,
+          128,
+          115,
+          30
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0094.jpg"
+    },
+    {
+      "version": "before",
+      "frame": 103,
+      "seconds": 6.866666666666666,
+      "boxes": [
+        [
+          412,
+          234,
+          228,
+          66
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/before_roundabout_0103.jpg"
+    },
+    {
+      "version": "after",
+      "frame": 125,
+      "seconds": 8.333333333333334,
+      "boxes": [
+        [
+          359,
+          127,
+          87,
+          23
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0125.jpg"
+    },
+    {
+      "version": "after",
+      "frame": 127,
+      "seconds": 8.466666666666667,
+      "boxes": [
+        [
+          374,
+          125,
+          84,
+          25
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0127.jpg"
+    },
+    {
+      "version": "after",
+      "frame": 135,
+      "seconds": 9.0,
+      "boxes": [
+        [
+          354,
+          133,
+          103,
+          29
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0135.jpg"
+    },
+    {
+      "version": "after",
+      "frame": 138,
+      "seconds": 9.2,
+      "boxes": [
+        [
+          348,
+          126,
+          100,
+          32
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0138.jpg"
+    },
+    {
+      "version": "after",
+      "frame": 145,
+      "seconds": 9.666666666666666,
+      "boxes": [
+        [
+          347,
+          127,
+          142,
+          38
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0145.jpg"
+    },
+    {
+      "version": "after",
+      "frame": 148,
+      "seconds": 9.866666666666667,
+      "boxes": [
+        [
+          374,
+          128,
+          141,
+          42
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0148.jpg"
+    },
+    {
+      "version": "after",
+      "frame": 154,
+      "seconds": 10.266666666666667,
+      "boxes": [
+        [
+          349,
+          137,
+          177,
+          51
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0154.jpg"
+    },
+    {
+      "version": "after",
+      "frame": 161,
+      "seconds": 10.733333333333333,
+      "boxes": [
+        [
+          336,
+          136,
+          202,
+          63
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0161.jpg"
+    },
+    {
+      "version": "after",
+      "frame": 184,
+      "seconds": 12.266666666666667,
+      "boxes": [
+        [
+          328,
+          112,
+          196,
+          29
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0184.jpg"
+    },
+    {
+      "version": "after",
+      "frame": 227,
+      "seconds": 15.133333333333333,
+      "boxes": [
+        [
+          549,
+          159,
+          87,
+          26
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0227.jpg"
+    },
+    {
+      "version": "after",
+      "frame": 270,
+      "seconds": 18.0,
+      "boxes": [
+        [
+          438,
+          172,
+          92,
+          21
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0270.jpg"
+    },
+    {
+      "version": "after",
+      "frame": 289,
+      "seconds": 19.266666666666666,
+      "boxes": [
+        [
+          29,
+          195,
+          86,
+          26
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0289.jpg"
+    },
+    {
+      "version": "after",
+      "frame": 326,
+      "seconds": 21.733333333333334,
+      "boxes": [
+        [
+          454,
+          228,
+          186,
+          52
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0326.jpg"
+    },
+    {
+      "version": "after",
+      "frame": 344,
+      "seconds": 22.933333333333334,
+      "boxes": [
+        [
+          156,
+          120,
+          484,
+          160
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0344.jpg"
+    },
+    {
+      "version": "before",
+      "frame": 345,
+      "seconds": 23.0,
+      "boxes": [
+        [
+          364,
+          250,
+          260,
+          84
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/before_roundabout_0345.jpg"
+    },
+    {
+      "version": "after",
+      "frame": 353,
+      "seconds": 23.533333333333335,
+      "boxes": [
+        [
+          320,
+          120,
+          320,
+          99
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0353.jpg"
+    },
+    {
+      "version": "after",
+      "frame": 360,
+      "seconds": 24.0,
+      "boxes": [
+        [
+          40,
+          120,
+          600,
+          160
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0360.jpg"
+    },
+    {
+      "version": "after",
+      "frame": 363,
+      "seconds": 24.2,
+      "boxes": [
+        [
+          116,
+          120,
+          524,
+          160
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0363.jpg"
+    },
+    {
+      "version": "before",
+      "frame": 364,
+      "seconds": 24.266666666666666,
+      "boxes": [
+        [
+          320,
+          213,
+          320,
+          87
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/before_roundabout_0364.jpg"
+    },
+    {
+      "version": "after",
+      "frame": 369,
+      "seconds": 24.6,
+      "boxes": [
+        [
+          0,
+          120,
+          640,
+          160
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0369.jpg"
+    },
+    {
+      "version": "after",
+      "frame": 385,
+      "seconds": 25.666666666666668,
+      "boxes": [
+        [
+          124,
+          120,
+          516,
+          160
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0385.jpg"
+    },
+    {
+      "version": "after",
+      "frame": 468,
+      "seconds": 31.2,
+      "boxes": [
+        [
+          0,
+          134,
+          124,
+          24
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0468.jpg"
+    },
+    {
+      "version": "after",
+      "frame": 539,
+      "seconds": 35.93333333333333,
+      "boxes": [
+        [
+          0,
+          120,
+          640,
+          160
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0539.jpg"
+    },
+    {
+      "version": "after",
+      "frame": 542,
+      "seconds": 36.13333333333333,
+      "boxes": [
+        [
+          0,
+          120,
+          640,
+          160
+        ]
+      ],
+      "image": "/home/pi/raspbot/results/full_course_viewport/blackbox_20261104_214713_354784_1c79a793/after_roundabout_0542.jpg"
+    }
+  ]
+}

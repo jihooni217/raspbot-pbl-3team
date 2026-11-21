@@ -1,0 +1,50 @@
+{
+  "runs": [
+    {
+      "json": "results/full_course_20261105_112427_487411.json",
+      "csv": "/home/pi/raspbot/results/full_course_20261105_112427_487411.csv",
+      "motor_commands": 0,
+      "reason": "20초 경과",
+      "raw_min_cm": 474.3,
+      "raw_max_cm": 482.8,
+      "route_steps": [
+        "1"
+      ],
+      "calculated_motion_rows": 1446,
+      "state_counts": {
+        "TRACKBOTH": 1446,
+        "WAITVISION": 19
+      },
+      "filtered_distances": [
+        400.0
+      ],
+      "last_state": "TRACKBOTH"
+    },
+    {
+      "json": "results/full_course_20261105_112549_912177.json",
+      "csv": "/home/pi/raspbot/results/full_course_20261105_112549_912177.csv",
+      "motor_commands": 0,
+      "reason": "20초 경과",
+      "raw_min_cm": 13.6,
+      "raw_max_cm": 56.1,
+      "route_steps": [
+        "1"
+      ],
+      "calculated_motion_rows": 0,
+      "state_counts": {
+        "OBSTACLEWAIT": 9,
+        "PERSONWAIT": 914,
+        "PERSON_CHECK15": 264,
+        "WAITVISION": 22
+      },
+      "filtered_distances": [
+        15.3,
+        17.0,
+        35.7,
+        49.3
+      ],
+      "last_state": "PERSON_CHECK15"
+    }
+  ],
+  "protected_04_07_unchanged": true
+}

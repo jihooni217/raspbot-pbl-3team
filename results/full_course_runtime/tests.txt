@@ -1,0 +1,17 @@
+test_check_sends_no_commands_even_zero_or_close (__main__.Tests.test_check_sends_no_commands_even_zero_or_close) ... ok
+test_cli_check_full_fake_run_no_motor (__main__.Tests.test_cli_check_full_fake_run_no_motor) ... ok
+test_close_exactly_three_batches_idempotent (__main__.Tests.test_close_exactly_three_batches_idempotent) ... ok
+test_ctrlc_final_three (__main__.Tests.test_ctrlc_final_three) ... ok
+test_error_final_three (__main__.Tests.test_error_final_three) ... ok
+test_finish_normal_final_three (__main__.Tests.test_finish_normal_final_three) ... ok
+test_judgment_functions_and_thresholds_unchanged (__main__.Tests.test_judgment_functions_and_thresholds_unchanged) ... ok
+test_key_normal_final_three (__main__.Tests.test_key_normal_final_three) ... ok
+test_metrics_finish_excludes_cleanup_and_later_inferences (__main__.Tests.test_metrics_finish_excludes_cleanup_and_later_inferences) ... ok
+test_printed_i2c_error_is_failure (__main__.Tests.test_printed_i2c_error_is_failure) ... ok
+test_same_values_refresh_at_point2_and_limit80 (__main__.Tests.test_same_values_refresh_at_point2_and_limit80) ... ok
+test_stop_attempts_every_wheel_after_error (__main__.Tests.test_stop_attempts_every_wheel_after_error) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 3.420s
+
+OK

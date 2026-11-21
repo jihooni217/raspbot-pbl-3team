@@ -1,0 +1,26 @@
+x_-30.png    LEFT  -2.811deg error 0.189 PASS
+x_-20.png    LEFT  -1.879deg error 0.121 PASS
+x_-10.png    LEFT  -0.841deg error 0.159 PASS
+x_+10.png    RIGHT +0.962deg error 0.038 PASS
+x_+20.png    RIGHT +1.950deg error 0.050 PASS
+x_+30.png    RIGHT +2.931deg error 0.069 PASS
+y_-30.png    UP    -2.800deg error 0.200 PASS
+y_-20.png    UP    -2.000deg error 0.000 PASS
+y_-10.png    UP    -1.000deg error 0.000 PASS
+y_+10.png    DOWN  +1.000deg error 0.000 PASS
+y_+20.png    DOWN  +2.000deg error 0.000 PASS
+y_+30.png    DOWN  +3.000deg error 0.000 PASS
+test_actual_photos_and_no_motor_calls (__main__.Trials.test_actual_photos_and_no_motor_calls) ... ok
+test_already_aligned_initial_send_then_one_second (__main__.Trials.test_already_aligned_initial_send_then_one_second) ... ok
+test_exactly_five_pixels_is_not_enough (__main__.Trials.test_exactly_five_pixels_is_not_enough) ... ok
+test_five_degrees_without_response_only_then_unreliable (__main__.Trials.test_five_degrees_without_response_only_then_unreliable) ... ok
+test_probe_accumulates_and_correction_tolerates_reverse_slack (__main__.Trials.test_probe_accumulates_and_correction_tolerates_reverse_slack) ... ok
+test_small_learned_slope_can_be_loaded (__main__.Trials.test_small_learned_slope_can_be_loaded) ... ok
+test_thirteen_restore_uses_three_transmissions (__main__.Trials.test_thirteen_restore_uses_three_transmissions) ... ok
+test_tilt_probe_and_negative_direction (__main__.Trials.test_tilt_probe_and_negative_direction) ... ok
+test_twenty_moves_reports_best_without_restore_or_save (__main__.Trials.test_twenty_moves_reports_best_without_restore_or_save) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.006s
+
+OK

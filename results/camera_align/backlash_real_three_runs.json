@@ -1,0 +1,65 @@
+{
+  "date": "2026-11-05",
+  "runs": [
+    {
+      "run": 1,
+      "source": "results/camera_align/align_20261105_101811_730551.json",
+      "start_pan": 80,
+      "start_tilt": 5,
+      "final_pan": 86,
+      "final_tilt": 5,
+      "vx_error_px": -8.01918093762248,
+      "height_error_px": 9.5,
+      "moves": 6,
+      "seconds": 3.274967803999971,
+      "status": "ALIGNED"
+    },
+    {
+      "run": 2,
+      "source": "results/camera_align/align_20261105_101843_221774.json",
+      "start_pan": 86,
+      "start_tilt": 5,
+      "final_pan": 86,
+      "final_tilt": 5,
+      "vx_error_px": -8.076717856877849,
+      "height_error_px": 9.5,
+      "moves": 0,
+      "seconds": 1.1109903259999783,
+      "status": "ALIGNED"
+    },
+    {
+      "run": 3,
+      "source": "results/camera_align/align_20261105_101905_271731.json",
+      "start_pan": 86,
+      "start_tilt": 5,
+      "final_pan": 86,
+      "final_tilt": 5,
+      "vx_error_px": -7.557023396350019,
+      "height_error_px": 9.5,
+      "moves": 0,
+      "seconds": 1.1221306140000706,
+      "status": "ALIGNED"
+    }
+  ],
+  "photo_passed": 12,
+  "photo_total": 12,
+  "device_free_tests": 9,
+  "wheels_used": false,
+  "commands_per_target": 3,
+  "interval_seconds": 0.02,
+  "moves_exclude_initial_and_repeated_commands": true,
+  "offset_trials": false,
+  "last": {
+    "schema_version": 1,
+    "pan": 86,
+    "tilt": 5,
+    "response_px_per_degree": {
+      "pan": 13.274980106126065,
+      "tilt": null
+    },
+    "saved_at": "2026-11-05T10:19:05.257541+09:00",
+    "reference_source_sha256": "ef8b0013c5d95c4bbb67c0aa3ed36b95b8991ef4d3101861bb41bea9d7477527",
+    "vx_error_px": -7.557023396350019,
+    "height_error_px": 9.5
+  }
+}
