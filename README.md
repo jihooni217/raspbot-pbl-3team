@@ -1,44 +1,156 @@
-# 라즈봇 프로젝트 — 3조
+<div align="center">
 
-대구대 「AI 자율주행 알고리즘 PBL」(2026.11.1~11.6) 3조 레포입니다.
-Yahboom RASPBOT-V2 + Raspberry Pi 5가 **바깥 큰길 한 바퀴를 스스로 달리고, 바닥 색으로 속도를 바꾸고, 사람 모형·STOP 앞에서 멈췄다가 START 흰 선에서 정지하도록** 만들었습니다. 로터리와 천천히는 시험 단계이고 시연에는 넣지 않았습니다.
+# 🚗 라즈봇 자율주행 — 대구대 PBL 3조
 
+**카메라 한 대로 트랙 한 바퀴를 스스로 달리는 소형 자율주행차**
+차선을 따라가고, 바닥 색으로 속도를 바꾸고, 사람·STOP 앞에서 멈췄다가, START 흰 선에서 스스로 정지합니다.
 
-주행 영상: [큰길 한 바퀴 (33초, 소리 없음)](https://github.com/jihooni217/raspbot-pbl-3team/releases/download/demo-20261106/raspbot_outer_lap_20261105.mp4)
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?style=flat-square&logo=opencv&logoColor=white)
+![YOLO](https://img.shields.io/badge/YOLO-ONNX-00FFFF?style=flat-square)
+![Raspberry Pi 5](https://img.shields.io/badge/Raspberry%20Pi%205-A22846?style=flat-square&logo=raspberrypi&logoColor=white)
+![Codex](https://img.shields.io/badge/AI%20pair-Codex%20%2B%20Claude-412991?style=flat-square&logo=openai&logoColor=white)
 
-로터리 시험 영상: [로터리 단독 시험 (18초, 소리 없음, 마지막에 흰 바닥으로 이탈)](https://github.com/jihooni217/raspbot-pbl-3team/releases/download/demo-20261106/raspbot_rotary_test.mp4)
+[English](README.en.md) · [실행 설명서](docs/RUN.md) · [주행 기록](results/) · [지시서](specs/)
 
+<img src="docs/media/outer_lap_4x.gif" width="640" alt="학교 트랙 큰길 한 바퀴 (4배속)" />
 
-**큰길 한 바퀴**
+<sub>학교 트랙 큰길 한 바퀴 · 4배속 · 2026.11.05</sub>
+
+</div>
+
+## 한눈에 보기
+
+| 실제 트랙 완주 | 모서리 맞힘 | 전체 경로 맞힘 | 표지 인식 |
+|:---:|:---:|:---:|:---:|
+| **7 / 7판** FINISH<br><sub>11/6, 37~44초</sub> | **28% → 81%**<br><sub>사진 시험</sub> | **60% → 87%**<br><sub>사진 시험</sub> | **18 → 26 / 30장**<br><sub>YOLO 320 → 640</sub> |
+
+- **기간**: 2026.11.1 ~ 11.6 (6일) · 대구대 「AI 자율주행 알고리즘 PBL」
+- **팀 역할**: 조장 · 운전석 · 트랙·표지 · 측정 · 기록·발표. 이 레포 주인은 **조장**입니다.
+- **하드웨어**: Yahboom RASPBOT-V2 (메카넘 바퀴 4개 · 카메라 짐벌 · 초음파 · 라인센서 4칸 · RGB 불빛) + Raspberry Pi 5
+
+## 주행 영상
+
+**큰길 한 바퀴** (외부 시점, 33초)
 
 https://github.com/user-attachments/assets/10f29714-b9fe-476f-a1fe-a59d78784a65
 
-**로터리 단독 시험**
+**마지막 주행 · 상태 불빛** (11/6, 로봇 카메라 시점. 오른쪽 위 불빛 색은 주행 기록으로 다시 그린 것)
+
+https://github.com/user-attachments/assets/97b09148-425d-42a5-866d-6aba71688487
+
+**로터리 단독 시험** (18초, 마지막에 흰 바닥으로 이탈 — 다음 과제)
 
 https://github.com/user-attachments/assets/eed7b209-75b9-433f-b449-a0a8d11d4d99
 
-**마지막 주행 카메라 시점 · 상태 불빛 (11/6, 로봇 카메라. 오른쪽 위 불빛 색은 주행 기록으로 다시 그린 것)**
-https://github.com/user-attachments/assets/97b09148-425d-42a5-866d-6aba71688487
+<sub>원본 화질 다운로드: [큰길 한 바퀴](https://github.com/jihooni217/raspbot-pbl-3team/releases/download/demo-20261106/raspbot_outer_lap_20261105.mp4) · [로터리 시험](https://github.com/jihooni217/raspbot-pbl-3team/releases/download/demo-20261106/raspbot_rotary_test.mp4)</sub>
 
-## 일하는 방식
-- 조가 `specs/`에 **지시서**(무엇을 · 왜 · 규칙표 · 숫자 성공 기준 · 안전)를 쓰고, Codex가 `missions/`에 코드를 만든다. Codex 수칙은 `AGENTS.md`.
-- 실제로 어떻게 움직였는지는 `results/`와 `log.md`에, 주행 기록은 `results/runs.csv`에 남긴다.
-- 고칠 때는 한 번에 하나만, 고친 뒤 **사진 시험**(`tools/photo_lap_test/`)으로 점수를 다시 잰다.
+## 내가 한 일 (조장)
 
-## 만든 것
+- **지시서 주도 개발**: 기능마다 `specs/`에 지시서(목표 · 규칙표 · 숫자 성공 기준 · 안전)를 쓰고, 코드는 AI(Codex)가 그 지시서대로만 만들게 했습니다. 지시서 없이는 기능을 추가하지 않는 규칙을 [`AGENTS.md`](AGENTS.md)에 정했습니다.
+- **검증과 기록**: 고친 뒤에는 바퀴를 돌리기 전에 사진 시험·가짜 장치 시험으로 먼저 확인하고, 실제 주행은 매 판 `results/`에 CSV·JSON으로 남겼습니다 (큰길 주행 기록만 60판 이상).
+- **문제 원인 찾기**: 주행 기록과 로봇 카메라 영상을 맞춰 보며 원인을 좁히고, 한 번에 하나씩만 고쳤습니다 (아래 문제 해결 사례).
+- **레포 관리와 발표**: GitHub 정리, 시연 구성, 발표 자료.
+
+## 어떻게 만들었나
+
+```mermaid
+flowchart LR
+    A["📝 지시서<br/>specs/*.md<br/>규칙표 · 성공 기준 · 안전"] --> B["🤖 Codex<br/>missions/ 코드 작성"]
+    B --> C["🧪 바퀴 없이 검증<br/>사진 시험 · 가짜 장치 시험"]
+    C --> D["🏁 실제 트랙 주행<br/>상자 위 → 바닥"]
+    D --> E["📊 기록<br/>results/ · log.md"]
+    E -->|"숫자로 판단, 한 번에 하나만 수정"| A
+```
+
+- 사람은 **무엇을·왜·어떤 숫자면 성공인지**를 정하고, AI는 코드를 씁니다. 바퀴 속도 상한(150), 바퀴 돌리기 전 확인 같은 안전 규칙은 지시서마다 들어갑니다.
+- 모서리 주행처럼 실물로 반복하기 어려운 부분은 손으로 민 한 바퀴 사진 1,798장으로 **사진 시험 도구**([`tools/photo_lap_test/`](tools/photo_lap_test/))를 만들어 점수로 비교했습니다.
+
+## 시스템 구조
+
+```mermaid
+flowchart LR
+    CAM["📷 카메라"] --> LANE["노란 차선 찾기<br/>OpenCV HSV"]
+    CAM --> FLOOR["바닥 색<br/>파랑 · 빨강"]
+    CAM --> YOLO["YOLO ONNX<br/>사람 · STOP"]
+    CAM --> START["START 흰 띠"]
+    US["📡 초음파"] --> CTRL
+    LINE["라인센서 4칸"] --> CTRL
+    LANE --> CTRL["주행 판단<br/>missions/13_full_course.py"]
+    FLOOR --> CTRL
+    YOLO --> CTRL
+    START --> CTRL
+    CTRL --> MOTOR["⚙️ 메카넘 바퀴 4개"]
+    CTRL --> LED["💡 상태 불빛"]
+    CTRL --> LOG["📊 CSV · JSON 기록"]
+```
+
+| 상황 | 동작 |
+|---|---|
+| 평소 | 노란 차선 따라 속도 35 · 불빛 초록 |
+| 파란 바닥 | 속도 80으로 가속 · 불빛 파랑 |
+| 빨간 바닥 | 속도 25로 감속 · 불빛 노랑 깜빡임 |
+| 사람 모형 · STOP · 앞 장애물 25cm | 멈춤 · 불빛 빨강 → 사라지면 재출발 |
+| 빨간 바닥 지난 뒤 START 흰 띠 + 라인센서 4칸 모두 흰색 | 한 바퀴 완료, 정지 |
+
+## 주요 기능
+
 | 번호 | 프로그램 | 하는 일 |
 |---|---|---|
-| 02 | `missions/02_line.py` | 라인센서로 종이 트랙 따라가기 |
-| 03 | `missions/03_video.py` | 블랙박스 영상(시각·거리·상태 글자) |
-| 04 | `missions/04_obstacle.py` | 장애물 25cm 앞 정지, 35cm 넘으면 재출발 |
-| 05·06 | `missions/05_signs.py` · `06_drive_signs.py` | YOLO로 사람·STOP 찾기, 달리며 정지 |
-| 07 | `missions/07_lap_1757.py` | 카메라로 노란 차선 따라가기 (기준 판) |
-| **13** | `missions/13_full_course.py` | **`--outer-lap` 큰길 한 바퀴(발표 시연)**: 파란 바닥 기본 속도 80 · 빨간 바닥 25 · 그 외 35, 사람·STOP 정지, START 흰 선 정지. `--rotary-test`는 로터리 시험용(모델 `models/slow_v3`) |
-| 14 | `missions/14_camera_align.py` | 출발 전 카메라 각도 자동 맞추기 (박스에서 꺼낸 뒤 틀어진 각도 보정) |
-| 08 | `missions/08_command.py` | 한국어 글 명령 → AI가 정해진 동작 목록에서 하나만 고름, 목록 밖은 거절 |
-| 09 | `missions/09_dashboard.py` | 브라우저 조종판 (자동주행 ON · 긴급 정지 · 실시간 로그) |
+| **13** | [`13_full_course.py`](missions/13_full_course.py) | **발표 시연 코드.** 큰길 한 바퀴 · 바닥 색 속도 · 사람/STOP/장애물 정지 · START 정지 · 상태 불빛(`--lights`) |
+| 07 | [`07_lap_1757.py`](missions/07_lap_1757.py) | 카메라로 노란 차선 따라가기 (13의 바탕) |
+| 08 | [`08_command.py`](missions/08_command.py) | 한국어 글 명령 → AI가 **정해진 동작 11개 중 하나만** JSON으로 고름. 목록 밖·두 가지 이상·위험한 요청은 거절 (가드레일) |
+| 09 | [`09_dashboard.py`](missions/09_dashboard.py) | 브라우저 조종판 (자동주행 ON · 긴급 정지 · 실시간 로그) |
+| 14 | [`14_camera_align.py`](missions/14_camera_align.py) | 출발 전 카메라 각도 자동 보정 |
+| 05·06 | [`05_signs.py`](missions/05_signs.py) · [`06_drive_signs.py`](missions/06_drive_signs.py) | YOLO로 사람·STOP 찾기, 달리며 정지 |
+| 04 | [`04_obstacle.py`](missions/04_obstacle.py) | 초음파 중앙값으로 장애물 25cm 앞 정지, 35cm 넘으면 재출발 |
+| 02 | [`02_line.py`](missions/02_line.py) | 라인센서로 검은 선 따라가기 |
+| 03 | [`03_video.py`](missions/03_video.py) | 블랙박스 녹화 (시각·거리·상태 글자) |
 
-## before → after (사진 시험 · 측정)
+## 문제 해결 사례
+
+<details>
+<summary><b>① 모서리에서 벽으로 가는 문제 — 기준이 없어서 고칠수록 나빠짐</b></summary>
+
+- **문제**: 차선 코드를 고칠 때마다 모서리에서 벽으로 가거나 멈췄고, 여러 판이 섞여 무엇이 좋아졌는지 알 수 없었습니다.
+- **원인 찾기**: 손으로 민 한 바퀴 사진 1,798장으로 **사진 시험 도구**를 만들어, 같은 사진에 판마다 점수를 매겼습니다.
+- **결과**: 세 판 비교(83% · 28% · 24%)로 가장 좋은 판을 기준으로 정하고, 작은 오차만 조향을 줄이도록 고쳐 **모서리 81%**, 직선 흔들림 43 → 30. 80px로 바꾼 시도는 79%라 되돌렸습니다.
+</details>
+
+<details>
+<summary><b>② 바닥 빛 반사로 차선을 놓침 — 코드 대신 카메라 값을 고침</b></summary>
+
+- **문제**: 마지막 모서리 뒤에서 바닥 빛 반사 때문에 노란 점이 부족해져 선을 놓쳤습니다.
+- **해결**: 코드는 그대로 두고, 노트북에서 화면을 보며 값을 조절하는 도구(`tools/camera_tuner.py`)를 만들어 노출·화이트밸런스를 수동으로 고정했습니다. 값은 [`tools/camera_track_values.sh`](tools/camera_track_values.sh) 한 줄로 다시 넣을 수 있게 했습니다.
+- **결과**: 선 밖 잡티 노란 점 111 → 2개. 같은 값으로 **3판 연속 완주** (34.8 · 34.0 · 32.7초), 선 놓침 0회.
+</details>
+
+<details>
+<summary><b>③ 출발선을 지나쳐 버림 — 타이머 대신 두 센서로 확인</b></summary>
+
+- **문제**: 처음에는 "빨간 바닥이 끝나고 7.4초 뒤 정지"라는 타이머로 끝냈는데, 속도가 조금만 달라도 위치가 어긋났습니다.
+- **해결**: 빨간 바닥 → 카메라가 START 흰 띠를 0.2초 연속 확인 → 라인센서 4칸이 흰색, 순서로 단계를 나눴습니다.
+- **추가 수정**: 실주행에서 흰 선 위 값이 한 번만 잡히고 지나친 판이 있어, 두 번 연속 대신 **한 번만 봐도 정지**하도록 바꿨습니다.
+</details>
+
+<details>
+<summary><b>④ 멈췄다 출발해도 불빛이 빨강 그대로 — 신호 한 번 유실</b></summary>
+
+- **문제**: STOP에서 빨강으로 바뀐 뒤 다시 출발해도 빨강이 남는 경우가 있었습니다.
+- **원인**: 색이 바뀔 때만 불빛 명령을 보냈는데, 그 한 번이 유실되면 고칠 기회가 없었습니다.
+- **해결**: 같은 색도 **0.5초마다 다시 보내도록** 했습니다. 불빛은 별도 스레드에서 보내 주행·안전 정지를 절대 막지 않게 했습니다.
+</details>
+
+<details>
+<summary><b>⑤ 장애물 정지 거리가 들쭉날쭉 — 규칙을 숫자로 다시 정함</b></summary>
+
+- **문제**: 정지 15cm · 재출발 25cm 규칙에서 첫 시험이 약 1cm 앞까지 가서 실패했습니다 (속도 50에서 제동 거리 약 10cm).
+- **해결**: 초음파를 중앙값으로 읽고, 정지 25cm · 재출발 35cm로 바꿨습니다.
+- **결과**: 정지 거리 12~18cm 기준으로 **5회 중 4회 통과**.
+</details>
+
+## before → after
+
 | 항목 | before | after |
 |---|---|---|
 | 장애물 정지 거리 (12~18cm 안) | 1/1 실패 | 4/5 통과 |
@@ -53,104 +165,38 @@ https://github.com/user-attachments/assets/97b09148-425d-42a5-866d-6aba71688487
 | 달리다가 정지 (11/6 실주행) | — | 사람 모형 5판, 왼쪽 STOP 4판. 오른쪽 자리 STOP은 인식 못함 |
 | 로터리 시험 (11/5) | — | 7판 중 1판 한 바퀴. 안정화는 다음 과제 |
 
-## 남은 한계
-- 사람은 가까이서야 멈추고, 안 보이면 약 1.3초 뒤 재출발합니다. 지금 카메라 값에서 검은 바닥 판정이 맞지 않는 것이 원인입니다.
-- 로터리는 도는 도중 가까운 다른 차선을 따라가 벗어나는 것으로 추정하며, 아직 확인하지 못했습니다.
-- 천천히는 사진 인식까지 했고 주행에는 넣지 않았습니다.
-- 옆 판을 파란 바닥으로 약 0.9초 잘못 본 판이 있고, 빛 반사에 약합니다.
+## 남은 한계와 다음 과제
+
+- **로터리**: 지금은 차선을 따라 돌다가 가까운 다른 차선을 따라가 벗어납니다. 다음에는 가운데 **마크 로고를 기준으로** 도는 방식으로 바꿀 계획입니다.
+- **사람 정지**: 가까이서야 멈추고, 안 보이면 약 1.3초 뒤 재출발합니다. 조정한 카메라 값에서 검은 바닥 판정이 맞지 않는 것이 원인입니다.
+- **STOP 정지**: 오른쪽 자리 STOP은 인식하지 못했고, 정지 표시가 있었는데 멈추지 않은 판도 있었습니다.
+- **천천히 표지**: 직접 학습한 모델(`models/slow_v1~v3`)로 사진 인식까지 했고 주행에는 넣지 않았습니다.
+- **바닥 색 오인**: 옆 판을 파란 바닥으로 약 0.9초 잘못 본 판이 있고, 빛 반사에 약합니다.
+
+## 폴더 구조
+
+```
+missions/   기능별 프로그램 (02~14)
+specs/      기능별 지시서 — 목표 · 규칙표 · 성공 기준 · 안전 · 결과 기록
+tools/      점검 · 시험 · 재생 도구 (사진 시험: tools/photo_lap_test/)
+results/    실주행 · 시험 기록 (CSV · JSON · TXT)
+models/     YOLO 모델 (강사 제공) + 직접 학습한 천천히 표지 모델
+docs/       실행 설명서 · 점검 기록 · 그림
+log.md      막힌 것과 해결 기록
+AGENTS.md   AI(Codex) 작업 수칙
+```
 
 ## 실행
-명령은 모두 로봇 안 `~/raspbot` 폴더에서 실행합니다(VS Code 터미널 또는 SSH). 바퀴가 도는 명령은 실행 전에 로봇 주변을 비웁니다. 주행 중에는 아무 키나 `Ctrl+C`로 멈춥니다.
 
-### 혼자 할 때 순서
-1. 확장보드 스위치를 켜고 1~2분 기다린다(로봇은 등록된 와이파이에 자동 연결).
-2. 노트북을 로봇과 같은 와이파이에 연결한다.
-3. VS Code 왼쪽 아래 `><` → `Connect to Host` → `pi@raspbot-03.local` (또는 IP) → 폴더 `/home/pi/raspbot` 열기.
-4. VS Code 위 메뉴 `Terminal` → `New Terminal`에서 아래 명령을 실행한다.
-5. 끝나면 `sudo poweroff` → 초록 불이 멈추면 스위치를 내린다.
+로봇 접속부터 트랙 주행까지 모든 명령은 **[docs/RUN.md](docs/RUN.md)** 에 있습니다.
 
-`raspbot-03.local`로 안 될 때 IP 찾기: 공유기 관리 화면(iptime은 `http://192.168.0.1`)의 연결된 기기 목록에서 `raspbot-03`을 찾거나, Raspberry Pi Connect(`connect.raspberrypi.com`)로 들어가 `hostname -I`를 실행한다. IP는 켤 때마다 바뀔 수 있다.
-
-### 아이폰 핫스팟으로 연결할 때
-1. 아이폰 설정 → 개인용 핫스팟 → **다른 사람의 연결 허용** 켜기, **호환성 최대화** 켜기(꺼져 있으면 로봇이 핫스팟을 못 찾는다).
-2. 핫스팟 설정 화면을 켜 둔 채로 둔다(화면을 벗어나면 잠시 뒤 신호를 숨긴다).
-3. 로봇이 집 와이파이로 연결된 상태에서, 로봇 터미널에 새 핫스팟을 한 번 등록한다(이름·비밀번호는 직접 넣는다).
 ```bash
-sudo nmcli dev wifi rescan
-nmcli dev wifi list                                          # 핫스팟 이름이 보이는지 확인
-sudo nmcli dev wifi connect "핫스팟이름" password "비밀번호"   # 이름에 띄어쓰기가 있으면 따옴표 필수
-```
-4. 로봇이 핫스팟으로 옮겨 가며 연결이 끊긴다. 노트북도 같은 핫스팟에 연결하고 다시 접속한다. 한 번 등록하면 다음부터는 자동으로 붙는다.
-
-### 접속과 끄기
-```bash
-ssh pi@raspbot-03.local          # 이름이 안 잡히면 공유기에서 찾은 IP로 접속
-cd ~/raspbot
-sudo poweroff                    # 끄기. 초록 불이 멈춘 뒤 확장보드 스위치를 내림
-```
-노트북 cmd에서 바로 끄기: `ssh -t pi@raspbot-03.local sudo poweroff` (이름 대신 IP를 써도 됨)
-
-### 검은 선 따라가기 (라인센서, 02)
-```bash
-python3 missions/02_line.py --check-sensors --seconds 3   # 바퀴 없이 센서만 읽기. 흰색 1, 검은색 0
-python3 missions/02_line.py                               # 출발. 속도 50, 선을 1초 넘게 놓치면 정지
-python3 tools/line_floor_trial.py --trial 1               # 같은 주행 + results/에 기록 (회차 1~5)
-```
-선 가운데에 올려 두면 센서는 `0 1 0 1`(가운데 두 칸 x1·x3이 검은색)이 나옵니다.
-
-### 학교 트랙에서 달릴 때 (카메라, 13 — 발표 시연 코드)
-1. 로봇을 START 흰 선 뒤, 바깥 큰길 차선 가운데에 놓는다. 트랙 위 사람·물건을 치운다.
-2. 카메라 값을 맞춘다(전원을 켤 때마다 다시). 바퀴는 안 돈다.
-3. 바퀴 없이 판단만 먼저 볼 수 있다(`--check`).
-4. 출발. 한 바퀴 돌고 START 흰 선에서 스스로 멈춘다. 도중에 멈추려면 아무 키.
-```bash
-sh tools/camera_track_values.sh                                   # 1) 카메라 값 맞추기 (학교 트랙 조명 기준)
-python3 missions/13_full_course.py --outer-lap --check            # 2) 바퀴 없이 판단만 보기
-python3 missions/13_full_course.py --outer-lap                    # 3) 큰길 한 바퀴 출발
-python3 missions/13_full_course.py --outer-lap --lights           #    상태 불빛까지 (발표 마지막 시연)
-python3 missions/13_full_course.py --outer-lap --laps 2           #    두 바퀴
-python3 missions/13_full_course.py --outer-lap --seconds 20       #    20초 뒤 자동 종료
-```
-- 속도: 파란 바닥 80 · 빨간 바닥 25 · 그 외 35. 사람·STOP 표지·앞 장애물(초음파 25cm)에서 멈춘다.
-- 불빛: 멈춤 빨강 · 평소 초록 · 파란 바닥 가속 파랑 · 빨간 바닥 감속 노랑 깜빡임.
-- 기록은 `results/full_course_날짜_시각.csv/.json`에 남는다.
-- 조명이 달라 차선을 못 잡으면, 노트북에서 카메라 화면을 보며 값을 조절한다: `python tools/camera_tuner.py --host raspbot-03.local` (이름이 안 되면 IP)
-- 로터리 시험(완성 안 됨, 흰 바닥으로 벗어날 수 있음): `python3 missions/13_full_course.py --rotary-test`
-
-### 트랙용 다른 프로그램
-```bash
-python3 missions/07_lap_1757.py --check     # 노란 차선 따라가기 기준 판, 바퀴 없이 계산만
-python3 missions/07_lap_1757.py             # 노란 차선 따라가기 (13번의 바탕)
-python3 missions/14_camera_align.py         # 출발 전 카메라 각도 자동 맞추기 (바퀴 안 씀)
-python3 missions/04_obstacle.py             # 장애물 25cm 앞 정지, 35cm 넘으면 재출발
-python3 missions/06_drive_signs.py --trial 1   # 달리며 사람·STOP 보고 정지 (회차 이름)
+sh tools/camera_track_values.sh                            # 카메라 값 맞추기
+python3 missions/13_full_course.py --outer-lap --check     # 바퀴 없이 판단만 보기
+python3 missions/13_full_course.py --outer-lap --lights    # 큰길 한 바퀴 + 상태 불빛
 ```
 
-### 처음 켰을 때 점검 (트랙 달리기 전)
-```bash
-python3 tools/servo_center.py               # 카메라를 정면(좌우 80°·위아래 25°)으로 맞춤
-python3 tools/sensor_test.py                # 부저·불빛·초음파·라인센서·카메라 사진 차례로 점검 (바퀴 안 씀)
-python3 tools/sensor_test.py --only line    #   하나만: buzzer / ultrasonic / line / camera
-python3 tools/motor_test.py                 # 바퀴 4개를 하나씩 1초 (상자 위에 올리고!)
-python3 tools/drive_test.py                 # 앞·뒤·옆·제자리 회전 (바닥, 사방 1m 비우고)
-```
+## 공개 원칙
 
-### 카메라·인식 (바퀴 안 씀)
-```bash
-python3 missions/03_video.py --seconds 30           # 블랙박스 녹화 30초 (생략하면 Ctrl+C까지) → results/videos/
-python3 tools/yolo.py                               # 카메라 앞 물체 알아보기 → results/yolo_test.jpg
-python3 missions/05_signs.py                        # 사람·STOP·차 표지 30장 촬영·채점
-python3 missions/14_camera_align.py --photo 사진.jpg  # 장치 없이 사진 한 장으로 카메라 각도 측정
-```
-노트북에서 카메라 화면 보며 값 조절: `python tools/camera_tuner.py --host raspbot-03.local`
-
-### 그 밖
-```bash
-python3 missions/08_command.py            # 글 명령 (바퀴 없이 시험: --dry-run)
-python3 tools/teleop.py                   # 키보드 조종
-python3 missions/09_dashboard.py          # 조종판 → 같은 와이파이에서 http://raspbot-03.local:8080
-```
-
-## 안전 규칙
-- 바퀴 속도 80 이하(데모 35/80/25), 바퀴 돌리기 전에 상자 위·바닥 확인
-- 사람 얼굴이 나온 사진·영상, 비밀번호·API 키는 레포에 올리지 않는다
+- 사람 얼굴이 나온 사진·영상, 비밀번호·API 키는 레포에 올리지 않습니다. 그래서 `results/`의 사진 일부와 학습용 사진은 빠져 있습니다.
+- 바퀴 속도 상한 150 (데모 35/80/25), 바퀴 돌리기 전에 상자 위·바닥 확인.
