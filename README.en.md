@@ -2,7 +2,7 @@
 
 # 🚗 Raspbot Autonomous Driving — Daegu Univ. PBL Team 3
 
-**A small autonomous car that drives a full lap of the track with a single camera**
+**A small autonomous car that drives a full lap of the track with a single camera**<br>
 It follows the lane, changes speed by floor color, stops for people and STOP signs, and stops by itself at the START line.
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)

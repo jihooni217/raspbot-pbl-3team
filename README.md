@@ -2,7 +2,7 @@
 
 # 🚗 라즈봇 자율주행 — 대구대 PBL 3조
 
-**카메라 한 대로 트랙 한 바퀴를 스스로 달리는 소형 자율주행차**
+**카메라 한 대로 트랙 한 바퀴를 스스로 달리는 소형 자율주행차**<br>
 차선을 따라가고, 바닥 색으로 속도를 바꾸고, 사람·STOP 앞에서 멈췄다가, START 흰 선에서 스스로 정지합니다.
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
