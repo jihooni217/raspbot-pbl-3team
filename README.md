@@ -9,11 +9,11 @@ Yahboom RASPBOT-V2 + Raspberry Pi 5가 **바깥 큰길 한 바퀴를 스스로 �
 
 로터리 시험 영상: [로터리 단독 시험 (18초, 소리 없음, 마지막에 흰 바닥으로 이탈)](https://github.com/jihooni217/raspbot-pbl-3team/releases/download/demo-20261106/raspbot_rotary_test.mp4)
 
-큰길 한 바퀴
+**큰길 한 바퀴**
 
 https://github.com/user-attachments/assets/10f29714-b9fe-476f-a1fe-a59d78784a65
 
-로터리 단독 시험
+**로터리 단독 시험**
 
 https://github.com/user-attachments/assets/eed7b209-75b9-433f-b449-a0a8d11d4d99
 
