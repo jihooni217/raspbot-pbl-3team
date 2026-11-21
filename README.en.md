@@ -45,12 +45,16 @@ https://github.com/user-attachments/assets/eed7b209-75b9-433f-b449-a0a8d11d4d99
 
 <sub>Original quality: [outer loop](https://github.com/jihooni217/raspbot-pbl-3team/releases/download/demo-20261106/raspbot_outer_lap_20261105.mp4) · [roundabout test](https://github.com/jihooni217/raspbot-pbl-3team/releases/download/demo-20261106/raspbot_rotary_test.mp4)</sub>
 
-## What I did (team leader)
+## My role (team leader · led the project)
 
-- **Spec-driven development**: For every feature I wrote a spec in `specs/` (goal · rule table · numeric success criteria · safety), and the AI (Codex) wrote code only from that spec. The rule "no feature without a spec" is written in [`AGENTS.md`](AGENTS.md).
-- **Verification and logging**: After each change we checked with photo tests and fake-device tests before spinning any wheel, and every real run was saved to `results/` as CSV/JSON (60+ logged runs of the outer loop alone).
-- **Root-cause analysis**: We lined up run logs with the robot's camera video to narrow down causes, and changed one thing at a time (see the case studies below).
+- **Spec-driven workflow, designed and written**: I wrote the spec for each feature (goal · rule table · numeric success criteria · safety) and set the working rules ([`AGENTS.md`](AGENTS.md)) so the AI (Codex) writes code only from those specs.
+- **Integrated the demo program (No. 13)**: Combined lane following, floor-color speed, person/STOP stops and the START stop into one program, and tuned it on the real track myself until all 7 runs finished.
+- **Verification and logging**: Checked every change with photo tests and fake-device tests before spinning any wheel, and saved every real run to `results/` as CSV/JSON to decide by numbers (60+ logged runs of the outer loop alone).
+- **Root-cause analysis**: Lined up run logs with the robot's camera video to narrow down causes, and changed one thing at a time (see the case studies below).
 - **Repo and presentation**: GitHub organization, demo plan, presentation materials.
+
+<sub>**Team**: Some experiments such as the roundabout and the slow sign were done by teammates in their own branches (`mission-10-rotary`, `mission-08-slow-scurve-logo`) and PRs.<br>
+**AI tools**: Code was written by Codex from the specs; robot checks over SSH, log organization and commits were assisted by Claude.</sub>
 
 ## How we built it
 
