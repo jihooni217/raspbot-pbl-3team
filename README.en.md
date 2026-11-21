@@ -116,16 +116,16 @@ flowchart LR
 <details>
 <summary><b>① Car drifting into the wall at corners — no baseline, so fixes made it worse</b></summary>
 
-- **Problem**: Every change to the lane code made the car hit the wall or stop at corners, and with many versions mixed up we could not tell what improved.
+- **Problem**: The more we changed the lane code, the more the car hit the wall or stopped at corners. With many versions mixed up, we could not tell which one was better.
 - **Approach**: Built a **photo test tool** from 1,798 photos of a hand-pushed lap and scored each version on the same photos.
-- **Result**: Comparing three versions (83% · 28% · 24%) we picked the best one as the baseline and reduced steering only for small errors: **corners 81%**, straight-line wobble 43 → 30. An 80 px variant scored 79% and was reverted.
+- **Result**: The three versions scored 83% · 28% · 24%. We kept the best one and made it steer less when the car is only slightly off the lane: **corners 81%**, wobble on straights 43 → 30. Another setting (80 px) scored lower (79%), so we undid it.
 </details>
 
 <details>
 <summary><b>② Losing the lane because of floor glare — fixed the camera, not the code</b></summary>
 
 - **Problem**: After the last corner, light reflecting off the floor left too few yellow pixels and the car lost the lane.
-- **Fix**: Left the code unchanged. Built a laptop tool (`tools/camera_tuner.py`) to tune the camera while watching the live image, and locked exposure and white balance manually. The values are re-applied with one line ([`tools/camera_track_values.sh`](tools/camera_track_values.sh)).
+- **Fix**: We left the code alone and changed the camera instead. A laptop tool (`tools/camera_tuner.py`) shows the live camera image while you adjust brightness and color. We turned off the camera's auto brightness so it stays fixed. One line ([`tools/camera_track_values.sh`](tools/camera_track_values.sh)) puts the values back.
 - **Result**: Stray yellow pixels outside the lane 111 → 2. **3 consecutive laps** with the same values (34.8 · 34.0 · 32.7 s), zero lane losses.
 </details>
 
@@ -133,7 +133,7 @@ flowchart LR
 <summary><b>③ Driving past the start line — two sensors instead of a timer</b></summary>
 
 - **Problem**: At first the lap ended with a timer ("stop 7.4 s after the red floor ends"), so small speed changes moved the stopping point.
-- **Fix**: Split it into stages: red floor → camera sees the START white band for 0.2 s → all 4 line sensors read white.
+- **Fix**: Check with the camera and the floor sensors instead of a clock: ① pass the red floor → ② the camera sees the START white band for 0.2 s → ③ all 4 line sensors read white, then stop.
 - **Follow-up**: In a real run the white reading appeared only once and the car drove past, so the rule changed from two consecutive readings to **one**.
 </details>
 
@@ -141,7 +141,7 @@ flowchart LR
 <summary><b>④ Light stays red after restarting — one lost command</b></summary>
 
 - **Problem**: After stopping at a STOP sign (red), the light sometimes stayed red after the car moved again.
-- **Cause**: The light command was sent only when the color changed, so if that single write was lost there was no second chance.
+- **Cause**: The light command was sent only once, when the color changed. If that one command got lost, nothing fixed it.
 - **Fix**: Resend the same color **every 0.5 s**. Lights run on a separate thread so they can never block driving or safety stops.
 </details>
 
@@ -149,7 +149,7 @@ flowchart LR
 <summary><b>⑤ Inconsistent obstacle stopping distance — redefined the rule with numbers</b></summary>
 
 - **Problem**: With stop at 15 cm / resume at 25 cm, the first test ended about 1 cm from the box (braking distance ≈ 10 cm at speed 50).
-- **Fix**: Read the ultrasonic sensor as a median and changed to stop at 25 cm / resume at 35 cm.
+- **Fix**: Take several ultrasonic readings and use the middle one (ignores spikes), then stop at 25 cm and resume at 35 cm.
 - **Result**: **4 of 5 runs** passed the 12–18 cm stopping-distance target.
 </details>
 
