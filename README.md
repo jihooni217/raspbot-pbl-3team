@@ -9,6 +9,16 @@ Yahboom RASPBOT-V2 + Raspberry Pi 5가 **바깥 큰길 한 바퀴를 스스로 �
 
 로터리 시험 영상: [로터리 단독 시험 (18초, 소리 없음, 마지막에 흰 바닥으로 이탈)](https://github.com/jihooni217/raspbot-pbl-3team/releases/download/demo-20261106/raspbot_rotary_test.mp4)
 
+**바로 보기** (페이지에서 재생, 720p · 소리 없음)
+
+큰길 한 바퀴
+
+https://github.com/user-attachments/assets/10f29714-b9fe-476f-a1fe-a59d78784a65
+
+로터리 단독 시험
+
+https://github.com/user-attachments/assets/eed7b209-75b9-433f-b449-a0a8d11d4d99
+
 ## 일하는 방식
 - 조가 `specs/`에 **지시서**(무엇을 · 왜 · 규칙표 · 숫자 성공 기준 · 안전)를 쓰고, Codex가 `missions/`에 코드를 만든다. Codex 수칙은 `AGENTS.md`.
 - 실제로 어떻게 움직였는지는 `results/`와 `log.md`에, 주행 기록은 `results/runs.csv`에 남긴다.
