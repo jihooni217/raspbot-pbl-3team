@@ -49,11 +49,38 @@ Yahboom RASPBOT-V2 + Raspberry Pi 5가 **바깥 큰길 한 바퀴를 스스로 �
 - 옆 판을 파란 바닥으로 약 0.9초 잘못 본 판이 있고, 빛 반사에 약합니다.
 
 ## 실행
-- 큰길 한 바퀴: `sh tools/camera_track_values.sh` 뒤 `python3 missions/13_full_course.py --outer-lap`
-- 상태 불빛까지: `python3 missions/13_full_course.py --outer-lap --lights` (멈춤 빨강 · 평소 초록 · 파란 바닥 가속 파랑 · 빨간 바닥 감속 노랑 깜빡임)
-- 글 명령: `python3 missions/08_command.py` (바퀴 없이 시험: `--dry-run`)
-- 키보드 조종: `python3 tools/teleop.py`
-- 조종판: `python3 missions/09_dashboard.py` → 같은 와이파이에서 `http://raspbot-03.local:8080`
+명령은 모두 로봇 안 `~/raspbot` 폴더에서 실행합니다(VS Code 터미널 또는 SSH). 바퀴가 도는 명령은 실행 전에 로봇 주변을 비웁니다. 주행 중에는 아무 키나 `Ctrl+C`로 멈춥니다.
+
+### 접속과 끄기
+```bash
+ssh pi@raspbot-03.local          # 이름이 안 잡히면 공유기에서 찾은 IP로 접속
+cd ~/raspbot
+sudo poweroff                    # 끄기. 초록 불이 멈춘 뒤 확장보드 스위치를 내림
+```
+노트북 cmd에서 바로 끄기: `ssh -t pi@raspbot-03.local sudo poweroff` (이름 대신 IP를 써도 됨)
+
+### 검은 선 따라가기 (라인센서, 02)
+```bash
+python3 missions/02_line.py --check-sensors --seconds 3   # 바퀴 없이 센서만 읽기. 흰색 1, 검은색 0
+python3 missions/02_line.py                               # 출발. 속도 50, 선을 1초 넘게 놓치면 정지
+python3 tools/line_floor_trial.py --trial 1               # 같은 주행 + results/에 기록 (회차 1~5)
+```
+선 가운데에 올려 두면 센서는 `0 1 0 1`(가운데 두 칸 x1·x3이 검은색)이 나옵니다.
+
+### 큰길 한 바퀴 (카메라, 13)
+```bash
+sh tools/camera_track_values.sh                           # 카메라 값 맞추기(먼저 실행)
+python3 missions/13_full_course.py --outer-lap
+python3 missions/13_full_course.py --outer-lap --lights   # 상태 불빛까지
+```
+불빛: 멈춤 빨강 · 평소 초록 · 파란 바닥 가속 파랑 · 빨간 바닥 감속 노랑 깜빡임
+
+### 그 밖
+```bash
+python3 missions/08_command.py            # 글 명령 (바퀴 없이 시험: --dry-run)
+python3 tools/teleop.py                   # 키보드 조종
+python3 missions/09_dashboard.py          # 조종판 → 같은 와이파이에서 http://raspbot-03.local:8080
+```
 
 ## 안전 규칙
 - 바퀴 속도 80 이하(데모 35/80/25), 바퀴 돌리기 전에 상자 위·바닥 확인
