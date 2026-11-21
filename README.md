@@ -3,7 +3,6 @@
 대구대 「AI 자율주행 알고리즘 PBL」(2026.11.1~11.6) 3조 레포입니다.
 Yahboom RASPBOT-V2 + Raspberry Pi 5가 **바깥 큰길 한 바퀴를 스스로 달리고, 바닥 색으로 속도를 바꾸고, 사람 모형·STOP 앞에서 멈췄다가 START 흰 선에서 정지하도록** 만들었습니다. 로터리와 천천히는 시험 단계이고 시연에는 넣지 않았습니다.
 
-조원: 조장 · 운전석 · 트랙·표지 · 측정 · 기록·발표 (이름 대신 역할)
 
 주행 영상: [큰길 한 바퀴 (33초, 소리 없음)](https://github.com/jihooni217/raspbot-pbl-3team/releases/download/demo-20261106/raspbot_outer_lap_20261105.mp4)
 
@@ -17,8 +16,7 @@ https://github.com/user-attachments/assets/10f29714-b9fe-476f-a1fe-a59d78784a65
 
 https://github.com/user-attachments/assets/eed7b209-75b9-433f-b449-a0a8d11d4d99
 
-마지막 주행 · 상태 불빛 (11/6, 로봇 카메라. 오른쪽 위 불빛 색은 주행 기록으로 다시 그린 것)
-
+**마지막 주행 카메라 시점 · 상태 불빛 (11/6, 로봇 카메라. 오른쪽 위 불빛 색은 주행 기록으로 다시 그린 것)**
 https://github.com/user-attachments/assets/97b09148-425d-42a5-866d-6aba71688487
 
 ## 일하는 방식
